@@ -1,9 +1,20 @@
 <?php
 session_start();
+
 if (isset($_SESSION["user"])) {
     $msg = "Already logged in!";
     header("Location:index.php?msg=$msg");
 }
+
+sendMessage("loginError");
+
+function sendMessage($message){
+    if (isset($_GET["$message"])){
+        $msg = $_GET["$message"];
+        echo "<script>alert('$msg')</script>";
+    }
+}
+
 ?>
 
 <!DOCTYPE html>
