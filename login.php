@@ -5,16 +5,6 @@ if (isset($_SESSION["user"])) {
     $msg = "Already logged in!";
     header("Location:index.php?msg=$msg");
 }
-
-sendMessage("loginError");
-
-function sendMessage($message){
-    if (isset($_GET["$message"])){
-        $msg = $_GET["$message"];
-        echo "<script>alert('$msg')</script>";
-    }
-}
-
 ?>
 
 <!DOCTYPE html>
@@ -50,8 +40,19 @@ function sendMessage($message){
 	<header class="masthead text-white text-center">
 		<div class="overlay"></div>
 		<div class="container">
+
 		  	<div class="col-xl-9 mx-auto">
 				<h1 class="mb-5">Login</h1>
+
+				<?php
+					sendMessage("loginError");
+					function sendMessage($message){
+					    if (isset($_GET["$message"])){
+					        $msg = $_GET["$message"];
+					        echo "<p class=\"alert alert-light text-danger\">$msg</p>";
+					    }
+					}
+				?>
 
 				<!-- Student Login. Don't need to edit it. This is not our concern -->
 				<div class="container login-container">

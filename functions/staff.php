@@ -44,9 +44,9 @@ class staff {
             }
         }
 
-        // check the username
+        //Checking the username
         if ($staff->email === $db_email) {
-            //V3.2 - Checking the password
+            //Checking the password
             if ($staff->password === $db_password) {
                 $_SESSION["SESS_MEMBER_ID"] = $db_staff_id;
                 $_SESSION["SESS_MEMBER_EMAIL"] = $db_email;
