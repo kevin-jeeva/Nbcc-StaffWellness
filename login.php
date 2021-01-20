@@ -2,7 +2,7 @@
 session_start();
 if (isset($_SESSION["user"])) {
     $msg = "Already logged in!";
-    header("Location:.php?msg=$msg");
+    header("Location:index.php?msg=$msg");
 }
 ?>
 
@@ -47,7 +47,7 @@ if (isset($_SESSION["user"])) {
 				    <div class="row">
 				        <div class="col-md-6 login-form-1">
 				            <h3>Login for Staff</h3>
-				            <form method="post" id="login_staff" action="login_proc.php">
+				            <form method="post" id="login_staff" action="proc_login.php">
 				                <div class="form-group">
 				                    <input type="text" class="form-control" name="email" id="email" placeholder="Your Email *" value="" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" required />
 				                </div>
@@ -67,7 +67,7 @@ if (isset($_SESSION["user"])) {
 				        <!-- Staff Login. This is our concern! -->
 				        <div class="col-md-6 login-form-2">
 				            <h3>Administration</h3>
-				            <form method="post" id="login_staff" action="login_proc.php">
+				            <form method="post" id="login_staff" action="proc_login.php">
 				                <div class="form-group">
 				                    <input type="text" class="form-control" name="email" id="email" placeholder="Your Email *" value="" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" required />
 				                </div>

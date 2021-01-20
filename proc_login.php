@@ -7,4 +7,5 @@
 session_start();
 include'functions/user.php';
 user::staffLogin($_POST['password'], $_POST['email']);
+echo "success!";*/
 ?>
