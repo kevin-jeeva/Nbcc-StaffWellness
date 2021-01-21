@@ -7,9 +7,9 @@
 // define('DB_NAME', 'staff');
 
 // for testing purposes
-define('DB_HOST', 'localhost:3308');
-define('DB_USER', 'root');
-define('DB_PASS', '');
+define('DB_HOST', 'staff-wellness-app.c97g5kpuab3n.us-east-1.rds.amazonaws.com:3311');
+define('DB_USER', 'admin');
+define('DB_PASS', 'StaffNbcc001');
 define('DB_NAME', 'staff');
 	
 global $con;

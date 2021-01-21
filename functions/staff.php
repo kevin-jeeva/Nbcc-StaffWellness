@@ -75,14 +75,17 @@ class staff {
         $result = self::GetStaffInfoByEmail($email);
         if($val = mysqli_fetch_array($result))
         {
+            
             if(password_verify($password, $val["password"]))
             {
                   $staff_id = self::SetStaffSession(self::GetStaffInfoByEmail($email));
                   $msg ="Sucess";
+                  
                   header("location:index.php?user=$msg");
             }
             else
             {
+               
                 $msg = "Incorrect Password. Please Try again!" ;
                 header("location:login.php?loginError=$msg");
             }
