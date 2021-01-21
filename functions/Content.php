@@ -29,9 +29,25 @@ class Content {
          <h2>" . $row['content_title'] . "</h2>
          <p>". $row['content_text'] . "</p>
          <button type=\"button\" class=\"btn btn-primary\">Read More</button>";
+<<<<<<< HEAD
+        }    
+    }
+    //get all articles to display on articles.php
+   static function getAllArticles(){
+    $con = $GLOBALS['con'];
+    $sql = "SELECT content_title, content_text, date_created FROM content WHERE resource_id = 'ARTICLE' ORDER BY date_created";
+    $result = mysqli_query($con, $sql);
+        while ($row = mysqli_fetch_assoc($result)) {
+         echo "<div class=\"the-content col-md-8\">
+         <h1>" . $row['content_title'] . "</h1>
+         <hr>
+         <p>" .$row['content_text']."</p><br></div>";
+        } 
+=======
         }
         
         
+>>>>>>> 48474e60d9bd94751050ad52ecd0476f632e2d9f
     }
 
 
