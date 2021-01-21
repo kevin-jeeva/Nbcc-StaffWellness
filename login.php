@@ -1,7 +1,7 @@
 <?php
 session_start();
 
-if (isset($_SESSION["user"])) {
+if (isset($_SESSION["staff_id"])) {
     $msg = "Already logged in!";
     header("Location:index.php?msg=$msg");
 }
@@ -49,7 +49,7 @@ if (isset($_SESSION["user"])) {
 					function sendMessage($message){
 					    if (isset($_GET["$message"])){
 					        $msg = $_GET["$message"];
-					        echo "<p class=\"alert alert-light text-danger\">$msg</p>";
+					        echo "<p class=\"alert alert-dark text-danger\">$msg</p>";
 					    }
 					}
 				?>
@@ -57,11 +57,11 @@ if (isset($_SESSION["user"])) {
 				<!-- Student Login. Don't need to edit it. This is not our concern -->
 				<div class="container login-container">
 				    <div class="row">
-				        <div class="col-md-6 login-form-1">
+				        <div class="col-lg-12 login-form-1">
 				            <h3>Login for Staff</h3>
 				            <form method="post" id="login_staff" action="proc_login.php">
 				                <div class="form-group">
-				                    <input type="text" class="form-control" name="email" id="email" placeholder="Your Email *" value="" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" required />
+				                    <input type="text" class="form-control" name="email" id="email" placeholder="Your Email *" value="" pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[A-Za-z]{2,}$" required />
 				                </div>
 				                <div class="form-group">
 				                    <input type="password" class="form-control" name="password" id="password" placeholder="Your Password *" value="" required= />
@@ -75,9 +75,10 @@ if (isset($_SESSION["user"])) {
 				                </div>
 				            </form>
 				        </div>
-
+                                        
+<!-- I have commented it so it will be only staff login" 
 				        <!-- Staff Login. This is our concern! -->
-				        <div class="col-md-6 login-form-2">
+				       <!-- <div class="col-md-6 login-form-2">
 				            <h3>Administration</h3>
 				            <form method="post" id="login_staff" action="proc_login.php">
 				                <div class="form-group">
