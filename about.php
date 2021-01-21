@@ -1,9 +1,3 @@
-<?php
-	session_start();
-	include('functions/connect.php');
-	include('functions/staff.php');
-	include('functions/Content.php');
-?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -12,7 +6,7 @@
 	<meta name="description" content="">
 	<meta name="author" content="">
 
-	<title>Home Page</title>
+	<title>About</title>
 
 	<!-- Bootstrap core CSS -->
 	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
@@ -53,103 +47,39 @@
 		  		<ul class="navbar-nav mr-auto">
 			  		<li class="nav-item"><a class="nav-link" href="contact.php">Contact Us</a></li>
 			  		<li class="nav-item"><a class="nav-link" href="#">Support</a></li>
-					<li class="nav-item"><a class="btn btn-outline-primary" href="functions/logout.php">Log out</a></li>
+					<li class="nav-item"><a class="btn btn-outline-primary" href="#">Log In</a></li>
 				</ul>
 			</div>
 
 	</div>
-	</nav>
-
-	<!-- Masterhead -->
-	<header class="masthead text-white text-center" style="background: url('includes/imgs/0-wellbeing-main.jpg') no-repeat center center; background-size: cover;">
-	  <div class="overlay"></div>
-	  <div class="container">
-	    <div class="row">
-	      <div class="col-xl-9 mx-auto">
-	        <h1 class="mb-5">Wellbeing App Website</h1>
-	        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec ac sapien sit amet elit imperdiet iaculis. Phasellus hendrerit posuere maximus.</p>
-	      </div>
-	      <div class="col-md-10 col-lg-8 col-xl-7 mx-auto">
-	        <p></p>
-	      </div>
-	    </div>
-	  </div>
-	</header>
-
-	<!-- Categories Grid (4 columns) -->
-	<section class="features-categories text-center">
-	  <div class="container">
-	    <div class="row">
-
-	      <div class="col-lg-3 col-md-6 col-sm-12">
-	        <div class="features-categories-item mx-auto mb-5 mb-lg-0 mb-3">
-	          <div class="card">
-	            <img src="includes/imgs/1-wellbeing-articles.jpg" class="card-img-top" alt="...">
-	            <div class="card-body">
-	            	<h3>Articles</h3>
-	              	<p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-	              	<a href="#" class="btn btn-outline-primary btn-block">Access Articles</a>
-	            </div>
-	          </div>
-	        </div>
-	      </div>
-
-	      <div class="col-lg-3 col-md-6 col-sm-12">
-	        <div class="features-categories-item mx-auto mb-5 mb-lg-0 mb-lg-3">
-	          <div class="card">
-	            <img src="includes/imgs/2-wellbeing-events.jpg" class="card-img-top" alt="...">
-	            <div class="card-body">
-	            	<h3>Events</h3>
-	              	<p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-	              <a href="#" class="btn btn-outline-primary btn-block">Access Events</a>
-	            </div>
-	          </div>
-	        </div>
-	      </div>
-
-	      <div class="col-lg-3 col-md-6 col-sm-12">
-	        <div class="features-categories-item mx-auto mb-5 mb-lg-0 mb-lg-3">
-	          <div class="card">
-	            <img src="includes/imgs/3-wellbeing-exercises.jpg" class="card-img-top" alt="...">
-	            <div class="card-body">
-	            	<h3>Exercises</h3>
-	              	<p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-	              	<a href="#" class="btn btn-outline-primary btn-block">Access Exercises</a>
-	            </div>
-	          </div>
-	        </div>
-	      </div>
-
-	      <div class="col-lg-3 col-md-6 col-sm-12">
-	        <div class="features-categories-item mx-auto mb-5 mb-lg-0 mb-lg-3">
-	          <div class="card">
-	            <img src="includes/imgs/4-wellbeing-support.jpg" class="card-img-top" alt="...">
-	            <div class="card-body">
-	            	<h3>Support</h3>
-	              	<p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-	              	<a href="#" class="btn btn-outline-primary btn-block">Get Support</a>
-	            </div>
-	          </div>
-	        </div>
-	      </div>
-
-	    </div>
-	  </div>
-	</section>
-
-	<!--Main Content Sector (2 columns) -->
+    </nav>
+    	<!-- Article Masterhead -->
+	<div class="jumbotron jumbotron-fluid">
+        <div class="container">
+          <h1 class="display-4">About Us</h1> 
+        </div>
+      </div>
+  
+   	<!--Main Content Sector (2 columns) -->
 	<section class="main-content">
 		<div class="container">
 		  <div class="row">
 
-		  	<!--Content Sector (Main) -->
+		  	<!--Contact Sector (Main) -->
 		    <div class="the-content col-md-8">
-			<!--Calling the Content class to retrieve two newest articles -->
-		    <?php Content::getTopArticles() ?>
+                <br>
+		    	<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur eu ante malesuada, posuere nibh ac, consequat purus. Phasellus bibendum laoreet
+                     urna in porta. Maecenas bibendum viverra lobortis. Phasellus justo enim, vestibulum at lobortis eu, scelerisque ac ligula. Aliquam tincidun 
+                     hendrerit nunc, vulputate consequat ex congue eu. Ut et porttitor tellus. Nunc eu libero eget magna posuere consequat. Nunc ut purus turpis.</p><br>
+
+                <p>Pellentesque nec tincidunt elit, et dictum nibh. Pellentesque ut orci laoreet, venenatis est in, porttitor nibh. Aliquam lorem turpis, lacinia sed dolor et, vulputate sodales libero.
+                     Sed varius justo eget tincidunt pharetra. Nam eleifend hendrerit elit, imperdiet interdum ipsum malesuada sed. Proin nunc nunc, egestas a sapien in, convallis scelerisque mi. 
+                     Proin magna urna, porta id mauris ultricies, congue luctus tortor. Suspendisse in nibh ultrices, vulputate erat vel, dictum massa. Interdum et malesuada fames ac ante ipsum 
+                     primis in faucibus. Proin a dui ante. Fusce efficitur molestie sapien, vitae varius augue ornare eget. Curabitur sodales sem id vulputate faucibus.</p>
 		    </div>
 
 		    <!--Sidebar (Links, Menus and other info) -->
-		    <div class="sidebar col-md-4">
+		    <div class="sidebar col-md-12 col-lg-4">
 		    	<div class="card">
 		    	  <div class="card-body">
 		    	    <h3>Next Events</span></h3>
@@ -157,12 +87,12 @@
 		    		<h5 class="card-title">Lorem Ipsum</h5>
 		    	    <span class="badge badge-info">Jan 30th, 2020</span>
 		    	    <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-		    	    <a href="#" class="btn btn-outline-primary btn-block">See Details</a>
+		    	    <a href="#" class="btn btn-outline-info btn-block">See Details</a>
 		    	    <hr>
 		    		<h5 class="card-title">Lorem Ipsum</h5>
 		    	    <span class="badge badge-info">Jan 31th, 2020</span>
 		    	    <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-		    	    <a href="#" class="btn btn-outline-primary btn-block">See Details</a>
+		    	    <a href="#" class="btn btn-outline-info btn-block">See Details</a>
 
 		    	  </div>
 		    	</div>
@@ -229,6 +159,10 @@
 	  
 	  </div>
 	</footer>
+
+</body>
+</html>
+    
 
 </body>
 </html>
