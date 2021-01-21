@@ -1,3 +1,9 @@
+<?php
+	session_start();
+	include('functions/connect.php');
+	include('functions/staff.php');
+	include('functions/Content.php');
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -47,7 +53,7 @@
 		  		<ul class="navbar-nav mr-auto">
 			  		<li class="nav-item"><a class="nav-link" href="contact.html">Contact Us</a></li>
 			  		<li class="nav-item"><a class="nav-link" href="#">Support</a></li>
-					<li class="nav-item"><a class="btn btn-outline-primary" href="#">Log In</a></li>
+					<li class="nav-item"><a class="btn btn-outline-primary" href="functions/logout.php">Log out</a></li>
 				</ul>
 			</div>
 
@@ -138,16 +144,8 @@
 
 		  	<!--Content Sector (Main) -->
 		    <div class="the-content col-md-8">
-		    	<h1>Lastest Articles</h1>
-		    	<hr>
-		    	<h2>Article 1</h2>
-		    	<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec ac sapien sit amet elit imperdiet iaculis. Phasellus hendrerit posuere maximus.</p>
-		    	<button type="button" class="btn btn-primary">Read More</button>
-		    	<hr>
-		    	
-		    	<h2>Article 2</h2>
-		    	<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec ac sapien sit amet elit imperdiet iaculis. Phasellus hendrerit posuere maximus.</p>
-		    	<button type="button" class="btn btn-primary">Read More</button>
+			<!--Calling Content class to retrieve two newest articles -->
+		    <?php Content::getTopArticles() ?>
 		    </div>
 
 		    <!--Sidebar (Links, Menus and other info) -->
