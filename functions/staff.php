@@ -16,6 +16,10 @@ class staff {
         $this->$email = $value;
     }
     
+    public function __destruct() {
+        //this is destruct the object one the object is completed it process :)
+    }
+    
     function __construct($staffId, $email, $password, $username, $admin, $dateCreated) {
         $this->staffId = $staffId;
         $this->email = $email;
@@ -24,43 +28,66 @@ class staff {
         $this->admin = $admin;
         $this->dateCreated = $dateCreated;
     }
-
-    static function staffLogin($staff, $connection) {
-        $db_staff_id = "";
-        $db_user_name = "";
-        $db_email = "";
-        $db_password = "";
-        $db_admin = "";
-
-        $sql = "SELECT staff_id, user_name, email, password, admin FROM user WHERE email = '$staff->email'";
-        if ($result = mysqli_query($connection, $sql)) {
-            while ($row = mysqli_fetch_array($result)) {
-                //Associative Array: Array that indexes with a string instead of a number.
-                $db_staff_id = $row["staff_id"];
-                $db_user_name = $row["user_name"];
-                $db_email = $row["email"];
-                $db_password = $row["password"];
-                $db_admin = $row["password"];
-            }
-        }
-
-        //Checking the username
-        if ($staff->email === $db_email) {
-            //Checking the password
-            if ($staff->password === $db_password) {
-                $_SESSION["SESS_MEMBER_ID"] = $db_staff_id;
-                $_SESSION["SESS_MEMBER_EMAIL"] = $db_email;
-                $_SESSION["SESS_MEMBER_NAME"] = $db_user_name;
-                return $db_staff_id;
-            } else {
-                return -1;
-            }
-        } else {
-                return -2;
-        }
-        
+    public static function  GetStaffInfoByEmail($email)
+    {
+        $con = $GLOBALS["con"];
+        $sql = "SELECT staff_id,user_name,email, password, admin, date_created FROM user WHERE email = UPPER('$email')";
+        $result = mysqli_query($con, $sql);       
+        return $result;
     }
-
+    public static function CheckStaffEmail($email) //this function will check for staff password
+    {
+        $con = $GLOBALS["con"];
+        $sql = "SELECT staff_id FROM user WHERE email = UPPER('$email')";
+        $result = mysqli_query($con, $sql);       
+        return $result;
+    }
+    public static function CheckStaffPassword($password)//this function will check for staff email
+    {
+        $con = $GLOBALS["con"];
+        $sql = "SELECT staff_id FROM user WHERE password = UPPER('$password')";
+        $result = mysqli_query($con, $sql);       
+        return $result;
+    }
+        
+    static function staffLogin($staff) {
+        $con = $GLOBALS["con"];        
+        $email = self::CheckStaffEmail($staff->email);//execute the function 
+        $password = self::CheckStaffPassword($staff->password);//execute the function    
+        
+        if(mysqli_num_rows($email) > 0) //check the email is correct and proceed
+        {
+            if(mysqli_num_rows($password) > 0)//check the password is correct and proceed
+            {
+                 self::SetStaffSession(self::GetStaffInfoByEmail($staff->email));
+                 $msg ="Sucess";
+                 header("location:index.php?user=$msg");
+            }
+            else
+            {
+                 $msg = "Incorrect Password. Please Try again!" ;
+                 header("location:Login.php?loginError=$msg");
+            }           
+        }//end of first if
+        else
+        {
+            $msg = "Email not found. Please Try again!" ;
+            header("location:Login.php?loginError=$msg");
+        }        
+    }
+    static function SetStaffSession($staff)
+    {
+        if(mysqli_num_rows($staff) != null)
+        {
+            if($val = mysqli_fetch_array($staff))
+            {
+                $_SESSION["admin"] = $val["admin"];
+                $_SESSION["staff_name"] =$val["staff_name"];
+                $_SESSION["staff_id"] = $val["staff_id"];
+            }
+        }
+    }
+    
     static function getStaffByUserID($userEmail) {
         
     }

@@ -6,6 +6,11 @@
 */
 
 session_start();
+//some session variables
+$_SESSION["admin"] = "";
+$_SESSION["staff_name"] ="";
+$_SESSION["staff_id"] = "";
+
 include("functions/staff.php");
 include("functions/connect.php");
 
@@ -17,18 +22,8 @@ if (isset($_POST["email"])) {
     
     //constructor: $staffId, $email, $password, $username, $admin, $dateCreated
     $staff = new staff(0, $input_email, $input_password, 0, 0, 0);
-    $result = staff::staffLogin($staff, $con);
     
-    if ($result == -1){
-        $msg = 'Incorrect Password. Please Try again!';
-        header("location:Login.php?loginError=$msg");
-    }
-    else if ($result == -2){
-        $msg = 'Email not found. Please Try again!';
-        header("location:Login.php?loginError=$msg");
-    }
-    else {
-        header("location:index.php?user=$result");
-    }
+    staff::staffLogin($staff);//check the staff credentials and take neccessary action
+    
 }
 ?>
