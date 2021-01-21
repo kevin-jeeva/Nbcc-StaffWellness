@@ -1,7 +1,7 @@
 <?php
 session_start();
 
-if (isset($_SESSION["staff_id"])) {
+if (isset($_SESSION["staff_id"]) && $_SESSION["staff_id"] != "") {
     $msg = "Already logged in!";
     header("Location:index.php?msg=$msg");
 }

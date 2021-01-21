@@ -49,7 +49,45 @@ class staff {
         $result = mysqli_query($con, $sql);       
         return $result;
     }
-        
+    public static function AddHash($staff_id, $password)
+    {
+        //this function will hash the password and update the record in the table
+        $con = $GLOBALS["con"];
+        $hash_password = password_hash($password, PASSWORD_DEFAULT);
+        $sql = "update user set password = '$hash_password' where staff_id = $staff_id";
+        echo $sql;
+        mysqli_query($con, $sql);
+        if(mysqli_affected_rows($con) == 1)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
+    public static function CheckHashAndRedirect($email,$password)
+    {
+        //this function will decrypt the hashed password and verify with the password
+        //if the password is correct then enter into index
+        //password is wrong then go to login 
+        $con = $GLOBALS["con"];
+        $result = self::GetStaffInfoByEmail($email);
+        if($val = mysqli_fetch_array($result))
+        {
+            if(password_verify($password, $val["password"]))
+            {
+                  $staff_id = self::SetStaffSession(self::GetStaffInfoByEmail($email));
+                  $msg ="Sucess";
+                  header("location:index.php?user=$msg");
+            }
+            else
+            {
+                $msg = "Incorrect Password. Please Try again!" ;
+                header("location:login.php?loginError=$msg");
+            }
+        }
+    }
     static function staffLogin($staff) {
         $con = $GLOBALS["con"];        
         $email = self::CheckStaffEmail($staff->email);//execute the function 
@@ -58,21 +96,28 @@ class staff {
         if(mysqli_num_rows($email) > 0) //check the email is correct and proceed
         {
             if(mysqli_num_rows($password) > 0)//check the password is correct and proceed
-            {
-                 self::SetStaffSession(self::GetStaffInfoByEmail($staff->email));
-                 $msg ="Sucess";
-                 header("location:index.php?user=$msg");
+            { 
+                //set the session and get the staff id to save time
+                $staff_id = self::SetStaffSession(self::GetStaffInfoByEmail($staff->email));
+                 if(self::AddHash($staff_id,$staff->password)) //add the hash password and update the table
+                 {                    
+                    $msg ="Sucess";
+                    header("location:index.php?user=$msg");
+                 }
+                 else
+                 {
+                     echo "failure";
+                 }                
             }
             else
             {
-                 $msg = "Incorrect Password. Please Try again!" ;
-                 header("location:Login.php?loginError=$msg");
+                self::CheckHashAndRedirect($staff->email, $staff->password);//check for the hashed password or wrong password
             }           
         }//end of first if
         else
         {
             $msg = "Email not found. Please Try again!" ;
-            header("location:Login.php?loginError=$msg");
+            header("location:login.php?loginError=$msg");
         }        
     }
     static function SetStaffSession($staff)
@@ -82,8 +127,9 @@ class staff {
             if($val = mysqli_fetch_array($staff))
             {
                 $_SESSION["admin"] = $val["admin"];
-                $_SESSION["staff_name"] =$val["staff_name"];
+                $_SESSION["staff_name"] =$val["user_name"];
                 $_SESSION["staff_id"] = $val["staff_id"];
+                return $val["staff_id"];
             }
         }
     }
