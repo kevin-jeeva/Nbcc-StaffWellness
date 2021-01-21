@@ -144,6 +144,7 @@
 
 		  	<!--Content Sector (Main) -->
 		    <div class="the-content col-md-8">
+			<!--Calling Content class to retrieve two newest articles -->
 		    <?php Content::getTopArticles() ?>
 		    </div>
 
