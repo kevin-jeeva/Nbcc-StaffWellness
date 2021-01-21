@@ -29,6 +29,7 @@ class Content {
          <h2>" . $row['content_title'] . "</h2>
          <p>". $row['content_text'] . "</p>
          <button type=\"button\" class=\"btn btn-primary\">Read More</button>";
+<<<<<<< HEAD
         }    
     }
     //get all articles to display on articles.php
@@ -42,6 +43,11 @@ class Content {
          <hr>
          <p>" .$row['content_text']."</p><br></div>";
         } 
+=======
+        }
+        
+        
+>>>>>>> 48474e60d9bd94751050ad52ecd0476f632e2d9f
     }
 
 
