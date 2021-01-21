@@ -44,6 +44,7 @@ if (isset($_SESSION["user"])) {
 		  	<div class="col-xl-9 mx-auto">
 				<h1 class="mb-5">Login</h1>
 
+				<!-- PHP code that display error messages from other pages to login page! -->
 				<?php
 					sendMessage("loginError");
 					function sendMessage($message){
