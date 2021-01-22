@@ -28,10 +28,10 @@ if (isset($_SESSION["staff_id"]) && $_SESSION["staff_id"] != "") {
 
 <body>
 	<!-- Navigation -->
-	<nav class="navbar navbar-expand-lg navbar-light bg-light">
+	<nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
 	<div class="container justify-content-center">
 		<ul class="navbar-nav">
-			<li class="nav-item"><a class="navbar-brand" href="index.html">APP Logo</a></li>
+			<li class="nav-item"><a class="navbar-brand" href="index.php">APP Logo</a></li>
 		</ul>
 	</div>
 	</nav>

@@ -76,7 +76,7 @@
 		  	<!--Content Sector (Main) -->
 		    <div class="the-content col-md-8">
 		    	<form method="post" id="newContentForm" name="newContentForm" action="proc_newcategory.php">
-		    	  <div class="form-group col-xs-6 col-md-4">
+		    	  <div class="form-group col-xs-12 col-md-4">
 		    	    <label for="content-category">Select or Create Content Category</label>
 
 							<!--this will get all the resource list-->

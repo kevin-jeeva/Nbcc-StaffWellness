@@ -15,4 +15,7 @@ include_once("functions/Content.php");
     Content::CheckAndInsertContent($content,$content_description);
    // echo $content_category."<BR>". $content_Title."<BR>". $content_text ;
  }
+ else{
+   header("location:index.php");
+ }
 ?>
