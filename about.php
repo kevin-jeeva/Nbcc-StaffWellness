@@ -20,7 +20,7 @@
 
 <body>
 	<!-- Navigation -->
-	<nav class="navbar navbar-expand-lg navbar-light bg-light">
+	<nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
 	<div class="container">
 
 		<a class="navbar-brand" href="#">APP Logo</a>
@@ -29,7 +29,7 @@
 		</button>
 		<div class="collapse navbar-collapse" id="navbarSupportedContent">
 			<ul class="navbar-nav mr-auto">
-			  	<li class="nav-item active"><a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a></li>
+			  	<li class="nav-item active"><a class="nav-link" href="index.php">Home <span class="sr-only">(current)</span></a></li>
 			  	<li class="nav-item"><a class="nav-link" href="about.php">About Us</a></li>
 			  	<li class="nav-item"><a class="nav-link" href="articles.php">Articles</a></li>
 			  	<li class="nav-item"><a class="nav-link" href="#">Events</a></li>
@@ -47,7 +47,7 @@
 		  		<ul class="navbar-nav mr-auto">
 			  		<li class="nav-item"><a class="nav-link" href="contact.php">Contact Us</a></li>
 			  		<li class="nav-item"><a class="nav-link" href="#">Support</a></li>
-					<li class="nav-item"><a class="btn btn-outline-primary" href="#">Log In</a></li>
+					<li class="nav-item"><a class="btn btn-outline-warning" href="functions/logout.php">Log Out</a></li>
 				</ul>
 			</div>
 

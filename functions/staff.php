@@ -79,8 +79,7 @@ class staff {
             if(password_verify($password, $val["password"]))
             {
                   $staff_id = self::SetStaffSession(self::GetStaffInfoByEmail($email));
-                  $msg ="Sucess";
-                  
+                  $msg ="Sucess";                  
                   header("location:index.php?user=$msg");
             }
             else

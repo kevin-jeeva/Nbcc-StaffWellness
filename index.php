@@ -30,7 +30,7 @@
 
 <body>
 	<!-- Navigation -->
-	<nav class="navbar navbar-expand-lg navbar-light bg-light">
+	<nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
 	<div class="container">
 
 		<a class="navbar-brand" href="#">APP Logo</a>
@@ -43,6 +43,7 @@
 			  	<li class="nav-item"><a class="nav-link" href="about.php">About Us</a></li>
 			  	<li class="nav-item"><a class="nav-link" href="articles.php">Articles</a></li>
 			  	<li class="nav-item"><a class="nav-link" href="#">Events</a></li>
+					<li class="nav-item"><a class="nav-link" href="content.php">Content</a></li>
 			  	<li class="nav-item dropdown">
 				    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Exercises</a>
 				    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
@@ -57,7 +58,7 @@
 		  		<ul class="navbar-nav mr-auto">
 			  		<li class="nav-item"><a class="nav-link" href="contact.php">Contact Us</a></li>
 			  		<li class="nav-item"><a class="nav-link" href="#">Support</a></li>
-					<li class="nav-item"><a class="btn btn-outline-primary" href="functions/logout.php">Log out</a></li>
+					<li class="nav-item"><a class="btn btn-outline-warning" href="functions/logout.php">Log out</a></li>
 				</ul>
 			</div>
 
@@ -140,10 +141,11 @@
 	    </div>
 	  </div>
 	</section>
-
+  
 	<!--Main Content Sector (2 columns) -->
-	<section class="main-content">
+	<section class="main-content">	
 		<div class="container">
+		<h2>List of Articles</h2>
 		  <div class="row">
 
 		  	<!--Content Sector (Main) -->

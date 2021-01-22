@@ -18,6 +18,13 @@ class Content {
        $this->dateCreated = $dateCreated;
    }
    
+   public static function getAllResourcesId()
+   {
+       $con = $GLOBALS["con"];
+       $sql = "Select * from resources";
+       $result = mysqli_query($con,$sql);
+       return $result;
+   }
    //get two newest articles to display on index
    static function getTopArticles(){
     $con = $GLOBALS['con'];
@@ -43,8 +50,83 @@ class Content {
          <p>" .$row['content_text']."</p><br></div>";
         } 
         }
-       
+
+    public static function getContents()
+    {
+       $result = self::getAllResourcesId();
+       if(mysqli_num_rows($result) > 0)
+       {
+           while($val= mysqli_fetch_array($result))
+           {             
+               $resource_id = $val['resource_id'];
+               echo "<option value='$resource_id'>";
+           }
+       }
     }
+
+    public static function CheckAndInsertContent($content,$resource_name ="")
+    {
+       
+        $result = self::CheckResourceID($content->resourceId);
+        if(mysqli_num_rows($result) > 0 )
+        {
+            
+            self::InsertContent($content->resourceId,$content->title,$content->contentText);
+                
+        }
+        else{               
+                if(self::InsertResourceId($content->resourceId,$resource_name))
+                {
+                    self::InsertContent($content->resourceId,$content->title,$content->contentText);
+                    //echo "New Insertion success";
+                     header("location:index.php");
+                }
+                else{
+                    header("location:content.php");
+                }                
+            }
+    }
+    public static function InsertContent($resource_id,$content_title,$content_text)
+    {
+        $con = $GLOBALS["con"];
+        $resource_id = strtoupper($resource_id);
+        $sql = "Insert into content(resource_id,content_title,content_text) Values('$resource_id','$content_title','$content_text') ";                
+        mysqli_query($con,$sql);
+        if(mysqli_affected_rows($con) == 1)
+        {
+            //echo "inserted successfully";
+            header("location:index.php");
+        }
+        else{
+             header("location:content.php");
+        }    
+    }
+    public static function CheckResourceID($resource_id)
+    {
+        $con = $GLOBALS["con"];
+        $sql = "Select resource_id from resources where resource_id = Upper('$resource_id')";
+        $result = mysqli_query($con,$sql);
+        return $result;
+    }
+
+    public static function InsertResourceId($resource_id,$resource_name)
+    {
+        $con = $GLOBALS["con"];
+        $resource_id = strtoupper($resource_id);
+        $sql = "Insert into resources(resource_id,resource_name) values('$resource_id','$resource_name')";
+        mysqli_query($con,$sql);
+        if(mysqli_affected_rows($con) == 1)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
+        
+}
+
 
 
 
