@@ -1,8 +1,8 @@
 
-<?php include_once("functions/Content.php");?>
+<?php include_once("../../functions/Content.php");?>
 
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -12,9 +12,9 @@
 	<title>Create a New Content</title>
 
 	<!-- Bootstrap core CSS -->
-	<link rel="stylesheet" href="includes/bootstrap-4.5.3-dist/css/bootstrap.min.css">
-	<script src="includes/bootstrap-4.5.3-dist/jquery/jquery-3.5.1.slim.min.js"></script>
-	<script src="includes/bootstrap-4.5.3-dist/js/bootstrap.min.js"></script>
+	<link rel="stylesheet" href="../../includes/bootstrap-4.5.3-dist/css/bootstrap.min.css">
+	<script src="../../includes/bootstrap-4.5.3-dist/jquery/jquery-3.5.1.slim.min.js"></script>
+	<script src="../../includes/bootstrap-4.5.3-dist/js/bootstrap.min.js"></script>
 
 	<!-- Script for the Rich Editor -->
 	<script src="https://cdn.ckeditor.com/4.15.1/standard-all/ckeditor.js"></script>
@@ -22,7 +22,7 @@
 	<!-- Script for the category-->
   	<script src="functions/category.js"></script>
 	<!-- Custom CSS and JS -->
-	<link rel="stylesheet" type="text/css" href="includes/styles.css">
+	<link rel="stylesheet" type="text/css" href="../../includes/styles.css">
 </head>
 
 <body>
@@ -30,16 +30,16 @@
 	<nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
 	<div class="container">
 
-		<a class="navbar-brand" href="#">APP Logo</a>
+		<a class="navbar-brand" href="../../index.php">APP Logo</a>
 		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
 		<span class="navbar-toggler-icon"></span>
 		</button>
 		<div class="collapse navbar-collapse" id="navbarSupportedContent">
 			<ul class="navbar-nav mr-auto">
 			  	<li class="nav-item"><a class="nav-link" href="../../index.php">Home</a></li>
-			  	<li class="nav-item"><a class="nav-link" href="#">About Us</a></li>
-			  	<li class="nav-item"><a class="nav-link" href="#">Articles</a></li>
-			  	<li class="nav-item"><a class="nav-link" href="#">Events</a></li>
+			  	<li class="nav-item"><a class="nav-link" href="../../about.php">About Us</a></li>
+			  	<li class="nav-item"><a class="nav-link" href="../../articles.php">Articles</a></li>
+			  	<li class="nav-item"><a class="nav-link" href="../../events.php">Events</a></li>
 			  	<li class="nav-item dropdown">
 				    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Exercises</a>
 				    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
@@ -52,14 +52,16 @@
 			</ul>
 		  	<div class="navbar-right">
 		  		<ul class="navbar-nav mr-auto">
-			  		<li class="nav-item"><a class="nav-link" href="#">Contact Us</a></li>
+			  		<li class="nav-item"><a class="nav-link" href="contact.php">Contact Us</a></li>
 			  		<li class="nav-item"><a class="nav-link" href="#">Support</a></li>
-					<li class="nav-item"><a class="btn btn-outline-warning" href="functions/logout.html">Log Out</a></li>
+			  		<li class="nav-item"><a class="nav-link" href="administrator.php">Admin</a></li>
+					<li class="nav-item"><a class="btn btn-outline-warning" href="functions/logout.php">Log out</a></li>
 				</ul>
 			</div>
+		</div><!-- end of collapse navbar-collapse -->
 
-	</div>
-	</nav>
+	</div><!-- end of container -->
+	</nav><!-- end of Navigation -->
 
 	<!-- Article Masterhead -->
 	<div class="jumbotron jumbotron-fluid">
@@ -142,7 +144,7 @@
 							<br>
 							<div class="form-group col-lg-12">
 								<input type="submit" class="btn btn-warning" value="Submit"/>
-								<a href="index.php" type="button" class="btn btn-danger">Cancel</a>
+								<a href="../../administrator.php" type="button" class="btn btn-danger">Cancel</a>
 							</div>
 		    	</form> 	
 		    </div>
@@ -190,8 +192,8 @@
 	        </ul>
 	        <p class="text-muted small mb-4 mb-lg-0">&copy; NBCC Welbeing App 2020. All Rights Reserved.</p>
 	      </div>
-	      <div class="col-lg-6 h-100 text-center text-lg-right my-auto">
-	      	<img src="includes/imgs/nbcc-logo.png" width="20%">
+	      <div class="footer-logo col-lg-6 h-100 text-center text-lg-right my-auto">
+	      	<img src="../../includes/imgs/nbcc-logo.png" alt="NBCC Logo">
 	      </div>
 	    </div>
 	  

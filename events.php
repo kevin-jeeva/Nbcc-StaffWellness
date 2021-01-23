@@ -1,3 +1,9 @@
+<?php
+	session_start();
+	include('functions/connect.php');
+	include('functions/staff.php');
+	include('functions/Content.php');
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,7 +12,7 @@
 	<meta name="description" content="">
 	<meta name="author" content="">
 
-	<title>Contact</title>
+	<title>{Category} Page</title>
 
 	<!-- Bootstrap core CSS -->
 	<link rel="stylesheet" href="includes/bootstrap-4.5.3-dist/css/bootstrap.min.css">
@@ -55,30 +61,28 @@
 	</div><!-- end of container -->
 	</nav><!-- end of Navigation -->
 
-    <!-- Article Masterhead -->
+	<!-- Article Masterhead -->
 	<div class="jumbotron jumbotron-fluid">
-        <div class="container">
-          <h1 class="display-4">Contact Us</h1> 
-        </div>
-      </div>
-  
-   	<!--Main Content Sector (2 columns) -->
+	  <div class="container">
+	    <h1 class="display-4">{Category} Page</h1>
+	    <p class="lead">{Description of this category: e.g. Events}.</p>
+	  </div>
+	</div>
+
+	<!--Main Content Sector (2 columns) -->
 	<section class="main-content">
 		<div class="container">
 		  <div class="row">
 
-		  	<!--Contact Sector (Main) -->
+              <!--Content Sector (Main) -->
+              <!--Calling Content class to retrieve all articles -->
+		    
 		    <div class="the-content col-md-8">
-            	<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2773.490223654188!2d-66.65555798377757!3d45.96146740814412!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4ca4189dc87c1293%3A0x443567a4443e547!2s284%20Smythe%20St%2C%20Fredericton%2C%20NB%20E3B%203C9!5e0!3m2!1sen!2sca!4v1610654138129!5m2!1sen!2sca" width="600" height="450" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
-                <br>
-                <hr>
-		    	<p>Email:<a href="mailto:nbcc@nbcc.ca"> nbcc@nbcc.ca</a></p>
-                <p>Call Campuses: (506) 460-6222</p>
-                <p> 284 Smythe Street Fredericton, NB</p>
+		    	<?php Content::getAllArticles() ?>
 		    </div>
 
 		    <!--Sidebar (Links, Menus and other info) -->
-		    <div class="sidebar col-md-12  col-lg-4">
+		    <div class="sidebar col-md-4">
 		    	<div class="card">
 		    	  <div class="card-body">
 		    	    <h3>Next Events</h3>

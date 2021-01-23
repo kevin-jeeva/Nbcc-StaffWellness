@@ -163,6 +163,10 @@ footer.footer {
   padding-bottom: 4rem;
 }
 
+.footer-logo img{
+    width: 20%;
+}
+
 /* For Administration panel lists */
 .list-sector {
     padding: 15px 0px;
