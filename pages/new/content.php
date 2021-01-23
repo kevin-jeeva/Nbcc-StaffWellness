@@ -1,5 +1,7 @@
-
-<?php include_once("../../functions/Content.php");?>
+<?php 
+session_start();
+include_once("../../functions/Content.php");
+?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -10,7 +12,7 @@
 	<meta name="author" content="">
   
 	<title>Create a New Content</title>
-
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 	<!-- Bootstrap core CSS -->
 	<link rel="stylesheet" href="../../includes/bootstrap-4.5.3-dist/css/bootstrap.min.css">
 	<script src="../../includes/bootstrap-4.5.3-dist/jquery/jquery-3.5.1.slim.min.js"></script>
@@ -20,7 +22,8 @@
 	<script src="https://cdn.ckeditor.com/4.15.1/standard-all/ckeditor.js"></script>
   
 	<!-- Script for the category-->
-  	<script src="functions/category.js"></script>
+		<script src="functions/category.js"></script>
+	
 	<!-- Custom CSS and JS -->
 	<link rel="stylesheet" type="text/css" href="../../includes/styles.css">
 </head>
@@ -77,7 +80,7 @@
 
 		  	<!--Content Sector (Main) -->
 		    <div class="the-content col-md-8">
-		    	<form method="post" id="newContentForm" name="newContentForm" action="proc_newcategory.php">
+		    	<form method="post" id="newContentForm" name="newContentForm" onsubmit="return ContentCheck()" action="proc_newcategory.php">
 		    	  <div class="form-group col-xs-12 col-md-4">
 		    	    <label for="content-category">Select or Create Content Category</label>
 
@@ -90,7 +93,7 @@
 					   </div>
 						 
 							<div class="form-group col-xs-6 col-md-4">
-							<label for="content-title">Select or Create Content Title</label>
+							<label for="content-title" id="content-title">Select or Create Content Title</label>
 							<input type="text" class="form-control" placeholder="Enter content title" name = "contentTitle" id="contentTitle">
 							</div>
 							
@@ -202,3 +205,12 @@
 
 </body>
 </html>
+
+<?php
+if($_SESSION["message"] != "")
+{
+	$alert_message = $_SESSION["message"];
+	echo "<script>alert('$alert_message');</script>";
+	$_SESSION["message"] = "";
+}
+?>

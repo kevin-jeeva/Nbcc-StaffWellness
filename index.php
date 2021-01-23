@@ -239,3 +239,11 @@
 
 </body>
 </html>
+<?php
+if($_SESSION["message"] != "")
+{
+	$alert_message = $_SESSION["message"];
+	echo "<script>alert('$alert_message');</script>";
+	$_SESSION["message"] = "";
+}
+?>

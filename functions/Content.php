@@ -1,6 +1,5 @@
 <?php
 include_once 'connect.php';
-
 class Content {
    private $contentId;
    private $resourceId;
@@ -69,17 +68,13 @@ class Content {
        
         $result = self::CheckResourceID($content->resourceId);
         if(mysqli_num_rows($result) > 0 )
-        {
-            
+        {            
             self::InsertContent($content->resourceId,$content->title,$content->contentText);
-                
         }
         else{               
                 if(self::InsertResourceId($content->resourceId,$resource_name))
                 {
                     self::InsertContent($content->resourceId,$content->title,$content->contentText);
-                    //echo "New Insertion success";
-                     header("location:index.php");
                 }
                 else{
                     header("location:content.php");
@@ -92,14 +87,11 @@ class Content {
         $resource_id = strtoupper($resource_id);
         $sql = "Insert into content(resource_id,content_title,content_text) Values('$resource_id','$content_title','$content_text') ";                
         mysqli_query($con,$sql);
-        if(mysqli_affected_rows($con) == 1)
+        if(!mysqli_affected_rows($con) == 1)
         {
-            //echo "inserted successfully";
-            header("location:index.php");
+          header("location:content.php");        
         }
-        else{
-             header("location:content.php");
-        }    
+       
     }
     public static function CheckResourceID($resource_id)
     {

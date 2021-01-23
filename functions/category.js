@@ -11,3 +11,59 @@ function onInput() {
 		}
 	}
 }
+
+var count = 0;
+var msg = "";
+
+function ContentCheck() {
+	console.log("here");
+	count = 0;
+	msg = "";
+	for (var i = 1; i <= 3; i++) {
+		switch (i) {
+			case 3:
+				trimFun("contentTitle");
+				break;
+			case 2:
+				if (!document.getElementById("content-description").disabled == true) {
+					trimFun("content-description");
+				}
+				break;
+			// case 1:
+			// 	console.log("case1;");
+			// 	var val = document.getElementById("content-area").value;
+			// 	val = jQuery(val).text();
+			// 	console.log(val);
+			// 	val = val.trim();
+			// 	console.log("insiderss");
+			// 	if (val == "") {
+			// 		msg += "Please fill the content area " + "\n";
+			// 		count += 1;
+			// 	} else {
+			// 		msg = "";
+			// 		console.log(count);
+			// 		count = 0;
+			// 	}
+			// 	break;
+		}
+	}
+
+	if (count > 0) {
+		console.log(count);
+		alert(msg);
+		count = 0;
+		msg = "";
+		return false;
+	} else {
+		return true;
+	}
+}
+
+function trimFun(id) {
+	var Value = document.getElementById(id).value;
+	Value = Value.trim();
+	if (Value == "") {
+		msg += id + " required " + "\n";
+		count += 1;
+	}
+}
