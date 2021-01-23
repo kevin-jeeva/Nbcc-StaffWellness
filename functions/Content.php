@@ -44,7 +44,7 @@ class Content {
     $sql = "SELECT content_title, content_text, date_created FROM content WHERE resource_id = 'ARTICLE' ORDER BY date_created";
     $result = mysqli_query($con, $sql);
         while ($row = mysqli_fetch_assoc($result)) {
-         echo "<div class=\"the-content col-md-8\">
+         echo "<div class=\"the-content\">
          <h1>" . $row['content_title'] . "</h1>
          <hr>
          <p>" .$row['content_text']."</p><br></div>";
@@ -126,7 +126,3 @@ class Content {
     }
         
 }
-
-
-
-

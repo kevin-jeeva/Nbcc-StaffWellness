@@ -162,3 +162,21 @@ footer.footer {
   padding-top: 4rem;
   padding-bottom: 4rem;
 }
+
+/* For Administration panel lists */
+.list-sector {
+    padding: 15px 0px;
+}
+
+.list-header.row {
+    align-items: center;
+    margin: 0;
+}
+
+th.action-header-cell {
+    text-align: right;
+}
+
+a.new-btn.btn-sm.btn-primary {
+    margin-left: 1rem;
+}
