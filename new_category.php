@@ -9,7 +9,7 @@
 	<meta name="description" content="">
 	<meta name="author" content="">
 
-	<title>Create a New Category</title>
+	<title>Create a New Resource</title>
 
 	<!-- Bootstrap core CSS -->
 	<link rel="stylesheet" href="includes/bootstrap-4.5.3-dist/css/bootstrap.min.css">
@@ -25,7 +25,7 @@
 	<nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
 	<div class="container">
 
-		<a class="navbar-brand" href="../../index.php">APP Logo</a>
+		<a class="navbar-brand" href="index.php">APP Logo</a>
 		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
 		<span class="navbar-toggler-icon"></span>
 		</button>
@@ -84,7 +84,7 @@
 		    	  <br>
 		    	  <div class="form-group col-lg-12">
 		    	    <input type="submit" class="btn btn-warning" value="Submit"/>
-		    	    <a href="../../administrator.php" type="button" class="btn btn-danger">Cancel</a>
+		    	    <a href="administrator.php" type="button" class="btn btn-danger">Cancel</a>
 		    	  </div>
 		    	</form> 	
 		    </div>

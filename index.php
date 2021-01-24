@@ -146,7 +146,7 @@
 	<!--Main Content Sector (2 columns) -->
 	<section class="main-content">	
 		<div class="container">
-		<h2>List of Articles</h2>
+		<h2>Recent Contents</h2>
 		  <div class="row">
 
 		  	<!--Content Sector (Main) -->

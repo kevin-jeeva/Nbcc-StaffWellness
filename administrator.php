@@ -79,7 +79,7 @@
 		    	<!-- List Model for Category -->
 		    	<div class="list-sector">
 			    	<div class="list-header row">
-		    	  		<h2>List of created Categories</h2>
+		    	  		<h2>List of created Resources</h2>
 		    	  		<a href="new_category.php" type="button" class="new-btn btn-sm btn-primary" value="id">Create new</a>
 			    	</div>
 
@@ -88,7 +88,7 @@
 				    	      <!-- Table's Header -->
 				    	      <thead>
 				    	        <tr>
-				    	          <th>Category ID</th>
+				    	          <th>Resource ID</th>
 				    	          <th>Title</th>
 				    	          <th>Created on</th>
 				    	          <th>Author</th>
@@ -100,7 +100,7 @@
 				    	      <tbody>
 				    	        <tr>
 				    	          <td>1</td>
-				    	          <td>Category Name</td>
+				    	          <td>Resource Name</td>
 				    	          <td>2021/01/01</td>
 				    	          <td>Author name</td>
 				    	          <td align="right">
@@ -128,7 +128,7 @@
 				    	        <tr>
 				    	          <th>Content ID</th>
 				    	          <th>Title</th>
-				    	          <th>Category</th>
+				    	          <th>Resource</th>
 				    	          <th>Created on</th>
 				    	          <th>Author</th>
 				    	          <th class="action-header-cell">Actions</th>
@@ -140,12 +140,12 @@
 				    	        <tr>
 				    	          <td>1</td>
 				    	          <td>Content name</td>
-				    	          <td>Category Name</td>
+				    	          <td>Resource Name</td>
 				    	          <td>2021/01/01</td>
 				    	          <td>Author name</td>
 				    	          <td align="right">
 									  <a href="#" type="button" class="btn btn-sm btn-secondary">Access/Preview</a>
-									  <a href="#" type="button" class="btn btn-sm btn-info">Edit Resource</a>
+									  <a href="#" type="button" class="btn btn-sm btn-info">Edit Content</a>
 									  <a href="#" type="button" class="btn btn-sm btn-danger">Delete</a>
 								  </td>
 				    	          
@@ -158,22 +158,6 @@
 		    </div> <!-- End of the-content col-md-12 -->
 		  </div> <!-- End of row -->
 		</div> <!-- End of container -->
-	</section>
-
-	<!--Secondary Content Sector -->
-	<section class="secondary-content text-center">
-	  	<div class="overlay"></div>
-	  	<div class="container">
-	  	  <div class="row">
-	  	    <div class="col-xl-9 mx-auto text-white">
-	  	      <h3 class="mb-4">Phrase of the day</h3>
-	  	      <blockquote class="blockquote">
-	  	        <p class="mb-0">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
-	  	        <footer class="blockquote-footer text-white">Someone famous in <cite title="Source Title">Source Title</cite></footer>
-	  	      </blockquote>
-	  	    </div>
-	  	  </div>
-	  	</div>
 	</section>
 
 	<!-- Footer -->

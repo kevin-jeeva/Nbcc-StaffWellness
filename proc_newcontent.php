@@ -23,9 +23,9 @@ session_start();
     // }
     else{
       //echo "success";
-       $content = new Content(0,$content_category, $content_Title,$content_text,0,0);
+       $content = new Content(0, $content_category, $content_Title, $content_text, 0, 0);
        Content::CheckAndInsertContent($content,$content_description);
-       $_SESSION["message"] = "content Inserted Successfully";
+       $_SESSION["message"] = "Content Inserted Successfully";
        header("location:index.php");
         
       // echo $content_category."<BR>". $content_Title."<BR>". $content_text ;
