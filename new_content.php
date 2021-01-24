@@ -1,6 +1,6 @@
 <?php 
 session_start();
-include_once("../../functions/Content.php");
+include_once("functions/Content.php");
 ?>
 
 <!DOCTYPE html>
@@ -14,9 +14,9 @@ include_once("../../functions/Content.php");
 	<title>Create a New Content</title>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 	<!-- Bootstrap core CSS -->
-	<link rel="stylesheet" href="../../includes/bootstrap-4.5.3-dist/css/bootstrap.min.css">
-	<script src="../../includes/bootstrap-4.5.3-dist/jquery/jquery-3.5.1.slim.min.js"></script>
-	<script src="../../includes/bootstrap-4.5.3-dist/js/bootstrap.min.js"></script>
+	<link rel="stylesheet" href="includes/bootstrap-4.5.3-dist/css/bootstrap.min.css">
+	<script src="includes/bootstrap-4.5.3-dist/jquery/jquery-3.5.1.slim.min.js"></script>
+	<script src="includes/bootstrap-4.5.3-dist/js/bootstrap.min.js"></script>
 
 	<!-- Script for the Rich Editor -->
 	<script src="https://cdn.ckeditor.com/4.15.1/standard-all/ckeditor.js"></script>
@@ -25,7 +25,7 @@ include_once("../../functions/Content.php");
 		<script src="functions/category.js"></script>
 	
 	<!-- Custom CSS and JS -->
-	<link rel="stylesheet" type="text/css" href="../../includes/styles.css">
+	<link rel="stylesheet" type="text/css" href="includes/styles.css">
 </head>
 
 <body>
@@ -33,16 +33,16 @@ include_once("../../functions/Content.php");
 	<nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
 	<div class="container">
 
-		<a class="navbar-brand" href="../../index.php">APP Logo</a>
+		<a class="navbar-brand" href="index.php">APP Logo</a>
 		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
 		<span class="navbar-toggler-icon"></span>
 		</button>
 		<div class="collapse navbar-collapse" id="navbarSupportedContent">
 			<ul class="navbar-nav mr-auto">
-			  	<li class="nav-item"><a class="nav-link" href="../../index.php">Home</a></li>
-			  	<li class="nav-item"><a class="nav-link" href="../../about.php">About Us</a></li>
-			  	<li class="nav-item"><a class="nav-link" href="../../articles.php">Articles</a></li>
-			  	<li class="nav-item"><a class="nav-link" href="../../events.php">Events</a></li>
+			  	<li class="nav-item"><a class="nav-link" href="index.php">Home</a></li>
+			  	<li class="nav-item"><a class="nav-link" href="about.php">About Us</a></li>
+			  	<li class="nav-item"><a class="nav-link" href="articles.php">Articles</a></li>
+			  	<li class="nav-item"><a class="nav-link" href="events.php">Events</a></li>
 			  	<li class="nav-item dropdown">
 				    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Exercises</a>
 				    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
@@ -80,9 +80,9 @@ include_once("../../functions/Content.php");
 
 		  	<!--Content Sector (Main) -->
 		    <div class="the-content col-md-8">
-		    	<form method="post" id="newContentForm" name="newContentForm" onsubmit="return ContentCheck()" action="proc_newcategory.php">
+		    	<form method="post" id="newContentForm" name="newContentForm" onsubmit="return ContentCheck()" action="proc_newcontent.php">
 		    	  <div class="form-group col-xs-12 col-md-4">
-		    	    <label for="content-category">Select or Create Content Category</label>
+		    	    <label for="content-category">Select Category</label>
 
 							<!--this will get all the resource list-->
 							<input list="resourceList" required = "true" oninput="onInput()" name="resourceListId" id="resourceListId">
@@ -93,7 +93,7 @@ include_once("../../functions/Content.php");
 					   </div>
 						 
 							<div class="form-group col-xs-6 col-md-4">
-							<label for="content-title" id="content-title">Select or Create Content Title</label>
+							<label for="content-title" id="content-title">Content Title</label>
 							<input type="text" class="form-control" placeholder="Enter content title" name = "contentTitle" id="contentTitle">
 							</div>
 							
@@ -104,7 +104,7 @@ include_once("../../functions/Content.php");
 							<div class="form-group col-lg-12">
 
 								<!-- CKEditor area -->
-								<label for="content-area">Content Text Area</label>
+								<label for="content-area">Text</label>
 						<textarea cols="80" id="content-area" name="content-area" rows="15" data-sample-short>Insert your text here</textarea>
 							<script>
 								CKEDITOR.replace('content-area', {
@@ -147,7 +147,7 @@ include_once("../../functions/Content.php");
 							<br>
 							<div class="form-group col-lg-12">
 								<input type="submit" class="btn btn-warning" value="Submit"/>
-								<a href="../../administrator.php" type="button" class="btn btn-danger">Cancel</a>
+								<a href="administrator.php" type="button" class="btn btn-danger">Cancel</a>
 							</div>
 		    	</form> 	
 		    </div>
@@ -196,7 +196,7 @@ include_once("../../functions/Content.php");
 	        <p class="text-muted small mb-4 mb-lg-0">&copy; NBCC Welbeing App 2020. All Rights Reserved.</p>
 	      </div>
 	      <div class="footer-logo col-lg-6 h-100 text-center text-lg-right my-auto">
-	      	<img src="../../includes/imgs/nbcc-logo.png" alt="NBCC Logo">
+	      	<img src="includes/imgs/nbcc-logo.png" alt="NBCC Logo">
 	      </div>
 	    </div>
 	  

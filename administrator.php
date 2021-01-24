@@ -80,7 +80,7 @@
 		    	<div class="list-sector">
 			    	<div class="list-header row">
 		    	  		<h2>List of created Categories</h2>
-		    	  		<a href="pages/new/category.php" type="button" class="new-btn btn-sm btn-primary" value="id">Create new</a>
+		    	  		<a href="new_category.php" type="button" class="new-btn btn-sm btn-primary" value="id">Create new</a>
 			    	</div>
 
 			    	<div class="table-responsive">
@@ -118,7 +118,7 @@
 		    	<div class="list-sector">
 			    	<div class="list-header row">
 		    	  		<h2>List of created Contents</h2>
-		    	  		<a href="pages/new/content.php" type="button" class="new-btn btn-sm btn-primary" value="id">Create new</a>
+		    	  		<a href="new_content.php" type="button" class="new-btn btn-sm btn-primary" value="id">Create new</a>
 			    	</div>
 
 			    	<div class="table-responsive">

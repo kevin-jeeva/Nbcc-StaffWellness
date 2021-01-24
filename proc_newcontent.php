@@ -33,7 +33,7 @@ session_start();
    
  }
  else{
-   header("location:content.php");
+   header("location:new_content.php");
  }
 
 //  function CheckForContentSpace($content)

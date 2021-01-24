@@ -1,5 +1,5 @@
 
-<?php include_once("../../functions/Content.php");?>
+<?php include_once("functions/Content.php");?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -12,12 +12,12 @@
 	<title>Create a New Category</title>
 
 	<!-- Bootstrap core CSS -->
-	<link rel="stylesheet" href="../../includes/bootstrap-4.5.3-dist/css/bootstrap.min.css">
-	<script src="../../includes/bootstrap-4.5.3-dist/jquery/jquery-3.5.1.slim.min.js"></script>
-	<script src="../../includes/bootstrap-4.5.3-dist/js/bootstrap.min.js"></script>
+	<link rel="stylesheet" href="includes/bootstrap-4.5.3-dist/css/bootstrap.min.css">
+	<script src="includes/bootstrap-4.5.3-dist/jquery/jquery-3.5.1.slim.min.js"></script>
+	<script src="includes/bootstrap-4.5.3-dist/js/bootstrap.min.js"></script>
 
 	<!-- Custom CSS and JS -->
-	<link rel="stylesheet" type="text/css" href="../../includes/styles.css">
+	<link rel="stylesheet" type="text/css" href="includes/styles.css">
 </head>
 
 <body>
@@ -133,7 +133,7 @@
 	        <p class="text-muted small mb-4 mb-lg-0">&copy; NBCC Welbeing App 2020. All Rights Reserved.</p>
 	      </div>
 	      <div class="footer-logo col-lg-6 h-100 text-center text-lg-right my-auto">
-	      	<img src="../../includes/imgs/nbcc-logo.png" alt="NBCC Logo">
+	      	<img src="includes/imgs/nbcc-logo.png" alt="NBCC Logo">
 	      </div>
 	    </div>
 	  
