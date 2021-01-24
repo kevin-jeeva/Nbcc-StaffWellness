@@ -10,6 +10,7 @@ session_start();
 $_SESSION["admin"] = "";
 $_SESSION["staff_name"] ="";
 $_SESSION["staff_id"] = "";
+$_SESSION["message"] = "";
 
 include("functions/staff.php");
 include("functions/connect.php");

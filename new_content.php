@@ -1,3 +1,8 @@
+<?php 
+session_start();
+include_once("functions/Content.php");
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -5,14 +10,20 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 	<meta name="description" content="">
 	<meta name="author" content="">
-
-	<title>Contact</title>
-
+  
+	<title>Create a New Content</title>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 	<!-- Bootstrap core CSS -->
 	<link rel="stylesheet" href="includes/bootstrap-4.5.3-dist/css/bootstrap.min.css">
 	<script src="includes/bootstrap-4.5.3-dist/jquery/jquery-3.5.1.slim.min.js"></script>
 	<script src="includes/bootstrap-4.5.3-dist/js/bootstrap.min.js"></script>
 
+	<!-- Script for the Rich Editor -->
+	<script src="https://cdn.ckeditor.com/4.15.1/standard-all/ckeditor.js"></script>
+  
+	<!-- Script for the category-->
+		<script src="functions/category.js"></script>
+	
 	<!-- Custom CSS and JS -->
 	<link rel="stylesheet" type="text/css" href="includes/styles.css">
 </head>
@@ -55,66 +66,99 @@
 	</div><!-- end of container -->
 	</nav><!-- end of Navigation -->
 
-    <!-- Article Masterhead -->
+	<!-- Article Masterhead -->
 	<div class="jumbotron jumbotron-fluid">
-        <div class="container">
-          <h1 class="display-4">Contact Us</h1> 
-        </div>
-      </div>
-  
-   	<!--Main Content Sector (2 columns) -->
+	  <div class="container">
+	    <h1 class="display-4">Create a New Content</h1>
+	  </div>
+	</div>
+
+	<!--Main Content Sector (2 columns) -->
 	<section class="main-content">
 		<div class="container">
 		  <div class="row">
 
-		  	<!--Contact Sector (Main) -->
+		  	<!--Content Sector (Main) -->
 		    <div class="the-content col-md-8">
-            	<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2773.490223654188!2d-66.65555798377757!3d45.96146740814412!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4ca4189dc87c1293%3A0x443567a4443e547!2s284%20Smythe%20St%2C%20Fredericton%2C%20NB%20E3B%203C9!5e0!3m2!1sen!2sca!4v1610654138129!5m2!1sen!2sca" width="600" height="450" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
-                <br>
-                <hr>
-		    	<p>Email:<a href="mailto:nbcc@nbcc.ca"> nbcc@nbcc.ca</a></p>
-                <p>Call Campuses: (506) 460-6222</p>
-                <p> 284 Smythe Street Fredericton, NB</p>
+		    	<form method="post" id="newContentForm" name="newContentForm" onsubmit="return ContentCheck()" action="proc_newcontent.php">
+		    	  <div class="form-group col-xs-12 col-md-4">
+		    	    <label for="content-category">Select Category</label>
+
+							<!--this will get all the resource list-->
+							<input list="resourceList" required = "true" oninput="onInput()" name="resourceListId" id="resourceListId">
+							<datalist id="resourceList" name ="resourceList">
+								<?php Content::getContents()?>
+							</datalist>
+
+					   </div>
+						 
+							<div class="form-group col-xs-6 col-md-4">
+							<label for="content-title" id="content-title">Content Title</label>
+							<input type="text" class="form-control" placeholder="Enter content title" name = "contentTitle" id="contentTitle">
+							</div>
+							
+								<div class="form-group col-lg-12">
+							<label for="content-description">Content Description</label>
+							<textarea class="form-control" id="content-description" name="content-description" placeholder="Category Description" rows="5" maxlength="255" required></textarea>
+								</div>
+							<div class="form-group col-lg-12">
+
+								<!-- CKEditor area -->
+								<label for="content-area">Text</label>
+						<textarea cols="80" id="content-area" name="content-area" rows="15" data-sample-short>Insert your text here</textarea>
+							<script>
+								CKEDITOR.replace('content-area', {
+									// Define the toolbar groups as it is a more accessible solution.
+									toolbarGroups: [{
+											"name": "basicstyles",
+											"groups": ["basicstyles"]
+										},
+										{
+											"name": "links",
+											"groups": ["links"]
+										},
+										{
+											"name": "paragraph",
+											"groups": ["list", "blocks"]
+										},
+										{
+											"name": "document",
+											"groups": ["mode"]
+										},
+										{
+											"name": "insert",
+											"groups": ["insert"]
+										},
+										{
+											"name": "styles",
+											"groups": ["styles"]
+										},
+										{
+											"name": "about",
+											"groups": ["about"]
+										}
+									],
+									// Remove the redundant buttons from toolbar groups defined above.
+									removeButtons: 'Underline,Strike,Subscript,Superscript,Anchor,Styles,Specialchar'
+								});
+							</script>
+
+							</div>
+							<br>
+							<div class="form-group col-lg-12">
+								<input type="submit" class="btn btn-warning" value="Submit"/>
+								<a href="administrator.php" type="button" class="btn btn-danger">Cancel</a>
+							</div>
+		    	</form> 	
 		    </div>
 
 		    <!--Sidebar (Links, Menus and other info) -->
-		    <div class="sidebar col-md-12  col-lg-4">
-		    	<div class="card">
-		    	  <div class="card-body">
-		    	    <h3>Next Events</h3>
-		    	    <hr>
-		    		<h5 class="card-title">Lorem Ipsum</h5>
-		    	    <span class="badge badge-info">Jan 30th, 2020</span>
-		    	    <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-		    	    <a href="#" class="btn btn-outline-info btn-block">See Details</a>
-		    	    <hr>
-		    		<h5 class="card-title">Lorem Ipsum</h5>
-		    	    <span class="badge badge-info">Jan 31th, 2020</span>
-		    	    <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-		    	    <a href="#" class="btn btn-outline-info btn-block">See Details</a>
-
-		    	  </div>
-		    	</div>
+		    <div class="sidebar col-md-4">
+		    	
 		    </div>
 
 		  </div>
 		</div>
-	</section>
-
-	<!--Secondary Content Sector -->
-	<section class="secondary-content text-center">
-	  	<div class="overlay"></div>
-	  	<div class="container">
-	  	  <div class="row">
-	  	    <div class="col-xl-9 mx-auto text-white">
-	  	      <h3 class="mb-4">Phrase of the day</h3>
-	  	      <blockquote class="blockquote">
-	  	        <p class="mb-0">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
-	  	        <footer class="blockquote-footer text-white">Someone famous in <cite title="Source Title">Source Title</cite></footer>
-	  	      </blockquote>
-	  	    </div>
-	  	  </div>
-	  	</div>
 	</section>
 
 	<!-- Footer -->
@@ -161,3 +205,12 @@
 
 </body>
 </html>
+
+<?php
+if($_SESSION["message"] != "")
+{
+	$alert_message = $_SESSION["message"];
+	echo "<script>alert('$alert_message');</script>";
+	$_SESSION["message"] = "";
+}
+?>

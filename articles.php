@@ -5,20 +5,19 @@
 	include('functions/Content.php');
 ?>
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 	<meta name="description" content="">
 	<meta name="author" content="">
 
-	<title>Home Page</title>
+	<title>{Category} Page</title>
 
 	<!-- Bootstrap core CSS -->
-	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
-	<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-	<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
-	<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.min.js" integrity="sha384-w1Q4orYjBQndcko6MimVbzY0tgp4pWB4lZ7lr30WKz0vr/aWKhXdBNmNb5D92v7s" crossorigin="anonymous"></script>
+	<link rel="stylesheet" href="includes/bootstrap-4.5.3-dist/css/bootstrap.min.css">
+	<script src="includes/bootstrap-4.5.3-dist/jquery/jquery-3.5.1.slim.min.js"></script>
+	<script src="includes/bootstrap-4.5.3-dist/js/bootstrap.min.js"></script>
 
 	<!-- Custom CSS and JS -->
 	<link rel="stylesheet" type="text/css" href="includes/styles.css">
@@ -26,25 +25,25 @@
 
 <body>
 	<!-- Navigation -->
-	<nav class="navbar navbar-expand-lg navbar-light bg-light">
+	<nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
 	<div class="container">
 
-		<a class="navbar-brand" href="#">APP Logo</a>
+		<a class="navbar-brand" href="index.php">APP Logo</a>
 		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
 		<span class="navbar-toggler-icon"></span>
 		</button>
 		<div class="collapse navbar-collapse" id="navbarSupportedContent">
 			<ul class="navbar-nav mr-auto">
-			  	<li class="nav-item active"><a class="nav-link" href="index.html">Home <span class="sr-only">(current)</span></a></li>
+			  	<li class="nav-item"><a class="nav-link" href="index.php">Home</a></li>
 			  	<li class="nav-item"><a class="nav-link" href="about.php">About Us</a></li>
 			  	<li class="nav-item"><a class="nav-link" href="articles.php">Articles</a></li>
-			  	<li class="nav-item"><a class="nav-link" href="#">Events</a></li>
+			  	<li class="nav-item"><a class="nav-link" href="events.php">Events</a></li>
 			  	<li class="nav-item dropdown">
 				    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Exercises</a>
 				    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
 						<a class="dropdown-item" href="#">Video Exercises</a>
 						<a class="dropdown-item" href="#">Sound Exercises</a>
-						<div class="dropdown-divider"></zdiv>
+						<div class="dropdown-divider"></div>
 						<a class="dropdown-item" href="#">Something else here</a>
 				    </div>
 			  	</li> 		
@@ -53,18 +52,20 @@
 		  		<ul class="navbar-nav mr-auto">
 			  		<li class="nav-item"><a class="nav-link" href="contact.php">Contact Us</a></li>
 			  		<li class="nav-item"><a class="nav-link" href="#">Support</a></li>
-					<li class="nav-item"><a class="btn btn-outline-primary" href="login.html">Log In</a></li>
+			  		<li class="nav-item"><a class="nav-link" href="administrator.php">Admin</a></li>
+					<li class="nav-item"><a class="btn btn-outline-warning" href="functions/logout.php">Log out</a></li>
 				</ul>
 			</div>
+		</div><!-- end of collapse navbar-collapse -->
 
-	</div>
-	</nav>
+	</div><!-- end of container -->
+	</nav><!-- end of Navigation -->
 
 	<!-- Article Masterhead -->
 	<div class="jumbotron jumbotron-fluid">
 	  <div class="container">
-	    <h1 class="display-4">Category Page</h1>
-	    <p class="lead">Description of this Category.</p>
+	    <h1 class="display-4">{Category} Page</h1>
+	    <p class="lead">{Description of this category: e.g. Articles}.</p>
 	  </div>
 	</div>
 
@@ -84,7 +85,7 @@
 		    <div class="sidebar col-md-4">
 		    	<div class="card">
 		    	  <div class="card-body">
-		    	    <h3>Next Events</span></h3>
+		    	    <h3>Next Events</h3>
 		    	    <hr>
 		    		<h5 class="card-title">Lorem Ipsum</h5>
 		    	    <span class="badge badge-info">Jan 30th, 2020</span>
@@ -154,8 +155,8 @@
 	        </ul>
 	        <p class="text-muted small mb-4 mb-lg-0">&copy; NBCC Welbeing App 2020. All Rights Reserved.</p>
 	      </div>
-	      <div class="col-lg-6 h-100 text-center text-lg-right my-auto">
-	      	<img src="includes/imgs/nbcc-logo.png" width="20%">
+	      <div class="footer-logo col-lg-6 h-100 text-center text-lg-right my-auto">
+	      	<img src="includes/imgs/nbcc-logo.png" alt="NBCC Logo">
 	      </div>
 	    </div>
 	  

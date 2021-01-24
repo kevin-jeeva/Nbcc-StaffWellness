@@ -1,3 +1,9 @@
+<?php
+	session_start();
+	include('functions/connect.php');
+	include('functions/staff.php');
+	include('functions/Content.php');
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,7 +12,7 @@
 	<meta name="description" content="">
 	<meta name="author" content="">
 
-	<title>Contact</title>
+	<title>Home Page</title>
 
 	<!-- Bootstrap core CSS -->
 	<link rel="stylesheet" href="includes/bootstrap-4.5.3-dist/css/bootstrap.min.css">
@@ -55,66 +61,103 @@
 	</div><!-- end of container -->
 	</nav><!-- end of Navigation -->
 
-    <!-- Article Masterhead -->
+	<!-- Article Masterhead -->
 	<div class="jumbotron jumbotron-fluid">
-        <div class="container">
-          <h1 class="display-4">Contact Us</h1> 
-        </div>
-      </div>
-  
-   	<!--Main Content Sector (2 columns) -->
+	  <div class="container">
+	    <h1 class="display-4">Administration Panel</h1>
+	    <p class="lead">Hello {username}</p>
+	  </div>
+	</div>
+
+	<!--Main Content Sector (2 columns) -->
 	<section class="main-content">
 		<div class="container">
 		  <div class="row">
 
-		  	<!--Contact Sector (Main) -->
-		    <div class="the-content col-md-8">
-            	<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2773.490223654188!2d-66.65555798377757!3d45.96146740814412!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4ca4189dc87c1293%3A0x443567a4443e547!2s284%20Smythe%20St%2C%20Fredericton%2C%20NB%20E3B%203C9!5e0!3m2!1sen!2sca!4v1610654138129!5m2!1sen!2sca" width="600" height="450" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
-                <br>
-                <hr>
-		    	<p>Email:<a href="mailto:nbcc@nbcc.ca"> nbcc@nbcc.ca</a></p>
-                <p>Call Campuses: (506) 460-6222</p>
-                <p> 284 Smythe Street Fredericton, NB</p>
-		    </div>
+            <!--Content Sector (Main) -->
+		    <div class="the-content col-md-12">
+		    	<!-- List Model for Category -->
+		    	<div class="list-sector">
+			    	<div class="list-header row">
+		    	  		<h2>List of created Resources</h2>
+		    	  		<a href="new_category.php" type="button" class="new-btn btn-sm btn-primary" value="id">Create new</a>
+			    	</div>
 
-		    <!--Sidebar (Links, Menus and other info) -->
-		    <div class="sidebar col-md-12  col-lg-4">
-		    	<div class="card">
-		    	  <div class="card-body">
-		    	    <h3>Next Events</h3>
-		    	    <hr>
-		    		<h5 class="card-title">Lorem Ipsum</h5>
-		    	    <span class="badge badge-info">Jan 30th, 2020</span>
-		    	    <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-		    	    <a href="#" class="btn btn-outline-info btn-block">See Details</a>
-		    	    <hr>
-		    		<h5 class="card-title">Lorem Ipsum</h5>
-		    	    <span class="badge badge-info">Jan 31th, 2020</span>
-		    	    <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-		    	    <a href="#" class="btn btn-outline-info btn-block">See Details</a>
+			    	<div class="table-responsive">
+			    	  	<table class="table table-hover">
+				    	      <!-- Table's Header -->
+				    	      <thead>
+				    	        <tr>
+				    	          <th>Resource ID</th>
+				    	          <th>Title</th>
+				    	          <th>Created on</th>
+				    	          <th>Author</th>
+				    	          <th class="action-header-cell">Actions</th>
+				    	        </tr>
+				    	      </thead>
 
-		    	  </div>
+				    	      <!-- Important SECTION: display all content's categories from database -->
+				    	      <tbody>
+				    	        <tr>
+				    	          <td>1</td>
+				    	          <td>Resource Name</td>
+				    	          <td>2021/01/01</td>
+				    	          <td>Author name</td>
+				    	          <td align="right">
+									  <a href="#" type="button" class="btn btn-sm btn-info">Edit Resource</a>
+									  <a href="#" type="button" class="btn btn-sm btn-danger">Delete</a>
+								  </td>
+				    	          
+				    	        </tr>
+				    	      </tbody>
+			    	    </table>
+			    	</div> <!-- End of table-responsive -->
 		    	</div>
-		    </div>
 
-		  </div>
-		</div>
-	</section>
+		    	<!-- List Model for created Contents -->
+		    	<div class="list-sector">
+			    	<div class="list-header row">
+		    	  		<h2>List of created Contents</h2>
+		    	  		<a href="new_content.php" type="button" class="new-btn btn-sm btn-primary" value="id">Create new</a>
+			    	</div>
 
-	<!--Secondary Content Sector -->
-	<section class="secondary-content text-center">
-	  	<div class="overlay"></div>
-	  	<div class="container">
-	  	  <div class="row">
-	  	    <div class="col-xl-9 mx-auto text-white">
-	  	      <h3 class="mb-4">Phrase of the day</h3>
-	  	      <blockquote class="blockquote">
-	  	        <p class="mb-0">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
-	  	        <footer class="blockquote-footer text-white">Someone famous in <cite title="Source Title">Source Title</cite></footer>
-	  	      </blockquote>
-	  	    </div>
-	  	  </div>
-	  	</div>
+			    	<div class="table-responsive">
+			    	  	<table class="table table-hover">
+				    	      <!-- Table's Header -->
+				    	      <thead>
+				    	        <tr>
+				    	          <th>Content ID</th>
+				    	          <th>Title</th>
+				    	          <th>Resource</th>
+				    	          <th>Created on</th>
+				    	          <th>Author</th>
+				    	          <th class="action-header-cell">Actions</th>
+				    	        </tr>
+				    	      </thead>
+
+				    	      <!-- Important SECTION: display all content's categories from database -->
+				    	      <tbody>
+				    	        <tr>
+				    	          <td>1</td>
+				    	          <td>Content name</td>
+				    	          <td>Resource Name</td>
+				    	          <td>2021/01/01</td>
+				    	          <td>Author name</td>
+				    	          <td align="right">
+									  <a href="#" type="button" class="btn btn-sm btn-secondary">Access/Preview</a>
+									  <a href="#" type="button" class="btn btn-sm btn-info">Edit Content</a>
+									  <a href="#" type="button" class="btn btn-sm btn-danger">Delete</a>
+								  </td>
+				    	          
+				    	        </tr>
+				    	      </tbody>
+			    	    </table>
+			    	</div> <!-- End of table-responsive -->
+		    	</div>
+
+		    </div> <!-- End of the-content col-md-12 -->
+		  </div> <!-- End of row -->
+		</div> <!-- End of container -->
 	</section>
 
 	<!-- Footer -->
