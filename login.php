@@ -28,10 +28,10 @@ if (isset($_SESSION["staff_id"]) && $_SESSION["staff_id"] != "") {
 
 <body>
 	<!-- Navigation -->
-	<nav class="navbar navbar-expand-lg navbar-light bg-light">
+	<nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
 	<div class="container justify-content-center">
 		<ul class="navbar-nav">
-			<li class="nav-item"><a class="navbar-brand" href="index.html">APP Logo</a></li>
+			<li class="nav-item"><a class="navbar-brand" href="index.php">APP Logo</a></li>
 		</ul>
 	</div>
 	</nav>
@@ -41,7 +41,7 @@ if (isset($_SESSION["staff_id"]) && $_SESSION["staff_id"] != "") {
 		<div class="overlay"></div>
 		<div class="container">
 
-		  	<div class="col-xl-9 mx-auto">
+		  	<div class="col-xl-5 mx-auto">
 				<h1 class="mb-5">Login</h1>
 
 				<!-- PHP code that display error messages from other pages to login page! -->
@@ -50,12 +50,12 @@ if (isset($_SESSION["staff_id"]) && $_SESSION["staff_id"] != "") {
 					function sendMessage($message){
 					    if (isset($_GET["$message"])){
 					        $msg = $_GET["$message"];
-					        echo "<p class=\"alert alert-dark text-danger\">$msg</p>";
+					        echo "<p class=\"alert alert-light text-danger\">$msg</p>";
 					    }
 					}
 				?>
 
-				<!-- Student Login. Don't need to edit it. This is not our concern -->
+				<!-- Staff Login Form -->
 				<div class="container login-container">
 				    <div class="row">
 				        <div class="col-lg-12 login-form-1">
@@ -77,8 +77,7 @@ if (isset($_SESSION["staff_id"]) && $_SESSION["staff_id"] != "") {
 				            </form>
 				        </div>
                                         
-<!-- I have commented it so it will be only staff login" 
-				        <!-- Staff Login. This is our concern! -->
+					<!-- I have commented it so it will be only staff login" 
 				       <!-- <div class="col-md-6 login-form-2">
 				            <h3>Administration</h3>
 				            <form method="post" id="login_staff" action="proc_login.php">

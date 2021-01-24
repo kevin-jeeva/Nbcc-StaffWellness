@@ -105,7 +105,7 @@ header.masthead h1 {
     margin-bottom: 5%;
 }
 .login-form-1{   
-    padding: 2%;
+    padding: 10% 0;
     background: #ffffff;
     box-shadow: 0 5px 8px 0 rgba(0, 0, 0, 0.2), 0 9px 26px 0 rgba(0, 0, 0, 0.19);
 }
@@ -161,4 +161,26 @@ header.masthead h1 {
 footer.footer {
   padding-top: 4rem;
   padding-bottom: 4rem;
+}
+
+.footer-logo img{
+    width: 20%;
+}
+
+/* For Administration panel lists */
+.list-sector {
+    padding: 15px 0px;
+}
+
+.list-header.row {
+    align-items: center;
+    margin: 0;
+}
+
+th.action-header-cell {
+    text-align: right;
+}
+
+a.new-btn.btn-sm.btn-primary {
+    margin-left: 1rem;
 }

@@ -12,7 +12,7 @@
 	<meta name="description" content="">
 	<meta name="author" content="">
 
-	<title>{Category} Page</title>
+	<title>Home Page</title>
 
 	<!-- Bootstrap core CSS -->
 	<link rel="stylesheet" href="includes/bootstrap-4.5.3-dist/css/bootstrap.min.css">
@@ -64,13 +64,8 @@
 	<!-- Article Masterhead -->
 	<div class="jumbotron jumbotron-fluid">
 	  <div class="container">
-<<<<<<< HEAD
-	    <h1 class="display-4">Articles</h1>
-	    <p class="lead">Description of this Category.</p>
-=======
-	    <h1 class="display-4">{Category} Page</h1>
-	    <p class="lead">{Description of this category: e.g. Articles}.</p>
->>>>>>> 64077ed9f7eeaeb3feecb56fa20c4151b0b02fd9
+	    <h1 class="display-4">Administration Panel</h1>
+	    <p class="lead">Hello {username}</p>
 	  </div>
 	</div>
 
@@ -79,51 +74,90 @@
 		<div class="container">
 		  <div class="row">
 
-              <!--Content Sector (Main) -->
-              <!--Calling Content class to retrieve all articles -->
-		    
-		    <div class="the-content col-md-8">
-		    	<?php Content::getAllArticles() ?>
-		    </div>
+            <!--Content Sector (Main) -->
+		    <div class="the-content col-md-12">
+		    	<!-- List Model for Category -->
+		    	<div class="list-sector">
+			    	<div class="list-header row">
+		    	  		<h2>List of created Resources</h2>
+		    	  		<a href="new_category.php" type="button" class="new-btn btn-sm btn-primary" value="id">Create new</a>
+			    	</div>
 
-		    <!--Sidebar (Links, Menus and other info) -->
-		    <div class="sidebar col-md-4">
-		    	<div class="card">
-		    	  <div class="card-body">
-		    	    <h3>Next Events</h3>
-		    	    <hr>
-		    		<h5 class="card-title">Lorem Ipsum</h5>
-		    	    <span class="badge badge-info">Jan 30th, 2020</span>
-		    	    <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-		    	    <a href="#" class="btn btn-outline-info btn-block">See Details</a>
-		    	    <hr>
-		    		<h5 class="card-title">Lorem Ipsum</h5>
-		    	    <span class="badge badge-info">Jan 31th, 2020</span>
-		    	    <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-		    	    <a href="#" class="btn btn-outline-info btn-block">See Details</a>
+			    	<div class="table-responsive">
+			    	  	<table class="table table-hover">
+				    	      <!-- Table's Header -->
+				    	      <thead>
+				    	        <tr>
+				    	          <th>Resource ID</th>
+				    	          <th>Title</th>
+				    	          <th>Created on</th>
+				    	          <th>Author</th>
+				    	          <th class="action-header-cell">Actions</th>
+				    	        </tr>
+				    	      </thead>
 
-		    	  </div>
+				    	      <!-- Important SECTION: display all content's categories from database -->
+				    	      <tbody>
+				    	        <tr>
+				    	          <td>1</td>
+				    	          <td>Resource Name</td>
+				    	          <td>2021/01/01</td>
+				    	          <td>Author name</td>
+				    	          <td align="right">
+									  <a href="#" type="button" class="btn btn-sm btn-info">Edit Resource</a>
+									  <a href="#" type="button" class="btn btn-sm btn-danger">Delete</a>
+								  </td>
+				    	          
+				    	        </tr>
+				    	      </tbody>
+			    	    </table>
+			    	</div> <!-- End of table-responsive -->
 		    	</div>
-		    </div>
 
-		  </div>
-		</div>
-	</section>
+		    	<!-- List Model for created Contents -->
+		    	<div class="list-sector">
+			    	<div class="list-header row">
+		    	  		<h2>List of created Contents</h2>
+		    	  		<a href="new_content.php" type="button" class="new-btn btn-sm btn-primary" value="id">Create new</a>
+			    	</div>
 
-	<!--Secondary Content Sector -->
-	<section class="secondary-content text-center">
-	  	<div class="overlay"></div>
-	  	<div class="container">
-	  	  <div class="row">
-	  	    <div class="col-xl-9 mx-auto text-white">
-	  	      <h3 class="mb-4">Phrase of the day</h3>
-	  	      <blockquote class="blockquote">
-	  	        <p class="mb-0">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
-	  	        <footer class="blockquote-footer text-white">Someone famous in <cite title="Source Title">Source Title</cite></footer>
-	  	      </blockquote>
-	  	    </div>
-	  	  </div>
-	  	</div>
+			    	<div class="table-responsive">
+			    	  	<table class="table table-hover">
+				    	      <!-- Table's Header -->
+				    	      <thead>
+				    	        <tr>
+				    	          <th>Content ID</th>
+				    	          <th>Title</th>
+				    	          <th>Resource</th>
+				    	          <th>Created on</th>
+				    	          <th>Author</th>
+				    	          <th class="action-header-cell">Actions</th>
+				    	        </tr>
+				    	      </thead>
+
+				    	      <!-- Important SECTION: display all content's categories from database -->
+				    	      <tbody>
+				    	        <tr>
+				    	          <td>1</td>
+				    	          <td>Content name</td>
+				    	          <td>Resource Name</td>
+				    	          <td>2021/01/01</td>
+				    	          <td>Author name</td>
+				    	          <td align="right">
+									  <a href="#" type="button" class="btn btn-sm btn-secondary">Access/Preview</a>
+									  <a href="#" type="button" class="btn btn-sm btn-info">Edit Content</a>
+									  <a href="#" type="button" class="btn btn-sm btn-danger">Delete</a>
+								  </td>
+				    	          
+				    	        </tr>
+				    	      </tbody>
+			    	    </table>
+			    	</div> <!-- End of table-responsive -->
+		    	</div>
+
+		    </div> <!-- End of the-content col-md-12 -->
+		  </div> <!-- End of row -->
+		</div> <!-- End of container -->
 	</section>
 
 	<!-- Footer -->
