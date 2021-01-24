@@ -63,7 +63,7 @@
 	<!-- Article Masterhead -->
 	<div class="jumbotron jumbotron-fluid">
 	  <div class="container">
-	    <h1 class="display-4">Category Page</h1>
+	    <h1 class="display-4">Articles</h1>
 	    <p class="lead">Description of this Category.</p>
 	  </div>
 	</div>
