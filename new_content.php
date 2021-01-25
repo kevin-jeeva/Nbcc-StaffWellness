@@ -1,4 +1,3 @@
-
 <?php 
 
 session_start();
@@ -6,7 +5,7 @@ include_once("functions/Content.php");
 ?>
 
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -60,7 +59,7 @@ include_once("functions/Content.php");
 	<nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
 	<div class="container">
 
-		<a class="navbar-brand" href="#">APP Logo</a>
+		<a class="navbar-brand" href="index.php">APP Logo</a>
 		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
 		<span class="navbar-toggler-icon"></span>
 		</button>
@@ -69,7 +68,7 @@ include_once("functions/Content.php");
 			  	<li class="nav-item"><a class="nav-link" href="index.php">Home</a></li>
 			  	<li class="nav-item"><a class="nav-link" href="about.php">About Us</a></li>
 			  	<li class="nav-item"><a class="nav-link" href="articles.php">Articles</a></li>
-			  	<li class="nav-item"><a class="nav-link" href="#">Events</a></li>
+			  	<li class="nav-item"><a class="nav-link" href="events.php">Events</a></li>
 			  	<li class="nav-item dropdown">
 				    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Exercises</a>
 				    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
@@ -82,14 +81,16 @@ include_once("functions/Content.php");
 			</ul>
 		  	<div class="navbar-right">
 		  		<ul class="navbar-nav mr-auto">
-			  		<li class="nav-item"><a class="nav-link" href="#">Contact Us</a></li>
+			  		<li class="nav-item"><a class="nav-link" href="contact.php">Contact Us</a></li>
 			  		<li class="nav-item"><a class="nav-link" href="#">Support</a></li>
-					<li class="nav-item"><a class="btn btn-outline-warning" href="functions/logout.php">Log Out</a></li>
+			  		<li class="nav-item"><a class="nav-link" href="administrator.php">Admin</a></li>
+					<li class="nav-item"><a class="btn btn-outline-warning" href="functions/logout.php">Log out</a></li>
 				</ul>
 			</div>
+		</div><!-- end of collapse navbar-collapse -->
 
-	</div>
-	</nav>
+	</div><!-- end of container -->
+	</nav><!-- end of Navigation -->
 
 	<!-- Article Masterhead -->
 	<div class="jumbotron jumbotron-fluid">
@@ -104,10 +105,10 @@ include_once("functions/Content.php");
 		  <div class="row">
 
 		  	<!--Content Sector (Main) -->
-		    <div class="the-content col-lg-12">
-		    	<form method="post" id="newContentForm" name="newContentForm" onsubmit="return ContentCheck()" action="proc_newcategory.php">
+		    <div class="the-content col-md-8">
+		    	<form method="post" id="newContentForm" name="newContentForm" onsubmit="return ContentCheck()" action="proc_newcontent.php">
 		    	  <div class="form-group col-xs-12 col-md-4">
-		    	    <label for="content-category">Select or Create Content Category</label>
+		    	    <label for="content-category">Select Category</label>
 
 							<!--this will get all the resource list-->
 			
@@ -119,7 +120,7 @@ include_once("functions/Content.php");
 					   </div>
 						 
 							<div class="form-group col-xs-6 col-md-4">
-							<label for="content-title" id="content-title">Select or Create Content Title</label>
+							<label for="content-title" id="content-title">Content Title</label>
 							<input type="text" class="form-control" placeholder="Enter content title" name = "contentTitle" id="contentTitle">
 							</div>
 							
@@ -130,7 +131,7 @@ include_once("functions/Content.php");
 							<div class="form-group col-lg-12">
 
 								<!-- CKEditor area -->
-								<label for="content-area">Content Text Area</label>
+								<label for="content-area">Text</label>
 						<textarea cols="80" id="content-area" name="content-area" rows="15" data-sample-short>Insert your text here</textarea>
 							<script>
 								CKEDITOR.replace('content-area', {
@@ -172,8 +173,8 @@ include_once("functions/Content.php");
 							</div>
 							<br>
 							<div class="form-group col-lg-12">
-								<input type="submit" class="btn btn-success btn-lg" value="Submit"/>
-								<a href="index.php" type="button" class="btn btn-danger btn-lg">Cancel</a>
+								<input type="submit" class="btn btn-warning" value="Submit"/>
+								<a href="administrator.php" type="button" class="btn btn-danger">Cancel</a>
 							</div>
 		    	</form> 	
 		    </div>
@@ -221,8 +222,8 @@ include_once("functions/Content.php");
 	        </ul>
 	        <p class="text-muted small mb-4 mb-lg-0">&copy; NBCC Welbeing App 2020. All Rights Reserved.</p>
 	      </div>
-	      <div class="col-lg-6 h-100 text-center text-lg-right my-auto">
-	      	<img src="includes/imgs/nbcc-logo.png" width="20%">
+	      <div class="footer-logo col-lg-6 h-100 text-center text-lg-right my-auto">
+	      	<img src="includes/imgs/nbcc-logo.png" alt="NBCC Logo">
 	      </div>
 	    </div>
 	  

@@ -69,7 +69,8 @@ class Content {
            while($val= mysqli_fetch_array($result))
            {             
                $resource_name = $val['resource_name'];
-               echo "<option value='$resource_name'></option>";
+               echo "<option value='$resource_name'>";
+
            }
        }
     }
