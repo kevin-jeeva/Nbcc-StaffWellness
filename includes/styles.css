@@ -173,7 +173,6 @@ footer.footer {
 	font-size: large;
 }
 
-<<<<<<< HEAD
 .success {
 	text-shadow: 1px 1px 2px rgb(73, 236, 8);
 	text-align: left;
@@ -186,12 +185,11 @@ footer.footer {
 	font-size: 25px;
 	margin-left: 8%;
 }
-=======
-.footer-logo img{
-    width: 20%;
+
+.footer-logo img {
+	width: 20%;
 }
 
->>>>>>> a858a61a7deb375a4108cfeff012698e5a5a33be
 /* For Administration panel lists */
 .list-sector {
 	padding: 15px 0px;
