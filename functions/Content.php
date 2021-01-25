@@ -18,6 +18,13 @@ class Content {
        $this->dateCreated = $dateCreated;
    }
    
+   public static function GetAllContents()
+   {
+       $con = $GLOBALS["con"];
+       $sql ="Select content_id, resource_id, content_title, date_format(date_created, '%m/%d/%y') as date_created from content";
+       $result = mysqli_query($con,$sql);
+       return $result;
+   }
    public static function getAllResourcesId()
    {
        $con = $GLOBALS["con"];
@@ -33,6 +40,16 @@ class Content {
        if($val = mysqli_fetch_array($result))
        {
            return $val["resource_id"];
+       }
+   }
+   public static function GetResourceNameByResourceId($resource_id)
+   {
+       $con = $GLOBALS["con"];
+       $sql ="Select resource_name from resources where resource_id = $resource_id";
+       $result = mysqli_query($con,$sql);
+       if($val = mysqli_fetch_array($result))
+       {
+           return $val["resource_name"];
        }
    }
    //get two newest articles to display on index
@@ -128,5 +145,127 @@ class Content {
             return false;
         }
     }
+
+    public static function GetListofCreatedContent()
+    {
+        $con = $GLOBALS["con"];
+        $all_contents = self::GetAllContents();
+        $count = 0;
+        if(mysqli_num_rows($all_contents) > 0)
+        {
+            while($val = mysqli_fetch_array($all_contents))
+            {
+                $content_id = $val["content_id"];
+                $resource_name = self::GetResourceNameByResourceId($val["resource_id"]);
+                $title = $val["content_title"];
+                $date_created = $val["date_created"];
+                $count +=1;
+                echo 
+                "<tr>
+                <td>$count</td>
+                <td>$title</td>
+                <td>$resource_name</td>
+                <td>$date_created</td>
+                <td>Author name</td>
+                <td align=\"right\">
+                    <a href=\"#\" type=\"button\" class=\"btn btn-sm btn-secondary\">Access/Preview</a>
+                    <a href=\"#\" type=\"button\" class=\"btn btn-sm btn-info\">Edit Content</a>
+                    <a href=\"functions/proc_deleteContent.php?contentId=$content_id\" onclick = \"return CheckDelete(event)\"type=\"button\" class=\"btn btn-sm btn-danger\">Delete</a>
+                </td>            
+                </tr>";
+            }
+        }
+        else{
+            echo "<tr>
+			 <td>1</td>
+            <td>No content</td>
+            <td>Resource Name</td>
+            <td>2021/01/01</td>
+            <td>Author name</td>
+            <td align=\"right\">
+                <a href=\"#\" type=\"button\" class=\"btn btn-sm btn-secondary\">Access/Preview</a>
+                <a href=\"#\" type=\"button\" class=\"btn btn-sm btn-info\">Edit Content</a>
+                <a href=\"#\" type=\"button\" class=\"btn btn-sm btn-danger\">Delete</a>
+            </td>            
+            </tr>";
+        }
+    }
+    
+    public static function DeleteContent($contentId)
+    {
+        $con = $GLOBALS["con"];
+        $sql = "Delete from content where content_id = $contentId";
+        mysqli_query($con,$sql);
+        if(!mysqli_affected_rows($con) == 1)
+        {
+          header("location:administrator.php");
+        }
+    }
+
+    public static function GetAllResources()
+    {
+        $con = $GLOBALS["con"];
+        $sql ="Select resource_id, resource_name, date_format(date_created, '%m/%d/%y') as date_created from resources";
+        $result = mysqli_query($con,$sql);
+        $count = 0;
+        if(mysqli_num_rows($result) > 0)
+        {
+            while($val = mysqli_fetch_array($result))
+            {
+                 $resource_id = $val["resource_id"];
+                 $title = $val["resource_name"];
+                 $date_created = $val["date_created"];
+                 $count += 1;
+                 echo"
+                <tr>
+                <td>$count</td>
+                <td>$title</td>
+                <td>$date_created</td>
+                <td>Author name</td>
+                <td align=\"right\">
+                    <a href=\"#\" type=\"button\" class=\"btn btn-sm btn-info\">Edit Resource</a>
+                    <a href=\"functions/proc_deleteResource.php?resourceId=$resource_id\" onclick = \"return CheckDelete(event)\"type=\"button\" class=\"btn btn-sm btn-danger\">Delete</a>
+                </td>        
+                </tr>
+                ";
+            }
+           
+        }
+        else
+        {
+            echo"
+            <tr>
+            <td>1</td>
+            <td>No Resources</td>
+            <td>2021/01/01</td>
+            <td>Author name</td>
+            <td align=\"right\">
+                <a href=\"#\" type=\"button\" class=\"btn btn-sm btn-info\">Edit Resource</a>
+                <a href=\"#\" type=\"button\" class=\"btn btn-sm btn-danger\">Delete</a>
+            </td>        
+            </tr>
+            ";
+        }
         
+    }
+
+    public static function DeleteResourceIdInContent($resource_id)
+    {
+        $con = $GLOBALS["con"];
+        $sql = "delete from content where resource_id = $resource_id";
+        mysqli_query($con,$sql);
+    }
+    public static function DeleteResources($resourceId)
+    {
+        $con = $GLOBALS["con"];
+        $sql = "delete from resources where resource_id  = $resourceId";
+        mysqli_query($con,$sql);
+        if(!mysqli_affected_rows($con) > 0)
+        {
+            echo "fail";
+        }
+        else{
+            return true;
+        }
+    }
 }

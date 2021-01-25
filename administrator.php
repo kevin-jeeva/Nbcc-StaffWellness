@@ -15,15 +15,47 @@
 	<title>Home Page</title>
 
 	<!-- Bootstrap core CSS -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 	<link rel="stylesheet" href="includes/bootstrap-4.5.3-dist/css/bootstrap.min.css">
-	<script src="includes/bootstrap-4.5.3-dist/jquery/jquery-3.5.1.slim.min.js"></script>
+	<!-- <script src="includes/bootstrap-4.5.3-dist/jquery/jquery-3.5.1.slim.min.js"></script> -->
 	<script src="includes/bootstrap-4.5.3-dist/js/bootstrap.min.js"></script>
 
 	<!-- Custom CSS and JS -->
-	<link rel="stylesheet" type="text/css" href="includes/styles.css">
+	<link rel="stylesheet" type="text/css" href="includes/styles.css">	
+	<script src="functions/admin.js"></script>
 </head>
 
 <body>
+	 <!--open modal for delete-->
+	 	<div class="modal fade" id="myModal">
+    <div class="modal-dialog">
+      <div class="modal-content">     
+			<div class="modal-header">
+        <h4 class="modal-title">Confirmation</h4>
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+      </div>
+        <div class="modal-body">			
+         Are you sure to Delete this?	
+				</div>
+				<div class="modal-footer">
+				<a href="#" type="button" class="btn btn-danger" id="DeleteContent">Delete</a>
+        <button type="button" class="btn btn-primary" data-dismiss="modal" onclick="ResetLink()">Cancel</button>
+      </div>
+      </div>
+    </div>
+	</div>
+
+	  <!--successfull modal-->
+	<div class="modal fade" id="mySucessModal">
+    <div class="modal-dialog  modal-lg">
+      <div class="modal-content">    
+        <div class="modal-body success">					
+				 <span><img style="width:10%; height:10%;" src="includes/imgs/tick.gif" ><span id = "success_message"></span></span><button type="button" class="close" data-dismiss="modal">&times;</button>						
+        </div>
+      </div>
+    </div>
+  </div>
+
 	<!-- Navigation -->
 	<nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
 	<div class="container">
@@ -65,7 +97,7 @@
 	<div class="jumbotron jumbotron-fluid">
 	  <div class="container">
 	    <h1 class="display-4">Administration Panel</h1>
-	    <p class="lead">Hello {username}</p>
+	    <p class="lead">Hello <?=$_SESSION["staff_name"]?></p>
 	  </div>
 	</div>
 
@@ -98,17 +130,7 @@
 
 				    	      <!-- Important SECTION: display all content's categories from database -->
 				    	      <tbody>
-				    	        <tr>
-				    	          <td>1</td>
-				    	          <td>Resource Name</td>
-				    	          <td>2021/01/01</td>
-				    	          <td>Author name</td>
-				    	          <td align="right">
-									  <a href="#" type="button" class="btn btn-sm btn-info">Edit Resource</a>
-									  <a href="#" type="button" class="btn btn-sm btn-danger">Delete</a>
-								  </td>
-				    	          
-				    	        </tr>
+				    	        <?php Content::GetAllResources()?>
 				    	      </tbody>
 			    	    </table>
 			    	</div> <!-- End of table-responsive -->
@@ -137,19 +159,7 @@
 
 				    	      <!-- Important SECTION: display all content's categories from database -->
 				    	      <tbody>
-				    	        <tr>
-				    	          <td>1</td>
-				    	          <td>Content name</td>
-				    	          <td>Resource Name</td>
-				    	          <td>2021/01/01</td>
-				    	          <td>Author name</td>
-				    	          <td align="right">
-									  <a href="#" type="button" class="btn btn-sm btn-secondary">Access/Preview</a>
-									  <a href="#" type="button" class="btn btn-sm btn-info">Edit Content</a>
-									  <a href="#" type="button" class="btn btn-sm btn-danger">Delete</a>
-								  </td>
-				    	          
-				    	        </tr>
+											<?php Content::GetListofCreatedContent()?>				    	       
 				    	      </tbody>
 			    	    </table>
 			    	</div> <!-- End of table-responsive -->
@@ -204,3 +214,14 @@
 
 </body>
 </html>
+<?php
+if($_SESSION["message"] != "")
+{
+	$alert_message = $_SESSION["message"];
+	echo "<script>
+	$(\"#mySucessModal\").modal();
+	document.getElementById(\"success_message\").textContent = '$alert_message';
+	</script>";
+	$_SESSION["message"] = "";
+}
+?>
