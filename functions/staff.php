@@ -102,9 +102,8 @@ class staff {
                 //set the session and get the staff id to save time
                 $staff_id = self::SetStaffSession(self::GetStaffInfoByEmail($staff->email));
                  if(self::AddHash($staff_id,$staff->password)) //add the hash password and update the table
-                 {                    
-                    $msg ="Sucess";
-                    header("location:index.php?user=$msg");
+                 {      
+                    header("location:index.php");
                  }
                  else
                  {
@@ -131,6 +130,7 @@ class staff {
                 $_SESSION["admin"] = $val["admin"];
                 $_SESSION["staff_name"] =$val["user_name"];
                 $_SESSION["staff_id"] = $val["staff_id"];
+                $_SESSION["message"] = "Welcome, ".$val["user_name"];
                 return $val["staff_id"];
             }
         }

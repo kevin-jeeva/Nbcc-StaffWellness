@@ -8,11 +8,12 @@ class Content {
    private $image;
    private $dateCreated; 
    
-   function __construct($contentId, $resourceId, $title, $contentText, $image, $dateCreated) {
+   function __construct($contentId, $resourceId, $title, $contentText,$contentDescription, $image, $dateCreated) {
        $this->contentId = $contentId;
        $this->resourceId = $resourceId;
        $this->title = $title;
        $this->contentText = $contentText;
+       $this->contentDescription = $contentDescription;
        $this->image = $image;
        $this->dateCreated = $dateCreated;
    }
@@ -23,6 +24,16 @@ class Content {
        $sql = "Select * from resources";
        $result = mysqli_query($con,$sql);
        return $result;
+   }
+   public static function getResourceIdByResourceName($resource_name)
+   {
+       $con = $GLOBALS["con"];
+       $sql ="Select resource_id from resources where resource_name = UPPER('$resource_name')";
+       $result = mysqli_query($con,$sql);
+       if($val = mysqli_fetch_array($result))
+       {
+           return $val["resource_id"];
+       }
    }
    //get two newest articles to display on index
    static function getTopArticles(){
@@ -57,35 +68,36 @@ class Content {
        {
            while($val= mysqli_fetch_array($result))
            {             
-               $resource_id = $val['resource_id'];
-               echo "<option value='$resource_id'>";
+               $resource_name = $val['resource_name'];
+               echo "<option value='$resource_name'></option>";
            }
        }
     }
 
-    public static function CheckAndInsertContent($content,$resource_name ="")
-    {
-       
-        $result = self::CheckResourceID($content->resourceId);
+    public static function CheckAndInsertContent($content,$resource_name)
+    {       
+        $result = self::CheckResourceID($resource_name);
         if(mysqli_num_rows($result) > 0 )
-        {            
-            self::InsertContent($content->resourceId,$content->title,$content->contentText);
+        {   
+            $resource_id = self::getResourceIdByResourceName($resource_name);
+            self::InsertContent($resource_id,$content->title,$content->contentText,$content->contentDescription);
         }
         else{               
-                if(self::InsertResourceId($content->resourceId,$resource_name))
+                if(self::InsertResourceId($resource_name))
                 {
-                    self::InsertContent($content->resourceId,$content->title,$content->contentText);
+                    $resource_id = self::getResourceIdByResourceName($resource_name);
+                    self::InsertContent($resource_id,$content->title,$content->contentText,$content->contentDescription);
                 }
                 else{
                     header("location:content.php");
                 }                
             }
     }
-    public static function InsertContent($resource_id,$content_title,$content_text)
+    public static function InsertContent($resource_id,$content_title,$content_text,$content_description)
     {
         $con = $GLOBALS["con"];
         $resource_id = strtoupper($resource_id);
-        $sql = "Insert into content(resource_id,content_title,content_text) Values('$resource_id','$content_title','$content_text') ";                
+        $sql = "Insert into content(resource_id,content_title,content_text,content_description) Values('$resource_id','$content_title','$content_text','$content_description') ";                
         mysqli_query($con,$sql);
         if(!mysqli_affected_rows($con) == 1)
         {
@@ -93,19 +105,18 @@ class Content {
         }
        
     }
-    public static function CheckResourceID($resource_id)
+    public static function CheckResourceID($resource_name)
     {
         $con = $GLOBALS["con"];
-        $sql = "Select resource_id from resources where resource_id = Upper('$resource_id')";
+        $sql = "Select resource_id from resources where resource_name = UPPER('$resource_name')";
         $result = mysqli_query($con,$sql);
         return $result;
     }
 
-    public static function InsertResourceId($resource_id,$resource_name)
+    public static function InsertResourceId($resource_name)
     {
         $con = $GLOBALS["con"];
-        $resource_id = strtoupper($resource_id);
-        $sql = "Insert into resources(resource_id,resource_name) values('$resource_id','$resource_name')";
+        $sql = "Insert into resources(resource_name) values('$resource_name')";
         mysqli_query($con,$sql);
         if(mysqli_affected_rows($con) == 1)
         {

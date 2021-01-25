@@ -1,4 +1,5 @@
 <?php
+opcache_reset();
 session_start();
 
 if (isset($_SESSION["staff_id"]) && $_SESSION["staff_id"] != "") {

@@ -18,7 +18,7 @@
 	<meta name="author" content="">
 
 	<title>Home Page</title>
-
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 	<!-- Bootstrap core CSS -->
 	<link rel="stylesheet" href="includes/bootstrap-4.5.3-dist/css/bootstrap.min.css">
 	<script src="includes/bootstrap-4.5.3-dist/jquery/jquery-3.5.1.slim.min.js"></script>
@@ -29,10 +29,24 @@
 </head>
 
 <body>
+
+  <!--successfull modal-->
+	<div class="modal fade" id="mySucessModal">
+    <div class="modal-dialog  modal-lg">
+      <div class="modal-content">    
+        <div class="modal-body success">					
+				 <span><img style="width:10%; height:10%;" src="includes/imgs/tick.gif" ><span id = "success_message"></span></span><button type="button" class="close" data-dismiss="modal">&times;</button>						
+        </div>
+      </div>
+    </div>
+  </div>
+  
+
+
 	<!-- Navigation -->
 	<nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
 	<div class="container">
-
+    
 		<a class="navbar-brand" href="#">APP Logo</a>
 		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
 		<span class="navbar-toggler-icon"></span>
@@ -64,7 +78,8 @@
 
 	</div>
 	</nav>
-
+ 
+	<!--   -->
 	<!-- Masterhead -->
 	<header class="masthead text-white text-center" style="background: url('includes/imgs/0-wellbeing-main.jpg') no-repeat center center; background-size: cover;">
 	  <div class="overlay"></div>
@@ -72,10 +87,13 @@
 	    <div class="row">
 	      <div class="col-xl-9 mx-auto">
 	        <h1 class="mb-5">Wellbeing App Website</h1>
+					
 	        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec ac sapien sit amet elit imperdiet iaculis. Phasellus hendrerit posuere maximus.</p>
 	      </div>
 	      <div class="col-md-10 col-lg-8 col-xl-7 mx-auto">
-	        <p></p>
+	        <p>
+					
+					</p>
 	      </div>
 	    </div>
 	  </div>
@@ -241,8 +259,12 @@
 <?php
 if($_SESSION["message"] != "")
 {
-	$alert_message = $_SESSION["message"];
-	echo "<script>alert('$alert_message');</script>";
-	$_SESSION["message"] = "";
+	$alert_message = $_SESSION["message"];	
+	//echo "<script>alert('$alert_message');</script>";
+	echo " <script> 	       
+				 $('#mySucessModal').modal();
+				 document.getElementById(\"success_message\").textContent = '$alert_message' ;
+				 </script>";
+//	$_SESSION["message"] = "";
 }
 ?>

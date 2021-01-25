@@ -1,5 +1,6 @@
 
 <?php 
+
 session_start();
 include_once("functions/Content.php");
 ?>
@@ -13,12 +14,10 @@ include_once("functions/Content.php");
 	<meta name="author" content="">
   
 	<title>Create a New Content</title>
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-	<!-- Bootstrap core CSS -->
-	<link rel="stylesheet" href="includes/bootstrap-4.5.3-dist/css/bootstrap.min.css">
-	<script src="includes/bootstrap-4.5.3-dist/jquery/jquery-3.5.1.slim.min.js"></script>
-	<script src="includes/bootstrap-4.5.3-dist/js/bootstrap.min.js"></script>
-
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 	<!-- Script for the Rich Editor -->
 	<script src="https://cdn.ckeditor.com/4.15.1/standard-all/ckeditor.js"></script>
   
@@ -30,6 +29,33 @@ include_once("functions/Content.php");
 </head>
 
 <body>
+
+  <!--Error modal-->
+	<div class="modal fade" id="myModal">
+    <div class="modal-dialog  modal-sm">
+      <div class="modal-content">     
+			<div class="modal-header">
+        <h4 class="modal-title">Error</h4>
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+      </div>
+        <div class="modal-body error">			
+         <span id = "alert_message"></span>				
+        </div>
+      </div>
+    </div>
+	</div>
+
+	  <!--successfull modal-->
+	<div class="modal fade" id="mySucessModal">
+    <div class="modal-dialog  modal-lg">
+      <div class="modal-content">    
+        <div class="modal-body success">					
+				 <span><img style="width:10%; height:10%;" src="includes/imgs/tick.gif" ><span id = "success_message"></span></span><button type="button" class="close" data-dismiss="modal">&times;</button>						
+        </div>
+      </div>
+    </div>
+  </div>
+
 	<!-- Navigation -->
 	<nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
 	<div class="container">
@@ -40,9 +66,9 @@ include_once("functions/Content.php");
 		</button>
 		<div class="collapse navbar-collapse" id="navbarSupportedContent">
 			<ul class="navbar-nav mr-auto">
-			  	<li class="nav-item"><a class="nav-link" href="../../index.php">Home</a></li>
-			  	<li class="nav-item"><a class="nav-link" href="#">About Us</a></li>
-			  	<li class="nav-item"><a class="nav-link" href="#">Articles</a></li>
+			  	<li class="nav-item"><a class="nav-link" href="index.php">Home</a></li>
+			  	<li class="nav-item"><a class="nav-link" href="about.php">About Us</a></li>
+			  	<li class="nav-item"><a class="nav-link" href="articles.php">Articles</a></li>
 			  	<li class="nav-item"><a class="nav-link" href="#">Events</a></li>
 			  	<li class="nav-item dropdown">
 				    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Exercises</a>
@@ -58,7 +84,7 @@ include_once("functions/Content.php");
 		  		<ul class="navbar-nav mr-auto">
 			  		<li class="nav-item"><a class="nav-link" href="#">Contact Us</a></li>
 			  		<li class="nav-item"><a class="nav-link" href="#">Support</a></li>
-					<li class="nav-item"><a class="btn btn-outline-warning" href="functions/logout.html">Log Out</a></li>
+					<li class="nav-item"><a class="btn btn-outline-warning" href="functions/logout.php">Log Out</a></li>
 				</ul>
 			</div>
 
@@ -73,18 +99,19 @@ include_once("functions/Content.php");
 	</div>
 
 	<!--Main Content Sector (2 columns) -->
-	<section class="main-content">
+	<section class="main-content" >
 		<div class="container">
 		  <div class="row">
 
 		  	<!--Content Sector (Main) -->
-		    <div class="the-content col-md-8">
+		    <div class="the-content col-lg-12">
 		    	<form method="post" id="newContentForm" name="newContentForm" onsubmit="return ContentCheck()" action="proc_newcategory.php">
 		    	  <div class="form-group col-xs-12 col-md-4">
 		    	    <label for="content-category">Select or Create Content Category</label>
 
 							<!--this will get all the resource list-->
-							<input list="resourceList" required = "true" oninput="onInput()" name="resourceListId" id="resourceListId">
+			
+							<input list="resourceList" required = "true" name="resourceListId" id="resourceListId">
 							<datalist id="resourceList" name ="resourceList">
 								<?php Content::getContents()?>
 							</datalist>
@@ -145,8 +172,8 @@ include_once("functions/Content.php");
 							</div>
 							<br>
 							<div class="form-group col-lg-12">
-								<input type="submit" class="btn btn-warning" value="Submit"/>
-								<a href="index.php" type="button" class="btn btn-danger">Cancel</a>
+								<input type="submit" class="btn btn-success btn-lg" value="Submit"/>
+								<a href="index.php" type="button" class="btn btn-danger btn-lg">Cancel</a>
 							</div>
 		    	</form> 	
 		    </div>
@@ -204,12 +231,14 @@ include_once("functions/Content.php");
 
 </body>
 </html>
-
 <?php
 if($_SESSION["message"] != "")
 {
 	$alert_message = $_SESSION["message"];
-	echo "<script>alert('$alert_message');</script>";
+	echo "<script>
+	$(\"#mySucessModal\").modal();
+	document.getElementById(\"success_message\").textContent = '$alert_message';
+	</script>";
 	$_SESSION["message"] = "";
 }
 ?>

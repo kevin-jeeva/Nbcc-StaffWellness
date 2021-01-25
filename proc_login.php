@@ -22,8 +22,7 @@ if (isset($_POST["email"])) {
 	$input_password = trim($_POST['password']);
     
     //constructor: $staffId, $email, $password, $username, $admin, $dateCreated
-    $staff = new staff(0, $input_email, $input_password, 0, 0, 0);
-    
+    $staff = new staff(0, $input_email, $input_password, 0, 0, 0);    
     staff::staffLogin($staff);//check the staff credentials and take neccessary action
     
 }

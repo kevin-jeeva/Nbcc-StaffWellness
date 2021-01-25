@@ -1,35 +1,25 @@
-function onInput() {
-	var val = document.getElementById("resourceListId").value.trim();
-	document.getElementById("resourceListId").value = val.toUpperCase();
-	var opts = document.getElementById("resourceList").childNodes;
-	for (var i = 0; i < opts.length; i++) {
-		if (opts[i].value === val) {
-			document.getElementById("content-description").disabled = true;
-			break;
-		} else {
-			document.getElementById("content-description").disabled = false;
-		}
-	}
-}
-
 var count = 0;
-var msg = "";
+var msg = "\r";
 
 function ContentCheck() {
 	console.log("here");
 	count = 0;
-	msg = "";
+	//msg;
 	for (var i = 1; i <= 3; i++) {
 		switch (i) {
-			case 3:
-				trimFun("contentTitle");
+			case 1:
+				trimFun("contentTitle", "Content Title");
 				break;
 			case 2:
 				if (!document.getElementById("content-description").disabled == true) {
-					trimFun("content-description");
+					trimFun("content-description", "Content Description");
 				}
 				break;
-			// case 1:
+			case 3:
+				console.log("category field");
+				trimFun("resourceListId", "Category field");
+				break;
+			// case 4:
 			// 	console.log("case1;");
 			// 	var val = document.getElementById("content-area").value;
 			// 	val = jQuery(val).text();
@@ -42,7 +32,7 @@ function ContentCheck() {
 			// 	} else {
 			// 		msg = "";
 			// 		console.log(count);
-			// 		count = 0;
+			// 		count -= 1;
 			// 	}
 			// 	break;
 		}
@@ -50,7 +40,8 @@ function ContentCheck() {
 
 	if (count > 0) {
 		console.log(count);
-		alert(msg);
+		$("#myModal").modal();
+		document.getElementById("alert_message").textContent = msg;
 		count = 0;
 		msg = "";
 		return false;
@@ -59,11 +50,11 @@ function ContentCheck() {
 	}
 }
 
-function trimFun(id) {
+function trimFun(id, message) {
 	var Value = document.getElementById(id).value;
 	Value = Value.trim();
 	if (Value == "") {
-		msg += id + " required " + "\n";
+		msg += message + " required " + "\n";
 		count += 1;
 	}
 }
