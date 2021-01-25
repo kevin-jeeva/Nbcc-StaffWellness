@@ -264,6 +264,6 @@ if($_SESSION["message"] != "")
 				 $('#mySucessModal').modal();
 				 document.getElementById(\"success_message\").textContent = '$alert_message' ;
 				 </script>";
-//	$_SESSION["message"] = "";
+	$_SESSION["message"] = "";
 }
 ?>
