@@ -35,8 +35,8 @@
 			  	<li class="nav-item dropdown">
 				    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Exercises</a>
 				    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-						<a class="dropdown-item" href="#">Video Exercises</a>
-						<a class="dropdown-item" href="#">Sound Exercises</a>
+						<a class="dropdown-item" href="exercises_video.php">Video Exercises</a>
+						<a class="dropdown-item" href="exercises_sound.php">Sound Exercises</a>
 						<div class="dropdown-divider"></div>
 						<a class="dropdown-item" href="#">Something else here</a>
 				    </div>
@@ -128,19 +128,19 @@
 	      <div class="col-lg-6 h-100 text-center text-lg-left my-auto">
 	        <ul class="list-inline mb-2">
 	          <li class="list-inline-item">
-	            <a href="#">About Us</a>
+	            <a href="about.php">About Us</a>
 	          </li>
 	          <li class="list-inline-item">&sdot;</li>
 	          <li class="list-inline-item">
-	            <a href="#">Articles</a>
+	            <a href="articles.php">Articles</a>
 	          </li>
 	          <li class="list-inline-item">&sdot;</li>
 	          <li class="list-inline-item">
-	            <a href="#">Events</a>
+	            <a href="events.php">Events</a>
 	          </li>
 	          <li class="list-inline-item">&sdot;</li>
 	          <li class="list-inline-item">
-	            <a href="#">Exercises</a>
+	            <a href="">Exercises</a>
 	          </li>
 	          <li class="list-inline-item">&sdot;</li>
 	          <li class="list-inline-item">
@@ -148,7 +148,7 @@
 	          </li>
 	          <li class="list-inline-item">&sdot;</li>
 	          <li class="list-inline-item">
-	            <a href="#">Contact Us</a>
+	            <a href="contact.php">Contact Us</a>
 	          </li>
 	          <li></li>
 	        </ul>
