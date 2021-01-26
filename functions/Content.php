@@ -8,7 +8,7 @@ class Content {
    private $image;
    private $dateCreated; 
    
-   function __construct($contentId, $resourceId, $title, $contentText,$contentDescription, $image, $dateCreated) {
+   function __construct($contentId, $resourceId, $title, $contentText, $contentDescription, $image, $dateCreated) {
        $this->contentId = $contentId;
        $this->resourceId = $resourceId;
        $this->title = $title;
@@ -162,14 +162,13 @@ class Content {
                 $count +=1;
                 echo 
                 "<tr>
-                <td>$count</td>
+                <td>$content_id</td>
                 <td>$title</td>
                 <td>$resource_name</td>
                 <td>$date_created</td>
-                <td>Author name</td>
                 <td align=\"right\">
-                    <a href=\"#\" type=\"button\" class=\"btn btn-sm btn-secondary\">Access/Preview</a>
-                    <a href=\"#\" type=\"button\" class=\"btn btn-sm btn-info\">Edit Content</a>
+                    <a href=\"#\" type=\"button\" class=\"btn btn-sm btn-secondary\">Preview</a>
+                    <a href=\"#\" type=\"button\" class=\"btn btn-sm btn-info\">Edit</a>
                     <a href=\"functions/proc_deleteContent.php?contentId=$content_id\" onclick = \"return CheckDelete(event)\"type=\"button\" class=\"btn btn-sm btn-danger\">Delete</a>
                 </td>            
                 </tr>";

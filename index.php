@@ -30,19 +30,18 @@
 
 <body>
 
-  <!--successfull modal-->
+	<!--successfull modal-->
 	<div class="modal fade" id="mySucessModal">
-    <div class="modal-dialog  modal-lg">
-      <div class="modal-content">    
-        <div class="modal-body success">					
-				 <span><img style="width:10%; height:10%;" src="includes/imgs/tick.gif" ><span id = "success_message"></span></span><button type="button" class="close" data-dismiss="modal">&times;</button>						
-        </div>
-      </div>
-    </div>
-  </div>
+	<div class="modal-dialog  modal-lg">
+	  <div class="modal-content">    
+	    <div class="modal-body success">					
+			<img class="modal-body-img" src="includes/imgs/tick.gif" ><span id="success_message"></span>
+			<button type="button" class="close" data-dismiss="modal">&times;</button>						
+	    </div>
+	  </div>
+	</div>
+	</div>
   
-
-
 	<!-- Navigation -->
 	<nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
 	<div class="container">
@@ -90,9 +89,7 @@
 	        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec ac sapien sit amet elit imperdiet iaculis. Phasellus hendrerit posuere maximus.</p>
 	      </div>
 	      <div class="col-md-10 col-lg-8 col-xl-7 mx-auto">
-	        <p>
-					
-					</p>
+	        <p></p>
 	      </div>
 	    </div>
 	  </div>

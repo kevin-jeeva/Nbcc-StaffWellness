@@ -2,6 +2,7 @@
 	session_start();
 	include('functions/connect.php');
 	include('functions/staff.php');
+	include('functions/Resource.php');
 	include('functions/Content.php');
 ?>
 <!DOCTYPE html>
@@ -45,16 +46,17 @@
     </div>
 	</div>
 
-	  <!--successfull modal-->
+	<!--successfull modal-->
 	<div class="modal fade" id="mySucessModal">
-    <div class="modal-dialog  modal-lg">
-      <div class="modal-content">    
-        <div class="modal-body success">					
-				 <span><img style="width:10%; height:10%;" src="includes/imgs/tick.gif" ><span id = "success_message"></span></span><button type="button" class="close" data-dismiss="modal">&times;</button>						
-        </div>
-      </div>
-    </div>
-  </div>
+	<div class="modal-dialog  modal-lg">
+	  <div class="modal-content">    
+	    <div class="modal-body success">					
+			<img class="modal-body-img" src="includes/imgs/tick.gif" ><span id="success_message"></span>
+			<button type="button" class="close" data-dismiss="modal">&times;</button>						
+	    </div>
+	  </div>
+	</div>
+	</div>
 
 	<!-- Navigation -->
 	<nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
@@ -123,14 +125,13 @@
 				    	          <th>Resource ID</th>
 				    	          <th>Title</th>
 				    	          <th>Created on</th>
-				    	          <th>Author</th>
 				    	          <th class="action-header-cell">Actions</th>
 				    	        </tr>
 				    	      </thead>
 
 				    	      <!-- Important SECTION: display all content's categories from database -->
 				    	      <tbody>
-				    	        <?php Content::GetAllResources()?>
+				    	        <?php Resource::GetAllResources()?>
 				    	      </tbody>
 			    	    </table>
 			    	</div> <!-- End of table-responsive -->
@@ -152,14 +153,13 @@
 				    	          <th>Title</th>
 				    	          <th>Resource</th>
 				    	          <th>Created on</th>
-				    	          <th>Author</th>
 				    	          <th class="action-header-cell">Actions</th>
 				    	        </tr>
 				    	      </thead>
 
 				    	      <!-- Important SECTION: display all content's categories from database -->
 				    	      <tbody>
-											<?php Content::GetListofCreatedContent()?>				    	       
+									<?php Content::GetListofCreatedContent()?>				    	       
 				    	      </tbody>
 			    	    </table>
 			    	</div> <!-- End of table-responsive -->

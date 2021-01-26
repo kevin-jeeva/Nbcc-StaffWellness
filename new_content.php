@@ -1,5 +1,4 @@
 <?php 
-
 session_start();
 include_once("functions/Content.php");
 ?>
@@ -44,16 +43,17 @@ include_once("functions/Content.php");
     </div>
 	</div>
 
-	  <!--successfull modal-->
+	<!--successfull modal-->
 	<div class="modal fade" id="mySucessModal">
-    <div class="modal-dialog  modal-lg">
-      <div class="modal-content">    
-        <div class="modal-body success">					
-				 <span><img style="width:10%; height:10%;" src="includes/imgs/tick.gif" ><span id = "success_message"></span></span><button type="button" class="close" data-dismiss="modal">&times;</button>						
-        </div>
-      </div>
-    </div>
-  </div>
+	<div class="modal-dialog  modal-lg">
+	  <div class="modal-content">    
+	    <div class="modal-body success">					
+			<img class="modal-body-img" src="includes/imgs/tick.gif" ><span id="success_message"></span>
+			<button type="button" class="close" data-dismiss="modal">&times;</button>						
+	    </div>
+	  </div>
+	</div>
+	</div>
 
 	<!-- Navigation -->
 	<nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
@@ -110,30 +110,29 @@ include_once("functions/Content.php");
 		    	  <div class="form-group col-xs-12 col-md-4">
 		    	    <label for="content-category">Select Category</label>
 
-							<!--this will get all the resource list-->
-			
-							<input list="resourceList" required = "true" name="resourceListId" id="resourceListId">
-							<datalist id="resourceList" name ="resourceList">
-								<?php Content::getContents()?>
-							</datalist>
+					<!--this will get all the resource list-->
+					<input list="resourceList" required = "true" name="resourceListId" id="resourceListId">
+					<datalist id="resourceList" name ="resourceList">
+						<?php Content::getContents()?>
+					</datalist>
 
-					   </div>
+				   </div>
 						 
 							<div class="form-group col-xs-6 col-md-4">
-							<label for="content-title" id="content-title">Content Title</label>
-							<input type="text" class="form-control" placeholder="Enter content title" name = "contentTitle" id="contentTitle">
+								<label for="content-title" id="content-title">Content Title</label>
+								<input type="text" class="form-control" placeholder="Enter content title" name = "contentTitle" id="contentTitle">
 							</div>
 							
-								<div class="form-group col-lg-12">
-							<label for="content-description">Content Description</label>
-							<textarea class="form-control" id="content-description" name="content-description" placeholder="Category Description" rows="5" maxlength="255" required></textarea>
-								</div>
 							<div class="form-group col-lg-12">
-
+								<label for="content-description">Content Description</label>
+								<textarea class="form-control" id="content-description" name="content-description" placeholder="Category Description" rows="5" maxlength="255" required></textarea>
+							</div>
+							
+							<div class="form-group col-lg-12">
 								<!-- CKEditor area -->
 								<label for="content-area">Text</label>
-						<textarea cols="80" id="content-area" name="content-area" rows="15" data-sample-short>Insert your text here</textarea>
-							<script>
+								<textarea cols="80" id="content-area" name="content-area" rows="15" data-sample-short>Insert your text here</textarea>
+								<script>
 								CKEDITOR.replace('content-area', {
 									// Define the toolbar groups as it is a more accessible solution.
 									toolbarGroups: [{
