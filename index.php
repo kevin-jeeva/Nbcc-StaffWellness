@@ -85,7 +85,7 @@
 	  <div class="container">
 	    <div class="row">
 	      <div class="col-xl-9 mx-auto">
-	        <h1 class="mb-5">Welcome {username}</h1>
+	        <h1 class="mb-5">Welcome <?=$_SESSION["staff_name"]?></h1>
 	        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec ac sapien sit amet elit imperdiet iaculis. Phasellus hendrerit posuere maximus.</p>
 	      </div>
 	      <div class="col-md-10 col-lg-8 col-xl-7 mx-auto">

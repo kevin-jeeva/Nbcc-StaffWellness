@@ -27,7 +27,7 @@ class Resource {
                 $count += 1;
                 echo"
                <tr>
-               <td>$resource_id</td>
+               <td>$count</td>
                <td>$title</td>
                <td>$date_created</td>
                <td align=\"right\">

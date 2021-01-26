@@ -55,12 +55,14 @@ class Content {
    //get two newest articles to display on index
    static function getTopArticles(){
     $con = $GLOBALS['con'];
-    $sql = "SELECT content_title, content_text, date_created FROM content WHERE resource_id = 'ARTICLE' ORDER BY date_created LIMIT 2";
+    $resource_id = self::getResourceIdByResourceName('articles');
+    $sql = "SELECT content_title, content_text, date_format(date_created, '%m/%d/%y') as date_created FROM content WHERE resource_id = $resource_id ORDER BY date_created LIMIT 2";
     $result = mysqli_query($con, $sql);
         while ($row = mysqli_fetch_assoc($result)) {
+            $date_created = $row["date_created"];
          echo "
          <hr>
-         <h2>" . $row['content_title'] . "</h2>
+         <h2>" . $row['content_title'] ."     <span style=\"font-size:15px; float:right\">$date_created</span></h2>
          <p>". $row['content_text'] . "</p>
          <button type=\"button\" class=\"btn btn-primary\">Read More</button>";
         }    
@@ -86,7 +88,7 @@ class Content {
            while($val= mysqli_fetch_array($result))
            {             
                $resource_name = $val['resource_name'];
-               echo "<option value='$resource_name'>";
+               echo "<option value='$resource_name'>$resource_name</option>";
 
            }
        }
@@ -162,7 +164,7 @@ class Content {
                 $count +=1;
                 echo 
                 "<tr>
-                <td>$content_id</td>
+                <td>$count</td>
                 <td>$title</td>
                 <td>$resource_name</td>
                 <td>$date_created</td>
@@ -200,53 +202,8 @@ class Content {
           header("location:administrator.php");
         }
     }
-
-    public static function GetAllResources()
-    {
-        $con = $GLOBALS["con"];
-        $sql ="Select resource_id, resource_name, date_format(date_created, '%m/%d/%y') as date_created from resources";
-        $result = mysqli_query($con,$sql);
-        $count = 0;
-        if(mysqli_num_rows($result) > 0)
-        {
-            while($val = mysqli_fetch_array($result))
-            {
-                 $resource_id = $val["resource_id"];
-                 $title = $val["resource_name"];
-                 $date_created = $val["date_created"];
-                 $count += 1;
-                 echo"
-                <tr>
-                <td>$count</td>
-                <td>$title</td>
-                <td>$date_created</td>
-                <td>Author name</td>
-                <td align=\"right\">
-                    <a href=\"#\" type=\"button\" class=\"btn btn-sm btn-info\">Edit Resource</a>
-                    <a href=\"functions/proc_deleteResource.php?resourceId=$resource_id\" onclick = \"return CheckDelete(event)\"type=\"button\" class=\"btn btn-sm btn-danger\">Delete</a>
-                </td>        
-                </tr>
-                ";
-            }
-           
-        }
-        else
-        {
-            echo"
-            <tr>
-            <td>1</td>
-            <td>No Resources</td>
-            <td>2021/01/01</td>
-            <td>Author name</td>
-            <td align=\"right\">
-                <a href=\"#\" type=\"button\" class=\"btn btn-sm btn-info\">Edit Resource</a>
-                <a href=\"#\" type=\"button\" class=\"btn btn-sm btn-danger\">Delete</a>
-            </td>        
-            </tr>
-            ";
-        }
         
-    }
+    
 
     public static function DeleteResourceIdInContent($resource_id)
     {

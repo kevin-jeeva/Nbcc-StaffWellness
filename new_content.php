@@ -107,14 +107,18 @@ include_once("functions/Content.php");
 		  	<!--Content Sector (Main) -->
 		    <div class="the-content col-md-8">
 		    	<form method="post" id="newContentForm" name="newContentForm" onsubmit="return ContentCheck()" action="proc_newcontent.php">
-		    	  <div class="form-group col-xs-12 col-md-4">
-		    	    <label for="content-category">Select Category</label>
+		    	  <div class="form-group col-xs-12 col-md-6">
+		    	    <div><label for="content-category">Select Category (or) <a href="new_category.php" class="btn btn-outline-info">Create New Category</a></div></label>
+							  <select name ="contents" id ="contents">
+								<?php Content::getContents()?>
+							  </select>
+					
 
-					<!--this will get all the resource list-->
+					<!--this will get all the resource list
 					<input list="resourceList" required = "true" name="resourceListId" id="resourceListId">
 					<datalist id="resourceList" name ="resourceList">
-						<?php Content::getContents()?>
-					</datalist>
+						 
+					</datalist>-->
 
 				   </div>
 						 
