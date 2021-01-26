@@ -77,10 +77,13 @@
 		    	    <label for="question">Category Title</label>
 		    	    <input type="text" class="form-control" id="category" name="category" placeholder="Category Title" size="45" maxlength="45" required>
 		    	  </div>
-		    	  <div class="form-group col-lg-12">
+
+		    	  <!-- Textarea deactivated temporarily-->
+		    	  <!--<div class="form-group col-lg-12">
 					<label for="question">Category Description</label>
 					<textarea class="form-control" id="description" name="description" placeholder="Category Description" rows="5" maxlength="255" required></textarea>
-		    	  </div>
+		    	  </div>-->
+		    	  
 		    	  <br>
 		    	  <div class="form-group col-lg-12">
 		    	    <input type="submit" class="btn btn-warning" value="Submit"/>
