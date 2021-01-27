@@ -23,7 +23,7 @@ class Content {
    public static function GetAllContents()
    {
        $con = $GLOBALS["con"];
-       $sql ="Select content_id, resource_id, content_title, date_format(date_created, '%m/%d/%y') as date_created from content";
+       $sql ="Select content_id, resource_id, content_title, content_text, content_description, date_format(date_created, '%m/%d/%y') as date_created from content";
        $result = mysqli_query($con,$sql);
        return $result;
    }
@@ -200,6 +200,8 @@ class Content {
                 $content_id = $val["content_id"];
                 $resource_name = self::GetResourceNameByResourceId($val["resource_id"]);
                 $title = $val["content_title"];
+                $content_text = ($val["content_text"]);
+                $content_description = $val["content_description"];
                 $date_created = $val["date_created"];
                 $count +=1;
                 echo 
@@ -210,7 +212,7 @@ class Content {
                 <td>$date_created</td>
                 <td align=\"right\">
                     <a href=\"#\" type=\"button\" class=\"btn btn-sm btn-secondary\">Preview</a>
-                    <a href=\"#\" type=\"button\" class=\"btn btn-sm btn-info\">Edit</a>
+                    <a href=\"#\" type=\"button\" onclick=\"RedirectEditContent('$resource_name','$title', '$content_description' ,`$content_text`,$content_id);\" class=\"btn btn-sm btn-info\">Edit</a>
                     <a href=\"functions/proc_deleteContent.php?contentId=$content_id\" onclick = \"return CheckDelete(event)\"type=\"button\" class=\"btn btn-sm btn-danger\">Delete</a>
                 </td>            
                 </tr>";
@@ -262,6 +264,20 @@ class Content {
         }
         else{
             return true;
+        }
+    }
+    public static function UpdateEditedContent($content,$resource_name)
+    {
+        $con = $GLOBALS["con"];
+        $resource_id = self::getResourceIdByResourceName($resource_name);
+        $sql = "update content set resource_id = $resource_id, content_title='$content->title', content_text = '$content->contentText', content_description='$content->contentDescription' where content_id = $content->contentId ";
+        mysqli_query($con,$sql);
+        if(mysqli_affected_rows($con) == 1)
+        {
+            return true;
+        }
+        else{
+            return false;
         }
     }
 }
