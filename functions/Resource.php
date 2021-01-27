@@ -31,7 +31,7 @@ class Resource {
                <td>$title</td>
                <td>$date_created</td>
                <td align=\"right\">
-                   <a href=\"#\" type=\"button\" class=\"btn btn-sm btn-info\">Edit</a>
+                   <a href=\"#\" type=\"button\" onclick =\"RedirectEditResource('$title',$resource_id)\"class=\"btn btn-sm btn-info\">Edit</a>
                    <a href=\"functions/proc_deleteResource.php?resourceId=$resource_id\" onclick = \"return CheckDelete(event)\"type=\"button\" class=\"btn btn-sm btn-danger\">Delete</a>
                </td>        
                </tr>
@@ -89,7 +89,7 @@ class Resource {
     public static function InsertNewResource($title)
     {
         $con = $GLOBALS["con"];
-        $resource_id = strtoupper($resource_id);
+       // $resource_id = strtoupper($resource_id);
         $sql = "INSERT INTO resources(resource_name) VALUES('$title')";                
         mysqli_query($con,$sql);
         if(!mysqli_affected_rows($con) == 1)
@@ -145,6 +145,19 @@ class Resource {
         }
         else{
             return true;
+        }
+    }
+    public static function UpdateResourceName($resource_name, $resource_id)
+    {
+        $con = $GLOBALS["con"];
+        $sql = "Update resources set resource_name = '$resource_name' where resource_id = $resource_id";
+        mysqli_query($con,$sql);
+        if(mysqli_affected_rows($con) == 1)
+        {
+            return true;
+        }
+        else{
+            return false;
         }
     }
 }
