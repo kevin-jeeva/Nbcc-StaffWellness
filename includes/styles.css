@@ -60,6 +60,12 @@ header.masthead h1 {
 	margin-top: 1rem;
 	padding-right: 4rem;
 }
+.event-content .card {
+	margin-top: 1rem;
+	padding-right: 4rem;
+	width: 80rem;
+}
+
 
 #readMore div.collapse:not(.show) {
     height: 42px !important;

@@ -43,8 +43,7 @@
               <!--Content Sector (Main) -->
               <!--Calling Content class to retrieve all articles -->
 		    
-		    <div class="the-content col-md-8">
-	    		<div class="card">
+	    		<div class="the-content"  style="width: 80rem; col-md-8">
 					<div class="card-body">
 						<h3>Next Events</h3>
 	    				<hr>
@@ -53,7 +52,7 @@
 						Content::getAllEvents();
 						?>
 
-					</div> <!-- End of card-body -->
+	
 	    	    </div> <!-- End of card -->
 		    </div> <!-- End of the-content -->
 
