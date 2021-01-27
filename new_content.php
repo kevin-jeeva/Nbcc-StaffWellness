@@ -85,7 +85,7 @@ include_once("functions/Content.php");
 		    <div class="the-content col-md-8">
 		    	<form method="post" id="newContentForm" name="newContentForm" onsubmit="return ContentCheck()" action="proc_newcontent.php">
 		    	  <div class="form-group col-xs-12 col-md-6">
-		    	    <div><label for="content-category">Select Category (or) <a href="new_category.php" class="btn btn-outline-info">Create New Category</a></div></label>
+		    	    <div><label for="content-category">Select Category (or) <a href="new_category.php" class="badge btn-outline-info">Create New Category</a></div></label>
 							  <select name ="contents" id ="contents">
 								<?php Content::getContents()?>
 							  </select>
