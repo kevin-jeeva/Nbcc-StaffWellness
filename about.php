@@ -19,41 +19,7 @@
 
 <body>
 	<!-- Navigation -->
-	<nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
-	<div class="container">
-
-		<a class="navbar-brand" href="index.php">APP Logo</a>
-		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-		<span class="navbar-toggler-icon"></span>
-		</button>
-		<div class="collapse navbar-collapse" id="navbarSupportedContent">
-			<ul class="navbar-nav mr-auto">
-			  	<li class="nav-item"><a class="nav-link" href="index.php">Home</a></li>
-			  	<li class="nav-item"><a class="nav-link" href="about.php">About Us</a></li>
-			  	<li class="nav-item"><a class="nav-link" href="articles.php">Articles</a></li>
-			  	<li class="nav-item"><a class="nav-link" href="events.php">Events</a></li>
-			  	<li class="nav-item dropdown">
-				    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Exercises</a>
-				    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-						<a class="dropdown-item" href="exercises_video.php">Video Exercises</a>
-						<a class="dropdown-item" href="exercises_sound.php">Sound Exercises</a>
-						<div class="dropdown-divider"></div>
-						<a class="dropdown-item" href="#">Something else here</a>
-				    </div>
-			  	</li> 		
-			</ul>
-		  	<div class="navbar-right">
-		  		<ul class="navbar-nav mr-auto">
-			  		<li class="nav-item"><a class="nav-link" href="contact.php">Contact Us</a></li>
-			  		<li class="nav-item"><a class="nav-link" href="#">Support</a></li>
-			  		<li class="nav-item"><a class="nav-link" href="administrator.php">Admin</a></li>
-					<li class="nav-item"><a class="btn btn-outline-warning" href="functions/logout.php">Log out</a></li>
-				</ul>
-			</div>
-		</div><!-- end of collapse navbar-collapse -->
-
-	</div><!-- end of container -->
-	</nav><!-- end of Navigation -->
+	<?php include('functions/Header.php'); ?>
 		
     	<!-- Article Masterhead -->
 	<div class="jumbotron jumbotron-fluid">
@@ -70,14 +36,9 @@
 		  	<!--Contact Sector (Main) -->
 		    <div class="the-content col-md-8">
                 <br>
-		    	<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur eu ante malesuada, posuere nibh ac, consequat purus. Phasellus bibendum laoreet
-                     urna in porta. Maecenas bibendum viverra lobortis. Phasellus justo enim, vestibulum at lobortis eu, scelerisque ac ligula. Aliquam tincidun 
-                     hendrerit nunc, vulputate consequat ex congue eu. Ut et porttitor tellus. Nunc eu libero eget magna posuere consequat. Nunc ut purus turpis.</p><br>
+		    	<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur eu ante malesuada, posuere nibh ac, consequat purus. Phasellus bibendum laoreet urna in porta. Maecenas bibendum viverra lobortis. Phasellus justo enim, vestibulum at lobortis eu, scelerisque ac ligula. Aliquam tincidun hendrerit nunc, vulputate consequat ex congue eu. Ut et porttitor tellus. Nunc eu libero eget magna posuere consequat. Nunc ut purus turpis.</p><br>
 
-                <p>Pellentesque nec tincidunt elit, et dictum nibh. Pellentesque ut orci laoreet, venenatis est in, porttitor nibh. Aliquam lorem turpis, lacinia sed dolor et, vulputate sodales libero.
-                     Sed varius justo eget tincidunt pharetra. Nam eleifend hendrerit elit, imperdiet interdum ipsum malesuada sed. Proin nunc nunc, egestas a sapien in, convallis scelerisque mi. 
-                     Proin magna urna, porta id mauris ultricies, congue luctus tortor. Suspendisse in nibh ultrices, vulputate erat vel, dictum massa. Interdum et malesuada fames ac ante ipsum 
-                     primis in faucibus. Proin a dui ante. Fusce efficitur molestie sapien, vitae varius augue ornare eget. Curabitur sodales sem id vulputate faucibus.</p>
+                <p>Pellentesque nec tincidunt elit, et dictum nibh. Pellentesque ut orci laoreet, venenatis est in, porttitor nibh. Aliquam lorem turpis, lacinia sed dolor et, vulputate sodales libero. Sed varius justo eget tincidunt pharetra. Nam eleifend hendrerit elit, imperdiet interdum ipsum malesuada sed. Proin nunc nunc, egestas a sapien in, convallis scelerisque mi. Proin magna urna, porta id mauris ultricies, congue luctus tortor. Suspendisse in nibh ultrices, vulputate erat vel, dictum massa. Interdum et malesuada fames ac ante ipsum primis in faucibus. Proin a dui ante. Fusce efficitur molestie sapien, vitae varius augue ornare eget. Curabitur sodales sem id vulputate faucibus.</p>
 		    </div>
 
 		    <!--Sidebar (Links, Menus and other info) -->
@@ -121,46 +82,7 @@
 	</section>
 
 	<!-- Footer -->
-	<footer class="footer bg-light">
-	  <div class="container">
-	    <div class="row">
-	      
-	      <div class="col-lg-6 h-100 text-center text-lg-left my-auto">
-	        <ul class="list-inline mb-2">
-	          <li class="list-inline-item">
-	            <a href="about.php">About Us</a>
-	          </li>
-	          <li class="list-inline-item">&sdot;</li>
-	          <li class="list-inline-item">
-	            <a href="articles.php">Articles</a>
-	          </li>
-	          <li class="list-inline-item">&sdot;</li>
-	          <li class="list-inline-item">
-	            <a href="events.php">Events</a>
-	          </li>
-	          <li class="list-inline-item">&sdot;</li>
-	          <li class="list-inline-item">
-	            <a href="">Exercises</a>
-	          </li>
-	          <li class="list-inline-item">&sdot;</li>
-	          <li class="list-inline-item">
-	            <a href="#">Support</a>
-	          </li>
-	          <li class="list-inline-item">&sdot;</li>
-	          <li class="list-inline-item">
-	            <a href="contact.php">Contact Us</a>
-	          </li>
-	          <li></li>
-	        </ul>
-	        <p class="text-muted small mb-4 mb-lg-0">&copy; NBCC Welbeing App 2020. All Rights Reserved.</p>
-	      </div>
-	      <div class="footer-logo col-lg-6 h-100 text-center text-lg-right my-auto">
-	      	<img src="includes/imgs/nbcc-logo.png" alt="NBCC Logo">
-	      </div>
-	    </div>
-	  
-	  </div>
-	</footer>
+	<?php include('functions/footer.php'); ?>
 
 </body>
 </html>
