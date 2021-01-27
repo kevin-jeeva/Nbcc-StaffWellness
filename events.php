@@ -44,28 +44,26 @@
               <!--Calling Content class to retrieve all articles -->
 		    
 		    <div class="the-content col-md-8">
-<<<<<<< HEAD
-=======
-		    	
->>>>>>> 3bdc7b113a6444d84de22961dee4415961589a27
-		    </div>
+	    		<div class="card">
+					<div class="card-body">
+						<h3>Next Events</h3>
+	    				<hr>
+
+						<?php
+						Content::getAllEvents();
+						?>
+
+					</div> <!-- End of card-body -->
+	    	    </div> <!-- End of card -->
+		    </div> <!-- End of the-content -->
 
 		    <!--Sidebar (Links, Menus and other info) -->
-		    
-			<div class="card" style="width: 80rem;">
-		    	  <div class="card-body">
-		    	   
-				<?php
-				Content::getAllEvents();
-				?>
-		    	    
-
-		    	  </div>
-		    	
+		    <div class="sidebar col-md-4">
+		    	<!-- Please, keep this div intact. This container is empty for now but it could be useful for the next sprints -->
 		    </div>
 
-		  </div>
-		</div>
+		  </div> <!-- End of row -->
+		</div> <!-- End of container-->
 	</section>
 
 	<!--Secondary Content Sector -->
