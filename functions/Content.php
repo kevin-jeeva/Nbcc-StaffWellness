@@ -7,8 +7,9 @@ class Content {
    private $contentText;
    private $image;
    private $dateCreated; 
+   private $eventDate;
    
-   function __construct($contentId, $resourceId, $title, $contentText, $contentDescription, $image, $dateCreated) {
+   function __construct($contentId, $resourceId, $title, $contentText, $contentDescription, $image, $dateCreated, $eventDate) {
        $this->contentId = $contentId;
        $this->resourceId = $resourceId;
        $this->title = $title;
@@ -16,6 +17,7 @@ class Content {
        $this->contentDescription = $contentDescription;
        $this->image = $image;
        $this->dateCreated = $dateCreated;
+       $this->eventDate = $eventDate;
    }
    
    public static function GetAllContents()
@@ -52,6 +54,38 @@ class Content {
            return $val["resource_name"];
        }
    }
+   //get all events
+   static function getAllEvents(){
+    $con = $GLOBALS['con'];
+    $resource_id = self::getResourceIdByResourceName('events');
+    $sql = "SELECT content_title, content_text, date_format(event_date, '%m/%d/%y') as event_date FROM content WHERE resource_id = $resource_id ORDER BY event_date";
+    $result = mysqli_query($con, $sql);
+        while ($row = mysqli_fetch_assoc($result)) {
+            $eventDate = $row["event_date"];
+             echo "  <h3>Next Events</h3>
+             <hr>
+             <h5 class=\"card-title\">" . $row['content_title'] . "</h5>
+             <span class=\"badge badge-info\">$eventDate</span>
+             <p class=\"card-text\">" . $row['content_text'] ."</p><br>";
+        }
+   } 
+
+    //get next 2 events
+    static function getNextEvents(){
+    $con = $GLOBALS['con'];
+    $resource_id = self::getResourceIdByResourceName('events');
+    $sql = "SELECT content_title, content_text, date_format(event_date, '%m/%d/%y') as event_date FROM content WHERE resource_id = $resource_id ORDER BY event_date LIMIT 2";
+    $result = mysqli_query($con, $sql);
+        while ($row = mysqli_fetch_assoc($result)) {
+            $eventDate = $row["event_date"];
+                echo "<hr>
+                <h5 class=\"card-title\">". $row['content_title']."</h5>
+                <span class=\"badge badge-info\">$eventDate</span>
+                <p class=\"card-text\">". $row['content_text'] ."</p>
+                <a href=\"events.php\" class=\"btn btn-outline-primary btn-block\">See Details</a>";
+        }
+    } 
+
    //get two newest articles to display on index
    static function getTopArticles(){
     $con = $GLOBALS['con'];
@@ -70,13 +104,15 @@ class Content {
     //get all articles to display on articles.php
    static function getAllArticles(){
     $con = $GLOBALS['con'];
-    $sql = "SELECT content_title, content_text, date_created FROM content WHERE resource_id = 'ARTICLE' ORDER BY date_created";
+    $resource_id = self::getResourceIdByResourceName('articles');
+    $sql = "SELECT content_title, content_text, date_format(date_created, '%m/%d/%y') as date_created FROM content WHERE resource_id = $resource_id ORDER BY date_created";
     $result = mysqli_query($con, $sql);
         while ($row = mysqli_fetch_assoc($result)) {
-         echo "<div class=\"the-content\">
-         <h1>" . $row['content_title'] . "</h1>
-         <hr>
-         <p>" .$row['content_text']."</p><br></div>";
+        $date_created = $row["date_created"];
+        echo "<div class=\"the-content\">
+        <h1>" . $row['content_title'] . "</h1>
+        <hr> <span style=\"font-size:15px; float:left\">$date_created</span><br><br>
+        <p>" .$row['content_text']."</p><br></div>";
         } 
         }
 
