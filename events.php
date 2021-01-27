@@ -43,17 +43,12 @@
               <!--Content Sector (Main) -->
               <!--Calling Content class to retrieve all articles -->
 		    
-	    		<div class="the-content"  style="width: 80rem; col-md-8">
-					<div class="card-body">
-						<h3>Next Events</h3>
-	    				<hr>
-
-						<?php
-						Content::getAllEvents();
-						?>
-
-	
-	    	    </div> <!-- End of card -->
+			<div class="the-content col-md-12">	
+				<h3>Next Events</h3>
+				<hr>
+				<?php
+				Content::getAllEvents();
+				?>
 		    </div> <!-- End of the-content -->
 
 		    <!--Sidebar (Links, Menus and other info) -->
