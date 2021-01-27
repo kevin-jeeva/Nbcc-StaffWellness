@@ -61,7 +61,7 @@ header.masthead h1 {
 	padding-right: 4rem;
 }
 
-#readMore p.collapse:not(.show) {
+#readMore div.collapse:not(.show) {
     height: 42px !important;
     overflow: hidden;
   
@@ -70,7 +70,7 @@ header.masthead h1 {
     -webkit-box-orient: vertical;  
 }
 
-#readMore p.collapsing {
+#readMore div.collapsing {
     min-height: 42px !important;
 }
 

@@ -97,7 +97,7 @@ class Content {
             echo "
             <h2>" . $row['content_title'] ."<span style=\"font-size:15px; float:right\">$date_created</span></h2>
             <div id =\"readMore\">
-                <p class=\"collapse\" id=\"$i\" id=\"collapseSummary\">". $row['content_text'] . "</p>
+                <div class=\"collapse\" id=\"$i\" id=\"collapseSummary\">". $row['content_text'] . "</div>
                 <a class=\"collapsed\" data-toggle=\"collapse\"  data-target=\"#$i\" href=\"#collapseSummary\" aria-expanded=\"false\" aria-controls=\"collapseSummary\"></a>
             </div><br>";
             $i = 'two';
