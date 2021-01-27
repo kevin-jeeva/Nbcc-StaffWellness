@@ -1,6 +1,17 @@
-<?php 
+<?php
 session_start();
+include_once('functions/staff.php');
 include_once("functions/Content.php");
+
+//redirection
+	if (!isset($_SESSION["staff_id"])) //not currently logged in
+	{
+		header("Location:login.php");
+	}
+	else if(staff::GetStaffAdminNumber($_SESSION["staff_id"]) != 1) //checks if user is admin
+	{
+		header("Location:index.php");
+	}
 ?>
 
 <!DOCTYPE html>
@@ -74,7 +85,7 @@ include_once("functions/Content.php");
 		    <div class="the-content col-md-8">
 		    	<form method="post" id="newContentForm" name="newContentForm" onsubmit="return ContentCheck()" action="proc_newcontent.php">
 		    	  <div class="form-group col-xs-12 col-md-6">
-		    	    <div><label for="content-category">Select Category (or) <a href="new_category.php" class="btn btn-outline-info">Create New Category</a></div></label>
+		    	    <div><label for="content-category">Select Category (or) <a href="new_category.php" class="badge btn-outline-info">Create New Category</a></div></label>
 							  <select name ="contents" id ="contents">
 								<?php Content::getContents()?>
 							  </select>

@@ -4,6 +4,17 @@
 	include('functions/staff.php');
 	include('functions/Resource.php');
 	include('functions/Content.php');
+
+	//redirection
+	if (!isset($_SESSION["staff_id"])) //not currently logged in
+	{
+		header("Location:login.php");
+	}
+	else if(staff::GetStaffAdminNumber($_SESSION["staff_id"]) != 1) //checks if user is admin
+	{
+		header("Location:index.php");
+	}
+
 ?>
 <!DOCTYPE html>
 <html lang="en">

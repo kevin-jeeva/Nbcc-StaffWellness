@@ -44,6 +44,10 @@
               <!--Calling Content class to retrieve all articles -->
 		    
 		    <div class="the-content col-md-8">
+<<<<<<< HEAD
+=======
+		    	
+>>>>>>> 3bdc7b113a6444d84de22961dee4415961589a27
 		    </div>
 
 		    <!--Sidebar (Links, Menus and other info) -->
