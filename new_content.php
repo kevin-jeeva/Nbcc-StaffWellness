@@ -12,15 +12,15 @@ include_once("functions/Content.php");
 	<meta name="author" content="">
   
 	<title>Create a New Content</title>
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 	<!-- Script for the Rich Editor -->
 	<script src="https://cdn.ckeditor.com/4.15.1/standard-all/ckeditor.js"></script>
   
 	<!-- Script for the category-->
-		<script src="functions/category.js"></script>
+	<script src="functions/category.js"></script>
 	
 	<!-- Custom CSS and JS -->
 	<link rel="stylesheet" type="text/css" href="includes/styles.css">
@@ -56,41 +56,7 @@ include_once("functions/Content.php");
 	</div>
 
 	<!-- Navigation -->
-	<nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
-	<div class="container">
-
-		<a class="navbar-brand" href="index.php">APP Logo</a>
-		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-		<span class="navbar-toggler-icon"></span>
-		</button>
-		<div class="collapse navbar-collapse" id="navbarSupportedContent">
-			<ul class="navbar-nav mr-auto">
-			  	<li class="nav-item"><a class="nav-link" href="index.php">Home</a></li>
-			  	<li class="nav-item"><a class="nav-link" href="about.php">About Us</a></li>
-			  	<li class="nav-item"><a class="nav-link" href="articles.php">Articles</a></li>
-			  	<li class="nav-item"><a class="nav-link" href="events.php">Events</a></li>
-			  	<li class="nav-item dropdown">
-				    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Exercises</a>
-				    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-					<a class="dropdown-item" href="../../exercises_video.php">Video Exercises</a>
-						<a class="dropdown-item" href="../../exercises_sound.php">Sound Exercises</a>
-						<div class="dropdown-divider"></div>
-						<a class="dropdown-item" href="#">Something else here</a>
-				    </div>
-			  	</li> 		
-			</ul>
-		  	<div class="navbar-right">
-		  		<ul class="navbar-nav mr-auto">
-			  		<li class="nav-item"><a class="nav-link" href="contact.php">Contact Us</a></li>
-			  		<li class="nav-item"><a class="nav-link" href="#">Support</a></li>
-			  		<li class="nav-item"><a class="nav-link" href="administrator.php">Admin</a></li>
-					<li class="nav-item"><a class="btn btn-outline-warning" href="functions/logout.php">Log out</a></li>
-				</ul>
-			</div>
-		</div><!-- end of collapse navbar-collapse -->
-
-	</div><!-- end of container -->
-	</nav><!-- end of Navigation -->
+	<?php include('functions/header.php'); ?>
 
 	<!-- Article Masterhead -->
 	<div class="jumbotron jumbotron-fluid">
@@ -192,46 +158,7 @@ include_once("functions/Content.php");
 	</section>
 
 	<!-- Footer -->
-	<footer class="footer bg-light">
-	  <div class="container">
-	    <div class="row">
-	      
-	      <div class="col-lg-6 h-100 text-center text-lg-left my-auto">
-		  <ul class="list-inline mb-2">
-	          <li class="list-inline-item">
-	            <a href="about.php">About Us</a>
-	          </li>
-	          <li class="list-inline-item">&sdot;</li>
-	          <li class="list-inline-item">
-	            <a href="articles.php">Articles</a>
-	          </li>
-	          <li class="list-inline-item">&sdot;</li>
-	          <li class="list-inline-item">
-	            <a href="events.php">Events</a>
-	          </li>
-	          <li class="list-inline-item">&sdot;</li>
-	          <li class="list-inline-item">
-	            <a href="">Exercises</a>
-	          </li>
-	          <li class="list-inline-item">&sdot;</li>
-	          <li class="list-inline-item">
-	            <a href="#">Support</a>
-	          </li>
-	          <li class="list-inline-item">&sdot;</li>
-	          <li class="list-inline-item">
-	            <a href="contact.php">Contact Us</a>
-	          </li>
-	          <li></li>
-	        </ul>
-	        <p class="text-muted small mb-4 mb-lg-0">&copy; NBCC Welbeing App 2020. All Rights Reserved.</p>
-	      </div>
-	      <div class="footer-logo col-lg-6 h-100 text-center text-lg-right my-auto">
-	      	<img src="includes/imgs/nbcc-logo.png" alt="NBCC Logo">
-	      </div>
-	    </div>
-	  
-	  </div>
-	</footer>
+	<?php include('functions/footer.php'); ?>
 
 </body>
 </html>
