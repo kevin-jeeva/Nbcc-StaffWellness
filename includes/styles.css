@@ -61,6 +61,28 @@ header.masthead h1 {
 	padding-right: 4rem;
 }
 
+#readMore p.collapse:not(.show) {
+    height: 42px !important;
+    overflow: hidden;
+  
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;  
+}
+
+#readMore p.collapsing {
+    min-height: 42px !important;
+}
+
+#readMore a.collapsed:after  {
+    content: '+ Read More';
+}
+
+#readMore a:not(.collapsed):after {
+    content: '- Read Less';
+}
+
+
 .sidebar {
 	margin-top: 1rem;
 }

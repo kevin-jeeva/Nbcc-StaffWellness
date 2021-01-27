@@ -95,10 +95,12 @@ class Content {
         while ($row = mysqli_fetch_assoc($result)) {
             $date_created = $row["date_created"];
          echo "
-         <hr>
-         <h2>" . $row['content_title'] ."     <span style=\"font-size:15px; float:right\">$date_created</span></h2>
-         <p>". $row['content_text'] . "</p>
-         <button type=\"button\" class=\"btn btn-primary\">Read More</button>";
+         <h2>" . $row['content_title'] ."<span style=\"font-size:15px; float:right\">$date_created</span></h2>
+         <div id =\"readMore\">
+         <p class=\"collapse\" id=\"collapseSummary\">". $row['content_text'] . "</p>
+         <a class=\"collapsed\" data-toggle=\"collapse\" href=\"#collapseSummary\" aria-expanded=\"false\" aria-controls=\"collapseSummary\"></a>
+         </div><br>";
+      
         }    
     }
     //get all articles to display on articles.php
@@ -106,6 +108,7 @@ class Content {
     $con = $GLOBALS['con'];
     $resource_id = self::getResourceIdByResourceName('articles');
     $sql = "SELECT content_title, content_text, date_format(date_created, '%m/%d/%y') as date_created FROM content WHERE resource_id = $resource_id ORDER BY date_created";
+   
     $result = mysqli_query($con, $sql);
         while ($row = mysqli_fetch_assoc($result)) {
         $date_created = $row["date_created"];
@@ -113,8 +116,9 @@ class Content {
         <h1>" . $row['content_title'] . "</h1>
         <hr> <span style=\"font-size:15px; float:left\">$date_created</span><br><br>
         <p>" .$row['content_text']."</p><br></div>";
+       
         } 
-        }
+    }
 
     public static function getContents()
     {
