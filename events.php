@@ -12,7 +12,7 @@
 	<meta name="description" content="">
 	<meta name="author" content="">
 
-	<title>{Category} Page</title>
+	<title>Events</title>
 
 	<!-- Bootstrap core CSS -->
 	<link rel="stylesheet" href="includes/bootstrap-4.5.3-dist/css/bootstrap.min.css">
@@ -64,7 +64,7 @@
 	<!-- Article Masterhead -->
 	<div class="jumbotron jumbotron-fluid">
 	  <div class="container">
-	    <h1 class="display-4">{Category} Page</h1>
+	    <h1 class="display-4">Events</h1>
 	    <p class="lead">{Description of this category: e.g. Events}.</p>
 	  </div>
 	</div>
@@ -82,23 +82,17 @@
 		    </div>
 
 		    <!--Sidebar (Links, Menus and other info) -->
-		    <div class="sidebar col-md-4">
-		    	<div class="card">
+		    
+			<div class="card" style="width: 80rem;">
 		    	  <div class="card-body">
-		    	    <h3>Next Events</h3>
-		    	    <hr>
-		    		<h5 class="card-title">Lorem Ipsum</h5>
-		    	    <span class="badge badge-info">Jan 30th, 2020</span>
-		    	    <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-		    	    <a href="#" class="btn btn-outline-info btn-block">See Details</a>
-		    	    <hr>
-		    		<h5 class="card-title">Lorem Ipsum</h5>
-		    	    <span class="badge badge-info">Jan 31th, 2020</span>
-		    	    <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-		    	    <a href="#" class="btn btn-outline-info btn-block">See Details</a>
+		    	   
+				<?php
+				Content::getAllEvents();
+				?>
+		    	    
 
 		    	  </div>
-		    	</div>
+		    	
 		    </div>
 
 		  </div>
