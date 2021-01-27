@@ -1,5 +1,18 @@
+<?php
+session_start();
+include_once('functions/staff.php');
+include_once("functions/Content.php");
 
-<?php include_once("functions/Content.php");?>
+//redirection
+	if (!isset($_SESSION["staff_id"])) //not currently logged in
+	{
+		header("Location:login.php");
+	}
+	else if(staff::GetStaffAdminNumber($_SESSION["staff_id"]) != 1) //checks if user is admin
+	{
+		header("Location:index.php");
+	}
+?>
 
 <!DOCTYPE html>
 <html lang="en">

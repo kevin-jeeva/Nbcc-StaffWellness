@@ -139,4 +139,13 @@ class staff {
     static function getStaffByUserID($userEmail) {
         
     }
+
+    public static function GetStaffAdminNumber($staffId)
+    {
+        $con = $GLOBALS["con"];
+        $sql = "SELECT admin FROM user WHERE staff_id = $staffId";
+        $result = mysqli_query($con, $sql);
+        $row = mysqli_fetch_array($result, MYSQLI_NUM);
+        return $row[0];
+    }
 }
