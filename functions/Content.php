@@ -62,11 +62,10 @@ class Content {
     $result = mysqli_query($con, $sql);
         while ($row = mysqli_fetch_assoc($result)) {
             $eventDate = $row["event_date"];
-             echo "  <h3>Next Events</h3>
-             <hr>
-             <h5 class=\"card-title\">" . $row['content_title'] . "</h5>
+             echo "
+             <h4 class=\"card-title\">" . $row['content_title'] . "</h4>
              <span class=\"badge badge-info\">$eventDate</span>
-             <p class=\"card-text\">" . $row['content_text'] ."</p><br>";
+             <p class=\"card-text\">" . $row['content_text'] ."</p><hr>";
         }
    } 
 
