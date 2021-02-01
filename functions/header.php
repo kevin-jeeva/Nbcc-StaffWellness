@@ -28,7 +28,6 @@ echo "<!-- Navigation -->
 		<div class=\"collapse navbar-collapse\" id=\"navbarSupportedContent\">
 			<ul class=\"navbar-nav mr-auto\">
 			  	<li class=\"nav-item\"><a class=\"nav-link\" href=\"index.php\">Home</a></li>
-			  	<li class=\"nav-item\"><a class=\"nav-link\" href=\"about.php\">About Us</a></li>
 			  	<li class=\"nav-item\"><a class=\"nav-link\" href=\"articles.php\">Articles</a></li>
 			  	<li class=\"nav-item\"><a class=\"nav-link\" href=\"events.php\">Events</a></li>
 			  	<li class=\"nav-item dropdown\">
@@ -40,6 +39,7 @@ echo "<!-- Navigation -->
 						<a class=\"dropdown-item\" href=\"#\">Something else here</a>
 				    </div>
 			  	</li> 		
+			  	<li class=\"nav-item\"><a class=\"nav-link\" href=\"support.php\">Support</a></li>
 			</ul>
 		  	<div class=\"navbar-right\">
 		  		<ul class=\"navbar-nav mr-auto\">
