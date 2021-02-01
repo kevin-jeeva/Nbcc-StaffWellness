@@ -94,8 +94,7 @@ class Content {
     $i ='one';
         while ($row = mysqli_fetch_assoc($result)) {
             $date_created = $row["date_created"];
-            echo "
-            <h2>" . $row['content_title'] ."<span style=\"font-size:15px; float:right\">$date_created</span></h2>
+            echo "<h3>" . $row['content_title'] ."<span style=\"font-size:1rem; float:right\">$date_created</span></h3>
             <div id =\"readMore\">
                 <div class=\"collapse\" id=\"$i\" id=\"collapseSummary\">". $row['content_text'] . "</div>
                 <a class=\"collapsed\" data-toggle=\"collapse\"  data-target=\"#$i\" href=\"#collapseSummary\" aria-expanded=\"false\" aria-controls=\"collapseSummary\"></a>

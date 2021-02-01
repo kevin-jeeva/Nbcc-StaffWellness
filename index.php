@@ -125,29 +125,29 @@
 	<!--Main Content Sector (2 columns) -->
 	<section class="main-content">	
 		<div class="container">
-		<h2>Recent Contents</h2>
-		  <div class="row">
+		  	<div class="row">
 
-		  	<!--Content Sector (Main) -->
-		    <div class="the-content col-md-8">
-			<!--Calling the Content class to retrieve two newest articles -->
-		    <?php Content::getTopArticles() ?>
-		    </div>
+			  	<!--Content Sector (Main) -->
+			    <div class="the-content col-md-8">
+			    	<h2>Recent Contents</h2>
+			    	<hr>
+					<!--Calling the Content class to retrieve two newest articles -->
+			    	<?php Content::getTopArticles() ?>
+			    </div>
 
-		    <!--Sidebar (Links, Menus and other info) -->
-		    <div class="sidebar col-md-4">
-		    	<div class="card">
-		    	  <div class="card-body">
-		    	    <h3>Next Events</h3>
-					<?php
-				   Content::getNextEvents();
-				   ?>
+			    <!--Sidebar (Links, Menus and other info) -->
+			    <div class="sidebar col-md-4">
+			    	<div class="card">
+			    	  <div class="card-body">
+			    	    
+			    	    <h3>Next Events</h3>
+						<?php Content::getNextEvents();?>
 
-		    	  </div>
-		    	</div>
-		    </div>
+			    	  </div>
+			    	</div>
+			    </div>
 
-		  </div>
+		  	</div>
 		</div>
 	</section>
 
