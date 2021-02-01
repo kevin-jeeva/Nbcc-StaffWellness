@@ -66,6 +66,10 @@ header.masthead h1 {
 	width: 80rem;
 }
 
+p.content_text {
+    margin-top: 1rem;
+}
+
 
 #readMore div.collapse:not(.show) {
     height: 42px !important;

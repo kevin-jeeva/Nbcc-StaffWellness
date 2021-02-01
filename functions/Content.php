@@ -107,17 +107,48 @@ class Content {
    static function getAllArticles(){
     $con = $GLOBALS['con'];
     $resource_id = self::getResourceIdByResourceName('articles');
-    $sql = "SELECT content_title, content_text, date_format(date_created, '%m/%d/%y') as date_created FROM content WHERE resource_id = $resource_id ORDER BY date_created";
+    $sql = "SELECT content_id, content_title, content_text, date_format(date_created, '%m/%d/%y') as date_created FROM content WHERE resource_id = $resource_id ORDER BY date_created";
+   
+    $result = mysqli_query($con, $sql);
+        while ($row = mysqli_fetch_assoc($result)) {
+        $date_created = $row["date_created"];
+        echo "<div class=\"the-content\">
+        <a href=\"view.php?page=" . $row['content_id'] . "\"
+        <p class=\"h1 text-dark\">" . $row['content_title'] . "</p></a>
+        <hr><span class=\"date_created text-info font-weight-bold\">Created on: $date_created</span>
+        <p class=\"content_text\">" .$row['content_text']."</p>
+        <a href=\"view.php?page=" . $row['content_id'] . "\" class=\"btn btn-outline-primary\">Read More</a>
+        </div>";
+       
+        } 
+    }
+
+    static function getContentById($content_id){
+    $con = $GLOBALS['con'];
+    $sql = "SELECT * FROM content WHERE content_id = '$content_id' ORDER BY date_created";
    
     $result = mysqli_query($con, $sql);
         while ($row = mysqli_fetch_assoc($result)) {
         $date_created = $row["date_created"];
         echo "<div class=\"the-content\">
         <h1>" . $row['content_title'] . "</h1>
-        <hr> <span style=\"font-size:15px; float:left\">$date_created</span><br><br>
-        <p>" .$row['content_text']."</p><br></div>";
-       
+        <hr><span class=\"date_created text-info font-weight-bold\">Created on: $date_created</span>
+        <p class=\"content_text\">" .$row['content_text']."</p><br></div>";
+        
         } 
+    }
+
+    static function getContentInfo($content_id){
+      $con = $GLOBALS['con'];
+      $sql = "SELECT * FROM content WHERE content_id = '$content_id' ORDER BY date_created";
+      $db_contentinfo = array();
+     
+      $result = mysqli_query($con, $sql);
+      while ($row = mysqli_fetch_assoc($result)) {
+        $db_contentinfo = $row;
+        $db_contentinfo["resource_name"] = self::GetResourceNameByResourceId($db_contentinfo["resource_id"]);
+      }
+      return $db_contentinfo;
     }
 
     public static function getContents()
@@ -211,7 +242,7 @@ class Content {
                 <td>$resource_name</td>
                 <td>$date_created</td>
                 <td align=\"right\">
-                    <a href=\"#\" type=\"button\" class=\"btn btn-sm btn-secondary\">Preview</a>
+                    <a href=\"view.php?page=" . $content_id . "\" type=\"button\" class=\"btn btn-sm btn-secondary\">Preview</a>
                     <a href=\"#\" type=\"button\" onclick=\"RedirectEditContent('$resource_name','$title', '$content_description' ,`$content_text`,$content_id);\" class=\"btn btn-sm btn-info\">Edit</a>
                     <a href=\"functions/proc_deleteContent.php?contentId=$content_id\" onclick = \"return CheckDelete(event)\"type=\"button\" class=\"btn btn-sm btn-danger\">Delete</a>
                 </td>            

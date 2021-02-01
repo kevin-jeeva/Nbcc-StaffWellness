@@ -4,6 +4,7 @@
 	include('functions/staff.php');
 	include('functions/Content.php');
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -12,7 +13,13 @@
 	<meta name="description" content="">
 	<meta name="author" content="">
 
-	<title>Articles</title>
+	<title>
+	  	<?php
+	  		$db_contentinfo = array();
+			$db_contentinfo = Content::getContentInfo($_GET["page"]);
+			echo $db_contentinfo["content_title"];
+		?>
+	</title>
 
 	<!-- Bootstrap core CSS -->
 	<link rel="stylesheet" href="includes/bootstrap-4.5.3-dist/css/bootstrap.min.css">
@@ -25,36 +32,49 @@
 
 <body>
 	<!-- Navigation -->
-	<?php include('functions/header.php'); ?>
-
-	<!-- Article Masterhead -->
+	<?php include('functions/Header.php'); ?>
+		
+    	<!-- Article Masterhead -->
 	<div class="jumbotron jumbotron-fluid">
-	  <div class="container">
-	    <h1 class="display-4">Articles</h1>
-	    <!-- <p class="lead">Description of this Category.</p> -->
-	  </div>
-	</div>
-
-	<!--Main Content Sector (2 columns) -->
+        <div class="container">
+          
+          <!-- Article H1 Title -->
+          <h1 class="display-4">
+          	<?php
+          		$db_contentinfo = array();
+				$db_contentinfo = Content::getContentInfo($_GET["page"]);
+				echo $db_contentinfo["resource_name"];
+			?>
+          </h1> 
+        
+        </div>
+      </div>
+  
+   	<!--Main Content Sector (2 columns) -->
 	<section class="main-content">
 		<div class="container">
 		  <div class="row">
 
-              <!--Content Sector (Main) -->
-              <!--Calling Content class to retrieve all articles -->
-		     
+		  	<!--Contact Sector (Main) -->
 		    <div class="the-content col-md-8">
-		    	<?php Content::getAllArticles() ?>
+                <?php Content::getContentById($_GET["page"]) ?>
 		    </div>
 
 		    <!--Sidebar (Links, Menus and other info) -->
-		    <div class="sidebar col-md-4">
+		    <div class="sidebar col-md-12 col-lg-4">
 		    	<div class="card">
 		    	  <div class="card-body">
 		    	    <h3>Next Events</h3>
-		    	    <?php
-				   Content::getNextEvents();
-				   ?>
+		    	    <hr>
+		    		<h5 class="card-title">Lorem Ipsum</h5>
+		    	    <span class="badge badge-info">Jan 30th, 2020</span>
+		    	    <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+		    	    <a href="#" class="btn btn-outline-info btn-block">See Details</a>
+		    	    <hr>
+		    		<h5 class="card-title">Lorem Ipsum</h5>
+		    	    <span class="badge badge-info">Jan 31th, 2020</span>
+		    	    <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+		    	    <a href="#" class="btn btn-outline-info btn-block">See Details</a>
 
 		    	  </div>
 		    	</div>
