@@ -105,22 +105,74 @@ class Content {
 
     //get all articles to display on articles.php
    static function getAllArticles($resourceName){
+    if (isset($_GET['pageno'])) {
+        $pageno = $_GET['pageno'];
+    } else {
+        $pageno = 1;
+    }
+
     $con = $GLOBALS['con'];
     $resource_id = self::getResourceIdByResourceName($resourceName);
     $sql = "SELECT content_id, content_title, content_text, content_description, date_format(date_created, '%m/%d/%y') as date_created FROM content WHERE resource_id = $resource_id ORDER BY date_created";
+
+    $no_of_records_per_page = 10;
+    $offset = ($pageno-1) * $no_of_records_per_page;
+
+    $total_pages_sql = "SELECT COUNT(*) FROM content WHERE resource_id = $resource_id";
+    $result = mysqli_query($con,$total_pages_sql);
+    $total_rows = mysqli_fetch_array($result)[0];
+    $total_pages = ceil($total_rows / $no_of_records_per_page);
    
     $result = mysqli_query($con, $sql);
         while ($row = mysqli_fetch_assoc($result)) {
-        $date_created = $row["date_created"];
-        echo "<div class=\"the-content\">
-        <a href=\"view.php?page=" . $row['content_id'] . "\"
-        <p class=\"h1 text-dark\">" . $row['content_title'] . "</p></a>
-        <hr><span class=\"date_created text-info font-weight-bold\">Created on: $date_created</span>
-        <p class=\"content_text\">" .$row['content_description']."</p>
-        <a href=\"view.php?page=" . $row['content_id'] . "\" class=\"btn btn-outline-primary\">Read More</a>
-        </div>";
-       
-        } 
+          $date_created = $row["date_created"];
+          echo "<div class=\"the-content\">
+          <a href=\"view.php?page=" . $row['content_id'] . "\"
+          <p class=\"h1 text-dark\">" . $row['content_title'] . "</p></a>
+          <hr><span class=\"date_created text-info font-weight-bold\">Created on: $date_created</span>
+          <p class=\"content_text\">" .$row['content_description']."</p>
+          <a href=\"view.php?page=" . $row['content_id'] . "\" class=\"btn btn-outline-primary\">Read More</a>
+          </div>";
+        }
+
+        //Print the first page link
+        echo "<ul class=\"pagination\"><li><a class=\"page-link\" href=\"?pageno=1\">First Page</a></li>";
+        
+        // These actions will happen if the user access the previous page
+        if($pageno <= 1){
+          echo "<li class=\"page-item disabled\"><a class=\"page-link\" href=\"";
+        } else {
+          echo "<li class=\"page-item\">'";
+        }
+        if($pageno <= 1){
+          echo "#\">Prev</a></li>";
+        } else {
+          echo "?pageno=".($pageno - 1)."\">Prev</a></li>";
+        }
+
+        // These actions will happen if the user access the next page
+        if($pageno >= $total_pages){
+          echo "<li class=\"page-item disabled\"><a class=\"page-link\" href=\"";
+        } else {
+          echo "<li class=\"page-item\">'";
+        }
+        if($pageno >= $total_pages){
+          echo "#\">Next</a></li>";
+        } else {
+          echo "?pageno=".($pageno + 1)."\">Next</a></li>";
+        }
+
+        // These actions will happen if the user access the last page
+        if($total_pages <= 1){
+          echo "<li class=\"page-item disabled\"><a class=\"page-link\" href=\"";
+        } else {
+          echo "<li class=\"page-item\">'";
+        }
+        if($pageno >= $total_pages){
+          echo "#\">Last Page</a></li>";
+        } else {
+          echo "?pageno=".$total_pages."\">Last Page</a></li>";
+        }
     }
 
     static function getContentById($content_id){
