@@ -49,20 +49,12 @@
 		    </div>
 
 		    <!--Sidebar (Links, Menus and other info) -->
-		    <div class="sidebar col-md-12 col-lg-4">
+		    <div class="sidebar col-md-4">
 		    	<div class="card">
 		    	  <div class="card-body">
+		    	    
 		    	    <h3>Next Events</h3>
-		    	    <hr>
-		    		<h5 class="card-title">Lorem Ipsum</h5>
-		    	    <span class="badge badge-info">Jan 30th, 2020</span>
-		    	    <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-		    	    <a href="#" class="btn btn-outline-info btn-block">See Details</a>
-		    	    <hr>
-		    		<h5 class="card-title">Lorem Ipsum</h5>
-		    	    <span class="badge badge-info">Jan 31th, 2020</span>
-		    	    <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-		    	    <a href="#" class="btn btn-outline-info btn-block">See Details</a>
+					<?php Content::getNextEvents();?>
 
 		    	  </div>
 		    	</div>

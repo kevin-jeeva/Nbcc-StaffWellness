@@ -63,9 +63,9 @@ class Content {
         while ($row = mysqli_fetch_assoc($result)) {
             $eventDate = $row["event_date"];
              echo "
-             <h4 class=\"card-title\">" . $row['content_title'] . "</h4>
+             <h1 class=\"card-title\">" . $row['content_title'] . "</h1>
              <span class=\"badge badge-info\">$eventDate</span>
-             <p class=\"card-text\">" . $row['content_text'] ."</p><hr>";
+             <p class=\"content_text\">" . $row['content_text'] ."</p><hr>";
         }
    } 
 
@@ -81,7 +81,7 @@ class Content {
                 <h5 class=\"card-title\">". $row['content_title']."</h5>
                 <span class=\"badge badge-info\">$eventDate</span>
                 <p class=\"card-text\">". $row['content_text'] ."</p>
-                <a href=\"events.php\" class=\"btn btn-outline-primary btn-block\">See Details</a>";
+                <a href=\"events.php\" class=\"btn btn-outline-info btn-block\">See Details</a>";
         }
     } 
 
@@ -102,6 +102,7 @@ class Content {
             $i = 'two';
         }    
     }
+
     //get all articles to display on articles.php
    static function getAllArticles(){
     $con = $GLOBALS['con'];

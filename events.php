@@ -31,7 +31,7 @@
 	<div class="jumbotron jumbotron-fluid">
 	  <div class="container">
 	    <h1 class="display-4">Events</h1>
-	    <p class="lead">{Description of this category: e.g. Events}.</p>
+		<!--<p class="lead">{Description of this category: e.g. Events}.</p> -->
 	  </div>
 	</div>
 
@@ -44,17 +44,10 @@
               <!--Calling Content class to retrieve all articles -->
 		    
 			<div class="the-content col-md-12">	
-				<h3>Next Events</h3>
-				<hr>
 				<?php
 				Content::getAllEvents();
 				?>
 		    </div> <!-- End of the-content -->
-
-		    <!--Sidebar (Links, Menus and other info) -->
-		    <div class="sidebar col-md-4">
-		    	<!-- Please, keep this div intact. This container is empty for now but it could be useful for the next sprints -->
-		    </div>
 
 		  </div> <!-- End of row -->
 		</div> <!-- End of container-->
