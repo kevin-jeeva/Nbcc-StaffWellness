@@ -95,6 +95,7 @@ class Content {
         while ($row = mysqli_fetch_assoc($result)) {
             $date_created = $row["date_created"];
             echo "
+            <hr>
             <h2>" . $row['content_title'] ."<span style=\"font-size:15px; float:right\">$date_created</span></h2>
             <div id =\"readMore\">
                 <div class=\"collapse\" id=\"$i\" id=\"collapseSummary\">". $row['content_text'] . "</div>
@@ -118,8 +119,7 @@ class Content {
         <p>" .$row['content_text']."</p><br></div>";
        
         } 
-    }
-
+   }
     public static function getContents()
     {
        $result = self::getAllResourcesId();
