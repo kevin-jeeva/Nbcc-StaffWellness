@@ -63,9 +63,9 @@ class Content {
         while ($row = mysqli_fetch_assoc($result)) {
             $eventDate = $row["event_date"];
              echo "
-             <h4 class=\"card-title\">" . $row['content_title'] . "</h4>
+             <h1 class=\"card-title\">" . $row['content_title'] . "</h1>
              <span class=\"badge badge-info\">$eventDate</span>
-             <p class=\"card-text\">" . $row['content_text'] ."</p><hr>";
+             <p class=\"content_text\">" . $row['content_text'] ."</p><hr>";
         }
    } 
 
@@ -81,7 +81,7 @@ class Content {
                 <h5 class=\"card-title\">". $row['content_title']."</h5>
                 <span class=\"badge badge-info\">$eventDate</span>
                 <p class=\"card-text\">". $row['content_text'] ."</p>
-                <a href=\"events.php\" class=\"btn btn-outline-primary btn-block\">See Details</a>";
+                <a href=\"events.php\" class=\"btn btn-outline-info btn-block\">See Details</a>";
         }
     } 
 
@@ -94,9 +94,7 @@ class Content {
     $i ='one';
         while ($row = mysqli_fetch_assoc($result)) {
             $date_created = $row["date_created"];
-            echo "
-            <hr>
-            <h2>" . $row['content_title'] ."<span style=\"font-size:15px; float:right\">$date_created</span></h2>
+            echo "<h3>" . $row['content_title'] ."<span style=\"font-size:1rem; float:right\">$date_created</span></h3>
             <div id =\"readMore\">
                 <div class=\"collapse\" id=\"$i\" id=\"collapseSummary\">". $row['content_text'] . "</div>
                 <a class=\"collapsed\" data-toggle=\"collapse\"  data-target=\"#$i\" href=\"#collapseSummary\" aria-expanded=\"false\" aria-controls=\"collapseSummary\"></a>
@@ -104,22 +102,107 @@ class Content {
             $i = 'two';
         }    
     }
+
     //get all articles to display on articles.php
-   static function getAllArticles(){
+   static function getAllArticles($resourceName){
+    if (isset($_GET['pageno'])) {
+        $pageno = $_GET['pageno'];
+    } else {
+        $pageno = 1;
+    }
+
     $con = $GLOBALS['con'];
-    $resource_id = self::getResourceIdByResourceName('articles');
-    $sql = "SELECT content_title, content_text, date_format(date_created, '%m/%d/%y') as date_created FROM content WHERE resource_id = $resource_id ORDER BY date_created";
+    $resource_id = self::getResourceIdByResourceName($resourceName);
+    $sql = "SELECT content_id, content_title, content_text, content_description, date_format(date_created, '%m/%d/%y') as date_created FROM content WHERE resource_id = $resource_id ORDER BY date_created";
+
+    $no_of_records_per_page = 10;
+    $offset = ($pageno-1) * $no_of_records_per_page;
+
+    $total_pages_sql = "SELECT COUNT(*) FROM content WHERE resource_id = $resource_id";
+    $result = mysqli_query($con,$total_pages_sql);
+    $total_rows = mysqli_fetch_array($result)[0];
+    $total_pages = ceil($total_rows / $no_of_records_per_page);
+   
+    $result = mysqli_query($con, $sql);
+        while ($row = mysqli_fetch_assoc($result)) {
+          $date_created = $row["date_created"];
+          echo "<div class=\"the-content\">
+          <a href=\"view.php?page=" . $row['content_id'] . "\"
+          <p class=\"h1 text-dark\">" . $row['content_title'] . "</p></a>
+          <hr><span class=\"date_created text-info font-weight-bold\">Created on: $date_created</span>
+          <p class=\"content_text\">" .$row['content_description']."</p>
+          <a href=\"view.php?page=" . $row['content_id'] . "\" class=\"btn btn-outline-primary\">Read More</a>
+          </div>";
+        }
+
+        //Print the first page link
+        echo "<ul class=\"pagination\"><li><a class=\"page-link\" href=\"?pageno=1\">First Page</a></li>";
+        
+        // These actions will happen if the user access the previous page
+        if($pageno <= 1){
+          echo "<li class=\"page-item disabled\"><a class=\"page-link\" href=\"";
+        } else {
+          echo "<li class=\"page-item\">'";
+        }
+        if($pageno <= 1){
+          echo "#\">Prev</a></li>";
+        } else {
+          echo "?pageno=".($pageno - 1)."\">Prev</a></li>";
+        }
+
+        // These actions will happen if the user access the next page
+        if($pageno >= $total_pages){
+          echo "<li class=\"page-item disabled\"><a class=\"page-link\" href=\"";
+        } else {
+          echo "<li class=\"page-item\">'";
+        }
+        if($pageno >= $total_pages){
+          echo "#\">Next</a></li>";
+        } else {
+          echo "?pageno=".($pageno + 1)."\">Next</a></li>";
+        }
+
+        // These actions will happen if the user access the last page
+        if($total_pages <= 1){
+          echo "<li class=\"page-item disabled\"><a class=\"page-link\" href=\"";
+        } else {
+          echo "<li class=\"page-item\">'";
+        }
+        if($pageno >= $total_pages){
+          echo "#\">Last Page</a></li>";
+        } else {
+          echo "?pageno=".$total_pages."\">Last Page</a></li>";
+        }
+    }
+
+    static function getContentById($content_id){
+    $con = $GLOBALS['con'];
+    $sql = "SELECT * FROM content WHERE content_id = '$content_id' ORDER BY date_created";
    
     $result = mysqli_query($con, $sql);
         while ($row = mysqli_fetch_assoc($result)) {
         $date_created = $row["date_created"];
         echo "<div class=\"the-content\">
         <h1>" . $row['content_title'] . "</h1>
-        <hr> <span style=\"font-size:15px; float:left\">$date_created</span><br><br>
-        <p>" .$row['content_text']."</p><br></div>";
-       
+        <hr>
+        <p class=\"content_text\">" .$row['content_text']."</p><br></div>";
+        
         } 
-   }
+    }
+
+    static function getContentInfo($content_id){
+      $con = $GLOBALS['con'];
+      $sql = "SELECT * FROM content WHERE content_id = '$content_id' ORDER BY date_created";
+      $db_contentinfo = array();
+     
+      $result = mysqli_query($con, $sql);
+      while ($row = mysqli_fetch_assoc($result)) {
+        $db_contentinfo = $row;
+        $db_contentinfo["resource_name"] = self::GetResourceNameByResourceId($db_contentinfo["resource_id"]);
+      }
+      return $db_contentinfo;
+    }
+
     public static function getContents()
     {
        $result = self::getAllResourcesId();
@@ -211,7 +294,7 @@ class Content {
                 <td>$resource_name</td>
                 <td>$date_created</td>
                 <td align=\"right\">
-                    <a href=\"#\" type=\"button\" class=\"btn btn-sm btn-secondary\">Preview</a>
+                    <a href=\"view.php?page=" . $content_id . "\" type=\"button\" class=\"btn btn-sm btn-secondary\">Preview</a>
                     <a href=\"#\" type=\"button\" onclick=\"RedirectEditContent('$resource_name','$title', '$content_description' ,`$content_text`,$content_id);\" class=\"btn btn-sm btn-info\">Edit</a>
                     <a href=\"functions/proc_deleteContent.php?contentId=$content_id\" onclick = \"return CheckDelete(event)\"type=\"button\" class=\"btn btn-sm btn-danger\">Delete</a>
                 </td>            

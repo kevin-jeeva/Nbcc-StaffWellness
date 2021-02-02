@@ -12,7 +12,7 @@
 	<meta name="description" content="">
 	<meta name="author" content="">
 
-	<title>{Category} Page</title>
+	<title>Articles</title>
 
 	<!-- Bootstrap core CSS -->
 	<link rel="stylesheet" href="includes/bootstrap-4.5.3-dist/css/bootstrap.min.css">
@@ -31,7 +31,7 @@
 	<div class="jumbotron jumbotron-fluid">
 	  <div class="container">
 	    <h1 class="display-4">Articles</h1>
-	    <p class="lead">Description of this Category.</p>
+	    <!-- <p class="lead">Description of this Category.</p> -->
 	  </div>
 	</div>
 
@@ -44,7 +44,7 @@
               <!--Calling Content class to retrieve all articles -->
 		     
 		    <div class="the-content col-md-8">
-		    	<?php Content::getAllArticles() ?>
+		    	<?php Content::getAllArticles('articles') ?>
 		    </div>
 
 		    <!--Sidebar (Links, Menus and other info) -->

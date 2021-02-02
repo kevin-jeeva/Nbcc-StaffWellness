@@ -12,7 +12,7 @@
 	<meta name="description" content="">
 	<meta name="author" content="">
 
-	<title>Events</title>
+	<title>Support</title>
 
 	<!-- Bootstrap core CSS -->
 	<link rel="stylesheet" href="includes/bootstrap-4.5.3-dist/css/bootstrap.min.css">
@@ -30,8 +30,8 @@
 	<!-- Article Masterhead -->
 	<div class="jumbotron jumbotron-fluid">
 	  <div class="container">
-	    <h1 class="display-4">Events</h1>
-		<!--<p class="lead">{Description of this category: e.g. Events}.</p> -->
+	    <h1 class="display-4">Support</h1>
+	    <!-- <p class="lead">Description of this Category.</p> -->
 	  </div>
 	</div>
 
@@ -42,15 +42,26 @@
 
               <!--Content Sector (Main) -->
               <!--Calling Content class to retrieve all articles -->
-		    
-			<div class="the-content col-md-12">	
-				<?php
-				Content::getAllEvents();
-				?>
-		    </div> <!-- End of the-content -->
+		     
+		    <div class="the-content col-md-8">
+		    	<?php Content::getAllArticles('support') ?>
+		    </div>
 
-		  </div> <!-- End of row -->
-		</div> <!-- End of container-->
+		    <!--Sidebar (Links, Menus and other info) -->
+		    <div class="sidebar col-md-4">
+		    	<div class="card">
+		    	  <div class="card-body">
+		    	    <h3>Next Events</h3>
+		    	    <?php
+				   Content::getNextEvents();
+				   ?>
+
+		    	  </div>
+		    	</div>
+		    </div>
+
+		  </div>
+		</div>
 	</section>
 
 	<!--Secondary Content Sector -->

@@ -17,13 +17,8 @@ if(staff::GetStaffAdminNumber($_SESSION["staff_id"]) == 1)
 		";
 }
 
-
-
-
-
-
 echo "<!-- Navigation -->
-	<nav class=\"navbar navbar-expand-lg navbar-dark bg-dark sticky-top\">
+	<nav class=\"navbar navbar-expand-lg navbar-light bg-light sticky-top\">
 	<div class=\"container\">
 
 		<a class=\"navbar-brand\" href=\"index.php\">APP Logo</a>
@@ -33,7 +28,6 @@ echo "<!-- Navigation -->
 		<div class=\"collapse navbar-collapse\" id=\"navbarSupportedContent\">
 			<ul class=\"navbar-nav mr-auto\">
 			  	<li class=\"nav-item\"><a class=\"nav-link\" href=\"index.php\">Home</a></li>
-			  	<li class=\"nav-item\"><a class=\"nav-link\" href=\"about.php\">About Us</a></li>
 			  	<li class=\"nav-item\"><a class=\"nav-link\" href=\"articles.php\">Articles</a></li>
 			  	<li class=\"nav-item\"><a class=\"nav-link\" href=\"events.php\">Events</a></li>
 			  	<li class=\"nav-item dropdown\">
@@ -45,15 +39,21 @@ echo "<!-- Navigation -->
 						<a class=\"dropdown-item\" href=\"#\">Something else here</a>
 				    </div>
 			  	</li> 		
+			  	<li class=\"nav-item\"><a class=\"nav-link\" href=\"support.php\">Support</a></li>
 			</ul>
 		  	<div class=\"navbar-right\">
 		  		<ul class=\"navbar-nav mr-auto\">
 			  		<li class=\"nav-item\"><a class=\"nav-link\" href=\"contact.php\">Contact Us</a></li>
-			  		<li class=\"nav-item\"><a class=\"nav-link\" href=\"#\">Support</a></li>
+			  		<li class=\"nav-item dropdown\">
+			  				<a class=\"nav-link dropdown-toggle\" href=\"#\" id=\"navbarDropdown\" role=\"button\" data-toggle=\"dropdown\" aria-haspopup=\"true\" aria-expanded=\"false\">Your Profile</a>
+			  				<div class=\"dropdown-menu\" aria-labelledby=\"navbarDropdown\">
+			  				<a class=\"dropdown-item\" href=\"#\">Profile Settings</a>
+			  				<a class=\"dropdown-item\" href=\"#\">Change Your Password</a>
+			  		</li>
 					
 					$adminDropdown
 
-					<li class=\"nav-item\"><a class=\"btn btn-outline-warning\" href=\"functions/logout.php\">Log out</a></li>
+					<li class=\"nav-item\"><a class=\"btn btn-outline-primary\" href=\"functions/logout.php\">Log out</a></li>
 				</ul>
 			</div>
 		</div><!-- end of collapse navbar-collapse -->

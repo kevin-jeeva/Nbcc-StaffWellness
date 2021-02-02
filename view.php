@@ -13,7 +13,13 @@
 	<meta name="description" content="">
 	<meta name="author" content="">
 
-	<title>About Us</title>
+	<title>
+	  	<?php
+	  		$db_contentinfo = array();
+			$db_contentinfo = Content::getContentInfo($_GET["page"]);
+			echo $db_contentinfo["content_title"];
+		?>
+	</title>
 
 	<!-- Bootstrap core CSS -->
 	<link rel="stylesheet" href="includes/bootstrap-4.5.3-dist/css/bootstrap.min.css">
@@ -31,7 +37,16 @@
     	<!-- Article Masterhead -->
 	<div class="jumbotron jumbotron-fluid">
         <div class="container">
-          <h1 class="display-4">About Us</h1> 
+          
+          <!-- Article H1 Title -->
+          <h1 class="display-4">
+          	<?php
+          		$db_contentinfo = array();
+				$db_contentinfo = Content::getContentInfo($_GET["page"]);
+				echo $db_contentinfo["resource_name"];
+			?>
+          </h1> 
+        
         </div>
       </div>
   
@@ -42,10 +57,7 @@
 
 		  	<!--Contact Sector (Main) -->
 		    <div class="the-content col-md-8">
-                <br>
-		    	<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur eu ante malesuada, posuere nibh ac, consequat purus. Phasellus bibendum laoreet urna in porta. Maecenas bibendum viverra lobortis. Phasellus justo enim, vestibulum at lobortis eu, scelerisque ac ligula. Aliquam tincidun hendrerit nunc, vulputate consequat ex congue eu. Ut et porttitor tellus. Nunc eu libero eget magna posuere consequat. Nunc ut purus turpis.</p><br>
-
-                <p>Pellentesque nec tincidunt elit, et dictum nibh. Pellentesque ut orci laoreet, venenatis est in, porttitor nibh. Aliquam lorem turpis, lacinia sed dolor et, vulputate sodales libero. Sed varius justo eget tincidunt pharetra. Nam eleifend hendrerit elit, imperdiet interdum ipsum malesuada sed. Proin nunc nunc, egestas a sapien in, convallis scelerisque mi. Proin magna urna, porta id mauris ultricies, congue luctus tortor. Suspendisse in nibh ultrices, vulputate erat vel, dictum massa. Interdum et malesuada fames ac ante ipsum primis in faucibus. Proin a dui ante. Fusce efficitur molestie sapien, vitae varius augue ornare eget. Curabitur sodales sem id vulputate faucibus.</p>
+                <?php Content::getContentById($_GET["page"]) ?>
 		    </div>
 
 		    <!--Sidebar (Links, Menus and other info) -->
