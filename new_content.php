@@ -101,7 +101,7 @@ include_once("functions/Content.php");
 						 
 							<div class="form-group col-xs-6 col-md-4">
 								<label for="content-title" id="content-title">Content Title</label>
-								<input type="text" class="form-control" placeholder="Enter content title" name = "contentTitle" id="contentTitle">
+								<input type="text" class="form-control" placeholder="Enter content title" name ="contentTitle" id="contentTitle" required>
 							</div>
 							
 							<div class="form-group col-lg-12">

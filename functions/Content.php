@@ -103,7 +103,7 @@ class Content {
         }    
     }
 
-    //get all articles to display on articles.php
+    //get all articles to display on each resource page (e.g. articles.php)
    static function getAllArticles($resourceName){
     if (isset($_GET['pageno'])) {
         $pageno = $_GET['pageno'];
@@ -111,6 +111,7 @@ class Content {
         $pageno = 1;
     }
 
+    //important variables for pagination
     $no_of_records_per_page = 10;
     $offset = ($pageno-1) * $no_of_records_per_page;
 
@@ -136,7 +137,7 @@ class Content {
         }
 
         //Print the first page link
-        echo "<ul class=\"pagination\"><li><a class=\"page-link\" href=\"?pageno=1\">First Page</a></li>";
+        echo "<ul class=\"pagination\"><li class=\"page-item\"><a class=\"page-link\" href=\"?pageno=1\">First Page</a></li>";
         
         // These actions will happen if the user access the previous page
         if($pageno <= 1){

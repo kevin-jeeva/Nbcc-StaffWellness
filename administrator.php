@@ -24,7 +24,7 @@
 	<meta name="description" content="">
 	<meta name="author" content="">
 
-	<title>Home Page</title>
+	<title>Administration Page</title>
 
 	<!-- Bootstrap core CSS -->
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
@@ -95,11 +95,11 @@
 			    	</div>
 
 			    	<div class="table-responsive">
-			    	  	<table class="table table-hover">
+			    	  	<table id="admTable" class="table table-hover">
 				    	      <!-- Table's Header -->
 				    	      <thead>
 				    	        <tr>
-				    	          <th>Resource ID</th>
+				    	          <th>#</th>
 				    	          <th>Title</th>
 				    	          <th>Created on</th>
 				    	          <th class="action-header-cell">Actions</th>
@@ -122,11 +122,11 @@
 			    	</div>
 
 			    	<div class="table-responsive">
-			    	  	<table class="table table-hover">
+			    	  	<table id="admTable" class="table table-hover">
 				    	      <!-- Table's Header -->
 				    	      <thead>
 				    	        <tr>
-				    	          <th>Content ID</th>
+				    	          <th>#</th>
 				    	          <th>Title</th>
 				    	          <th>Resource</th>
 				    	          <th>Created on</th>
