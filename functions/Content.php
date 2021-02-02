@@ -111,12 +111,12 @@ class Content {
         $pageno = 1;
     }
 
-    $con = $GLOBALS['con'];
-    $resource_id = self::getResourceIdByResourceName($resourceName);
-    $sql = "SELECT content_id, content_title, content_text, content_description, date_format(date_created, '%m/%d/%y') as date_created FROM content WHERE resource_id = $resource_id ORDER BY date_created";
-
     $no_of_records_per_page = 10;
     $offset = ($pageno-1) * $no_of_records_per_page;
+
+    $con = $GLOBALS['con'];
+    $resource_id = self::getResourceIdByResourceName($resourceName);
+    $sql = "SELECT content_id, content_title, content_text, content_description, date_format(date_created, '%m/%d/%y') as date_created FROM content WHERE resource_id = $resource_id ORDER BY date_created LIMIT $offset, $no_of_records_per_page";
 
     $total_pages_sql = "SELECT COUNT(*) FROM content WHERE resource_id = $resource_id";
     $result = mysqli_query($con,$total_pages_sql);
@@ -303,7 +303,7 @@ class Content {
         }
         else{
             echo "<tr>
-			 <td>1</td>
+       <td>1</td>
             <td>No content</td>
             <td>Resource Name</td>
             <td>2021/01/01</td>

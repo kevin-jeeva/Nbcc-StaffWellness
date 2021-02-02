@@ -34,7 +34,7 @@
 	<!-- Navigation -->
 	<?php include('functions/Header.php'); ?>
 		
-    	<!-- Article Masterhead -->
+    <!-- Article Masterhead -->
 	<div class="jumbotron jumbotron-fluid">
         <div class="container">
           
