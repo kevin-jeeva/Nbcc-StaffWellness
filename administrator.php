@@ -35,6 +35,8 @@
 	<!-- Custom CSS and JS -->
 	<link rel="stylesheet" type="text/css" href="includes/styles.css">	
 	<script src="functions/admin.js"></script>
+	<link href="includes/bootstrap-sortable.css" rel="stylesheet" type="text/css">
+	<script src="includes/js/bootstrap-sortable.js"></script>
 </head>
 
 <body>
@@ -95,14 +97,14 @@
 			    	</div>
 
 			    	<div class="table-responsive">
-			    	  	<table id="admTable" class="table table-hover">
+			    	  	<table id="admTable" class="table sortable table-hover">
 				    	      <!-- Table's Header -->
 				    	      <thead>
 				    	        <tr>
-				    	          <th>#</th>
-				    	          <th>Title</th>
-				    	          <th>Created on</th>
-				    	          <th class="action-header-cell">Actions</th>
+				    	          <th data-defaultsign="_19">#</th>
+				    	          <th data-defaultsign="AZ">Title</th>
+				    	          <th data-defaultsign="month">Created on</th>
+				    	          <th data-defaultsign="disabled" class="action-header-cell">Actions</th>
 				    	        </tr>
 				    	      </thead>
 
@@ -122,15 +124,15 @@
 			    	</div>
 
 			    	<div class="table-responsive">
-			    	  	<table id="admTable" class="table table-hover">
+			    	  	<table id="admTable" class="table sortable table-hover">
 				    	      <!-- Table's Header -->
 				    	      <thead>
 				    	        <tr>
-				    	          <th>#</th>
-				    	          <th>Title</th>
-				    	          <th>Resource</th>
-				    	          <th>Created on</th>
-				    	          <th class="action-header-cell">Actions</th>
+				    	          <th data-defaultsign="_19">#</th>
+				    	          <th data-defaultsign="AZ">Title</th>
+				    	          <th data-defaultsign="AZ">Resource</th>
+				    	          <th data-defaultsign="month">Created on</th>
+				    	          <th data-defaultsign="disabled" class="action-header-cell">Actions</th>
 				    	        </tr>
 				    	      </thead>
 
