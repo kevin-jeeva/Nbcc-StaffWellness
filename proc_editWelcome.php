@@ -36,7 +36,7 @@ if(isset($_POST["edit_welcomeTitle"]))
                 }
                 else
                 {
-                    $welcome_image_name = $_SESSION["staff_id"].time().".png";
+                    $welcome_image_name = $_SESSION["staff_id"].time().".jpg";
                     $_FILES['pic']['name'] =  $welcome_image_name;
                     move_uploaded_file($_FILES['pic']['tmp_name'], 'includes/imgs/welcome_images/'.$_FILES['pic']['name']);
                     echo $welcome_image_name;

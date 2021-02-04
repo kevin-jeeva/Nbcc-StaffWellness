@@ -1,5 +1,7 @@
 <?php
 include_once("connect.php");
+include_once("Content.php");
+
 class Welcome{
   private $welcome_id;
   private $welcome_title;
@@ -33,6 +35,14 @@ class Welcome{
   return $result;
 
  }//end of function
+
+ public static function GetRandomWelcome()
+ {
+   $con = $GLOBALS["con"];
+   $sql ="Select welcome_title,welcome_text,welcome_image from welcome order by Rand() limit 1";
+   $result = mysqli_query($con,$sql);
+   return $result;
+ }
 
  public static function GetListofCreatedWelcoms()
  {
@@ -139,6 +149,76 @@ class Welcome{
       }
    }
 
+ }
+
+ public static function DisplayWelcomeContent()
+ {
+    $result = self::GetRandomWelcome();
+    
+    if(mysqli_num_rows($result) > 0)
+    {
+      if($val = mysqli_fetch_array($result))
+      {
+        $welcome_title = $val["welcome_title"];
+        $welcome_text = $val["welcome_text"];
+        $welcome_image = $val["welcome_image"];
+        echo "<div class=\"jumbotron jumbotron-fluid bg-dark\">  
+        <div class=\"jumbotron-background\">
+          <img src=\"includes/imgs/welcome_images/$welcome_image\" class=\"blur\">
+        </div>
+        <div class=\"container text-white\">
+          <h1 class=\"display-5\">$welcome_title</h1>
+          <p class=\"lead\">$welcome_text</p>                 
+        </div>          
+      </div>";
+      }
+    }
+    else
+    {
+      echo "<header class=\"masthead text-white text-center\" style=\"background: url('includes/imgs/0-wellbeing-main.jpg') no-repeat center center; background-size: cover;\">
+        <div class=\"overlay\"></div>
+        <div class=\"container\">
+          <div class=\"row\">
+            <div class=\"col-xl-9 mx-auto\">
+              <h1 class=\"mb-5\">Welcome</h1>                     
+              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec ac sapien sit amet elit imperdiet iaculis. Phasellus hendrerit posuere maximus.</p>
+            </div>
+            <div class=\"col-md-10 col-lg-8 col-xl-7 mx-auto\">
+              <p></p>
+            </div>
+          </div>
+        </div>
+    </header>";
+    }
+   
+ }
+ 
+ public static function GetLastViewed($user_id)
+ {
+   $con = $GLOBALS["con"];
+   $sql = "select content_id, progress_value, date_format(date_created, '%m/%d/%y') as date_created from progress where user_id = $user_id order by progress_id desc limit 3";
+   $result = mysqli_query($con,$sql);
+   if(mysqli_num_rows($result) > 0)
+   {
+     while($val = mysqli_fetch_array($result))
+     {
+       $content_id = $val["content_id"];
+       $content_result = Content::GetLastContentById($content_id);
+       if($content_val = mysqli_fetch_array($content_result))
+       {
+         $content_desc = $content_val["content_description"];
+         $content_title = $content_val["content_title"];
+         $date = $val["date_created"];
+         echo "<h3>$content_title<span style=\"float:right; font-size:15px;\">Viewed on: $date</span></h3>
+          <p>$content_desc</p>
+          <a href=\"view.php?page=$content_id\" class=\"btn btn-md btn-primary\">Read More</a><hr>";
+       }
+     }
+   }
+   else
+   {
+     echo "<h3>No Last view at this moment</h3>";
+   }
  }
 
 }//end of class

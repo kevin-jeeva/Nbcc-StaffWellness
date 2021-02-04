@@ -27,7 +27,7 @@ if(isset($_POST["welcomeTitle"]))
             else
             {
                $welcome = new Welcome(0,$welcome_title,$welcome_text,0,0);
-               $welcome->welcome_image = $_SESSION["staff_id"].time().".png";
+               $welcome->welcome_image = $_SESSION["staff_id"].time().".jpg";
                $_FILES['pic']['name'] = $welcome->welcome_image;
                move_uploaded_file($_FILES['pic']['tmp_name'], 'includes/imgs/welcome_images/'.$_FILES['pic']['name']);
               if(Welcome::InsertWelcome($welcome))

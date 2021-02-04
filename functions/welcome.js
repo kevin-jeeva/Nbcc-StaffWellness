@@ -73,3 +73,7 @@ function editImageChange() {
 		document.getElementById("image_name").textContent = filename;
 	}
 }
+
+$(function () {
+	objectFitImages();
+});

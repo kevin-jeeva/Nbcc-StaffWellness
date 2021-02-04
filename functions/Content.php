@@ -20,6 +20,14 @@ class Content {
        $this->eventDate = $eventDate;
    }
    
+   public static function GetLastContentById($content_id)
+   {
+       $con = $GLOBALS["con"];
+       $sql = "Select content_title, content_description from content where content_id = $content_id";
+       $result = mysqli_query($con,$sql);
+       return $result;
+   }
+
    public static function GetAllContents()
    {
        $con = $GLOBALS["con"];
@@ -98,7 +106,7 @@ class Content {
             <div id =\"readMore\">
                 <div class=\"collapse\" id=\"$i\" id=\"collapseSummary\">". $row['content_text'] . "</div>
                 <a class=\"collapsed\" data-toggle=\"collapse\"  data-target=\"#$i\" href=\"#collapseSummary\" aria-expanded=\"false\" aria-controls=\"collapseSummary\"></a>
-            </div><br>";
+            </div><hr>";
             $i = 'two';
         }    
     }
@@ -128,11 +136,11 @@ class Content {
         while ($row = mysqli_fetch_assoc($result)) {
           $date_created = $row["date_created"];
           echo "<div class=\"the-content\">
-          <a href=\"view.php?page=" . $row['content_id'] . "\"
+          <a href=\"#\"  onclick=\"ReadArticle(".$row['content_id'].")\">
           <p class=\"h1 text-dark\">" . $row['content_title'] . "</p></a>
           <hr><span class=\"date_created text-info font-weight-bold\">Created on: $date_created</span>
           <p class=\"content_text\">" .$row['content_description']."</p>
-          <a href=\"view.php?page=" . $row['content_id'] . "\" class=\"btn btn-outline-primary\">Read More</a>
+          <a href=\"#\" class=\"btn btn-outline-primary\" onclick=\"ReadArticle(".$row['content_id'].")\">Read More</a>
           </div>";
         }
 
