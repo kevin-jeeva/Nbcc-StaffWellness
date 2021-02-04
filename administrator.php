@@ -29,14 +29,27 @@
 	<!-- Bootstrap core CSS -->
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 	<link rel="stylesheet" href="includes/bootstrap-4.5.3-dist/css/bootstrap.min.css">
-	<!-- <script src="includes/bootstrap-4.5.3-dist/jquery/jquery-3.5.1.slim.min.js"></script> -->
 	<script src="includes/bootstrap-4.5.3-dist/js/bootstrap.min.js"></script>
+	<!-- <script src="includes/bootstrap-4.5.3-dist/jquery/jquery-3.5.1.slim.min.js"></script> -->
 
 	<!-- Custom CSS and JS -->
 	<link rel="stylesheet" type="text/css" href="includes/styles.css">	
 	<script src="functions/admin.js"></script>
-	<link href="includes/bootstrap-sortable.css" rel="stylesheet" type="text/css">
-	<script src="includes/js/bootstrap-sortable.js"></script>
+
+	<!-- Pagination and Sort tables plugin. Source: https://datatables.net/examples/styling/bootstrap4 -->
+	<script src="includes/js/jquery.dataTables.min.js"></script>
+	<script src="includes/js/dataTables.bootstrap4.min.js"></script>
+	<script src="includes/dataTables.bootstrap4.min.css"></script>
+
+	<script>
+		$(document).ready(function() {
+		    $('#admTable').DataTable();
+		    $('#admTable2').DataTable();
+		} );
+	</script>
+
+	<!-- <link href="includes/bootstrap-sortable.css" rel="stylesheet" type="text/css">
+	<script src="includes/js/bootstrap-sortable.js"></script> -->
 </head>
 
 <body>
@@ -94,7 +107,7 @@
 			    	<div class="list-header row">
 		    	  		<h2>List of created Resources</h2>
 		    	  		<a href="new_category.php" type="button" class="new-btn btn-sm btn-primary" value="id">Create new</a>
-			    	</div>
+			    	</div><hr>
 
 			    	<div class="table-responsive">
 			    	  	<table id="admTable" class="table sortable table-hover">
@@ -121,10 +134,10 @@
 			    	<div class="list-header row">
 		    	  		<h2>List of created Contents</h2>
 		    	  		<a href="new_content.php" type="button" class="new-btn btn-sm btn-primary" value="id">Create new</a>
-			    	</div>
+			    	</div><hr>
 
 			    	<div class="table-responsive">
-			    	  	<table id="admTable" class="table sortable table-hover">
+			    	  	<table id="admTable2" class="table sortable table-hover">
 				    	      <!-- Table's Header -->
 				    	      <thead>
 				    	        <tr>
