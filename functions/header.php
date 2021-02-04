@@ -14,11 +14,12 @@ if(staff::GetStaffAdminNumber($_SESSION["staff_id"]) == 1)
 		<div class=\"dropdown-divider\"></div>
 		<a class=\"dropdown-item\" href=\"new_category.php\">Create New Category</a>
 		<a class=\"dropdown-item\" href=\"new_content.php\">Create New Content</a>
+		<a class=\"dropdown-item\" href=\"new_welcome.php\">Create Welcome Content</a>
 		";
 }
 
 echo "<!-- Navigation -->
-	<nav class=\"navbar navbar-expand-lg navbar-light bg-light sticky-top\">
+	<nav class=\"navbar navbar-expand-lg navbar-dark bg-dark sticky-top\">
 	<div class=\"container\">
 
 		<a class=\"navbar-brand\" href=\"index.php\">APP Logo</a>

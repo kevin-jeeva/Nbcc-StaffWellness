@@ -4,7 +4,7 @@
 	include('functions/staff.php');
 	include('functions/Resource.php');
 	include('functions/Content.php');
-
+  include("functions/Welcome.php");
 	//redirection
 	if (!isset($_SESSION["staff_id"])) //not currently logged in
 	{
@@ -55,6 +55,21 @@
 				<a href="#" type="button" class="btn btn-danger" id="DeleteContent">Delete</a>
         <button type="button" class="btn btn-primary" data-dismiss="modal" onclick="ResetLink()">Cancel</button>
       </div>
+      </div>
+    </div>
+	</div>
+  
+	  <!--Error modal-->
+	<div class="modal fade" id="myModal">
+    <div class="modal-dialog  modal-sm">
+      <div class="modal-content">     
+			<div class="modal-header">
+        <h4 class="modal-title">Error</h4>
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+      </div>
+        <div class="modal-body error">			
+         <span id = "alert_message"></span>				
+        </div>
       </div>
     </div>
 	</div>
@@ -143,7 +158,31 @@
 			    	    </table>
 			    	</div> <!-- End of table-responsive -->
 		    	</div>
+					<div class="list-sector">
+			    	<div class="list-header row">
+		    	  		<h2>List of Welcome Created</h2>
+		    	  		<a href="new_welcome.php" type="button" class="new-btn btn-sm btn-primary" value="id">Create new</a>
+			    	</div>
 
+			    	<div class="table-responsive">
+			    	  	<table id="admTable" class="table sortable table-hover">
+				    	      <!-- Table's Header -->
+				    	      <thead>
+				    	        <tr>
+				    	          <th data-defaultsign="_19">#</th>
+				    	          <th data-defaultsign="AZ">Welcome Title</th>				    	          
+				    	          <th data-defaultsign="month">Created On</th>
+				    	          <th data-defaultsign="disabled" class="action-header-cell">Actions</th>
+				    	        </tr>
+				    	      </thead>
+
+				    	      <!-- Important SECTION: display all content's categories from database -->
+				    	      <tbody>
+								<?php Welcome::GetListofCreatedWelcoms()?>
+				    	      </tbody>
+			    	    </table>
+			    	</div> <!-- End of table-responsive -->
+		    	</div>
 		    </div> <!-- End of the-content col-md-12 -->
 		  </div> <!-- End of row -->
 		</div> <!-- End of container -->
@@ -163,5 +202,14 @@ if($_SESSION["message"] != "")
 	document.getElementById(\"success_message\").textContent = '$alert_message';
 	</script>";
 	$_SESSION["message"] = "";
+}
+if($_SESSION["alert_message"] != "")
+{
+  $alert_message = $_SESSION["alert_message"];
+	echo "<script>
+	$(\"#myModal\").modal();
+	document.getElementById(\"alert_message\").textContent = '$alert_message';
+	</script>";
+	$_SESSION["alert_message"] = "";
 }
 ?>
