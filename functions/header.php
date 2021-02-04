@@ -28,6 +28,7 @@ echo "<!-- Navigation -->
 		</button>
 		<div class=\"collapse navbar-collapse\" id=\"navbarSupportedContent\">
 			<ul class=\"navbar-nav mr-auto\">
+				 <li class=\"nav-item\"><a class=\"nav-link\" href=\"dashboard.php\">Dashboard</a></li>
 			  	<li class=\"nav-item\"><a class=\"nav-link\" href=\"index.php\">Home</a></li>
 			  	<li class=\"nav-item\"><a class=\"nav-link\" href=\"articles.php\">Articles</a></li>
 			  	<li class=\"nav-item\"><a class=\"nav-link\" href=\"events.php\">Events</a></li>
