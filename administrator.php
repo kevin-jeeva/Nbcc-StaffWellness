@@ -39,17 +39,14 @@
 	<!-- Pagination and Sort tables plugin. Source: https://datatables.net/examples/styling/bootstrap4 -->
 	<script src="includes/js/jquery.dataTables.min.js"></script>
 	<script src="includes/js/dataTables.bootstrap4.min.js"></script>
-	<script src="includes/dataTables.bootstrap4.min.css"></script>
-
+	<link rel="stylesheet" type="text/css" href="includes/dataTables.bootstrap4.min.css"></script>
 	<script>
 		$(document).ready(function() {
 		    $('#admTable').DataTable();
 		    $('#admTable2').DataTable();
 		} );
 	</script>
-
-	<!-- <link href="includes/bootstrap-sortable.css" rel="stylesheet" type="text/css">
-	<script src="includes/js/bootstrap-sortable.js"></script> -->
+	
 </head>
 
 <body>
@@ -114,10 +111,10 @@
 				    	      <!-- Table's Header -->
 				    	      <thead>
 				    	        <tr>
-				    	          <th data-defaultsign="_19">#</th>
-				    	          <th data-defaultsign="AZ">Title</th>
-				    	          <th data-defaultsign="month">Created on</th>
-				    	          <th data-defaultsign="disabled" class="action-header-cell">Actions</th>
+				    	          <th>#</th>
+				    	          <th>Title</th>
+				    	          <th>Created on</th>
+				    	          <th class="action-header-cell">Actions</th>
 				    	        </tr>
 				    	      </thead>
 
@@ -141,11 +138,11 @@
 				    	      <!-- Table's Header -->
 				    	      <thead>
 				    	        <tr>
-				    	          <th data-defaultsign="_19">#</th>
-				    	          <th data-defaultsign="AZ">Title</th>
-				    	          <th data-defaultsign="AZ">Resource</th>
-				    	          <th data-defaultsign="month">Created on</th>
-				    	          <th data-defaultsign="disabled" class="action-header-cell">Actions</th>
+				    	          <th>#</th>
+				    	          <th>Title</th>
+				    	          <th>Resource</th>
+				    	          <th>Created on</th>
+				    	          <th class="action-header-cell">Actions</th>
 				    	        </tr>
 				    	      </thead>
 
