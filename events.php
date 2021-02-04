@@ -42,12 +42,12 @@
 
               <!--Content Sector (Main) -->
               <!--Calling Content class to retrieve all articles -->
-		    
-			<div class="the-content col-md-12">	
-				<?php
-				Content::getAllEvents();
-				?>
-		    </div> <!-- End of the-content -->
+				<div class="card-deck">	
+					<?php
+					Content::getAllEvents();
+					?>
+			    </div> <!-- End of card-columns -->
+			
 
 		  </div> <!-- End of row -->
 		</div> <!-- End of container-->

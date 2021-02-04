@@ -54,20 +54,80 @@ class Content {
            return $val["resource_name"];
        }
    }
+
    //get all events
-   static function getAllEvents(){
-    $con = $GLOBALS['con'];
-    $resource_id = self::getResourceIdByResourceName('events');
-    $sql = "SELECT content_title, content_text, date_format(event_date, '%m/%d/%y') as event_date FROM content WHERE resource_id = $resource_id ORDER BY event_date";
-    $result = mysqli_query($con, $sql);
-        while ($row = mysqli_fetch_assoc($result)) {
-            $eventDate = $row["event_date"];
-             echo "
-             <h1 class=\"card-title\">" . $row['content_title'] . "</h1>
-             <span class=\"badge badge-info\">$eventDate</span>
-             <p class=\"content_text\">" . $row['content_text'] ."</p><hr>";
-        }
-   } 
+    static function getAllEvents(){
+      if (isset($_GET['pageno'])) {
+          $pageno = $_GET['pageno'];
+      } else {
+          $pageno = 1;
+      }
+
+      //important variables for pagination
+      $no_of_records_per_page = 25;
+      $offset = ($pageno-1) * $no_of_records_per_page;
+
+      $con = $GLOBALS['con'];
+      $resource_id = self::getResourceIdByResourceName('events');
+      $sql = "SELECT content_id, content_title, content_text, date_format(event_date, '%m/%d/%y') as event_date FROM content WHERE resource_id = $resource_id ORDER BY event_date LIMIT $offset, $no_of_records_per_page";
+
+      $total_pages_sql = "SELECT COUNT(*) FROM content WHERE resource_id = $resource_id";
+      $result = mysqli_query($con,$total_pages_sql);
+      $total_rows = mysqli_fetch_array($result)[0];
+      $total_pages = ceil($total_rows / $no_of_records_per_page);
+
+      $result = mysqli_query($con, $sql);
+      while ($row = mysqli_fetch_assoc($result)) {
+          $eventDate = $row["event_date"];
+           echo "
+           <div class=\"card shadow-sm p-3 mb-5 bg-white rounded\">
+           <div class=\"card-body\">
+           <h3 class=\"card-title\">" . $row['content_title'] . "</h3>
+           <span class=\"badge badge-info\">$eventDate</span>
+           <p class=\"content_text\">" . $row['content_text'] ."</p>
+           <a href=\"view.php?page=" . $row['content_id'] . "\" class=\"btn btn-outline-info btn-block\">Read More</a>
+           </div></div>";
+      }
+
+      //Print the first page link
+      echo "<div class=\"container\"><div class=\"row\"><ul class=\"pagination mx-auto\"><li class=\"page-item\"><a class=\"page-link\" href=\"?pageno=1\">First Page</a></li>";
+      
+      // These actions will happen if the user access the previous page
+      if($pageno <= 1){
+        echo "<li class=\"page-item disabled\"><a class=\"page-link\" href=\"";
+      } else {
+        echo "<li class=\"page-item\">'";
+      }
+      if($pageno <= 1){
+        echo "#\">Prev</a></li>";
+      } else {
+        echo "?pageno=".($pageno - 1)."\">Prev</a></li>";
+      }
+
+      // These actions will happen if the user access the next page
+      if($pageno >= $total_pages){
+        echo "<li class=\"page-item disabled\"><a class=\"page-link\" href=\"";
+      } else {
+        echo "<li class=\"page-item\">'";
+      }
+      if($pageno >= $total_pages){
+        echo "#\">Next</a></li>";
+      } else {
+        echo "?pageno=".($pageno + 1)."\">Next</a></li>";
+      }
+
+      // These actions will happen if the user access the last page
+      if($total_pages <= 1){
+        echo "<li class=\"page-item disabled\"><a class=\"page-link\" href=\"";
+      } else {
+        echo "<li class=\"page-item\">'";
+      }
+      if($pageno >= $total_pages){
+        echo "#\">Last Page</a></li>";
+      } else {
+        echo "?pageno=".$total_pages."\">Last Page</a></li></ul></div></div>";
+      }
+    }
 
     //get next 2 events
     static function getNextEvents(){
@@ -224,18 +284,40 @@ class Content {
         if(mysqli_num_rows($result) > 0 )
         {   
             $resource_id = self::getResourceIdByResourceName($resource_name);
-            self::InsertContent($resource_id,$content->title,$content->contentText,$content->contentDescription);
+            if ($content->eventDate == null){
+              self::InsertContent($resource_id,$content->title,$content->contentText,$content->contentDescription);
+            }
+            else{
+              self::InsertContentforEvents($resource_id,$content->title,$content->contentText,$content->contentDescription, $content->eventDate);
+            }
         }
         else{               
                 if(self::InsertResourceId($resource_name))
                 {
                     $resource_id = self::getResourceIdByResourceName($resource_name);
-                    self::InsertContent($resource_id,$content->title,$content->contentText,$content->contentDescription);
+                    if ($content->eventDate == null){
+                      self::InsertContent($resource_id,$content->title,$content->contentText,$content->contentDescription);
+                    }
+                    else{
+                      self::InsertContentforEvents($resource_id,$content->title,$content->contentText,$content->contentDescription, $content->eventDate);
+                    }
                 }
                 else{
                     header("location:content.php");
                 }                
             }
+    }
+    public static function InsertContentforEvents($resource_id,$content_title,$content_text,$content_description,$event_date)
+    {
+        $con = $GLOBALS["con"];
+        $resource_id = strtoupper($resource_id);
+        $sql = "Insert into content(resource_id,content_title,content_text,content_description,event_date) Values('$resource_id','$content_title','$content_text','$content_description', '$event_date')";                
+        mysqli_query($con,$sql);
+        if(!mysqli_affected_rows($con) == 1)
+        {
+          header("location:content.php");        
+        }
+       
     }
     public static function InsertContent($resource_id,$content_title,$content_text,$content_description)
     {

@@ -35,6 +35,21 @@ include_once("functions/Content.php");
 	
 	<!-- Custom CSS and JS -->
 	<link rel="stylesheet" type="text/css" href="includes/styles.css">
+
+	<script>
+		function activateEventDate(){
+			category = document.getElementById("contents").value;
+			if (category === "Events"){
+				document.getElementById("eventDate").disabled = false;
+				document.getElementById("eventDate").value = "";
+			}
+			else{
+				document.getElementById("eventDate").disabled = true;
+				document.getElementById("eventDate").value = "";
+			}
+		}
+	</script>
+
 </head>
 
 <body>
@@ -84,78 +99,83 @@ include_once("functions/Content.php");
 		  	<!--Content Sector (Main) -->
 		    <div class="the-content col-md-8">
 		    	<form method="post" id="newContentForm" name="newContentForm" onsubmit="return ContentCheck()" action="proc_newcontent.php">
-		    	  <div class="form-group col-xs-12 col-md-6">
-		    	    <div><label for="content-category">Select Category (or) <a href="new_category.php" class="badge btn-outline-info">Create New Category</a></div></label>
-							  <select name ="contents" id ="contents">
-								<?php Content::getContents()?>
-							  </select>
+					<div class="form-group col-xs-12 col-md-6">
+						<div>
+						<label for="content-category">Select Category (or) <a href="new_category.php" class="badge btn-outline-info">Create New Category</a></label>
+						</div>
+						<select name ="contents" id ="contents" onchange="activateEventDate()">
+						<?php Content::getContents()?>
+						</select>
+
+						<!--this will get all the resource list
+						<input list="resourceList" required = "true" name="resourceListId" id="resourceListId">
+						<datalist id="resourceList" name ="resourceList">
+
+						</datalist>-->
+					</div>
+							 
+					<div class="form-group col-xs-6 col-md-4">
+						<label for="content-title" id="content-title">Content Title</label>
+						<input type="text" class="form-control" placeholder="Enter content title" name ="contentTitle" id="contentTitle" required>
+					</div>
+
+					<div class="form-group col-xs-6 col-md-4">
+						<label for="content-title" id="content-title">Event Date <i>(optional)</i></label>
+						<input type="date" class="form-control" name ="eventDate" id="eventDate" disabled>
+					</div>
 					
+					<div class="form-group col-lg-12">
+						<label for="content-description">Content Description</label>
+						<textarea class="form-control" id="content-description" name="content-description" placeholder="Category Description" rows="5" maxlength="255" required></textarea>
+					</div>
+					
+					<div class="form-group col-lg-12">
+						<!-- CKEditor area -->
+						<label for="content-area">Text</label>
+						<textarea cols="80" id="content-area" name="content-area" rows="15" data-sample-short>Insert your text here</textarea>
+						<script>
+						CKEDITOR.replace('content-area', {
+							// Define the toolbar groups as it is a more accessible solution.
+							toolbarGroups: [{
+									"name": "basicstyles",
+									"groups": ["basicstyles"]
+								},
+								{
+									"name": "links",
+									"groups": ["links"]
+								},
+								{
+									"name": "paragraph",
+									"groups": ["list", "blocks"]
+								},
+								{
+									"name": "document",
+									"groups": ["mode"]
+								},
+								{
+									"name": "insert",
+									"groups": ["insert"]
+								},
+								{
+									"name": "styles",
+									"groups": ["styles"]
+								},
+								{
+									"name": "about",
+									"groups": ["about"]
+								}
+							],
+							// Remove the redundant buttons from toolbar groups defined above.
+							removeButtons: 'Underline,Strike,Subscript,Superscript,Anchor,Styles,Specialchar'
+						});
+					</script>
 
-					<!--this will get all the resource list
-					<input list="resourceList" required = "true" name="resourceListId" id="resourceListId">
-					<datalist id="resourceList" name ="resourceList">
-						 
-					</datalist>-->
-
-				   </div>
-						 
-							<div class="form-group col-xs-6 col-md-4">
-								<label for="content-title" id="content-title">Content Title</label>
-								<input type="text" class="form-control" placeholder="Enter content title" name ="contentTitle" id="contentTitle" required>
-							</div>
-							
-							<div class="form-group col-lg-12">
-								<label for="content-description">Content Description</label>
-								<textarea class="form-control" id="content-description" name="content-description" placeholder="Category Description" rows="5" maxlength="255" required></textarea>
-							</div>
-							
-							<div class="form-group col-lg-12">
-								<!-- CKEditor area -->
-								<label for="content-area">Text</label>
-								<textarea cols="80" id="content-area" name="content-area" rows="15" data-sample-short>Insert your text here</textarea>
-								<script>
-								CKEDITOR.replace('content-area', {
-									// Define the toolbar groups as it is a more accessible solution.
-									toolbarGroups: [{
-											"name": "basicstyles",
-											"groups": ["basicstyles"]
-										},
-										{
-											"name": "links",
-											"groups": ["links"]
-										},
-										{
-											"name": "paragraph",
-											"groups": ["list", "blocks"]
-										},
-										{
-											"name": "document",
-											"groups": ["mode"]
-										},
-										{
-											"name": "insert",
-											"groups": ["insert"]
-										},
-										{
-											"name": "styles",
-											"groups": ["styles"]
-										},
-										{
-											"name": "about",
-											"groups": ["about"]
-										}
-									],
-									// Remove the redundant buttons from toolbar groups defined above.
-									removeButtons: 'Underline,Strike,Subscript,Superscript,Anchor,Styles,Specialchar'
-								});
-							</script>
-
-							</div>
-							<br>
-							<div class="form-group col-lg-12">
-								<input type="submit" class="btn btn-warning" value="Submit"/>
-								<a href="administrator.php" type="button" class="btn btn-danger">Cancel</a>
-							</div>
+					</div>
+					<br>
+					<div class="form-group col-lg-12">
+						<input type="submit" class="btn btn-warning" value="Submit"/>
+						<a href="administrator.php" type="button" class="btn btn-danger">Cancel</a>
+					</div>
 		    	</form> 	
 		    </div>
 
