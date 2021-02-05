@@ -80,7 +80,7 @@ class Content {
       while ($row = mysqli_fetch_assoc($result)) {
           $eventDate = $row["event_date"];
            echo "
-           <div class=\"card shadow-sm p-3 mb-5 bg-white rounded\">
+           <div class=\"events-tile card shadow-sm p-2 m-1\">
            <div class=\"card-body\">
            <h3 class=\"card-title\">" . $row['content_title'] . "</h3>
            <span class=\"badge badge-info\">$eventDate</span>
@@ -90,7 +90,7 @@ class Content {
       }
 
       //Print the first page link
-      echo "<div class=\"container\"><div class=\"row\"><ul class=\"pagination mx-auto\"><li class=\"page-item\"><a class=\"page-link\" href=\"?pageno=1\">First Page</a></li>";
+      echo "<div class=\"container\"><div class=\"pagination-row row\"><ul class=\"pagination mx-auto\"><li class=\"page-item\"><a class=\"page-link\" href=\"?pageno=1\">First Page</a></li>";
       
       // These actions will happen if the user access the previous page
       if($pageno <= 1){
@@ -232,7 +232,7 @@ class Content {
         if($pageno >= $total_pages){
           echo "#\">Last Page</a></li>";
         } else {
-          echo "?pageno=".$total_pages."\">Last Page</a></li>";
+          echo "?pageno=".$total_pages."\">Last Page</a></li></ul>";
         }
     }
 

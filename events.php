@@ -35,20 +35,16 @@
 	  </div>
 	</div>
 
-	<!--Main Content Sector (2 columns) -->
+	<!--Main Content Sector -->
 	<section class="main-content">
 		<div class="container">
 		  <div class="row">
 
-              <!--Content Sector (Main) -->
               <!--Calling Content class to retrieve all articles -->
-				<div class="card-deck">	
 					<?php
 					Content::getAllEvents();
 					?>
-			    </div> <!-- End of card-columns -->
 			
-
 		  </div> <!-- End of row -->
 		</div> <!-- End of container-->
 	</section>

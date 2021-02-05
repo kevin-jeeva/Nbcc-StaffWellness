@@ -23,19 +23,6 @@ header.masthead h1 {
     font-size: 3rem;
 }
 
-@media (min-width: 768px) {
-	header.masthead {
-		padding-top: 8rem;
-		padding-bottom: 8rem;
-	}
-	header.masthead h1 {
-		font-size: 3rem;
-	}
-}
-
-@media (min-width: 768px) {
-}
-
 .features-categories {
 	padding-top: 3rem;
 	padding-bottom: 3rem;
@@ -60,10 +47,11 @@ header.masthead h1 {
 	margin-top: 1rem;
 	padding-bottom: 3rem;
 }
-.event-content .card {
-	margin-top: 1rem;
-	padding-right: 4rem;
-	width: 80rem;
+.events-tile {
+    width: 100%;
+}
+.pagination-row.row {
+    margin-top: 4rem;
 }
 
 p.content_text {
@@ -239,4 +227,32 @@ th.action-header-cell {
 
 a.new-btn.btn-sm.btn-primary {
 	margin-left: 1rem;
+}
+
+/* Responsive styles */
+
+
+@media (min-width: 768px) {
+	header.masthead {
+		padding-top: 8rem;
+		padding-bottom: 8rem;
+	}
+	header.masthead h1 {
+		font-size: 3rem;
+	}
+	.events-tile {
+    	width: 31% !important;
+	}
+}
+	
+@media (max-width: 768px) {
+	.events-tile {
+    	width: 48% !important;
+	}
+}
+
+@media (max-width: 576px) {
+	.events-tile {
+    	width: 100% !important;
+	}
 }
