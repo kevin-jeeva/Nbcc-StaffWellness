@@ -21,6 +21,7 @@
 
 	<!-- Custom CSS and JS -->
 	<link rel="stylesheet" type="text/css" href="includes/styles.css">
+	<script src="functions/main.js"></script>
 </head>
 
 <body>
@@ -35,20 +36,16 @@
 	  </div>
 	</div>
 
-	<!--Main Content Sector (2 columns) -->
+	<!--Main Content Sector -->
 	<section class="main-content">
 		<div class="container">
 		  <div class="row">
 
-              <!--Content Sector (Main) -->
               <!--Calling Content class to retrieve all articles -->
-		    
-			<div class="the-content col-md-12">	
-				<?php
-				Content::getAllEvents();
-				?>
-		    </div> <!-- End of the-content -->
-
+					<?php
+					Content::getAllEvents();
+					?>
+			
 		  </div> <!-- End of row -->
 		</div> <!-- End of container-->
 	</section>
