@@ -10,6 +10,10 @@ class Resource {
        $this->resourceTitle = $resourceTitle;
        $this->dateCreated = $dateCreated;
    }
+    public function __destruct() 
+    {
+        //this is destruct the object one the object is completed it process :)
+    }
    public static function GetResourceNameById($resource_id)
    {
        $con = $GLOBALS["con"];

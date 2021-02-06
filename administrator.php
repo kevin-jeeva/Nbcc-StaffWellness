@@ -1,10 +1,12 @@
 <?php
 	session_start();
-	include('functions/connect.php');
-	include('functions/staff.php');
-	include('functions/Resource.php');
-	include('functions/Content.php');
-  include("functions/Welcome.php");
+	include_once('functions/connect.php');
+	include_once('functions/staff.php');
+	include_once('functions/Resource.php');
+	include_once("functions/Welcome.php");
+		include_once("functions/Media.php");
+	include_once('functions/Content.php');
+
 	//redirection
 	if (!isset($_SESSION["staff_id"])) //not currently logged in
 	{
@@ -189,6 +191,31 @@
 				    	      <!-- Important SECTION: display all content's categories from database -->
 				    	      <tbody>
 								<?php Welcome::GetListofCreatedWelcoms()?>
+				    	      </tbody>
+			    	    </table>
+			    	</div> <!-- End of table-responsive -->
+							<div class="list-sector">
+			    	<div class="list-header row">
+		    	  		<h2>List of Exercies Vidoes Created</h2>
+		    	  		<a href="new_video.php" type="button" class="new-btn btn-sm btn-primary" value="id">Create new</a>
+			    	</div>
+
+			    	<div class="table-responsive">
+			    	  	<table id="admTable" class="table sortable table-hover">
+				    	      <!-- Table's Header -->
+				    	      <thead>
+				    	        <tr>
+				    	          <th data-defaultsign="_19">#</th>
+				    	          <th data-defaultsign="AZ">Video Title</th>	
+												 <th data-defaultsign="AZ">Video Name</th>				    	          
+				    	          <th data-defaultsign="month">Created On</th>
+				    	          <th data-defaultsign="disabled" class="action-header-cell">Actions</th>
+				    	        </tr>
+				    	      </thead>
+
+				    	      <!-- Important SECTION: display all content's categories from database -->
+				    	      <tbody>
+								<?php Media::GetListOfCreatedVideos()?>
 				    	      </tbody>
 			    	    </table>
 			    	</div> <!-- End of table-responsive -->

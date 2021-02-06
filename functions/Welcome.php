@@ -1,8 +1,8 @@
 <?php
-include_once("connect.php");
-include_once("Content.php");
-include_once("Resource.php");
-include_once("Progress.php");
+require_once("connect.php");
+require_once("Content.php");
+require_once("Resource.php");
+require_once("Progress.php");
 
 class Welcome{
   private $welcome_id;
@@ -28,7 +28,11 @@ class Welcome{
  {
    return $this->$name;
  }
-
+ 
+ public function __destruct() 
+ {
+        //this is destruct the object one the object is completed it process :)
+  }
  public static function getAllDataFromWelcome()
  {
   $con = $GLOBALS["con"];

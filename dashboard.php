@@ -5,10 +5,10 @@
             header("location:Login.php");
         }
         
-	include('functions/connect.php');
-	include('functions/staff.php');
-  include('functions/Content.php');
-  include("functions/Welcome.php");
+	require_once('functions/connect.php');
+	require_once('functions/staff.php');
+  require_once('functions/Content.php');
+  require_once("functions/Welcome.php");
 
 ?>
 <!DOCTYPE html>

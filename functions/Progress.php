@@ -28,6 +28,10 @@ class Progress{
  {
    return $this->$name;
  }
+  public function __destruct()
+  {
+    //this is destruct the object one the object is completed it process :)
+  }
  public static function GetProgress($user_id, $content_id)
  {
    $con = $GLOBALS["con"];

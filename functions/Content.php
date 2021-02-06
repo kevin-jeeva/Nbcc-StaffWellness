@@ -19,7 +19,10 @@ class Content {
        $this->dateCreated = $dateCreated;
        $this->eventDate = $eventDate;
    }
-   
+    public function __destruct() {
+     
+        //this is destruct the object one the object is completed it process :)
+    }
    public static function GetLastContentById($content_id)
    {
        $con = $GLOBALS["con"];

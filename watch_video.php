@@ -1,28 +1,30 @@
 <?php
-	session_start();
-        if(!isset($_SESSION["staff_id"]))
-        {
-            header("location:Login.php");
-        }
-        
-	include('functions/connect.php');
-	include('functions/staff.php');
-	include('functions/Content.php');
-	include('functions/Media.php');
+session_start();
+include_once('functions/connect.php');
+include_once('functions/staff.php');
+include_once('functions/Content.php');
+include_once("functions/Media.php");
 
+if(isset($_GET["video_id"]))
+{
+  $video_id = $_GET["video_id"];
+  
+}
+else
+{
+  header("location:index.php");
+}
 ?>
-
-
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 	<meta name="description" content="">
 	<meta name="author" content="">
 
-	<title>Video Exercises</title>
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	<title>Video</title>
+
 	<!-- Bootstrap core CSS -->
 	<link rel="stylesheet" href="includes/bootstrap-4.5.3-dist/css/bootstrap.min.css">
 	<script src="includes/bootstrap-4.5.3-dist/jquery/jquery-3.5.1.slim.min.js"></script>
@@ -30,40 +32,28 @@
 
 	<!-- Custom CSS and JS -->
 	<link rel="stylesheet" type="text/css" href="includes/styles.css">
+	<script src="functions/main.js"></script>
 </head>
 
 <body>
 	<!-- Navigation -->
 	<?php include('functions/header.php'); ?>
 
-	<!-- Masterhead -->
-		<!-- Article Masterhead -->
+	<!-- Article Masterhead -->
 	<div class="jumbotron jumbotron-fluid">
 	  <div class="container">
-	    <h1 class="display-4">Exercise Videos</h1>
+	    <h1 class="display-4">Playing Video here</h1>
+		<!--<p class="lead">{Description of this category: e.g. Events}.</p> -->
 	  </div>
 	</div>
-	
-	<!-- Categories Grid (4 columns) -->
-	<section class="features-categories text-center">
-	  <div class="container">
-		<div class="col-lg-12">
-		<h1 class="text-left">Videos</h1><hr>
-		</div>
-	    <div class="row">
-				<?php Media::DisplayVideoCards()?>
 
-	    </div>
-	  </div>
-	</section>
-
-	<!--Main Content Sector (2 columns) -->
+	<!--Main Content Sector -->
 	<section class="main-content">
 		<div class="container">
-		  <div class="row">
-
-		  </div>
-		</div>
+		  <div class="row">              
+         <?php Media::PlayVideo($video_id)?>        
+		  </div> <!-- End of row -->
+		</div> <!-- End of container-->
 	</section>
 
 	<!--Secondary Content Sector -->

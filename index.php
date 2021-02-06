@@ -5,10 +5,10 @@
             header("location:Login.php");
         }
         
-	include('functions/connect.php');
-	include('functions/staff.php');
-	include('functions/Content.php');
-	include("functions/Welcome.php");
+	include_once('functions/connect.php');
+	include_once('functions/staff.php');
+	include_once('functions/Content.php');
+	include_once("functions/Welcome.php");
 ?>
 <!DOCTYPE html>
 <html lang="en">

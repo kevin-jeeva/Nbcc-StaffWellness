@@ -22,3 +22,39 @@ function HomeContentClicked(content_id) {
 	);
 	xmlhttp.send();
 }
+
+function VideoCheck() {
+	for (var i = 0; i < 3; i++) {
+		switch (i) {
+			case 0:
+				trimFun("videoTitle", "Video Title");
+				break;
+			case 1:
+				trimFun("video-description", "video Description");
+				break;
+			case 2:
+				if (document.getElementById("video_file").files.length == 0) {
+					count += 1;
+					msg += "Video" + " required " + "\n";
+				}
+				break;
+		}
+	}
+	if (count > 0) {
+		$("#myModal").modal();
+		document.getElementById("alert_message").textContent = msg;
+		count = 0;
+		msg = "";
+		return false;
+	} else {
+		return true;
+	}
+}
+function trimFun(id, message) {
+	var Value = document.getElementById(id).value;
+	Value = Value.trim();
+	if (Value == "") {
+		msg += message + " required " + "\n";
+		count += 1;
+	}
+}
