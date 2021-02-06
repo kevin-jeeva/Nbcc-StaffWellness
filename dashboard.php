@@ -49,8 +49,10 @@
   
 	<!-- Navigation -->
 	<?php include('functions/header.php'); ?>
-  <!-- Masterhead -->
-  <?php Welcome::DisplayWelcomeContent()?>
+	
+  	<!-- Masterhead -->
+  	<?php Welcome::DisplayWelcomeContent()?>
+	
 	<!-- Categories Grid (4 columns) -->
 	<section class="features-categories text-center">
 	  <div class="container">
