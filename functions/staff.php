@@ -80,7 +80,7 @@ class staff {
             {
                   $staff_id = self::SetStaffSession(self::GetStaffInfoByEmail($email));
                   $msg ="Sucess";                  
-                  header("location:dashboard.php?user=$msg");
+                  header("location:dashboard.php");
             }
             else
             {

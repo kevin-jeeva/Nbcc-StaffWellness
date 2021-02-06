@@ -1,6 +1,8 @@
 <?php
 include_once("connect.php");
 include_once("Content.php");
+include_once("Resource.php");
+include_once("Progress.php");
 
 class Welcome{
   private $welcome_id;
@@ -221,5 +223,124 @@ class Welcome{
    }
  }
 
+ public static function GetProgressContent($staff_id)
+ {
+   $resource_ids = Resource::getAllResourcesId();
+   $count_divide = 0;
+   $progress_value = 0;
+   $row_count = 0;
+
+   if(mysqli_num_rows($resource_ids) > 0)
+   {
+     while($resource_id = mysqli_fetch_array($resource_ids))
+     {
+       $total = 0;
+       $count_divide = 0;
+       $progress_value = 0;
+
+       $resource_name = $resource_id["resource_name"];
+       $content_ids = Content::GetContentByResourceId($resource_id["resource_id"]);
+      if(mysqli_num_rows($content_ids) > 0)
+      {
+        while($content_id = mysqli_fetch_array($content_ids))
+        {
+          $progress = Progress::GetProgress($staff_id,$content_id["content_id"]);
+        
+          if(mysqli_num_rows($progress) > 0)
+          {
+            while($progress_val = mysqli_fetch_array($progress))
+            {
+              $progress_value += $progress_val["progress_value"];
+
+            }
+          }          
+          $count_divide += 1; //divide by total
+        }
+      }
+      else
+      {
+        continue; //go to next resource
+      }
+      //display the progres value     
+      $total = round($progress_value / $count_divide);
+      $row_count += 1;
+      echo "<tr><th scope=\"row\"> $row_count</th>
+            <td>$resource_name</td>
+            <td><div class=\"progress\">
+						<div class=\"progress-bar progress-bar-striped progress-bar-animated\" role=\"progressbar\" aria-valuenow=\"75\" aria-valuemin=\"0\" aria-valuemax=\"100\" style=\"width: $total%\">$total%</div>
+					</div></td></tr>";
+       
+     }
+   }
+   else
+   {
+     echo "No Progressa At this moment";
+   }
+   	
+ }
+ public static function SuggestedContent($staff_id)
+ {
+   $con = $GLOBALS["con"];
+   $sql = "select content.content_title,content.content_id,content.content_description,date_format(content.date_created, '%m/%d/%y') as date_created from content inner join resources on content.resource_id = resources.resource_id where resources.resource_name NOT IN ('Video Exercises', 'Sound Exercises') and content.content_id  NOT in (select pg.content_id from progress pg where user_id = $staff_id) order by rand() limit 2;";
+   
+   $result = mysqli_query($con,$sql);
+   if(mysqli_num_rows($result) > 0)
+   {
+      while($val = mysqli_fetch_array($result))
+    {
+      $content_id = $val["content_id"];
+       echo "<hr> 
+        <h5 class=\"card-title\">". $val['content_title']."</h5>
+        <span class=\"badge badge-info\">".$val['date_created']."</span>
+        <p class=\"card-text\">". $val['content_description'] ."</p>
+        <a href=\"#\" class=\"btn btn-outline-info btn-block\" onclick=\"ReadEvents($content_id)\">See Details</a>";
+    }
+   }
+   else
+   {
+     Content::getNextEvents();
+   }
+  
+ }
+
+ public static function GetMostViewed($staff_id)
+ {
+   $con =$GLOBALS["con"];
+   $sql = "select content_id from staff.progress order by views desc Limit 4";
+   $result = mysqli_query($con,$sql);
+   if(mysqli_num_rows($result) > 0)
+   {
+    while($val = mysqli_fetch_array($result))
+    {
+      $content_id = $val["content_id"];
+      $content_result = Content::GetLastContentById($content_id);
+      while($content_val = mysqli_fetch_array($content_result))
+      {
+        $resource_id = $content_val["resource_id"];
+        $content_title = $content_val["content_title"];
+        $content_description = $content_val["content_description"];
+        $resource_result = Resource::GetResourceNameById($resource_id);
+        if($resource_val = mysqli_fetch_array($resource_result))
+        {
+          $resource_name = $resource_val["resource_name"];
+            echo " <div class=\"col-lg-3 col-md-6 col-sm-12\"><div class=\"card\">
+              <h5 class=\"card-header\">$resource_name</h5>
+              <div class=\"card-body\">
+                <h5 class=\"card-title\">$content_title</h5>
+                <p class=\"card-text\">$content_description</p>
+                <a href=\"#\" class=\"btn btn-info\" onclick=\"ReadArticle($content_id)\">Read more</a>
+              </div>
+            </div>
+            </div>";
+        }
+      }
+    }
+   }
+   else
+   {
+     echo"<div class=\"col-lg-12\"><h3>Not Yet Started :)</h3><a href=\"index.php\" class=\"btn btn-md btn-success\">Get Started</a></div>";
+   }
+
+ }
 }//end of class
 

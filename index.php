@@ -8,6 +8,7 @@
 	include('functions/connect.php');
 	include('functions/staff.php');
 	include('functions/Content.php');
+	include("functions/Welcome.php");
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -26,6 +27,7 @@
 
 	<!-- Custom CSS and JS -->
 	<link rel="stylesheet" type="text/css" href="includes/styles.css">
+	<script src="functions/main.js"></script>
 </head>
 
 <body>
@@ -46,12 +48,14 @@
 	<?php include('functions/header.php'); ?>
 
 	<!-- Masterhead -->
-	<header class="masthead text-white text-center" style="background: url('includes/imgs/0-wellbeing-main.jpg') no-repeat center center; background-size: cover;">
+	<?php Welcome::DisplayWelcomeContent()?>
+
+	<!-- <header class="masthead text-white text-center" style="background: url('includes/imgs/0-wellbeing-main.jpg') no-repeat center center; background-size: cover;">
 	  <div class="overlay"></div>
 	  <div class="container">
 	    <div class="row">
 	      <div class="col-xl-9 mx-auto">
-	        <h1 class="mb-5">Welcome <?=$_SESSION["staff_name"]?></h1>
+	        <h1 class="mb-5">Welcome </h1>
 	        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec ac sapien sit amet elit imperdiet iaculis. Phasellus hendrerit posuere maximus.</p>
 	      </div>
 	      <div class="col-md-10 col-lg-8 col-xl-7 mx-auto">
@@ -59,7 +63,7 @@
 	      </div>
 	    </div>
 	  </div>
-	</header>
+	</header> -->
 
 	<!-- Categories Grid (4 columns) -->
 	<section class="features-categories text-center">
