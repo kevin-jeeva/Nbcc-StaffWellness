@@ -8,6 +8,7 @@ class Progress{
   private $content_id;
   private $progress_value;
   private $date_created;
+  private $views;
  
   function __construct($progress_id,$user_id,$content_id,$progress_value,$date_created,$views)
  {
@@ -36,9 +37,10 @@ class Progress{
  }
  public static function CheckInserted($user_id, $content_id)
  {
-   self::UpdateViews($content_id,$user_id);
+   
    $con = $GLOBALS["con"];
    $sql ="Select progress_id from progress where user_id = $user_id and content_id = $content_id";
+  
    $result = mysqli_query($con,$sql);
    if(mysqli_num_rows($result) > 0)
    {
@@ -55,11 +57,11 @@ class Progress{
    $sql = "Select views from progress where content_id = $content_id and user_id = $user_id";
    $result = mysqli_query($con,$sql);
    if($val = mysqli_fetch_array($result))
-   {
+   { echo $val["views"];
        return $val["views"];
    }
  }
- public static function UpdateViews($content_id, $user_id)
+ public static function UpdateViews($user_id, $content_id)
  {
    $con = $GLOBALS["con"];
    $prev_views  = self::GetViews($content_id,$user_id);
@@ -80,6 +82,7 @@ class Progress{
     mysqli_query($con,$sql);
     if(mysqli_affected_rows($con) > 0)
     {
+      self::UpdateViews($user,$content);
       return true;
     }
     else
@@ -89,6 +92,7 @@ class Progress{
   }
   else
   {
+    self::UpdateViews($user,$content);
     return false;
   }
 
