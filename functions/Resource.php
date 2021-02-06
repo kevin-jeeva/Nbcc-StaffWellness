@@ -10,7 +10,14 @@ class Resource {
        $this->resourceTitle = $resourceTitle;
        $this->dateCreated = $dateCreated;
    }
+   public static function GetResourceNameById($resource_id)
+   {
+       $con = $GLOBALS["con"];
+       $sql = "Select resource_name, resource_id from resources where resource_id = $resource_id";
+       $result = mysqli_query($con,$sql);
+       return $result;
 
+   }
    public static function GetAllResources()
    {
        $con = $GLOBALS["con"];

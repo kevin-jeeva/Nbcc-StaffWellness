@@ -20,6 +20,22 @@ class Content {
        $this->eventDate = $eventDate;
    }
    
+   public static function GetLastContentById($content_id)
+   {
+       $con = $GLOBALS["con"];
+       $sql = "Select content_id,resource_id, content_title, content_description from content where content_id = $content_id";
+       $result = mysqli_query($con,$sql);
+       return $result;
+   }
+
+   public static function GetContentByResourceId($resource_id)
+   {
+       $con = $GLOBALS["con"];
+       $sql = "Select content_id,content_title, content_description from content where resource_id = $resource_id";
+       $result = mysqli_query($con,$sql);
+       return $result;
+   }
+
    public static function GetAllContents()
    {
        $con = $GLOBALS["con"];
@@ -133,15 +149,16 @@ class Content {
     static function getNextEvents(){
     $con = $GLOBALS['con'];
     $resource_id = self::getResourceIdByResourceName('events');
-    $sql = "SELECT content_title, content_text, date_format(event_date, '%m/%d/%y') as event_date FROM content WHERE resource_id = $resource_id ORDER BY event_date LIMIT 2";
+    $sql = "SELECT content_id,content_title, content_text, date_format(event_date, '%m/%d/%y') as event_date FROM content WHERE resource_id = $resource_id ORDER BY event_date LIMIT 2";
     $result = mysqli_query($con, $sql);
         while ($row = mysqli_fetch_assoc($result)) {
+            $content_id =$row["content_id"];
             $eventDate = $row["event_date"];
                 echo "<hr>
                 <h5 class=\"card-title\">". $row['content_title']."</h5>
                 <span class=\"badge badge-info\">$eventDate</span>
                 <p class=\"card-text\">". $row['content_text'] ."</p>
-                <a href=\"events.php\" class=\"btn btn-outline-info btn-block\">See Details</a>";
+                <a href=\"#\" class=\"btn btn-outline-info btn-block\" onclick=\"ReadEvents($content_id)\">See Details</a>";
         }
     } 
 
@@ -149,16 +166,17 @@ class Content {
    static function getTopArticles(){
     $con = $GLOBALS['con'];
     $resource_id = self::getResourceIdByResourceName('articles');
-    $sql = "SELECT content_title, content_text, date_format(date_created, '%m/%d/%y') as date_created FROM content WHERE resource_id = $resource_id ORDER BY date_created desc LIMIT 2";
+    $sql = "SELECT content_id,content_title, content_text, date_format(date_created, '%m/%d/%y') as date_created FROM content WHERE resource_id = $resource_id ORDER BY date_created desc LIMIT 2";
     $result = mysqli_query($con, $sql);
     $i ='one';
         while ($row = mysqli_fetch_assoc($result)) {
+            $content_id = $row["content_id"];
             $date_created = $row["date_created"];
             echo "<h3>" . $row['content_title'] ."<span style=\"font-size:1rem; float:right\">$date_created</span></h3>
             <div id =\"readMore\">
                 <div class=\"collapse\" id=\"$i\" id=\"collapseSummary\">". $row['content_text'] . "</div>
-                <a class=\"collapsed\" data-toggle=\"collapse\"  data-target=\"#$i\" href=\"#collapseSummary\" aria-expanded=\"false\" aria-controls=\"collapseSummary\"></a>
-            </div><br>";
+                <a class=\"collapsed\" data-toggle=\"collapse\"  data-target=\"#$i\" href=\"#collapseSummary\" aria-expanded=\"false\" aria-controls=\"collapseSummary\" onclick=\"HomeContentClicked($content_id)\"></a>
+            </div><hr>";
             $i = 'two';
         }    
     }
@@ -188,11 +206,11 @@ class Content {
         while ($row = mysqli_fetch_assoc($result)) {
           $date_created = $row["date_created"];
           echo "<div class=\"the-content\">
-          <a href=\"view.php?page=" . $row['content_id'] . "\"
+          <a href=\"#\"  onclick=\"ReadArticle(".$row['content_id'].")\">
           <p class=\"h1 text-dark\">" . $row['content_title'] . "</p></a>
           <hr><span class=\"date_created text-info font-weight-bold\">Created on: $date_created</span>
           <p class=\"content_text\">" .$row['content_description']."</p>
-          <a href=\"view.php?page=" . $row['content_id'] . "\" class=\"btn btn-outline-primary\">Read More</a>
+          <a href=\"#\" class=\"btn btn-outline-primary\" onclick=\"ReadArticle(".$row['content_id'].")\">Read More</a>
           </div>";
         }
 
