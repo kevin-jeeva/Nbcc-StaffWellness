@@ -24,8 +24,8 @@ class Media {
     //select media based on media ID
     static function getMediaById($mediaId){
         $con = $GLOBALS['con'];
-        $sql = "SELECT media_id, media_desc, media_path from Media where media_id = '$mediaId' ";
-        echo $sql;
+        $sql = "SELECT media_id, media_desc, media_path from media where media_id = '$mediaId' ";
+      //  echo $sql;
         $result = mysqli_query($con, $sql);
             while($row = mysqli_fetch_assoc($result)){
                 echo $row['media_desc']."<BR>".
