@@ -83,7 +83,7 @@ class Content {
            <div class=\"events-tile card shadow-sm p-2 m-1\">
            <div class=\"card-body\">
            <h3 class=\"card-title\">" . $row['content_title'] . "</h3>
-           <span class=\"badge badge-info\">$eventDate</span>
+           <span class=\"badge badge-info\">Date: $eventDate</span>
            <p class=\"content_text\">" . $row['content_text'] ."</p>
            <a href=\"view.php?page=" . $row['content_id'] . "\" class=\"btn btn-outline-info btn-block\">Read More</a>
            </div></div>";
