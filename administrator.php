@@ -44,6 +44,7 @@
 		$(document).ready(function() {
 		    $('#admTable').DataTable();
 		    $('#admTable2').DataTable();
+		    $('#admTable3').DataTable();
 		} );
 	</script>
 	
@@ -175,14 +176,14 @@
 			    	</div>
 
 			    	<div class="table-responsive">
-			    	  	<table id="admTable" class="table sortable table-hover">
+			    	  	<table id="admTable3" class="table sortable table-hover">
 				    	      <!-- Table's Header -->
 				    	      <thead>
 				    	        <tr>
-				    	          <th data-defaultsign="_19">#</th>
-				    	          <th data-defaultsign="AZ">Welcome Title</th>				    	          
-				    	          <th data-defaultsign="month">Created On</th>
-				    	          <th data-defaultsign="disabled" class="action-header-cell">Actions</th>
+				    	          <th>#</th>
+				    	          <th>Welcome Title</th>				    	          
+				    	          <th>Created On</th>
+				    	          <th class="action-header-cell">Actions</th>
 				    	        </tr>
 				    	      </thead>
 
