@@ -213,7 +213,7 @@ class Welcome{
          $date = $val["date_created"];
          echo "<h3>$content_title<span style=\"float:right; font-size:15px;\">Viewed on: $date</span></h3>
           <p>$content_desc</p>
-          <a href=\"view.php?page=$content_id\" class=\"btn btn-md btn-primary\">Read More</a><hr>";
+          <a href=\"#\" class=\"btn btn-md btn-primary\" onclick=\"ReadArticle($content_id)\">Read More</a><hr>";
        }
      }
    }

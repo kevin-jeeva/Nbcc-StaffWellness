@@ -8,6 +8,8 @@
 	include('functions/connect.php');
 	include('functions/staff.php');
 	include('functions/Content.php');
+	include('functions/Media.php');
+
 ?>
 
 
@@ -49,6 +51,18 @@
 	    </div>
 	  </div>
 	</header>
+
+		<!-- UPLOAD to DB -->
+		<form action="media_proc.php" method="post" enctype="multipart/form-data">
+		File: <input type="file" name="fileToUpload"></input><BR>
+		Submit: <input type="submit" name="SUBMIT"></input><BR>
+	</form>
+
+
+		<?php //Media::getAllMedia(); 
+				Media::getMediaById(1);
+		
+		?>
 
 	<!-- Categories Grid (4 columns) -->
 	<section class="features-categories text-center">

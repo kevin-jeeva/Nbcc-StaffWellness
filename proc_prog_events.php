@@ -9,11 +9,11 @@ if(isset($_GET["content_id"]))
  $progress = new Progress(0,$user_id,$content_id,100,0,0);
  if(Progress::InsertProgress($progress))
  {
-   header("location:events.php");
+   header("location:view.php?page=$content_id");
  }
  else
  {
-  header("location:events.php");
+  header("location:view.php?page=$content_id");
  }
 
 }
