@@ -94,6 +94,7 @@ class Content {
 
       $result = mysqli_query($con, $sql);
       while ($row = mysqli_fetch_assoc($result)) {
+          $content_id = $row["content_id"];
           $eventDate = $row["event_date"];
            echo "
            <div class=\"events-tile card shadow-sm p-2 m-1\">
@@ -101,7 +102,7 @@ class Content {
            <h3 class=\"card-title\">" . $row['content_title'] . "</h3>
            <span class=\"badge badge-info\">Date: $eventDate</span>
            <p class=\"content_text\">" . $row['content_text'] ."</p>
-           <a href=\"view.php?page=" . $row['content_id'] . "\" class=\"btn btn-outline-info btn-block\">Read More</a>
+           <a href=\"#\" class=\"btn btn-outline-info btn-block\" onclick=\"ReadArticle($content_id)\">Read More</a>
            </div></div>";
       }
 
