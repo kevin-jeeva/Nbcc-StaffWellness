@@ -168,15 +168,17 @@ class Welcome{
         $welcome_title = $val["welcome_title"];
         $welcome_text = $val["welcome_text"];
         $welcome_image = $val["welcome_image"];
-        echo "<div class=\"jumbotron jumbotron-fluid bg-dark\">  
-        <div class=\"jumbotron-background\">
-          <img src=\"includes/imgs/welcome_images/$welcome_image\" class=\"blur\">
-        </div>
-        <div class=\"container text-white\">
-          <h1 class=\"display-5\">$welcome_title</h1>
-          <p class=\"lead\">$welcome_text</p>                 
-        </div>          
-      </div>";
+        echo "<header class=\"masthead text-white text-center\" style=\"background: url('includes/imgs/welcome_images/$welcome_image') no-repeat center center; background-size: cover;\">
+          <div class=\"overlay\"></div>
+          <div class=\"container\">
+            <div class=\"row\">
+              <div class=\"col-xl-9 mx-auto\">
+                <h1 class=\"mb-5\">$welcome_title</h1>
+                <p>$welcome_text</p>
+              </div>
+            </div>
+          </div>
+        </header>";
       }
     }
     else
@@ -186,12 +188,7 @@ class Welcome{
         <div class=\"container\">
           <div class=\"row\">
             <div class=\"col-xl-9 mx-auto\">
-              <h1 class=\"mb-5\">Welcome</h1>                     
-              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec ac sapien sit amet elit imperdiet iaculis. Phasellus hendrerit posuere maximus.</p>
-            </div>
-            <div class=\"col-md-10 col-lg-8 col-xl-7 mx-auto\">
-              <p></p>
-            </div>
+              <h1 class=\"mb-5\">Welcome</h1>
           </div>
         </div>
     </header>";
