@@ -306,8 +306,10 @@ class Content {
         if(mysqli_num_rows($result) > 0 )
         {   
             $resource_id = self::getResourceIdByResourceName($resource_name);
+            $content_id = self::getContentID($resource_id,$content->title,$content->contentDescription);          
             if ($content->eventDate == null){
               self::InsertContent($resource_id,$content->title,$content->contentText,$content->contentDescription);
+              self::insertContentNotification($content_id);  
             }
             else{
               self::InsertContentforEvents($resource_id,$content->title,$content->contentText,$content->contentDescription, $content->eventDate);
@@ -345,7 +347,7 @@ class Content {
     {
         $con = $GLOBALS["con"];
         $resource_id = strtoupper($resource_id);
-        $sql = "Insert into content(resource_id,content_title,content_text,content_description) Values('$resource_id','$content_title','$content_text','$content_description') ";                
+        $sql = "Insert into content(resource_id,content_title,content_description) Values('$resource_id','$content_title','$content_text','$content_description') ";                
         mysqli_query($con,$sql);
         if(!mysqli_affected_rows($con) == 1)
         {
@@ -353,6 +355,41 @@ class Content {
         }
        
     }
+    //get content id based on all identifiers
+    //there's likely a more effecient way of doing this but this is the best I could come up with for the time being 
+    public static function getContentID($resource_id,$content_title,$content_description){
+      $con = $GLOBALS["con"];
+      $resource_id = strtoupper($resource_id);
+      $sql = "SELECT content_id from content where resource_id ='$resource_id' and content_title = '$content_title' and content_description = '$content_description'";
+      $result = mysqli_query ($con, $sql);
+      while ($row = mysqli_fetch_array($result)) { 
+          return $row['content_id'];
+      }
+  }
+
+  //insert content notification 
+  public static function insertContentNotification($contentId){
+      $con = $GLOBALS["con"];
+      $sql ="INSERT into notification (content_id, notification_repeat) values  ('" . $content_id . "', '1')";
+      mysqli_query($con,$sql);
+      if(!mysqli_affected_rows($con) == 1)
+      {
+        header("location:content.php");        
+      }
+  }
+  public static function getContentNotifications(){
+    $con = $GLOBALS["con"];
+    $sql = "select resource_id, content_id, content_title, content_description from content";
+    $result = mysqli_query($con, $sql);
+    while ($row = mysqli_fetch_assoc($result)){
+      $contentName = self::GetResourceNameByResourceId($row["resource_id"]);
+      $content_id =$row["content_id"];
+          echo "<hr>
+          <h5 class=\"card-title\">". $row['content_title']."</h5>
+          <p class=\"card-text\">". $row['content_description'] ."</p>
+          <a href=\"#\" class=\"btn btn-outline-info btn-block\" onclick=\"ReadArticle($content_id)\">Veiw $contentName</a>";
+    }
+  }
     public static function CheckResourceID($resource_name)
     {
         $con = $GLOBALS["con"];
