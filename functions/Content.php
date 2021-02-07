@@ -379,15 +379,19 @@ class Content {
   }
   public static function getContentNotifications(){
     $con = $GLOBALS["con"];
-    $sql = "select resource_id, content_id, content_title, content_description from content";
+    $sql = "select date_created, resource_id, content_id, content_title, content_description from content order by date_created desc";
     $result = mysqli_query($con, $sql);
     while ($row = mysqli_fetch_assoc($result)){
       $contentName = self::GetResourceNameByResourceId($row["resource_id"]);
       $content_id =$row["content_id"];
-          echo "<hr>
-          <h5 class=\"card-title\">". $row['content_title']."</h5>
-          <p class=\"card-text\">". $row['content_description'] ."</p>
-          <a href=\"#\" class=\"btn btn-outline-info btn-block\" onclick=\"ReadArticle($content_id)\">Veiw $contentName</a>";
+      $date = $row["date_created"];
+          echo "<div class=\"events-tile card shadow-sm p-2 m-1\">
+          <div class=\"card-body\">
+          <h3 class=\"card-title\">" . $row['content_title'] . "</h3>
+          <span class=\"badge badge-info\">Date Added: $date</span>
+          <p class=\"content_text\">" . $row['content_description'] ."</p>
+          <a href=\"#\" class=\"btn btn-outline-info btn-block\" onclick=\"ReadArticle($content_id)\">View $contentName</a>
+          </div></div>";
     }
   }
     public static function CheckResourceID($resource_name)
