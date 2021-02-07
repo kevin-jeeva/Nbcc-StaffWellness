@@ -390,7 +390,7 @@ class Content {
           <h3 class=\"card-title\">" . $row['content_title'] . "</h3>
           <span class=\"badge badge-info\">Date Added: $date</span>
           <p class=\"content_text\">" . $row['content_description'] ."</p>
-          <a href=\"#\" class=\"btn btn-outline-info btn-block\" onclick=\"ReadArticle($content_id)\">Read More</a>
+          <a href=\"#\" class=\"btn btn-outline-info btn-block\" onclick=\"ReadArticle($content_id)\">View $contentName</a>
           </div></div>";
     }
   }
