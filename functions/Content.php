@@ -379,7 +379,7 @@ class Content {
   }
   public static function getContentNotifications(){
     $con = $GLOBALS["con"];
-    $sql = "select date_created, resource_id, content_id, content_title, content_description from content";
+    $sql = "select date_created, resource_id, content_id, content_title, content_description from content order by date_created desc";
     $result = mysqli_query($con, $sql);
     while ($row = mysqli_fetch_assoc($result)){
       $contentName = self::GetResourceNameByResourceId($row["resource_id"]);
