@@ -80,7 +80,7 @@ class staff {
             {
                   $staff_id = self::SetStaffSession(self::GetStaffInfoByEmail($email));
                   $msg ="Sucess";                  
-                  header("location:dashboard.php");
+                  header("location:index.php");
             }
             else
             {
@@ -103,7 +103,7 @@ class staff {
                 $staff_id = self::SetStaffSession(self::GetStaffInfoByEmail($staff->email));
                  if(self::AddHash($staff_id,$staff->password)) //add the hash password and update the table
                  {      
-                    header("location:dashboard.php");
+                    header("location:index.php");
                  }
                  else
                  {
