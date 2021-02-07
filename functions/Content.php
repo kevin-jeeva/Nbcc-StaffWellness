@@ -471,6 +471,7 @@ class Content {
     
     public static function DeleteContent($contentId)
     {
+        self::DeleteNotification($contentId);
         $con = $GLOBALS["con"];
         $sql = "Delete from content where content_id = $contentId";
         mysqli_query($con,$sql);
@@ -479,7 +480,14 @@ class Content {
           header("location:administrator.php");
         }
     }
-        
+     
+    public static function DeleteNotification($contentId)
+    {
+      $con = $GLOBALS["con"];
+      $sql = "delete from notification where content_id = $contentId";
+      mysqli_query($con,$sql);
+
+    }
     
 
     public static function DeleteResourceIdInContent($resource_id)
