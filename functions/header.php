@@ -58,7 +58,7 @@ echo "<!-- Navigation -->
 					
 					$adminDropdown
 
-					<li class=\"nav-item\"><a class=\"btn btn-outline-primary\" href=\"functions/logout.php\">Log out</a></li>
+					<li class=\"nav-item\"><a class=\"btn btn-warning\" href=\"functions/logout.php\">Log out</a></li>
 				</ul>
 			</div>
 		</div><!-- end of collapse navbar-collapse -->

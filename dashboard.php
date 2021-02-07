@@ -54,7 +54,7 @@
   	<?php Welcome::DisplayWelcomeContent()?>
 	
 	<!-- Categories Grid (4 columns) -->
-	<section class="features-categories text-center">
+	<section class="progress-table text-center">
 	  <div class="container">
 	    <div class="row">
 			<div class="col-lg-12">
@@ -109,17 +109,17 @@
 	</section>
 
 	<!--Most viewed-->
-  <section class="features-categories text-center">
-	  <div class="container">
-	    <div class="row">
-      <div class="col-lg-12">
-			<h2 class="text-left">Most Viewed</h2><hr>
-			</div>
-	      <?php Welcome::GetMostViewed($_SESSION["staff_id"])?>
-	    </div>
-	  </div>
-	</section>
-	<hr>
+	<section class="most-viewed text-center">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-12">
+					<h2 class="text-left">Most Viewed</h2><hr>
+				</div>
+				<?php Welcome::GetMostViewed($_SESSION["staff_id"])?>
+			</div> <!-- End of row-->
+		</div> <!-- End of container-->
+	</section> <!-- End of most-viewed section-->
+
 	<!-- Footer -->
 	<?php include('functions/footer.php'); ?>
 

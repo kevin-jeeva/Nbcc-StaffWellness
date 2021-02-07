@@ -28,6 +28,19 @@ header.masthead h1 {
 	padding-bottom: 3rem;
 }
 
+.progress-table{
+	padding-top: 3rem;
+	padding-bottom: 3rem;
+}
+
+.most-viewed {
+	padding-bottom: 1.5rem;
+}
+
+.most-viewed-cards {
+    margin: .5rem 0;
+}
+
 .features-categories .features-categories-item .features-categories-icon i {
 	font-size: 4.5rem;
 }
@@ -40,22 +53,30 @@ header.masthead h1 {
 }
 
 .main-content {
-	padding-bottom: 3rem;
+	padding-bottom: 0.5rem;
 }
 
 .the-content {
 	margin-top: 1rem;
-	padding-bottom: 3rem;
+	padding-bottom: 1.5rem;
 }
 .events-tile {
 	width: 100%;
 }
-.pagination-row.row {
-	margin-top: 4rem;
+.pagination-row.row, ul.pagination {
+	margin-top: 2rem;
 }
 
 p.content_text {
 	margin-top: 1rem;
+}
+
+.block-last-viewed {
+    padding: 1.5rem 0;
+}
+
+.block-last-viewed:not(:last-child) {
+    border-bottom: 1px dotted #ccc;
 }
 
 #readMore div.collapse:not(.show) {
