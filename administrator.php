@@ -47,6 +47,7 @@
 		    $('#admTable').DataTable();
 		    $('#admTable2').DataTable();
 		    $('#admTable3').DataTable();
+		    $('#admTable4').DataTable();
 		} );
 	</script>
 	
@@ -87,7 +88,7 @@
     </div>
 	</div>
 
-	<!--successfull modal-->
+	<!--Successfull modal-->
 	<div class="modal fade" id="mySucessModal">
 	<div class="modal-dialog  modal-lg">
 	  <div class="modal-content">    
@@ -120,7 +121,7 @@
 		    	<!-- List Model for Category -->
 		    	<div class="list-sector">
 			    	<div class="list-header row">
-		    	  		<h2>List of created Resources</h2>
+		    	  		<h2>Created Resources</h2>
 		    	  		<a href="new_category.php" type="button" class="new-btn btn-sm btn-primary" value="id">Create new</a>
 			    	</div><hr>
 
@@ -147,7 +148,7 @@
 		    	<!-- List Model for created Contents -->
 		    	<div class="list-sector">
 			    	<div class="list-header row">
-		    	  		<h2>List of created Contents</h2>
+		    	  		<h2>Created Contents</h2>
 		    	  		<a href="new_content.php" type="button" class="new-btn btn-sm btn-primary" value="id">Create new</a>
 			    	</div><hr>
 
@@ -171,9 +172,11 @@
 			    	    </table>
 			    	</div> <!-- End of table-responsive -->
 		    	</div>
-					<div class="list-sector">
+
+		    	<!-- List Model for created welcome messages -->
+				<div class="list-sector">
 			    	<div class="list-header row">
-		    	  		<h2>List of Welcome Created</h2>
+		    	  		<h2>Created Welcome Messages</h2>
 		    	  		<a href="new_welcome.php" type="button" class="new-btn btn-sm btn-primary" value="id">Create new</a>
 			    	</div>
 
@@ -195,14 +198,17 @@
 				    	      </tbody>
 			    	    </table>
 			    	</div> <!-- End of table-responsive -->
-							<div class="list-sector">
+			    </div>
+					
+		    	<!-- List Model for created welcome messages -->
+				<div class="list-sector">
 			    	<div class="list-header row">
-		    	  		<h2>List of Exercies Vidoes Created</h2>
+		    	  		<h2>Created Videos Exercises</h2>
 		    	  		<a href="new_video.php" type="button" class="new-btn btn-sm btn-primary" value="id">Create new</a>
 			    	</div>
 
 			    	<div class="table-responsive">
-			    	  	<table id="admTable" class="table sortable table-hover">
+			    	  	<table id="admTable4" class="table sortable table-hover">
 				    	      <!-- Table's Header -->
 				    	      <thead>
 				    	        <tr>
@@ -220,8 +226,9 @@
 				    	      </tbody>
 			    	    </table>
 			    	</div> <!-- End of table-responsive -->
-		    	</div>
+		    	</div> <!-- list-sector -->
 		    </div> <!-- End of the-content col-md-12 -->
+
 		  </div> <!-- End of row -->
 		</div> <!-- End of container -->
 	</section>

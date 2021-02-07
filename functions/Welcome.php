@@ -212,9 +212,10 @@ class Welcome{
          $content_desc = $content_val["content_description"];
          $content_title = $content_val["content_title"];
          $date = $val["date_created"];
-         echo "<h3>$content_title<span style=\"float:right; font-size:15px;\">Viewed on: $date</span></h3>
-          <p>$content_desc</p>
-          <a href=\"#\" class=\"btn btn-md btn-primary\" onclick=\"ReadArticle($content_id)\">Read More</a><hr>";
+         echo "<div class=\"block-last-viewed\"><h3>$content_title</h3>
+         <span class=\"badge badge-pill badge-info\">Viewed on: $date</span>
+          <p class=\"pt-2\">$content_desc</p>
+          <a href=\"#\" class=\"btn btn-outline-info\" onclick=\"ReadArticle($content_id)\">Read More</a></div>";
        }
      }
    }
@@ -324,15 +325,16 @@ class Welcome{
         if($resource_val = mysqli_fetch_array($resource_result))
         {
           $resource_name = $resource_val["resource_name"];
-            echo " <div class=\"col-lg-3 col-md-6 col-sm-12\"><div class=\"card\">
-              <h5 class=\"card-header\">$resource_name</h5>
-              <div class=\"card-body\">
-                <h5 class=\"card-title\">$content_title</h5>
-                <p class=\"card-text\">$content_description</p>
-                <a href=\"#\" class=\"btn btn-info\" onclick=\"ReadArticle($content_id)\">Read more</a>
-              </div>
-            </div>
-            </div>";
+            echo "<div class=\"col-lg-3 col-md-6 col-sm-12\">
+                    <div class=\"most-viewed-cards card\">
+                      <div class=\"card-body\">
+                        <h4 class=\"card-title\">$content_title</h4>
+                        <span class=\"badge badge-pill badge-secondary\">$resource_name</span><hr>
+                        <p class=\"card-text\">$content_description</p>
+                        <a href=\"#\" class=\"btn btn-info\" onclick=\"ReadArticle($content_id)\">Read more</a>
+                      </div>
+                    </div>
+                  </div>";
         }
       }
     }
@@ -344,4 +346,3 @@ class Welcome{
 
  }
 }//end of class
-

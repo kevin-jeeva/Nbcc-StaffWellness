@@ -83,12 +83,12 @@ class Content {
       }
 
       //important variables for pagination
-      $no_of_records_per_page = 25;
+      $no_of_records_per_page = 12;
       $offset = ($pageno-1) * $no_of_records_per_page;
 
       $con = $GLOBALS['con'];
       $resource_id = self::getResourceIdByResourceName('events');
-      $sql = "SELECT content_id, content_title, content_text, date_format(event_date, '%m/%d/%y') as event_date FROM content WHERE resource_id = $resource_id ORDER BY event_date LIMIT $offset, $no_of_records_per_page";
+      $sql = "SELECT content_id, content_title, content_text, content_description, date_format(event_date, '%m/%d/%y') as event_date FROM content WHERE resource_id = $resource_id ORDER BY event_date LIMIT $offset, $no_of_records_per_page";
 
       $total_pages_sql = "SELECT COUNT(*) FROM content WHERE resource_id = $resource_id";
       $result = mysqli_query($con,$total_pages_sql);
@@ -104,7 +104,7 @@ class Content {
            <div class=\"card-body\">
            <h3 class=\"card-title\">" . $row['content_title'] . "</h3>
            <span class=\"badge badge-info\">Date: $eventDate</span>
-           <p class=\"content_text\">" . $row['content_text'] ."</p>
+           <p class=\"content_text\">" . $row['content_description'] ."</p>
            <a href=\"#\" class=\"btn btn-outline-info btn-block\" onclick=\"ReadArticle($content_id)\">Read More</a>
            </div></div>";
       }
@@ -153,7 +153,7 @@ class Content {
     static function getNextEvents(){
     $con = $GLOBALS['con'];
     $resource_id = self::getResourceIdByResourceName('events');
-    $sql = "SELECT content_id,content_title, content_text, date_format(event_date, '%m/%d/%y') as event_date FROM content WHERE resource_id = $resource_id ORDER BY event_date LIMIT 2";
+    $sql = "SELECT content_id,content_title, content_description, date_format(event_date, '%m/%d/%y') as event_date FROM content WHERE resource_id = $resource_id ORDER BY event_date LIMIT 2";
     $result = mysqli_query($con, $sql);
         while ($row = mysqli_fetch_assoc($result)) {
             $content_id =$row["content_id"];
@@ -161,7 +161,7 @@ class Content {
                 echo "<hr>
                 <h5 class=\"card-title\">". $row['content_title']."</h5>
                 <span class=\"badge badge-info\">$eventDate</span>
-                <p class=\"card-text\">". $row['content_text'] ."</p>
+                <p class=\"card-text\">". $row['content_description'] ."</p>
                 <a href=\"#\" class=\"btn btn-outline-info btn-block\" onclick=\"ReadEvents($content_id)\">See Details</a>";
         }
     } 
@@ -210,11 +210,11 @@ class Content {
         while ($row = mysqli_fetch_assoc($result)) {
           $date_created = $row["date_created"];
           echo "<div class=\"the-content\">
-          <a href=\"#\"  onclick=\"ReadArticle(".$row['content_id'].")\">
+          <a class=\"text-dark\" href=\"#\"  onclick=\"ReadArticle(".$row['content_id'].")\">
           <p class=\"h1 text-dark\">" . $row['content_title'] . "</p></a>
           <hr><span class=\"date_created text-info font-weight-bold\">Created on: $date_created</span>
           <p class=\"content_text\">" .$row['content_description']."</p>
-          <a href=\"#\" class=\"btn btn-outline-primary\" onclick=\"ReadArticle(".$row['content_id'].")\">Read More</a>
+          <a href=\"#\" class=\"btn btn-outline-info\" onclick=\"ReadArticle(".$row['content_id'].")\">Read More</a>
           </div>";
         }
 
