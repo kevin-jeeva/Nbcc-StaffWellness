@@ -8,15 +8,15 @@ class Media {
     private $mediaPath; 
     private $date_created;
 
-    function get($name) {
+   public function __get($name) {
         return $this->$name;
     }
 
-    function set($name, $value) {
+    public function __set($name, $value) {
         $this->$name = $value;
     }
 
-    function __construct($mediaId, $media_title,$mediaDescription,$mediaPath,$date_created)
+    public function __construct($mediaId, $media_title,$mediaDescription,$mediaPath,$date_created)
     {
         $this->mediaId=$mediaId;
         $this->media_title = $media_title;
@@ -129,8 +129,10 @@ class Media {
             while($val = mysqli_fetch_array($result))
             {
                 $count +=1;
+                $id = $val["media_id"];
                 $video_title = $val["media_title"];
                 $video_name = $val["media_path"];
+                $desc = $val["media_desc"];
                 $date = $val["date_created"];
                  echo "<tr>
                         <td>$count</td>
@@ -138,8 +140,8 @@ class Media {
                         <td>$video_name</td>       
                         <td>$date</td>          
                         <td align=\"right\">                
-                            <a href=\"#\" type=\"button\" class=\"btn btn-sm btn-info\">Edit Content</a>
-                            <a href=\"#\" type=\"button\" class=\"btn btn-sm btn-danger\">Delete</a>
+                            <a href=\"#\" type=\"button\" class=\"btn btn-sm btn-info\" onclick=\"RedirectEditVideo($id,'$video_title','$video_name','$desc')\">Edit Content</a>
+                            <a href=\"functions/proc_delete_video.php?videoId=$id\" type=\"button\" class=\"btn btn-sm btn-danger\" onclick = \"return CheckDelete(event)\">Delete</a>
                         </td>            
                      </tr>";
             }
@@ -158,5 +160,63 @@ class Media {
             </tr>";
         }
 
+    }
+
+    public static function InsertMedia($media)
+    {
+        $con = $GLOBALS["con"];
+        $title = $media->media_title;
+        $desc = $media->mediaDescription;
+        $path = $media->mediaPath;
+
+        $sql ="Insert into media (media_title,media_desc,media_path) values('$title','$desc','$path')";
+        mysqli_query($con,$sql);
+        if(mysqli_affected_rows($con) > 0)
+        {
+            return true;
+        }
+        else{
+            return false;
+        }
+    }
+
+    public static function DeleteVideo($video_id)
+    {
+        $con = $GLOBALS["con"];
+        $sql ="Delete from media where media_id = $video_id";
+        mysqli_query($con,$sql);
+        if(mysqli_affected_rows($con) > 0)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
+
+    public static function UpdateVideo($media)
+    {
+        $con =$GLOBALS["con"];
+        if($media->mediaPath === 0)
+        {
+            $sql = "Update media set media_title = '$media->media_title', media_desc='$media->mediaDescription' where media_id = $media->mediaId ";           
+            mysqli_query($con,$sql);
+            
+        }
+        else
+        {
+            $sql = "Update media set media_title = '$media->media_title', media_desc='$media->mediaDescription',media_path = '$media->mediaPath' where media_id = $media->mediaId";
+            mysqli_query($con,$sql);
+        }
+
+        if(mysqli_affected_rows($con) > 0)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
     }
 } // END MEDIA CLASS

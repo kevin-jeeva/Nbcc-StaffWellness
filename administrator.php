@@ -73,7 +73,7 @@
 	</div>
   
 	  <!--Error modal-->
-	<div class="modal fade" id="myModal">
+	<div class="modal fade" id="ErrormyModal">
     <div class="modal-dialog  modal-sm">
       <div class="modal-content">     
 			<div class="modal-header">
@@ -245,7 +245,7 @@ if($_SESSION["alert_message"] != "")
 {
   $alert_message = $_SESSION["alert_message"];
 	echo "<script>
-	$(\"#myModal\").modal();
+	$(\"#ErrormyModal\").modal();
 	document.getElementById(\"alert_message\").textContent = '$alert_message';
 	</script>";
 	$_SESSION["alert_message"] = "";

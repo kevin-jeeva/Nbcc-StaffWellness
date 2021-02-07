@@ -7,6 +7,13 @@ function CheckDelete(event) {
 function ResetLink() {
 	document.getElementById("DeleteContent").href = "#";
 }
+function RedirectEditVideo(video_id, video_title, video, video_desc) {
+	sessionStorage.setItem("video_title", video_title);
+	sessionStorage.setItem("video", video);
+	sessionStorage.setItem("video_id", video_id);
+	sessionStorage.setItem("video_desc", video_desc);
+	window.location.replace("edit_video.php");
+}
 function RedirectEditResource($resource_name, resource_id) {
 	sessionStorage.setItem("resource_id", resource_id);
 	sessionStorage.setItem("resource_name", $resource_name);
@@ -84,6 +91,19 @@ window.onload = function () {
 		document.getElementById("image_name").textContent = image;
 
 		console.log(document.getElementById("image_name").value);
+	} else if (
+		window.location.href ===
+		"http://localhost/nbcc_staffwellness/edit_video.php"
+	) {
+		id = sessionStorage.getItem("video_id");
+		title = sessionStorage.getItem("video_title");
+		video = sessionStorage.getItem("video");
+		desc = sessionStorage.getItem("video_desc");
+
+		$("#id").val(id);
+		$("#video-description").val(desc);
+		$("#videoTitle").val(title);
+		document.getElementById("video_name").textContent = video;
 	} else {
 		sessionStorage.removeItem("resource_id");
 		sessionStorage.removeItem("resource_name");
@@ -98,6 +118,11 @@ window.onload = function () {
 		sessionStorage.removeItem("welcome_title");
 		sessionStorage.removeItem("welcome_text");
 		sessionStorage.removeItem("welcome_image");
+
+		sessionStorage.removeItem("video_id");
+		sessionStorage.removeItem("video_title");
+		sessionStorage.removeItem("video");
+		sessionStorage.removeItem("video_desc");
 	}
 };
 function TrimCategoryTitle(resource) {
@@ -166,5 +191,42 @@ function trimFun(id, message) {
 	if (Value == "") {
 		msg += message + " required " + "\n";
 		count += 1;
+	}
+}
+
+function EditVideoCheck() {
+	for (var i = 0; i < 3; i++) {
+		switch (i) {
+			case 0:
+				trimFun("videoTitle", "Video Title");
+				break;
+			case 1:
+				trimFun("video-description", "video Description");
+				break;
+		}
+	}
+	if (count > 0) {
+		$("#myModal").modal();
+		document.getElementById("alert_message").textContent = msg;
+		count = 0;
+		msg = "";
+		return false;
+	} else {
+		return true;
+	}
+}
+
+function editVideoChange() {
+	var fullPath = document.getElementById("video_file").value;
+	if (fullPath) {
+		var startIndex =
+			fullPath.indexOf("\\") >= 0
+				? fullPath.lastIndexOf("\\")
+				: fullPath.lastIndexOf("/");
+		var filename = fullPath.substring(startIndex);
+		if (filename.indexOf("\\") === 0 || filename.indexOf("/") === 0) {
+			filename = filename.substring(1);
+		}
+		document.getElementById("video_name").textContent = filename;
 	}
 }

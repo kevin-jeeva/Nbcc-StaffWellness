@@ -13,6 +13,7 @@ if(isset($_POST["welcomeTitle"]))
         print_r($_FILES["pic"]);
         $detectedType = exif_imagetype($_FILES['pic']['tmp_name']);
         $error = in_array($detectedType,$allowedType);
+       
         echo $error;
         if($error)
         {
