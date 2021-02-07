@@ -12,7 +12,7 @@
 	<meta name="description" content="">
 	<meta name="author" content="">
 
-	<title>Events</title>
+	<title>Notifications</title>
 
 	<!-- Bootstrap core CSS -->
 	<link rel="stylesheet" href="includes/bootstrap-4.5.3-dist/css/bootstrap.min.css">
@@ -31,8 +31,8 @@
 	<!-- Article Masterhead -->
 	<div class="jumbotron jumbotron-fluid">
 	  <div class="container">
-	    <h1 class="display-4">Events</h1>
-		<!--<p class="lead">{Description of this category: e.g. Events}.</p> -->
+	    <h1 class="display-4">Notificaitons</h1>
+		<p class="lead">When new content is posted you wil be notified here.</p>
 	  </div>
 	</div>
 
