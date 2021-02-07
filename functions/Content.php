@@ -305,14 +305,16 @@ class Content {
         $result = self::CheckResourceID($resource_name);
         if(mysqli_num_rows($result) > 0 )
         {   
-            $resource_id = self::getResourceIdByResourceName($resource_name);
-            $content_id = self::getContentID($resource_id,$content->title,$content->contentDescription);          
+            $resource_id = self::getResourceIdByResourceName($resource_name);    
             if ($content->eventDate == null){
               self::InsertContent($resource_id,$content->title,$content->contentText,$content->contentDescription);
+              $content_id = self::getContentID($resource_id,$content->title,$content->contentDescription);              
               self::insertContentNotification($content_id);  
             }
             else{
               self::InsertContentforEvents($resource_id,$content->title,$content->contentText,$content->contentDescription, $content->eventDate);
+              $content_id = self::getContentID($resource_id,$content->title,$content->contentDescription); 
+              self::insertContentNotification($content_id); 
             }
         }
         else{               
@@ -321,9 +323,13 @@ class Content {
                     $resource_id = self::getResourceIdByResourceName($resource_name);
                     if ($content->eventDate == null){
                       self::InsertContent($resource_id,$content->title,$content->contentText,$content->contentDescription);
+                      $content_id = self::getContentID($resource_id,$content->title,$content->contentDescription); 
+                      self::insertContentNotification($content_id); 
                     }
                     else{
                       self::InsertContentforEvents($resource_id,$content->title,$content->contentText,$content->contentDescription, $content->eventDate);
+                      $content_id = self::getContentID($resource_id,$content->title,$content->contentDescription); 
+                      self::insertContentNotification($content_id); 
                     }
                 }
                 else{
@@ -345,9 +351,8 @@ class Content {
     }
     public static function InsertContent($resource_id,$content_title,$content_text,$content_description)
     {
-        $con = $GLOBALS["con"];
-        $resource_id = strtoupper($resource_id);
-        $sql = "Insert into content(resource_id,content_title,content_description) Values('$resource_id','$content_title','$content_text','$content_description') ";                
+        $con = $GLOBALS["con"];       
+        $sql = "Insert into content(resource_id,content_title,content_text,content_description) Values($resource_id,'$content_title','$content_text','$content_description') ";                
         mysqli_query($con,$sql);
         if(!mysqli_affected_rows($con) == 1)
         {
@@ -360,7 +365,8 @@ class Content {
     public static function getContentID($resource_id,$content_title,$content_description){
       $con = $GLOBALS["con"];
       $resource_id = strtoupper($resource_id);
-      $sql = "SELECT content_id from content where resource_id ='$resource_id' and content_title = '$content_title' and content_description = '$content_description'";
+      $sql = "SELECT content_id from content where resource_id =$resource_id and content_title = '$content_title' and content_description = '$content_description'";
+      echo $sql;
       $result = mysqli_query ($con, $sql);
       while ($row = mysqli_fetch_array($result)) { 
           return $row['content_id'];
@@ -370,11 +376,11 @@ class Content {
   //insert content notification 
   public static function insertContentNotification($contentId){
       $con = $GLOBALS["con"];
-      $sql ="INSERT into notification (content_id, notification_repeat) values  ('" . $contentId . "', '1')";
+      $sql ="INSERT into notification (content_id, notification_repeat) values  ($contentId, 1)";
       mysqli_query($con,$sql);
       if(!mysqli_affected_rows($con) == 1)
       {
-        header("location:content.php");        
+        //header("location:content.php");        
       }
   }
   public static function getContentNotifications(){

@@ -10,11 +10,12 @@ session_start();
     $content_description = $_POST["content-description"];
     $content_date = null;
     
-    if ($_POST["eventDate"] != ""){
+    if (isset($_POST["eventDate"]) && $_POST["eventDate"] != ""){
         $content_date = date("Y-m-d", strtotime($_POST["eventDate"]));
     }
 
     $content = new Content(0,0, $content_Title,$content_text,$content_description,0,0,$content_date);
+    print_r( $content);
     Content::CheckAndInsertContent($content,$content_category);   
     $_SESSION["message"] = "content Inserted Successfully";    
     header("location:administrator.php");    
