@@ -84,16 +84,16 @@ include_once("functions/Content.php");
 
 		  	<!--Content Sector (Main) -->
 		    <div class="the-content col-md-8">
-		    	<form method="post" id="newContentForm" name="newContentForm" onsubmit="return VideoCheck()" action="proc_new_video.php" enctype="multipart/form-data">
+		    	<form method="post" id="newContentForm" name="newContentForm" onsubmit="return VideoCheck()" action="proc_new_video.php"  enctype="multipart/form-data">
 		    	  <div class="form-group col-xs-12 col-md-12">   	    
 							<div class="form-group col-xs-6 col-md-4">
 								<label for="content-title" id="content-title">Video Title</label>
-								<input type="text" class="form-control" placeholder="Enter Video Title" name ="videoTitle" id="videoTitle" required>
+								<input type="text" class="form-control" placeholder="Enter Video Title" 						name ="videoTitle" id="videoTitle" required>
 							</div>
 							<div class="form-group col-lg-12">
 								<label for="content-description">Select a Video</label>
                 <div></div>
-							  <input class ="video_button" id="video_file" name="video" type="file" accept="video/*"><br>
+							  <input class ="video_button" id="video_file" name="video" type="file" 		accept="video/*"><br>
 							</div>	
              		<div class="form-group col-lg-12">
 								<label for="content-description">Video Description</label>
@@ -101,7 +101,7 @@ include_once("functions/Content.php");
 							</div>							
 							<br>
 							<div class="form-group col-lg-12">
-								<input type="submit" class="btn btn-warning" value="Submit"/>
+								<input type="submit" class="btn btn-warning" name ="submit"value="Submit"/>
 								<a href="administrator.php" type="button" class="btn btn-danger">Cancel</a>
 							</div>
 		    	</form> 	

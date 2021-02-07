@@ -370,7 +370,7 @@ class Content {
   //insert content notification 
   public static function insertContentNotification($contentId){
       $con = $GLOBALS["con"];
-      $sql ="INSERT into notification (content_id, notification_repeat) values  ('" . $content_id . "', '1')";
+      $sql ="INSERT into notification (content_id, notification_repeat) values  ('" . $contentId . "', '1')";
       mysqli_query($con,$sql);
       if(!mysqli_affected_rows($con) == 1)
       {

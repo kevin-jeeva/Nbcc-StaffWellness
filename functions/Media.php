@@ -28,37 +28,7 @@ class Media {
     {
         //this is destruct the object one the object is completed it process :)
     }
-    //select media based on media ID
-    // static function getMediaById($mediaId){
-    //     $con = $GLOBALS['con'];
-    //     $sql = "SELECT media_id, media_desc, media_path from media where media_id = '$mediaId' ";
-    //   //  echo $sql;
-    //     $result = mysqli_query($con, $sql);
-    //         while($row = mysqli_fetch_assoc($result)){
-    //             echo $row['media_desc']."<BR>".
-    //             $row['media_path'];
 
-    // //select media based on media ID
-    // static function getMediaById($mediaId){
-    //     $con = $GLOBALS['con'];
-    //     $sql = "SELECT * from media where media_id = $mediaId ";
-    //     echo $sql;
-    //     $result = mysqli_query($con, $sql);
-    //         while($row = mysqli_fetch_assoc($result)){
-    //             echo '<p>'.$row['media_desc']."<BR>".
-    //             $row['media_path'].'</p>';
-    //         }
-    // }
-    // //select all media
-    // static function getAllMedia(){
-    //     $con = $GLOBALS['con'];
-    //     $sql = "SELECT * from media";
-    //     $result = mysqli_query($con, $sql);
-    //         while($row = mysqli_fetch_assoc($result)){
-    //             echo $row['media_desc']."<BR>".
-    //             $row['media_path'];
-    //         }
-    // }
     public static function GetMedia()
     {
         $con = $GLOBALS["con"];
