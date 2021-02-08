@@ -53,7 +53,7 @@ echo "<!-- Navigation -->
 			  				<div class=\"dropdown-menu\" aria-labelledby=\"navbarDropdown\">
 			  				<a class=\"dropdown-item\" href=\"dashboard.php\">Dashboard</a>
 			  				<a class=\"dropdown-item\" href=\"#\">Profile Settings</a>
-			  				<a class=\"dropdown-item\" href=\"#\">Change Your Password</a>
+			  				<a class=\"dropdown-item\" href=\"password_edit.php\">Change Your Password</a>
 			  		</li>
 					
 					$adminDropdown
