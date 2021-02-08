@@ -33,7 +33,6 @@ echo "<!-- Navigation -->
 				
 			  	<li class=\"nav-item\"><a class=\"nav-link\" href=\"articles.php\">Articles</a></li>
 			  	<li class=\"nav-item\"><a class=\"nav-link\" href=\"events.php\">Events</a></li>
-				  <li class=\"nav-item\"><a class=\"nav-link\" href=\"notifications.php\">Notifications</a></li>
 			  	<li class=\"nav-item dropdown\">
 				    <a class=\"nav-link dropdown-toggle\" href=\"#\" id=\"navbarDropdown\" role=\"button\" data-toggle=\"dropdown\" aria-haspopup=\"true\" aria-expanded=\"false\">Exercises</a>
 				    <div class=\"dropdown-menu\" aria-labelledby=\"navbarDropdown\">
@@ -57,7 +56,29 @@ echo "<!-- Navigation -->
 			  		</li>
 					
 					$adminDropdown
+					<div class=\"notifications\">
+					<li class=\"nav-item\">
+					
+					<button type=\"button\" class=\"btn btn-primary li\" data-placement=\"bottom\" title=\"Notifications\" data-param1=\"Parameter1\">
+					<i class=\"bi bi-bell-fill\">
+					Notifications
+					</i></button>
+					</div></li>
+					<script>
+					$(document).ready(function(){
+					var po_options = {
+					html: true,
+					content: function() {
+						var p1 = $(this).data(\"param1\");
+						return `" . Content::bellNotifications() . " <br> <a href=\"notifications.php\" class=\"btn btn-outline-info\")\">View More</a>`;
+					}
+					};
 
+
+					$('.li').popover(po_options);
+					});
+					</script>
+					</div>
 					<li class=\"nav-item\"><a class=\"btn btn-warning\" href=\"functions/logout.php\">Log out</a></li>
 				</ul>
 			</div>

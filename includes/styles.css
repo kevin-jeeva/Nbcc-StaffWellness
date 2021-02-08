@@ -318,6 +318,26 @@ a.new-btn.btn-sm.btn-primary {
 	font-size: 15px;
 	font-weight: bold;
 }
+.notifItems{
+	text-decoration: none;
+	color: black;
+	transition: font 0.4s ease;
+ }
+
+.notifItems:hover {
+	text-decoration: none;
+	color: black;
+}
+.notifHover:hover {
+	font-size: 17px;
+	padding-top: 7px;
+	padding-left: 10px;
+	padding-right: 10px;
+	background-color: white;
+
+
+}
+
 
 /*Jumbotron style*/
 /*.jumbotron {
