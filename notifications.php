@@ -22,6 +22,12 @@
 	<!-- Custom CSS and JS -->
 	<link rel="stylesheet" type="text/css" href="includes/styles.css">
 	<script src="functions/main.js"></script>
+	<link rel="stylesheet" 
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
 </head>
 
 <body>
@@ -31,7 +37,7 @@
 	<!-- Article Masterhead -->
 	<div class="jumbotron jumbotron-fluid">
 	  <div class="container">
-	    <h1 class="display-4">Notificaitons</h1>
+	    <h1 class="display-4">Notifications</h1>
 		<p class="lead">When new content is posted you wil be notified here.</p>
 	  </div>
 	</div>

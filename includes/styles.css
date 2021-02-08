@@ -60,7 +60,7 @@ header.masthead h1 {
 	margin-top: 1rem;
 	padding-bottom: 1.5rem;
 }
-.events-tile {
+.events-tile, .notifications-tile {
 	width: 100%;
 }
 .pagination-row.row, ul.pagination {
@@ -318,6 +318,26 @@ a.new-btn.btn-sm.btn-primary {
 	font-size: 15px;
 	font-weight: bold;
 }
+.notifItems{
+	text-decoration: none;
+	color: black;
+	transition: font 0.4s ease;
+ }
+
+.notifItems:hover {
+	text-decoration: none;
+	color: black;
+}
+.notifHover:hover {
+	font-size: 17px;
+	padding-top: 7px;
+	padding-left: 10px;
+	padding-right: 10px;
+	background-color: white;
+
+
+}
+
 
 /*Jumbotron style*/
 /*.jumbotron {
@@ -354,19 +374,19 @@ img.blur {
 	header.masthead h1 {
 		font-size: 3rem;
 	}
-	.events-tile {
+	.events-tile, .notifications-tile {
 		width: 31% !important;
 	}
 }
 
 @media (max-width: 768px) {
-	.events-tile {
+	.events-tile, .notifications-tile {
 		width: 48% !important;
 	}
 }
 
 @media (max-width: 576px) {
-	.events-tile {
+	.events-tile, .notifications-tile  {
 		width: 100% !important;
 	}
 }

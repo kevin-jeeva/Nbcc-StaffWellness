@@ -56,7 +56,7 @@ class Media {
                             <img src=\"includes/imgs/4-wellbeing-support.jpg\" class=\"card-img-top\" alt=\"...\">
                             <div class=\"card-body\">
                                 <h3>$title</h3>                              
-                                <a href=\"watch_video.php?video_id=$media_id\" class=\"btn btn-outline-primary btn-block\">Watch Now</a>
+                                <a href=\"#\" class=\"btn btn-outline-primary btn-block\" onclick=\"WatchedVideos($media_id)\">Watch Now</a>
                             </div>
                         </div>
                         </div>
@@ -189,4 +189,6 @@ class Media {
             return false;
         }
     }
+
+   
 } // END MEDIA CLASS
