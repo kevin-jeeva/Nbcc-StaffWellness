@@ -45,7 +45,7 @@ echo "<!-- Navigation -->
 			  	<li class=\"nav-item\"><a class=\"nav-link\" href=\"support.php\">Support</a></li>
 			</ul>
 		  	<div class=\"navbar-right\">
-		  		<ul class=\"navbar-nav mr-auto\">
+		  		<ul class=\"navbar-nav mr-auto markings\">
 			  		<li class=\"nav-item\"><a class=\"nav-link\" href=\"contact.php\">Contact Us</a></li>
 			  		<li class=\"nav-item dropdown\">
 			  				<a class=\"nav-link dropdown-toggle\" href=\"#\" id=\"navbarDropdown\" role=\"button\" data-toggle=\"dropdown\" aria-haspopup=\"true\" aria-expanded=\"false\">Your Profile</a>
@@ -59,9 +59,8 @@ echo "<!-- Navigation -->
 					<div class=\"notifications\">
 					<li class=\"nav-item\">
 					
-					<button type=\"button\" class=\"btn btn-primary li\" data-toggle=\"popover\" data-placement=\"bottom\" title=\"Recent Notifications\" data-param1=\"Parameter1\">
-					<i class=\"bi bi-bell-fill\">
-					Notifications
+					<button type=\"button\" class=\"btn btn-success li\"  data-toggle=\"popover\" data-placement=\"bottom\" title=\"Recent Notifications\" data-trigger=\"focus\" data-param1=\"Parameter1\">
+					<i class=\"bi bi-bell-fill\">					
 					</i></button>
 					</div></li>
 					<script>					

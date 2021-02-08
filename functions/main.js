@@ -72,3 +72,7 @@ $(document).on("click", "#hi", function (event) {
 	}
 	window.location.replace("proc_insert_progress.php?content_id=" + id);
 });
+
+$(".popover-dismiss").popover({
+	trigger: "focus",
+});

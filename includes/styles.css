@@ -397,3 +397,8 @@ img.blur {
 	text-decoration: none;
 	color: #000000;
 }
+
+.nav-item {
+	list-style-type: none;
+	padding-left: 4px;
+}
