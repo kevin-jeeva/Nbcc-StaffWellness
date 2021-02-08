@@ -384,20 +384,74 @@ class Content {
       }
   }
   public static function getContentNotifications(){
+      if (isset($_GET['pageno'])) {
+        $pageno = $_GET['pageno'];
+    } else {
+        $pageno = 1;
+    }
+    $no_of_records_per_page = 12;
+    $offset = ($pageno-1) * $no_of_records_per_page;
+
     $con = $GLOBALS["con"];
     $sql = "select date_created, resource_id, content_id, content_title, content_description from content order by date_created desc";
+   
+    $total_pages_sql = "SELECT COUNT(*) FROM content";
+    $result = mysqli_query($con,$total_pages_sql);
+    $total_rows = mysqli_fetch_array($result)[0];
+    $total_pages = ceil($total_rows / $no_of_records_per_page);
+
     $result = mysqli_query($con, $sql);
     while ($row = mysqli_fetch_assoc($result)){
       $contentName = self::GetResourceNameByResourceId($row["resource_id"]);
+      $contentName = rtrim($contentName, "s");
       $content_id =$row["content_id"];
       $date = $row["date_created"];
-          echo "<div class=\"events-tile card shadow-sm p-2 m-1\">
+          echo "<div class = \"card\">
           <div class=\"card-body\">
           <h3 class=\"card-title\">" . $row['content_title'] . "</h3>
           <span class=\"badge badge-info\">Date Added: $date</span>
           <p class=\"content_text\">" . $row['content_description'] ."</p>
           <a href=\"#\" class=\"btn btn-outline-info btn-block\" onclick=\"ReadArticle($content_id)\">View $contentName</a>
-          </div></div>";
+          </div></div><br>";
+    }
+
+    //Print the first page link
+    echo "<div class=\"container\"><div class=\"pagination-row row\"><ul class=\"pagination mx-auto\"><li class=\"page-item\"><a class=\"page-link\" href=\"?pageno=1\">First Page</a></li>";
+      
+    // These actions will happen if the user access the previous page
+    if($pageno <= 1){
+      echo "<li class=\"page-item disabled\"><a class=\"page-link\" href=\"";
+    } else {
+      echo "<li class=\"page-item\">'";
+    }
+    if($pageno <= 1){
+      echo "#\">Prev</a></li>";
+    } else {
+      echo "?pageno=".($pageno - 1)."\">Prev</a></li>";
+    }
+
+    // These actions will happen if the user access the next page
+    if($pageno >= $total_pages){
+      echo "<li class=\"page-item disabled\"><a class=\"page-link\" href=\"";
+    } else {
+      echo "<li class=\"page-item\">'";
+    }
+    if($pageno >= $total_pages){
+      echo "#\">Next</a></li>";
+    } else {
+      echo "?pageno=".($pageno + 1)."\">Next</a></li>";
+    }
+
+    // These actions will happen if the user access the last page
+    if($total_pages <= 1){
+      echo "<li class=\"page-item disabled\"><a class=\"page-link\" href=\"";
+    } else {
+      echo "<li class=\"page-item\">'";
+    }
+    if($pageno >= $total_pages){
+      echo "#\">Last Page</a></li>";
+    } else {
+      echo "?pageno=".$total_pages."\">Last Page</a></li></ul></div></div>";
     }
   }
     public static function CheckResourceID($resource_name)
