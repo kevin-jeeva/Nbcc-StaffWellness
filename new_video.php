@@ -1,4 +1,5 @@
-<?php
+
+?":<?php
 session_start();
 include_once('functions/staff.php');
 include_once("functions/Content.php");
