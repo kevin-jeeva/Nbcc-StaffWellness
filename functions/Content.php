@@ -405,11 +405,12 @@ class Content {
       $contentName = self::GetResourceNameByResourceId($row["resource_id"]);
       $contentName = rtrim($contentName, "s");
       $content_id =$row["content_id"];
-      $date = $row["date_created"];
+      $date = strtotime($row["date_created"]);
+      $set_date = date("F d, Y | g:ia", $date);
           echo "<div class = \"card\">
           <div class=\"card-body\">
           <h3 class=\"card-title\">" . $row['content_title'] . "</h3>
-          <span class=\"badge badge-info\">Date Added: $date</span>
+          <span class=\"badge badge-info\">Date Added: $set_date</span>
           <p class=\"content_text\">" . $row['content_description'] ."</p>
           <a href=\"#\" class=\"btn btn-outline-info btn-block\" onclick=\"ReadArticle($content_id)\">View $contentName</a>
           </div></div><br>";
