@@ -457,8 +457,6 @@ class Content {
   }
 }
   public static function bellNotifications(){
-
-
     $con = $GLOBALS["con"];
     $sql = "select date_created, resource_id, content_id, content_title, content_description from content order by date_created desc limit 5";
     $string = "";

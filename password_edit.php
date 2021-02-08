@@ -2,20 +2,14 @@
 	session_start();
 	include_once('functions/connect.php');
 	include_once('functions/staff.php');
-	//include_once('functions/Resource.php');
-	//include_once("functions/Welcome.php");
-		//include_once("functions/Media.php");
-	//include_once('functions/Content.php');
+
 
 	//redirection
 	if (!isset($_SESSION["staff_id"])) //not currently logged in
 	{
 		header("Location:login.php");
 	}
-	else if(staff::GetStaffAdminNumber($_SESSION["staff_id"]) != 1) //checks if user is admin
-	{
-		header("Location:index.php");
-	}
+	
 
 ?>
 
@@ -45,6 +39,7 @@
     <div class="container login-container">
 		<div class="row">
 			<div class="col-lg-12 login-form-1">
+
 				<h3>Change password</h3>
 				<form method="post" id="password_change" action="password_edit_proc.php">
 				    <div class="form-group">
@@ -57,7 +52,7 @@
 				        <input type="password" class="form-control" name="verifyPassword" id="verifyPassword" placeholder="Re-enter your new Password *" value="" required= />
 				    </div>
                         <div class="form-group">
-                        <input type="submit" class="btnSubmit" value="Submit" />
+                        <input type="submit" class="btnSubmit" value="submit" name ="submit" />
                         </div>
 				      <div class="form-group">
                             <a href="#" class="ForgetPwd" value="Forget Password">Forget Password?</a>
