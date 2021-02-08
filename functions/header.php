@@ -67,7 +67,7 @@ echo "<!-- Navigation -->
 					<i class=\"bi bi-bell-fill\">
 					Notifications
 					</i></button>
-					</div></li>
+					</li></div>
 					<script>
 					$(document).ready(function(){
 					var po_options = {
