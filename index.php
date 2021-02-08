@@ -136,7 +136,7 @@
 			    	<h2>Recent Contents</h2>
 			    	<hr>
 					<!--Calling the Content class to retrieve two newest articles -->
-			    	<?php Content::getTopArticles() ?>
+			    	<?php Content::getTopArticles(3) ?>
 			    </div>
 
 			    <!--Sidebar (Links, Menus and other info) -->

@@ -167,7 +167,7 @@ class Content {
     } 
 
    //get two newest articles to display on index
-   static function getTopArticles(){
+   /*static function getTopArticles(){
     $con = $GLOBALS['con'];
     $resource_id = self::getResourceIdByResourceName('articles');
     $sql = "SELECT content_id,content_title, content_text, date_format(date_created, '%m/%d/%y') as date_created FROM content WHERE resource_id = $resource_id ORDER BY date_created desc LIMIT 2";
@@ -183,6 +183,24 @@ class Content {
             </div><hr>";
             $i = 'two';
         }    
+    }*/
+
+    //get two newest articles to display on index
+   static function getTopArticles($limit){
+    $con = $GLOBALS['con'];
+    $sql = "SELECT content_id, content_title, content_text, content_description, date_format(date_created, '%m/%d/%y') as date_created FROM content ORDER BY date_created DESC LIMIT $limit";
+    
+    $result = mysqli_query($con, $sql);
+        while ($row = mysqli_fetch_assoc($result)) {
+          $date_created = $row["date_created"];
+          echo "<div class=\"block-last-viewed\">
+          <a class=\"text-dark\" href=\"#\"  onclick=\"ReadArticle(".$row['content_id'].")\">
+          <p class=\"h3 text-dark\">" . $row['content_title'] . "</p></a>
+          <span class=\"date_created text-info font-weight-bold\">Created on: $date_created</span>
+          <p class=\"content_text\">" .$row['content_description']."</p>
+          <a href=\"#\" class=\"btn btn-outline-info\" onclick=\"ReadArticle(".$row['content_id'].")\">Read More</a>
+          </div>";
+        }
     }
 
     //get all articles to display on each resource page (e.g. articles.php)

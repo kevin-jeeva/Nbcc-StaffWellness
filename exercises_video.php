@@ -48,12 +48,8 @@
 	<!-- Categories Grid (4 columns) -->
 	<section class="features-categories text-center">
 	  <div class="container">
-		<div class="col-lg-12">
-		<h1 class="text-left">Videos</h1><hr>
-		</div>
 	    <div class="row">
-				<?php Media::DisplayVideoCards()?>
-
+			<?php Media::DisplayVideoCards()?>
 	    </div>
 	  </div>
 	</section>

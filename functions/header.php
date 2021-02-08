@@ -16,6 +16,8 @@ if(staff::GetStaffAdminNumber($_SESSION["staff_id"]) == 1)
 		<a class=\"dropdown-item\" href=\"new_content.php\">Create New Content</a>
 		<a class=\"dropdown-item\" href=\"new_welcome.php\">Create Welcome Content</a>
 		<a class=\"dropdown-item\" href=\"new_video.php\">Create New Video</a>
+		<div class=\"dropdown-divider\"></div>
+		<a class=\"dropdown-item text-danger\" href=\"functions/logout.php\">Log out</a>
 		";
 }
 
@@ -33,14 +35,11 @@ echo "<!-- Navigation -->
 				
 			  	<li class=\"nav-item\"><a class=\"nav-link\" href=\"articles.php\">Articles</a></li>
 			  	<li class=\"nav-item\"><a class=\"nav-link\" href=\"events.php\">Events</a></li>
-				  <li class=\"nav-item\"><a class=\"nav-link\" href=\"notifications.php\">Notifications</a></li>
 			  	<li class=\"nav-item dropdown\">
 				    <a class=\"nav-link dropdown-toggle\" href=\"#\" id=\"navbarDropdown\" role=\"button\" data-toggle=\"dropdown\" aria-haspopup=\"true\" aria-expanded=\"false\">Exercises</a>
 				    <div class=\"dropdown-menu\" aria-labelledby=\"navbarDropdown\">
 					<a class=\"dropdown-item\" href=\"exercises_video.php\">Video Exercises</a>
 						<a class=\"dropdown-item\" href=\"exercises_sound.php\">Sound Exercises</a>
-						<div class=\"dropdown-divider\"></div>
-						<a class=\"dropdown-item\" href=\"#\">Something else here</a>
 				    </div>
 			  	</li> 		
 			  	<li class=\"nav-item\"><a class=\"nav-link\" href=\"support.php\">Support</a></li>
@@ -52,13 +51,16 @@ echo "<!-- Navigation -->
 			  				<a class=\"nav-link dropdown-toggle\" href=\"#\" id=\"navbarDropdown\" role=\"button\" data-toggle=\"dropdown\" aria-haspopup=\"true\" aria-expanded=\"false\">Your Profile</a>
 			  				<div class=\"dropdown-menu\" aria-labelledby=\"navbarDropdown\">
 			  				<a class=\"dropdown-item\" href=\"dashboard.php\">Dashboard</a>
+			  				<div class=\"dropdown-divider\"></div>
+			  				<a class=\"dropdown-item\" href=\"notifications.php\">Notifications</a>
 			  				<a class=\"dropdown-item\" href=\"#\">Profile Settings</a>
 			  				<a class=\"dropdown-item\" href=\"#\">Change Your Password</a>
+			  				<div class=\"dropdown-divider\"></div>
+							<a class=\"dropdown-item text-danger\" href=\"functions/logout.php\">Log out</a>
 			  		</li>
 					
 					$adminDropdown
 
-					<li class=\"nav-item\"><a class=\"btn btn-warning\" href=\"functions/logout.php\">Log out</a></li>
 				</ul>
 			</div>
 		</div><!-- end of collapse navbar-collapse -->
