@@ -59,7 +59,7 @@ echo "<!-- Navigation -->
 					<div class=\"notifications\">
 					<li class=\"nav-item\">
 					
-					<button type=\"button\" class=\"btn btn-primary li\" data-toggle=\"popover\" data-placement=\"bottom\" title=\"Notifications\" data-param1=\"Parameter1\">
+					<button type=\"button\" class=\"btn btn-primary li\" data-toggle=\"popover\" data-placement=\"bottom\" title=\"Recent Notifications\" data-param1=\"Parameter1\">
 					<i class=\"bi bi-bell-fill\">
 					Notifications
 					</i></button>
