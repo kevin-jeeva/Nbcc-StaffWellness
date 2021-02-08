@@ -4,7 +4,7 @@
 	include_once('functions/staff.php');
 	include_once('functions/Resource.php');
 	include_once("functions/Welcome.php");
-		include_once("functions/Media.php");
+	include_once("functions/Media.php");
 	include_once('functions/Content.php');
 
 	//redirection
