@@ -308,7 +308,7 @@ class Welcome{
  public static function GetMostViewed($staff_id)
  {
    $con =$GLOBALS["con"];
-   $sql = "select content_id from staff.progress order by views desc Limit 4";
+   $sql = "select content_id from progress where user_id = $staff_id order by views  desc Limit 4";
    $result = mysqli_query($con,$sql);
    if(mysqli_num_rows($result) > 0)
    {
