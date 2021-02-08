@@ -188,17 +188,20 @@ class Content {
     //get two newest articles to display on index
    static function getTopArticles($limit){
     $con = $GLOBALS['con'];
-    $sql = "SELECT content_id, content_title, content_text, content_description, date_format(date_created, '%m/%d/%y') as date_created FROM content ORDER BY date_created DESC LIMIT $limit";
+    $sql = "SELECT content_id, resource_id, content_title, content_text, content_description, date_format(date_created, '%m/%d/%y') as date_created FROM content ORDER BY date_created DESC LIMIT $limit";
+    
     
     $result = mysqli_query($con, $sql);
         while ($row = mysqli_fetch_assoc($result)) {
+          $resource_name = self::GetResourceNameByResourceId($row['resource_id']);
           $date_created = $row["date_created"];
           echo "<div class=\"block-last-viewed\">
           <a class=\"text-dark\" href=\"#\"  onclick=\"ReadArticle(".$row['content_id'].")\">
           <p class=\"h3 text-dark\">" . $row['content_title'] . "</p></a>
-          <span class=\"date_created text-info font-weight-bold\">Created on: $date_created</span>
+          <span class=\"badge badge-pill badge-info\">$resource_name</span>
+          <span class=\"badge badge-pill badge-light\">Created on: $date_created</span>
           <p class=\"content_text\">" .$row['content_description']."</p>
-          <a href=\"#\" class=\"btn btn-outline-info\" onclick=\"ReadArticle(".$row['content_id'].")\">Read More</a>
+          <a class=\"btn btn-outline-info\" href=\"view.php?page=".$row['content_id']."\">Read More</a>
           </div>";
         }
     }
@@ -230,7 +233,7 @@ class Content {
           echo "<div class=\"the-content\">
           <a class=\"text-dark\" href=\"#\"  onclick=\"ReadArticle(".$row['content_id'].")\">
           <p class=\"h1 text-dark\">" . $row['content_title'] . "</p></a>
-          <hr><span class=\"date_created text-info font-weight-bold\">Created on: $date_created</span>
+          <hr><span class=\"badge badge-pill badge-light\">Created on: $date_created</span>
           <p class=\"content_text\">" .$row['content_description']."</p>
           <a href=\"#\" class=\"btn btn-outline-info\" onclick=\"ReadArticle(".$row['content_id'].")\">Read More</a>
           </div>";
