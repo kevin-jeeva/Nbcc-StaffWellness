@@ -389,15 +389,16 @@ class Content {
     $result = mysqli_query($con, $sql);
     while ($row = mysqli_fetch_assoc($result)){
       $contentName = self::GetResourceNameByResourceId($row["resource_id"]);
+      $contentName = rtrim($contentName, "s");
       $content_id =$row["content_id"];
       $date = $row["date_created"];
-          echo "<div class=\"events-tile card shadow-sm p-2 m-1\">
+          echo "<div class = \"card\">
           <div class=\"card-body\">
           <h3 class=\"card-title\">" . $row['content_title'] . "</h3>
           <span class=\"badge badge-info\">Date Added: $date</span>
           <p class=\"content_text\">" . $row['content_description'] ."</p>
           <a href=\"#\" class=\"btn btn-outline-info btn-block\" onclick=\"ReadArticle($content_id)\">View $contentName</a>
-          </div></div>";
+          </div></div><br>";
     }
   }
     public static function CheckResourceID($resource_name)
