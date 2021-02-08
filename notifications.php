@@ -31,7 +31,7 @@
 	<!-- Article Masterhead -->
 	<div class="jumbotron jumbotron-fluid">
 	  <div class="container">
-	    <h1 class="display-4">Notificaitons</h1>
+	    <h1 class="display-4">Notifications</h1>
 		<p class="lead">When new content is posted you wil be notified here.</p>
 	  </div>
 	</div>
