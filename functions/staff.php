@@ -28,6 +28,13 @@ class staff {
         $this->admin = $admin;
         $this->dateCreated = $dateCreated;
     }
+    public static function GetCurrPassword($staff_id){ //retrieve current user password 
+        $con =$GLOBALS["con"];
+        $sql="SELECT password FROM user where staff_id = $staff_id";
+        $result = mysqli_query($con,$sql);
+        return $result; 
+
+    }
     public static function  GetStaffInfoByEmail($email)
     {
         $con = $GLOBALS["con"];
