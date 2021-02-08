@@ -30,6 +30,7 @@
 
 	<!-- Custom CSS and JS -->
 	<link rel="stylesheet" type="text/css" href="includes/styles.css">
+	<script src="functions/main.js"></script>
 </head>
 
 <body>
