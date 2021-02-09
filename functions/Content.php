@@ -487,15 +487,15 @@ class Content {
       $contentName = self::GetResourceNameByResourceId($row["resource_id"]);
       $contentName = rtrim($contentName, "s");
       $content_id =$row["content_id"];
-      $date = strtotime($row["date_created"]);
-      $set_date = date("F d, Y | g:ia", $date);
-      $string .="<div class=\"notifHover\"><a href=\"#\" onclick=\"ReadArticle($content_id)\"class=\"notifItems\">
-          <h4>$contentName</h4>
-          <p>" . $row['content_title'] . "</p>
-          <p class=\"badge badge-info\">$set_date</p><br>
-          </a></div>
-          <hr>";
-    }
+      if($content_id === null){
+        $content_id = 0;
+      }
+     $date = strtotime($row["date_created"]);
+      $content_title = $row["content_title"]; 
+      $set_date = date("F d, Y | g:ia", $date);      
+      $string .= 
+      "<a href=\"#\" id = \"hi\" onclick=\"ReadArticle($content_id)\"><div id=\"$content_id\"><h4>$contentName</h4><p>$content_title</p><p class=\"\"> $set_date</p></div></a><hr>";
+    }    
     return $string;
   }
     

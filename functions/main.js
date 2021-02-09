@@ -1,6 +1,6 @@
 function ReadArticle(content_id) {
-	window.location.replace("proc_insert_progress.php?content_id=" + content_id);
 	console.log(content_id);
+	window.location.replace("proc_insert_progress.php?content_id=" + content_id);
 }
 function ReadEvents(event_id) {
 	console.log(event_id);
@@ -61,3 +61,18 @@ function trimFun(id, message) {
 		count += 1;
 	}
 }
+
+$("[data-toggle=popover]").popover();
+$(document).on("click", "#hi", function (event) {
+	let id = 0;
+	if (event.target.parentNode.id == "hi") {
+		id = event.target.parentNode.firstChild.id;
+	} else {
+		id = event.target.parentNode.id;
+	}
+	window.location.replace("proc_insert_progress.php?content_id=" + id);
+});
+
+$(".popover-dismiss").popover({
+	trigger: "focus",
+});
