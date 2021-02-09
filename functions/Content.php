@@ -473,7 +473,7 @@ class Content {
       $content_title = $row["content_title"]; 
       $set_date = date("F d, Y | g:ia", $date);      
       $string .= 
-      "<a href=\"#\" id = \"hi\" onclick=\"ReadArticle($content_id)\"><div id=\"$content_id\"><h4>$contentName</h4><p>$content_title</p><p class=\"\"> $set_date</p></div></a><hr>";
+      "<a href=\"#\" id = \"hi\"><div id=\"$content_id\" class=\"notihover\"><h4>$contentName</h4><p>$content_title</p><p class=\"\"> $set_date</p></div></a><hr>";
     }    
     return $string;
   }
