@@ -18,7 +18,7 @@ if(staff::GetStaffAdminNumber($_SESSION["staff_id"]) == 1)
 		<a class=\"dropdown-item\" href=\"new_video.php\">Create New Video</a>
 		<div class=\"dropdown-divider\"></div>
 		<a class=\"dropdown-item text-danger\" href=\"functions/logout.php\">Log out</a>
-		";
+		</li>";
 }
 
 echo "<!-- Navigation -->
@@ -61,12 +61,12 @@ echo "<!-- Navigation -->
 					
 					$adminDropdown
 					<div class=\"notifications\">
-					<li class=\"nav-item\">
+						<li class=\"nav-item\">
+						<button type=\"button\" class=\"btn btn-success li\"  data-toggle=\"popover\" data-placement=\"bottom\" title=\"Recent Notifications\" data-trigger=\"focus\" data-param1=\"Parameter1\">
+						<i class=\"bi bi-bell-fill\"></i></button>
+						</li>
+					</div>
 					
-					<button type=\"button\" class=\"btn btn-success li\"  data-toggle=\"popover\" data-placement=\"bottom\" title=\"Recent Notifications\" data-trigger=\"focus\" data-param1=\"Parameter1\">
-					<i class=\"bi bi-bell-fill\">					
-					</i></button>
-					</li></div>
 					<script>
 					$(document).ready(function(){
 					var po_options = {
@@ -78,10 +78,11 @@ echo "<!-- Navigation -->
 					};
 
 					$('.li').popover(po_options);
-					
+
+					});
 					</script>
+
 					</div>
-					<li class=\"nav-item\"><a class=\"btn btn-warning\" href=\"functions/logout.php\">Log out</a></li>
 				</ul>
 			</div>
 		</div><!-- end of collapse navbar-collapse -->
