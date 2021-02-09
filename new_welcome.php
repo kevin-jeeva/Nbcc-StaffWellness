@@ -79,7 +79,7 @@ include_once("functions/Content.php");
 	<!-- Article Masterhead -->
 	<div class="jumbotron jumbotron-fluid">
 	  <div class="container">
-	    <h1 class="display-4">Create a New Welcome Content</h1>
+	    <h1 class="display-4">Create a New Welcome Message</h1>
 	  </div>
 	</div>
 

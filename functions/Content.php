@@ -235,7 +235,7 @@ class Content {
           <p class=\"h1 text-dark\">" . $row['content_title'] . "</p></a>
           <hr><span class=\"badge badge-pill badge-light\">Created on: $date_created</span>
           <p class=\"content_text\">" .$row['content_description']."</p>
-          <a href=\"#\" class=\"btn btn-outline-info\" onclick=\"ReadArticle(".$row['content_id'].")\">Read More</a>
+          <a class=\"btn btn-outline-info\" href=\"view.php?page=".$row['content_id']."\">Read More</a>
           </div>";
         }
 
