@@ -62,7 +62,7 @@ echo "<!-- Navigation -->
 					$adminDropdown
 					<div class=\"notifications\">
 						<li class=\"nav-item\">
-						<button type=\"button\" class=\"btn btn-success li\"  data-toggle=\"popover\" data-placement=\"bottom\" title=\"Recent Notifications\" data-trigger=\"focus\" data-param1=\"Parameter1\">
+						<button type=\"button\" class=\"btn btn-primary li\"  data-toggle=\"popover\" data-placement=\"bottom\"  data-trigger=\"focus\" data-param1=\"Parameter1\">
 						<i class=\"bi bi-bell-fill\"></i></button>
 						</li>
 					</div>
@@ -73,7 +73,7 @@ echo "<!-- Navigation -->
 					html: true,
 					content: function() {
 						var p1 = $(this).data(\"param1\");
-						return `".Content::bellNotifications()." <br><a href=\"notifications.php\" class=\"btn btn-outline-info\")\">View More</a>`;
+						return `".Content::bellNotifications()." <a href=\"notifications.php\" class=\"btn btn-block btn-outline-info\")\">View More</a>`;
 					}
 					};
 

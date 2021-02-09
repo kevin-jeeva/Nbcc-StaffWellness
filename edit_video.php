@@ -102,7 +102,7 @@ include_once("functions/Content.php");
 							<div class="form-group col-lg-12">
 								<label for="content-description">Select a Video</label>
                 <div></div>
-							  <input class ="video_button" id="video_file" name="video" type="file" accept="video/*" onchange=" editVideoChange()"><br>
+							  <input id="video_file" name="video" type="file" accept="video/*" onchange=" editVideoChange()"><br>
 							</div>	
               <div class="form-group col-lg-12">
                 <label for="content-description">Uploaded Video Name: </label>

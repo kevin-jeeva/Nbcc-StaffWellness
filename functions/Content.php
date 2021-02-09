@@ -479,7 +479,7 @@ class Content {
 }
   public static function bellNotifications(){
     $con = $GLOBALS["con"];
-    $sql = "select date_created, resource_id, content_id, content_title, content_description from content order by date_created desc limit 5";
+    $sql = "select date_created, resource_id, content_id, content_title, content_description from content order by date_created desc limit 3";
     $string = "";
 
     $result = mysqli_query($con, $sql);
@@ -494,7 +494,7 @@ class Content {
       $content_title = $row["content_title"]; 
       $set_date = date("F d, Y | g:ia", $date);      
       $string .= 
-      "<a href=\"#\" id = \"hi\" onclick=\"ReadArticle($content_id)\"><div id=\"$content_id\"><h4>$contentName</h4><p>$content_title</p><p class=\"\"> $set_date</p></div></a><hr>";
+      "<a href=\"#\" id=\"hi\" onclick=\"ReadArticle($content_id)\"><div id=\"$content_id\"><h5>$contentName</h5><p>$content_title</p><p class=\"badge badge-pill badge-info\"> $set_date</p></div></a><hr>";
     }    
     return $string;
   }

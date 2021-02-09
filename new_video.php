@@ -25,8 +25,8 @@ include_once("functions/Content.php");
   
 	<title>Create a New video</title>
 	
-	<!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script> -->
-	<script src="includes/bootstrap-4.5.3-dist/jquery/jquery-3.5.1.slim.min.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	<!-- <script src="includes/bootstrap-4.5.3-dist/jquery/jquery-3.5.1.slim.min.js"></script> -->
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
 	
 	<!-- Bootstrap core CSS -->
@@ -101,7 +101,7 @@ include_once("functions/Content.php");
 							<div class="form-group col-lg-12">
 								<label for="content-description">Select a Video</label>
                 <div></div>
-							  <input class ="video_button" id="video_file" name="video" type="file" 		accept="video/*"><br>
+							  <input id="video_file" name="video" type="file" 		accept="video/*"><br>
 							</div>	
              		<div class="form-group col-lg-12">
 								<label for="content-description">Video Description</label>
