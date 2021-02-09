@@ -1,11 +1,13 @@
 <?php
 
+
 class staff {
     private $staffId;
     private $email;
     private $password;
     private $username;
     private $admin;
+    private $active;
     private $dateCreated;
     
     function __get($email) {
@@ -20,12 +22,13 @@ class staff {
         //this is destruct the object one the object is completed it process :)
     }
     
-    function __construct($staffId, $email, $password, $username, $admin, $dateCreated) {
+    function __construct($staffId, $email, $password, $username, $admin, $active, $dateCreated) {
         $this->staffId = $staffId;
         $this->email = $email;
         $this->password = $password;
         $this->username = $username;
         $this->admin = $admin;
+        $this->active = $active;
         $this->dateCreated = $dateCreated;
     }
     public static function GetCurrPassword($staff_id){ //retrieve current user password 
@@ -38,14 +41,14 @@ class staff {
     public static function  GetStaffInfoByEmail($email)
     {
         $con = $GLOBALS["con"];
-        $sql = "SELECT staff_id,user_name,email, password, admin, date_created FROM user WHERE email = UPPER('$email')";
+        $sql = "SELECT staff_id,user_name,email, password, admin, active, date_created FROM user WHERE email = UPPER('$email')";
         $result = mysqli_query($con, $sql);       
         return $result;
     }
     public static function CheckStaffEmail($email) //this function will check for staff password
     {
         $con = $GLOBALS["con"];
-        $sql = "SELECT staff_id FROM user WHERE email = UPPER('$email')";
+        $sql = "SELECT staff_id,active FROM user WHERE email = UPPER('$email')";
         $result = mysqli_query($con, $sql);       
         return $result;
     }
@@ -104,29 +107,51 @@ class staff {
         
         if(mysqli_num_rows($email) > 0) //check the email is correct and proceed
         {
-            if(mysqli_num_rows($password) > 0)//check the password is correct and proceed
-            { 
-                //set the session and get the staff id to save time
-                $staff_id = self::SetStaffSession(self::GetStaffInfoByEmail($staff->email));
-                 if(self::AddHash($staff_id,$staff->password)) //add the hash password and update the table
-                 {      
-                    header("location:index.php");
-                 }
-                 else
-                 {
-                     echo "failure";
-                 }                
+            if(self::CheckActive($staff->email))
+            {
+                if(mysqli_num_rows($password) > 0)//check the password is correct and proceed
+                { 
+                    //set the session and get the staff id to save time
+                    $staff_id = self::SetStaffSession(self::GetStaffInfoByEmail($staff->email));
+                    if(self::AddHash($staff_id,$staff->password)) //add the hash password and update the table
+                    {      
+                        header("location:index.php");
+                    }
+                    else
+                    {
+                        echo "failure";
+                    }                
+                }
+                else
+                {
+                    self::CheckHashAndRedirect($staff->email, $staff->password);//check for the hashed password or wrong password
+                }  
             }
             else
             {
-                self::CheckHashAndRedirect($staff->email, $staff->password);//check for the hashed password or wrong password
-            }           
+                $msg = "Not an Active User" ;
+                header("location:login.php?loginError=$msg");
+            }       
+                     
         }//end of first if
         else
         {
             $msg = "Email not found. Please Try again!" ;
             header("location:login.php?loginError=$msg");
         }        
+    }
+    public static function CheckActive($email)
+    {
+        $result = self::CheckStaffEmail($email);
+        while($val = mysqli_fetch_array($result))
+        {
+            $active = $val["active"];
+            if($active == 1)
+            {
+                return true;
+            }
+            return false;
+        }
     }
     static function SetStaffSession($staff)
     {
@@ -138,6 +163,7 @@ class staff {
                 $_SESSION["staff_name"] =$val["user_name"];
                 $_SESSION["staff_id"] = $val["staff_id"];
                 $_SESSION["message"] = "Welcome, ".$val["user_name"];
+                $_SESSION["active"] = $val["active"];
                 return $val["staff_id"];
             }
         }
@@ -155,4 +181,61 @@ class staff {
         $row = mysqli_fetch_array($result, MYSQLI_NUM);
         return $row[0];
     }
+    
+    public static function DisplayAllUsers()
+    {
+        $con = $GLOBALS["con"];
+        $sql = "Select staff_id, user_name, active, date_format(date_created, '%m/%d/%y') as date_created from user";       
+        $count = 0;
+        $color = "";
+        $result = mysqli_query($con, $sql);
+        if(mysqli_num_rows($result) > 0)
+        {
+            while($val = mysqli_fetch_array($result))
+            {
+                $staff_id = $val["staff_id"];
+                $name = $val ["user_name"];
+                $date_created = $val["date_created"];
+                $active = $val["active"];
+                if($active == 0)
+                {
+                    $color = "<a href= \"#\" onclick=\"ActDeactivate_user($staff_id,1)\"class= \"btn btn-danger btn-md\">Deactive</a>";
+                }
+                else
+                {
+                    $color = "<a href= \"#\" onclick=\"ActDeactivate_user($staff_id,0)\" class= \"btn btn-success btn-md\">Active</a>";
+                }
+                $count +=1;
+                echo "<tr>
+                <td>$count</td>
+                <td>$name</td>
+                <td>$date_created</td>
+                <td align = \"right\">$color</td>
+                </tr>";
+            }           
+        }
+        else
+        {
+            echo "<tr>
+            <td>#</td>
+            <td>No users</td>
+            <td>Null</td>
+            <td align = \"right\">Null</td>
+            </tr>";
+        }
+    }
+
+    public static function SetActiveAndDeactive($staff_id,$active)
+    {
+        $con = $GLOBALS["con"];
+        $sql = "update user set active = $active where staff_id =$staff_id  ";
+        echo $sql;
+        mysqli_query($con,$sql);
+        if(mysqli_affected_rows($con) > 0)
+        {
+            return true;
+        }
+        return false;
+    }
+    
 }

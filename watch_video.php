@@ -1,5 +1,10 @@
 <?php
 session_start();
+if($_SESSION["active"] == 0)
+{
+		$msg = "Not an Active User" ;
+		header("location:login.php?loginError=$msg");
+}
 include_once('functions/connect.php');
 include_once('functions/staff.php');
 include_once('functions/Content.php');

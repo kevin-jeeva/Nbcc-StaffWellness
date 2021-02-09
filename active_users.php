@@ -5,8 +5,13 @@
 	include_once('functions/Resource.php');
 	include_once("functions/Welcome.php");
 	include_once("functions/Media.php");
-	include_once('functions/Content.php');  
-
+	include_once('functions/Content.php');
+	
+	if($_SESSION["active"] == 0)
+	{
+		$msg = "Not an Active User" ;
+		header("location:login.php?loginError=$msg");
+	}
 	//redirection
 	if (!isset($_SESSION["staff_id"])) //not currently logged in
 	{
@@ -108,7 +113,7 @@
 	<!-- Article Masterhead -->
 	<div class="jumbotron jumbotron-fluid">
 	  <div class="container">
-	    <h1 class="display-4">Administration Panel</h1>
+	    <h1 class="display-4">Acitvate / Deactivate Users</h1>
 	    <p class="lead">Hello <?=$_SESSION["staff_name"]?></p>
 	  </div>
 	</div>
@@ -123,111 +128,27 @@
 		    	<!-- List Model for Category -->
 		    	<div class="list-sector">
 			    	<div class="list-header row">
-		    	  		<h2>Created Resources</h2>
-		    	  		<a href="new_category.php" type="button" class="new-btn btn-sm btn-primary" value="id">Create new</a>
+		    	  		<h2>List of Users</h2>		    	  	
 			    	</div><hr>
-
-			    	<div class="table-responsive">
+            <div class="table-responsive">
 			    	  	<table id="admTable" class="table sortable table-hover">
 				    	      <!-- Table's Header -->
 				    	      <thead>
 				    	        <tr>
 				    	          <th>#</th>
-				    	          <th>Title</th>
-				    	          <th>Created on</th>
-				    	          <th class="action-header-cell">Actions</th>
+				    	          <th>User Name</th>
+				    	          <th>Date Created</th>
+				    	          <th class="action-header-cell">Status</th>
 				    	        </tr>
 				    	      </thead>
 
 				    	      <!-- Important SECTION: display all content's categories from database -->
 				    	      <tbody>
-				    	        <?php Resource::GetAllResources()?>
+				    	        <?php staff::DisplayAllUsers()?>
 				    	      </tbody>
 			    	    </table>
 			    	</div> <!-- End of table-responsive -->
 		    	</div>
-
-		    	<!-- List Model for created Contents -->
-		    	<div class="list-sector">
-			    	<div class="list-header row">
-		    	  		<h2>Created Contents</h2>
-		    	  		<a href="new_content.php" type="button" class="new-btn btn-sm btn-primary" value="id">Create new</a>
-			    	</div><hr>
-
-			    	<div class="table-responsive">
-			    	  	<table id="admTable2" class="table sortable table-hover">
-				    	      <!-- Table's Header -->
-				    	      <thead>
-				    	        <tr>
-				    	          <th>#</th>
-				    	          <th>Title</th>
-				    	          <th>Resource</th>
-				    	          <th>Created on</th>
-				    	          <th class="action-header-cell">Actions</th>
-				    	        </tr>
-				    	      </thead>
-
-				    	      <!-- Important SECTION: display all content's categories from database -->
-				    	      <tbody>
-									<?php Content::GetListofCreatedContent()?>				    	       
-				    	      </tbody>
-			    	    </table>
-			    	</div> <!-- End of table-responsive -->
-		    	</div>
-
-		    	<!-- List Model for created welcome messages -->
-				<div class="list-sector">
-			    	<div class="list-header row">
-		    	  		<h2>Created Welcome Messages</h2>
-		    	  		<a href="new_welcome.php" type="button" class="new-btn btn-sm btn-primary" value="id">Create new</a>
-			    	</div>
-
-			    	<div class="table-responsive">
-			    	  	<table id="admTable3" class="table sortable table-hover">
-				    	      <!-- Table's Header -->
-				    	      <thead>
-				    	        <tr>
-				    	          <th>#</th>
-				    	          <th>Welcome Title</th>				    	          
-				    	          <th>Created On</th>
-				    	          <th class="action-header-cell">Actions</th>
-				    	        </tr>
-				    	      </thead>
-
-				    	      <!-- Important SECTION: display all content's categories from database -->
-				    	      <tbody>
-								<?php Welcome::GetListofCreatedWelcoms()?>
-				    	      </tbody>
-			    	    </table>
-			    	</div> <!-- End of table-responsive -->
-			    </div>
-					
-		    	<!-- List Model for created welcome messages -->
-				<div class="list-sector">
-			    	<div class="list-header row">
-		    	  		<h2>Created Videos Exercises</h2>
-		    	  		<a href="new_video.php" type="button" class="new-btn btn-sm btn-primary" value="id">Create new</a>
-			    	</div>
-
-			    	<div class="table-responsive">
-			    	  	<table id="admTable4" class="table sortable table-hover">
-				    	      <!-- Table's Header -->
-				    	      <thead>
-				    	        <tr>
-				    	          <th data-defaultsign="_19">#</th>
-				    	          <th data-defaultsign="AZ">Video Title</th>	
-												 <th data-defaultsign="AZ">Video Name</th>				    	          
-				    	          <th data-defaultsign="month">Created On</th>
-				    	          <th data-defaultsign="disabled" class="action-header-cell">Actions</th>
-				    	        </tr>
-				    	      </thead>
-
-				    	      <!-- Important SECTION: display all content's categories from database -->
-				    	      <tbody>
-								<?php Media::GetListOfCreatedVideos()?>
-				    	      </tbody>
-			    	    </table>
-			    	</div> <!-- End of table-responsive -->
 		    	</div> <!-- list-sector -->
 		    </div> <!-- End of the-content col-md-12 -->
 

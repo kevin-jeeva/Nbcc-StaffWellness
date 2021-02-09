@@ -1,9 +1,14 @@
 <?php
 	session_start();
-        if(!isset($_SESSION["staff_id"]))
-        {
-            header("location:Login.php");
-        }
+	if($_SESSION["active"] == 0)
+	{
+		 $msg = "Not an Active User" ;
+     header("location:login.php?loginError=$msg");
+	}
+	if(!isset($_SESSION["staff_id"]))
+	{
+			header("location:Login.php");
+	}
         
 	include_once('functions/connect.php');
 	include_once('functions/staff.php');

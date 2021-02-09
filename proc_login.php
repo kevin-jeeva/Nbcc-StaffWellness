@@ -12,7 +12,7 @@ $_SESSION["staff_name"] ="";
 $_SESSION["staff_id"] = "";
 $_SESSION["message"] = "";
 $_SESSION["alert_message"] = "";
-
+$_SESSIOs["active"] = 0;
 include("functions/staff.php");
 include("functions/connect.php");
 
@@ -23,8 +23,12 @@ if (isset($_POST["email"])) {
 	$input_password = trim($_POST['password']);
     
     //constructor: $staffId, $email, $password, $username, $admin, $dateCreated
-    $staff = new staff(0, $input_email, $input_password, 0, 0, 0);    
+    $staff = new staff(0, $input_email, $input_password, 0, 0, 0,0);    
     staff::staffLogin($staff);//check the staff credentials and take neccessary action
     
+}
+else
+{
+	header("location:login.php");
 }
 ?>

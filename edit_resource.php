@@ -2,6 +2,11 @@
 <?php include_once("functions/Content.php");
 session_start();
 include_once("functions/staff.php");
+	if($_SESSION["active"] == 0)
+	{
+		$msg = "Not an Active User" ;
+		header("location:login.php?loginError=$msg");
+	}
 //redirection
 if (!isset($_SESSION["staff_id"])) //not currently logged in
 {

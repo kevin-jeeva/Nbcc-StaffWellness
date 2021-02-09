@@ -3,6 +3,11 @@
 	include('functions/connect.php');
 	include('functions/staff.php');
 	include('functions/Content.php');
+	if($_SESSION["active"] == 0)
+	{
+		$msg = "Not an Active User" ;
+		header("location:login.php?loginError=$msg");
+	}
 ?>
 <!DOCTYPE html>
 <html lang="en">
