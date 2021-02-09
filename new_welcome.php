@@ -29,7 +29,7 @@ include_once("functions/Content.php");
   
 	<title>Create a Welcome Content</title>
 	
-	<!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script> -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 	<script src="includes/bootstrap-4.5.3-dist/jquery/jquery-3.5.1.slim.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
 	
@@ -84,7 +84,7 @@ include_once("functions/Content.php");
 	<!-- Article Masterhead -->
 	<div class="jumbotron jumbotron-fluid">
 	  <div class="container">
-	    <h1 class="display-4">Create a New Welcome Content</h1>
+	    <h1 class="display-4">Create a New Welcome Message</h1>
 	  </div>
 	</div>
 
@@ -104,7 +104,7 @@ include_once("functions/Content.php");
 							<div class="form-group col-lg-12">
 								<label for="content-description">Select a Welcome Image</label>
                 <div></div>
-							  <input class ="welcome_image_button" id="welcome_image" name="pic" type="file" accept="image/*"><br>
+							  <input id="welcome_image" name="pic" type="file" accept="image/*"><br>
 							</div>	
              		<div class="form-group col-lg-12">
 								<label for="content-description">Welcome Text</label>

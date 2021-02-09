@@ -62,21 +62,18 @@ echo "<!-- Navigation -->
 					
 					$adminDropdown
 					<div class=\"notifications\">
-							<button tabindex=\"0\" type=\"button\" class=\"btn btn-success li\"  data-toggle=\"popover\" data-trigger=\"focus\" data-placement=\"bottom\" title=\"Recent Notifications\"  data-param1=\"Parameter1\">
-					<i class=\"bi bi-bell-fill\">					
-					</i></button>
-					</div></li>
-					</div>
-					
-				
-										
+						<li class=\"nav-item\">
+						<button type=\"button\" class=\"btn btn-primary li\"  data-toggle=\"popover\" data-placement=\"bottom\"  data-trigger=\"focus\" data-param1=\"Parameter1\">
+						<i class=\"bi bi-bell-fill\"></i></button>
+						</li>
+					</div>					
 					<script>
 					$(document).ready(function(){
 					var po_options = {
 					html: true,
 					content: function() {
 						var p1 = $(this).data(\"param1\");
-						return `".Content::bellNotifications()." <br><a href=\"notifications.php\" class=\"btn btn-outline-info\")\">View More</a>`;
+						return `".Content::bellNotifications()." <a href=\"notifications.php\" class=\"btn btn-block btn-outline-info\")\">View More</a>`;
 					}
 					};
 
