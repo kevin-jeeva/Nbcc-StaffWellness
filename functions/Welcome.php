@@ -274,7 +274,8 @@ class Welcome{
       //display the progres value     
       $total = round($progress_value / $count_divide);
       $row_count += 1;
-      $color =  $colors[$rand_color];      
+      $color =  $colors[$rand_color]; 
+      unset($colors[$rand_color]);     
       echo "<tr><th scope=\"row\"> $row_count</th>
             <td>$resource_name</td>
             <td><div class=\"progress\">
