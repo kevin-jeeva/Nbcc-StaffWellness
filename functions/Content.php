@@ -494,7 +494,7 @@ class Content {
       $content_title = $row["content_title"]; 
       $set_date = date("F d, Y | g:ia", $date);      
       $string .=
-      "<a href=\"#\" id=\"hi\" onclick=\"ReadArticle($content_id)\"><div id=\"$content_id\"><h5>$contentName</h5><p>$content_title</p><p class=\"badge badge-pill badge-info\"> $set_date</p></div></a><hr>";
+      "<a href=\"#\" id=\"hi\" onclick=\"ReadArticle($content_id)\"><div id=\"$content_id\"><h5>$contentName</h5><p>$content_title</p><p class=\"badge badge-pill badge-secondary\"> $set_date</p></div></a><hr>";
     }    
     return $string;
   }

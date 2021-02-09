@@ -73,7 +73,7 @@ echo "<!-- Navigation -->
 					html: true,
 					content: function() {
 						var p1 = $(this).data(\"param1\");
-						return `".Content::bellNotifications()." <a href=\"notifications.php\" class=\"btn btn-block btn-outline-info\")\">View More</a>`;
+						return `".Content::bellNotifications()." <a href=\"notifications.php\" class=\"btn btn-block btn-outline-dark\")\">View More</a>`;
 					}
 					};
 
