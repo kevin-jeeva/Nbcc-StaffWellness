@@ -61,12 +61,21 @@ echo "<!-- Navigation -->
 					
 					$adminDropdown
 					<div class=\"notifications\">
+<<<<<<< HEAD
 						<li class=\"nav-item\">
 						<button type=\"button\" class=\"btn btn-primary li\"  data-toggle=\"popover\" data-placement=\"bottom\"  data-trigger=\"focus\" data-param1=\"Parameter1\">
 						<i class=\"bi bi-bell-fill\"></i></button>
 						</li>
+=======
+							<button tabindex=\"0\" type=\"button\" class=\"btn btn-success li\"  data-toggle=\"popover\" data-trigger=\"focus\" data-placement=\"bottom\" title=\"Recent Notifications\"  data-param1=\"Parameter1\">
+					<i class=\"bi bi-bell-fill\">					
+					</i></button>
+					</div></li>
+>>>>>>> 51284beee759f49f4c829dfb4e65e9cce083d7c1
 					</div>
 					
+				
+										
 					<script>
 					$(document).ready(function(){
 					var po_options = {
