@@ -194,7 +194,7 @@ class staff {
             while($val = mysqli_fetch_array($result))
             {
                 $staff_id = $val["staff_id"];
-                $name = $val ["user_name"];
+                $name = strtoupper($val ["user_name"]);
                 $date_created = $val["date_created"];
                 $active = $val["active"];
                 if($active == 0)

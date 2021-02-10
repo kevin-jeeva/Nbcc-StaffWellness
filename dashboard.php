@@ -69,7 +69,7 @@
 			 <h2 class="text-left"><?=$_SESSION["staff_name"]?> Progress</h2><hr>
 			</div>
 	      <div class="col-lg-12">	
-				<table class="table table-striped">
+				<table class="table table-striped ">
 						<thead class="table-dark text-white">
 							<tr>
 							  <th scope="col">#</th>
