@@ -1,9 +1,14 @@
 <?php
 	session_start();
-        if(!isset($_SESSION["staff_id"]))
-        {
-            header("location:Login.php");
-        }
+	if($_SESSION["active"] == 0)
+	{
+		 $msg = "Not an Active User" ;
+     header("location:login.php?loginError=$msg");
+	}
+	if(!isset($_SESSION["staff_id"]))
+	{
+			header("location:Login.php");
+	}
         
 	require_once('functions/connect.php');
 	require_once('functions/staff.php');
@@ -64,7 +69,7 @@
 			 <h2 class="text-left"><?=$_SESSION["staff_name"]?> Progress</h2><hr>
 			</div>
 	      <div class="col-lg-12">	
-				<table class="table table-striped">
+				<table class="table table-striped ">
 						<thead class="table-dark text-white">
 							<tr>
 							  <th scope="col">#</th>

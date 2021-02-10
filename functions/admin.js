@@ -230,3 +230,8 @@ function editVideoChange() {
 		document.getElementById("video_name").textContent = filename;
 	}
 }
+function ActDeactivate_user(staff_id, active) {
+	window.location.replace(
+		"proc_act_dact.php?staff_id=" + staff_id + "&active=" + active
+	);
+}

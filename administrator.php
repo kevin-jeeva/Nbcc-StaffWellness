@@ -5,7 +5,7 @@
 	include_once('functions/Resource.php');
 	include_once("functions/Welcome.php");
 	include_once("functions/Media.php");
-	include_once('functions/Content.php');
+	include_once('functions/Content.php');  
 
 	//redirection
 	if (!isset($_SESSION["staff_id"])) //not currently logged in

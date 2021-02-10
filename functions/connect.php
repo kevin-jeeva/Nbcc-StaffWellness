@@ -14,5 +14,5 @@ define('DB_NAME', 'staff');
 global $con;
 $con = mysqli_connect(DB_HOST,DB_USER,DB_PASS, DB_NAME);
 if (!$con)
-	die('Could not connect: ' . mysql_error());
+die('Could not connect: ' .mysqli_errno($con));
 ?>
