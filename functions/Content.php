@@ -167,7 +167,7 @@ class Content {
     } 
 
    //get two newest articles to display on index
-   static function getTopArticles(){
+   /*static function getTopArticles(){
     $con = $GLOBALS['con'];
     $resource_id = self::getResourceIdByResourceName('articles');
     $sql = "SELECT content_id,content_title, content_text, date_format(date_created, '%m/%d/%y') as date_created FROM content WHERE resource_id = $resource_id ORDER BY date_created desc LIMIT 2";
@@ -183,6 +183,27 @@ class Content {
             </div><hr>";
             $i = 'two';
         }    
+    }*/
+
+    //get two newest articles to display on index
+   static function getTopArticles($limit){
+    $con = $GLOBALS['con'];
+    $sql = "SELECT content_id, resource_id, content_title, content_text, content_description, date_format(date_created, '%m/%d/%y') as date_created FROM content ORDER BY date_created DESC LIMIT $limit";
+    
+    
+    $result = mysqli_query($con, $sql);
+        while ($row = mysqli_fetch_assoc($result)) {
+          $resource_name = self::GetResourceNameByResourceId($row['resource_id']);
+          $date_created = $row["date_created"];
+          echo "<div class=\"block-last-viewed\">
+          <a class=\"text-dark\" href=\"#\"  onclick=\"ReadArticle(".$row['content_id'].")\">
+          <p class=\"h3 text-dark\">" . $row['content_title'] . "</p></a>
+          <span class=\"badge badge-pill badge-info\">$resource_name</span>
+          <span class=\"badge badge-pill badge-light\">Created on: $date_created</span>
+          <p class=\"content_text\">" .$row['content_description']."</p>
+          <a class=\"btn btn-outline-info\" href=\"view.php?page=".$row['content_id']."\">Read More</a>
+          </div>";
+        }
     }
 
     //get all articles to display on each resource page (e.g. articles.php)
@@ -212,9 +233,9 @@ class Content {
           echo "<div class=\"the-content\">
           <a class=\"text-dark\" href=\"#\"  onclick=\"ReadArticle(".$row['content_id'].")\">
           <p class=\"h1 text-dark\">" . $row['content_title'] . "</p></a>
-          <hr><span class=\"date_created text-info font-weight-bold\">Created on: $date_created</span>
+          <hr><span class=\"badge badge-pill badge-light\">Created on: $date_created</span>
           <p class=\"content_text\">" .$row['content_description']."</p>
-          <a href=\"#\" class=\"btn btn-outline-info\" onclick=\"ReadArticle(".$row['content_id'].")\">Read More</a>
+          <a class=\"btn btn-outline-info\" href=\"view.php?page=".$row['content_id']."\">Read More</a>
           </div>";
         }
 
@@ -383,6 +404,15 @@ class Content {
         //header("location:content.php");        
       }
   }
+  //send number of unread notifications to notification bubble
+  public static function setNotificationBubble(){
+    $con = $GLOBALS["con"];
+    $sql = "SELECT COUNT(notification_repeat) from notification where notification_repeat ='1'";
+    $result = mysqli_query($con, $sql);
+    while ($row = mysqli_fetch_assoc($result)){
+       return $row['COUNT(notification_repeat)'];
+    }
+  }
   public static function getContentNotifications(){
     if (isset($_GET['pageno'])) {
       $pageno = $_GET['pageno'];
@@ -457,10 +487,8 @@ class Content {
   }
 }
   public static function bellNotifications(){
-
-
     $con = $GLOBALS["con"];
-    $sql = "select date_created, resource_id, content_id, content_title, content_description from content order by date_created desc limit 5";
+    $sql = "select date_created, resource_id, content_id, content_title, content_description from content order by date_created desc limit 3";
     $string = "";
 
     $result = mysqli_query($con, $sql);
@@ -474,8 +502,8 @@ class Content {
      $date = strtotime($row["date_created"]);
       $content_title = $row["content_title"]; 
       $set_date = date("F d, Y | g:ia", $date);      
-      $string .= 
-      "<a href=\"#\" id = \"hi\" onclick=\"ReadArticle($content_id)\"><div id=\"$content_id\"><h4>$contentName</h4><p>$content_title</p><p class=\"\"> $set_date</p></div></a><hr>";
+      $string .=
+      "<a href=\"#\" id=\"hi\" onclick=\"ReadArticle($content_id)\"><div id=\"$content_id\"><h5>$contentName</h5><p>$content_title</p><p class=\"badge badge-pill badge-secondary\"> $set_date</p></div></a><hr>";
     }    
     return $string;
   }

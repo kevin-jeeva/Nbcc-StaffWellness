@@ -3,6 +3,11 @@ session_start();
 include_once('functions/staff.php');
 include_once("functions/Content.php");
 
+	if($_SESSION["active"] == 0)
+	{
+			$msg = "Not an Active User" ;
+			header("location:login.php?loginError=$msg");
+	}
 //redirection
 	if (!isset($_SESSION["staff_id"])) //not currently logged in
 	{
@@ -23,18 +28,25 @@ include_once("functions/Content.php");
 	<meta name="author" content="">
   
 	<title>Create a Welcome Content</title>
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+	
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	<script src="includes/bootstrap-4.5.3-dist/jquery/jquery-3.5.1.slim.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+	
+	<!-- Bootstrap core CSS -->
+	<script src="includes/bootstrap-4.5.3-dist/js/bootstrap.min.js"></script>
+	<link rel="stylesheet" href="includes/bootstrap-4.5.3-dist/css/bootstrap.min.css">
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
+
 	<!-- Script for the Rich Editor -->
 	<script src="https://cdn.ckeditor.com/4.15.1/standard-all/ckeditor.js"></script>
-  
-	<!-- Script for the category-->
-	<script src="functions/welcome.js"></script>
 	
 	<!-- Custom CSS and JS -->
 	<link rel="stylesheet" type="text/css" href="includes/styles.css">
+	
+	<!-- Script for the category-->
+	<script src="functions/welcome.js"></script>
+	
 </head>
 
 <body>
@@ -72,7 +84,7 @@ include_once("functions/Content.php");
 	<!-- Article Masterhead -->
 	<div class="jumbotron jumbotron-fluid">
 	  <div class="container">
-	    <h1 class="display-4">Create a New Welcome Content</h1>
+	    <h1 class="display-4">Create a New Welcome Message</h1>
 	  </div>
 	</div>
 
@@ -92,7 +104,7 @@ include_once("functions/Content.php");
 							<div class="form-group col-lg-12">
 								<label for="content-description">Select a Welcome Image</label>
                 <div></div>
-							  <input class ="welcome_image_button" id="welcome_image" name="pic" type="file" accept="image/*"><br>
+							  <input id="welcome_image" class="welcome_image_button" name="pic" type="file" accept="image/*"><br>
 							</div>	
              		<div class="form-group col-lg-12">
 								<label for="content-description">Welcome Text</label>

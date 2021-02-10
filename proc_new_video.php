@@ -18,7 +18,7 @@ if(isset($_POST["submit"]))
   {
     echo "true";
     if(move_uploaded_file($_FILES["video"]["tmp_name"],'includes/videos/'.$_FILES["video"]["name"]))
-    {
+   {
       if(Media::InsertMedia($media))
       { 
         $_SESSION["message"] = "Video Inserted Successfully";
@@ -26,7 +26,7 @@ if(isset($_POST["submit"]))
       }
       else
       {
-        
+        echo "Video not Inserted ";
         $_SESSION["alert_message"] = "Video is not inserted";
         header("location:administrator.php");
       }
@@ -42,6 +42,8 @@ if(isset($_POST["submit"]))
 }
 else
 {  
-  header("location:index.php");
+  $_SESSION["alert_message"] = "unsucessful submission";
+  header("location:new_video.php");
+  
 }
 ?>

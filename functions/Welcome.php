@@ -3,6 +3,7 @@ require_once("connect.php");
 require_once("Content.php");
 require_once("Resource.php");
 require_once("Progress.php");
+require_once("Media.php");
 
 class Welcome{
   private $welcome_id;
@@ -199,7 +200,7 @@ class Welcome{
  public static function GetLastViewed($user_id)
  {
    $con = $GLOBALS["con"];
-   $sql = "select content_id, progress_value, date_format(date_created, '%m/%d/%y') as date_created from progress where user_id = $user_id order by progress_id desc limit 3";
+   $sql = "select content_id, progress_value, date_format(date_created, '%m/%d/%y') as date_created from progress where user_id = $user_id and content_id != 0 order by progress_id desc limit 3";
    $result = mysqli_query($con,$sql);
    if(mysqli_num_rows($result) > 0)
    {
@@ -231,7 +232,8 @@ class Welcome{
    $count_divide = 0;
    $progress_value = 0;
    $row_count = 0;
-
+   $colors = array("bg-success","bg-info","bg-dark","bg-danger","bg-warning");
+  
    if(mysqli_num_rows($resource_ids) > 0)
    {
      while($resource_id = mysqli_fetch_array($resource_ids))
@@ -241,6 +243,12 @@ class Welcome{
        $progress_value = 0;
 
        $resource_name = $resource_id["resource_name"];
+       if($resource_name === "Exercise Video")
+       {
+         //get the exercise video
+         self::GetProgresMedia("Exercise Video",$staff_id,$row_count += 1);
+         continue;
+       }
        $content_ids = Content::GetContentByResourceId($resource_id["resource_id"]);
       if(mysqli_num_rows($content_ids) > 0)
       {
@@ -253,7 +261,7 @@ class Welcome{
             while($progress_val = mysqli_fetch_array($progress))
             {
               $progress_value += $progress_val["progress_value"];
-
+              $rand_color = array_rand($colors,1);              
             }
           }          
           $count_divide += 1; //divide by total
@@ -266,13 +274,15 @@ class Welcome{
       //display the progres value     
       $total = round($progress_value / $count_divide);
       $row_count += 1;
+      $color =  $colors[$rand_color]; 
+      unset($colors[$rand_color]);     
       echo "<tr><th scope=\"row\"> $row_count</th>
             <td>$resource_name</td>
             <td><div class=\"progress\">
-						<div class=\"progress-bar progress-bar-striped progress-bar-animated\" role=\"progressbar\" aria-valuenow=\"75\" aria-valuemin=\"0\" aria-valuemax=\"100\" style=\"width: $total%\">$total%</div>
-					</div></td></tr>";
-       
+						<div class=\"progress-bar progress-bar-striped progress-bar-animated $color\" role=\"progressbar\" aria-valuenow=\"75\" aria-valuemin=\"0\" aria-valuemax=\"100\" style=\"width: $total%\">$total%</div>
+					</div></td></tr>";      
      }
+    
    }
    else
    {
@@ -280,6 +290,42 @@ class Welcome{
    }
    	
  }
+
+ public static function GetProgresMedia($resource_name,$staff_id,$row_count)
+ {
+  
+  $media = Media::GetMedia();
+  $progress_value = 0;
+  $count = 0;
+  $total = 0;
+
+  if(mysqli_num_rows($media) > 0)
+  {
+    while($val = mysqli_fetch_array($media))
+    {
+      $media_id = $val["media_id"];
+      $result = Progress::GetProgressMedia($staff_id,$media_id);
+      if(mysqli_num_rows($result) > 0)
+      {
+        if($pg_val = mysqli_fetch_array($result))
+        { 
+          $progress_value += $pg_val["progress_value"];
+        }
+        
+      }
+      $count +=1;
+    }
+     //display the progres value     
+      $total = round($progress_value / $count);     
+      echo "<tr><th scope=\"row\"> $row_count</th>
+            <td>$resource_name</td>
+            <td><div class=\"progress\">
+						<div class=\"progress-bar progress-bar-striped progress-bar-animated\" role=\"progressbar\" aria-valuenow=\"75\" aria-valuemin=\"0\" aria-valuemax=\"100\" style=\"width: $total%\">$total%</div>
+					</div></td></tr>";  
+  }
+
+ }
+
  public static function SuggestedContent($staff_id)
  {
    $con = $GLOBALS["con"];
@@ -308,7 +354,7 @@ class Welcome{
  public static function GetMostViewed($staff_id)
  {
    $con =$GLOBALS["con"];
-   $sql = "select content_id from progress where user_id = $staff_id order by views  desc Limit 4";
+   $sql = "select content_id from progress where user_id = $staff_id and content_id != 0 order by views desc Limit 4";
    $result = mysqli_query($con,$sql);
    if(mysqli_num_rows($result) > 0)
    {

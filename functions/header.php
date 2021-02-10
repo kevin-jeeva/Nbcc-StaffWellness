@@ -16,7 +16,10 @@ if(staff::GetStaffAdminNumber($_SESSION["staff_id"]) == 1)
 		<a class=\"dropdown-item\" href=\"new_content.php\">Create New Content</a>
 		<a class=\"dropdown-item\" href=\"new_welcome.php\">Create Welcome Content</a>
 		<a class=\"dropdown-item\" href=\"new_video.php\">Create New Video</a>
-		";
+		<a class=\"dropdown-item\" href=\"active_users.php\">Active/Deactive User</a>
+		<div class=\"dropdown-divider\"></div>
+		<a class=\"dropdown-item text-danger\" href=\"functions/logout.php\">Log out</a>
+		</li>";
 }
 
 echo "<!-- Navigation -->
@@ -38,45 +41,53 @@ echo "<!-- Navigation -->
 				    <div class=\"dropdown-menu\" aria-labelledby=\"navbarDropdown\">
 					<a class=\"dropdown-item\" href=\"exercises_video.php\">Video Exercises</a>
 						<a class=\"dropdown-item\" href=\"exercises_sound.php\">Sound Exercises</a>
-						<div class=\"dropdown-divider\"></div>
-						<a class=\"dropdown-item\" href=\"#\">Something else here</a>
 				    </div>
 			  	</li> 		
 			  	<li class=\"nav-item\"><a class=\"nav-link\" href=\"support.php\">Support</a></li>
 			</ul>
 		  	<div class=\"navbar-right\">
-		  		<ul class=\"navbar-nav mr-auto\">
+		  		<ul class=\"navbar-nav mr-auto markings\">
 			  		<li class=\"nav-item\"><a class=\"nav-link\" href=\"contact.php\">Contact Us</a></li>
 			  		<li class=\"nav-item dropdown\">
 			  				<a class=\"nav-link dropdown-toggle\" href=\"#\" id=\"navbarDropdown\" role=\"button\" data-toggle=\"dropdown\" aria-haspopup=\"true\" aria-expanded=\"false\">Your Profile</a>
 			  				<div class=\"dropdown-menu\" aria-labelledby=\"navbarDropdown\">
 			  				<a class=\"dropdown-item\" href=\"dashboard.php\">Dashboard</a>
+			  				<div class=\"dropdown-divider\"></div>
+			  				<a class=\"dropdown-item\" href=\"notifications.php\">Notifications</a>
 			  				<a class=\"dropdown-item\" href=\"#\">Profile Settings</a>
 			  				<a class=\"dropdown-item\" href=\"#\">Change Your Password</a>
+			  				<div class=\"dropdown-divider\"></div>
+							<a class=\"dropdown-item text-danger\" href=\"functions/logout.php\">Log out</a>
 			  		</li>
 					
 					$adminDropdown
-					<div class=\"notifications\">
-					<li class=\"nav-item\">
-					
-					<button type=\"button\" class=\"btn btn-primary li\" data-toggle=\"popover\" data-placement=\"bottom\" title=\"Notifications\" data-param1=\"Parameter1\">
-					<i class=\"bi bi-bell-fill\">
-					Notifications
-					</i></button>
-					</div></li>
-					<script>					
+					<div class=\"notifications\">							
+						<li class=\"nav-item\">
+									
+						<button type=\"button\" class=\"btn btn-primary li\"  data-toggle=\"popover\" data-placement=\"bottom\" title=\"New contents\" data-trigger=\"focus\" data-param1=\"Parameter1\">
+						
+						<i class=\"bi bi-bell-fill\"></i></button>	
+						<div class=\"notify-container\">
+							<span class=\"notify-bubble\">" . Content::setNotificationBubble() . "</span>
+						</div>
+						</li>					
+					</div>
+					<script>
+					$(document).ready(function(){
 					var po_options = {
 					html: true,
 					content: function() {
 						var p1 = $(this).data(\"param1\");
-						return `".Content::bellNotifications()." <br><a href=\"notifications.php\" class=\"btn btn-outline-info\")\">View More</a>`;
+						return `".Content::bellNotifications()." <a href=\"notifications.php\" class=\"btn btn-block btn-outline-dark\")\">View More</a>`;
 					}
 					};
+
 					$('.li').popover(po_options);
-					
+
+					});
 					</script>
+
 					</div>
-					<li class=\"nav-item\"><a class=\"btn btn-warning\" href=\"functions/logout.php\">Log out</a></li>
 				</ul>
 			</div>
 		</div><!-- end of collapse navbar-collapse -->

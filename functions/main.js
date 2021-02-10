@@ -7,6 +7,9 @@ function ReadEvents(event_id) {
 	window.location.replace("proc_prog_events.php?content_id=" + event_id);
 	console.log(content_id);
 }
+function WatchedVideos(media_id) {
+	window.location.replace("proc_insert_prog_media.php?mediaId=" + media_id);
+}
 function HomeContentClicked(content_id) {
 	console.log(content_id);
 	var xmlhttp = new XMLHttpRequest();
@@ -68,4 +71,8 @@ $(document).on("click", "#hi", function (event) {
 		id = event.target.parentNode.id;
 	}
 	window.location.replace("proc_insert_progress.php?content_id=" + id);
+});
+
+$(".popover-dismiss").popover({
+	trigger: "focus",
 });
