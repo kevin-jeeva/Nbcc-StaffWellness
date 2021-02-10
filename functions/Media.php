@@ -32,7 +32,7 @@ class Media {
     public static function GetMedia()
     {
         $con = $GLOBALS["con"];
-        $sql ="select media_desc, media_path,media_id,media_title,date_format(date_created, '%m/%d/%y') as date_created from media";
+        $sql ="select media_desc, media_path, media_id, media_title, date_format(date_created, '%m/%d/%y') as date_created from media";
         $result = mysqli_query($con,$sql);
         return $result;
     }
@@ -46,17 +46,18 @@ class Media {
             {
                 $media_id = $val["media_id"];
                 $title = $val["media_title"];
+                $description = $val["media_desc"];
 
                 $media_desc = $val["media_desc"];
                 $count +=1;
 
                 echo"  <div class=\"col-lg-3 col-md-6 col-sm-12\">
                         <div class=\"features-categories-item mx-auto mb-5 mb-lg-0 mb-lg-3\">
-                        <div class=\"card\">
-                            <img src=\"includes/imgs/4-wellbeing-support.jpg\" class=\"card-img-top\" alt=\"...\">
-                            <div class=\"card-body\">
-                                <h3>$title</h3>                              
-                                <a href=\"watch_video.php?video_id=$media_id\" class=\"btn btn-outline-primary btn-block\">Watch Now</a>
+                        <div class=\"main-card card\">
+                            <div class=\"card-video\">
+                                <h3>$title</h3>                         
+                                <p>$description</p>                         
+                                <a href=\"#\" class=\"btn btn-outline-info btn-block\" onclick=\"WatchedVideos($media_id)\"><span>Watch Now </span><i class=\"bi bi-play-circle-fill\"></i></a>
                             </div>
                         </div>
                         </div>
@@ -189,4 +190,6 @@ class Media {
             return false;
         }
     }
+
+   
 } // END MEDIA CLASS
