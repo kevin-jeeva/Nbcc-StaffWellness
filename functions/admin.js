@@ -18,9 +18,7 @@ function RedirectEditResource($resource_name, resource_id) {
 	sessionStorage.setItem("resource_id", resource_id);
 	sessionStorage.setItem("resource_name", $resource_name);
 
-	window.location.replace(
-		"http://localhost/nbcc_staffwellness/edit_resource.php"
-	);
+	window.location.replace("edit_resource.php");
 	//document.location.reload();
 }
 function RedirectEditContent(
