@@ -18,9 +18,7 @@ function RedirectEditResource($resource_name, resource_id) {
 	sessionStorage.setItem("resource_id", resource_id);
 	sessionStorage.setItem("resource_name", $resource_name);
 
-	window.location.replace(
-		"http://localhost/nbcc_staffwellness/edit_resource.php"
-	);
+	window.location.replace("edit_resource.php");
 	//document.location.reload();
 }
 function RedirectEditContent(
@@ -36,9 +34,7 @@ function RedirectEditContent(
 	sessionStorage.setItem("description", content_description);
 	sessionStorage.setItem("content_text", content_text);
 
-	window.location.replace(
-		"http://localhost/nbcc_staffwellness/edit_content.php"
-	);
+	window.location.replace("edit_content.php");
 }
 function RedirectEditWelcome(id, title, text, image) {
 	sessionStorage.setItem("welcome_id", id);
@@ -46,14 +42,12 @@ function RedirectEditWelcome(id, title, text, image) {
 	sessionStorage.setItem("welcome_text", text);
 	sessionStorage.setItem("welcome_image", image);
 
-	window.location.replace(
-		"http://localhost/nbcc_staffwellness/edit_welcome.php"
-	);
+	window.location.replace("edit_welcome.php");
 }
 window.onload = function () {
 	if (
 		window.location.href ===
-		"http://localhost/nbcc_staffwellness/edit_resource.php"
+		"edit_resource.php"
 	) {
 		resource_name = sessionStorage.getItem("resource_name");
 		resource_id = sessionStorage.getItem("resource_id");
@@ -61,7 +55,7 @@ window.onload = function () {
 		document.getElementById("resource_id").value = resource_id;
 	} else if (
 		window.location.href ===
-		"http://localhost/nbcc_staffwellness/edit_content.php"
+		"edit_content.php"
 	) {
 		resource_name = sessionStorage.getItem("resource_name");
 		content_title = sessionStorage.getItem("content_title");
@@ -78,7 +72,7 @@ window.onload = function () {
 		document.getElementById("content_id").value = content_id;
 	} else if (
 		window.location.href ===
-		"http://localhost/nbcc_staffwellness/edit_welcome.php"
+		"edit_welcome.php"
 	) {
 		title = sessionStorage.getItem("welcome_title");
 		text = sessionStorage.getItem("welcome_text");
@@ -93,7 +87,7 @@ window.onload = function () {
 		console.log(document.getElementById("image_name").value);
 	} else if (
 		window.location.href ===
-		"http://localhost/nbcc_staffwellness/edit_video.php"
+		"edit_video.php"
 	) {
 		id = sessionStorage.getItem("video_id");
 		title = sessionStorage.getItem("video_title");

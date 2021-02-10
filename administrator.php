@@ -180,7 +180,7 @@
 			    	<div class="list-header row">
 		    	  		<h2>Created Welcome Messages</h2>
 		    	  		<a href="new_welcome.php" type="button" class="new-btn btn-sm btn-primary" value="id">Create new</a>
-			    	</div>
+			    	</div><hr>
 
 			    	<div class="table-responsive">
 			    	  	<table id="admTable3" class="table sortable table-hover">
@@ -207,18 +207,18 @@
 			    	<div class="list-header row">
 		    	  		<h2>Created Videos Exercises</h2>
 		    	  		<a href="new_video.php" type="button" class="new-btn btn-sm btn-primary" value="id">Create new</a>
-			    	</div>
+			    	</div><hr>
 
 			    	<div class="table-responsive">
 			    	  	<table id="admTable4" class="table sortable table-hover">
 				    	      <!-- Table's Header -->
 				    	      <thead>
 				    	        <tr>
-				    	          <th data-defaultsign="_19">#</th>
-				    	          <th data-defaultsign="AZ">Video Title</th>	
-												 <th data-defaultsign="AZ">Video Name</th>				    	          
-				    	          <th data-defaultsign="month">Created On</th>
-				    	          <th data-defaultsign="disabled" class="action-header-cell">Actions</th>
+				    	          <th>#</th>
+				    	          <th>Video Title</th>	
+								  <th>Video Name</th>				    	          
+				    	          <th>Created On</th>
+				    	          <th class="action-header-cell">Actions</th>
 				    	        </tr>
 				    	      </thead>
 

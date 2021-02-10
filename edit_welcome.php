@@ -106,7 +106,7 @@ include_once("functions/Content.php");
 							<div class="form-group col-lg-12">
 								<label for="content-description">Select a Welcome Image</label>
                 <div></div>
-							  <input class ="welcome_image_button" id="edit_welcome_image" name="pic" type="file" accept="image/*" onchange="editImageChange()"><br>
+							  <input id="edit_welcome_image" name="pic" type="file" accept="image/*" onchange="editImageChange()"><br>
               </div>	
               <div class="form-group col-lg-12">
                 <label for="content-description">Uploaded Image Name: </label>
