@@ -404,6 +404,15 @@ class Content {
         //header("location:content.php");        
       }
   }
+  //send number of unread notifications to notification bubble
+  public static function setNotificationBubble(){
+    $con = $GLOBALS["con"];
+    $sql = "SELECT COUNT(notification_repeat) from notification where notification_repeat ='1'";
+    $result = mysqli_query($con, $sql);
+    while ($row = mysqli_fetch_assoc($result)){
+       return $row['COUNT(notification_repeat)'];
+    }
+  }
   public static function getContentNotifications(){
     if (isset($_GET['pageno'])) {
       $pageno = $_GET['pageno'];

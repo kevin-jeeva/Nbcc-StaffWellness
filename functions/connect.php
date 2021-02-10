@@ -6,10 +6,10 @@ define('DB_PASS', 'StaffNbcc001');
 define('DB_NAME', 'staff');
 
 // for testing purposes
-//git  define('DB_HOST', 'localhost:3306');
-// define('DB_USER', 'root');
-// define('DB_PASS', '');
-// define('DB_NAME', 'staff');
+//define('DB_HOST', 'localhost:3306');
+//define('DB_USER', 'root');
+//define('DB_PASS', '');
+//define('DB_NAME', 'staff');
 	
 global $con;
 $con = mysqli_connect(DB_HOST,DB_USER,DB_PASS, DB_NAME);
