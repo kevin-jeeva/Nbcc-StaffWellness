@@ -41,6 +41,9 @@ include_once("functions/Content.php");
 	<!-- Custom CSS and JS -->
 	<link rel="stylesheet" type="text/css" href="includes/styles.css">
 	<script src="functions/admin.js"></script>
+
+	<!-- Script for the Rich Editor -->
+	<script src="https://cdn.ckeditor.com/4.15.1/standard-all/ckeditor.js"></script>
 </head>
 
 <body>
