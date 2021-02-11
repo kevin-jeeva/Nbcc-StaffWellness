@@ -53,6 +53,33 @@ function VideoCheck() {
 		return true;
 	}
 }
+function AudioCheck() {
+	for (var i = 0; i < 3; i++) {
+		switch (i) {
+			case 0:
+				trimFun("soundTitle", "Audio Title");
+				break;
+			case 1:
+				trimFun("audio-description", "Audio Description");
+				break;
+			case 2:
+				if (document.getElementById("sound_file").files.length == 0) {
+					count += 1;
+					msg += "Audio File" + " required " + "\n";
+				}
+				break;
+		}
+	}
+	if (count > 0) {
+		$("#myModal").modal();
+		document.getElementById("alert_message").textContent = msg;
+		count = 0;
+		msg = "";
+		return false;
+	} else {
+		return true;
+	}
+}
 function trimFun(id, message) {
 	var Value = document.getElementById(id).value;
 	Value = Value.trim();

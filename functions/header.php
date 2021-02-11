@@ -16,6 +16,7 @@ if(staff::GetStaffAdminNumber($_SESSION["staff_id"]) == 1)
 		<a class=\"dropdown-item\" href=\"new_content.php\">Create New Content</a>
 		<a class=\"dropdown-item\" href=\"new_welcome.php\">Create Welcome Content</a>
 		<a class=\"dropdown-item\" href=\"new_video.php\">Create New Video</a>
+		<a class=\"dropdown-item\" href=\"new_sound.php\">Create New Audio</a>
 		<a class=\"dropdown-item\" href=\"active_users.php\">Active/Deactive User</a>
 		<div class=\"dropdown-divider\"></div>
 		<a class=\"dropdown-item text-danger\" href=\"functions/logout.php\">Log out</a>
@@ -40,7 +41,7 @@ echo "<!-- Navigation -->
 				    <a class=\"nav-link dropdown-toggle\" href=\"#\" id=\"navbarDropdown\" role=\"button\" data-toggle=\"dropdown\" aria-haspopup=\"true\" aria-expanded=\"false\">Exercises</a>
 				    <div class=\"dropdown-menu\" aria-labelledby=\"navbarDropdown\">
 					<a class=\"dropdown-item\" href=\"exercises_video.php\">Video Exercises</a>
-						<a class=\"dropdown-item\" href=\"exercises_sound.php\">Sound Exercises</a>
+						<a class=\"dropdown-item\" href=\"sound_exercise.php\">Sound Exercises</a>
 				    </div>
 			  	</li> 		
 			  	<li class=\"nav-item\"><a class=\"nav-link\" href=\"support.php\">Support</a></li>
