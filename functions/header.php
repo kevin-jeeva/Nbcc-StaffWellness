@@ -1,5 +1,6 @@
 <?php
 include_once('functions/staff.php');
+include_once('functions/Content.php');
 
 $adminDropdown = "";
 
@@ -56,7 +57,7 @@ echo "<!-- Navigation -->
 			  				<div class=\"dropdown-divider\"></div>
 			  				<a class=\"dropdown-item\" href=\"notifications.php\">Notifications</a>
 			  				<a class=\"dropdown-item\" href=\"#\">Profile Settings</a>
-			  				<a class=\"dropdown-item\" href=\"#\">Change Your Password</a>
+			  				<a class=\"dropdown-item\" href=\"password_edit.php\">Change Your Password</a>
 			  				<div class=\"dropdown-divider\"></div>
 							<a class=\"dropdown-item text-danger\" href=\"functions/logout.php\">Log out</a>
 			  		</li>
