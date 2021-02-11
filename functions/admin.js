@@ -14,6 +14,13 @@ function RedirectEditVideo(video_id, video_title, video, video_desc) {
 	sessionStorage.setItem("video_desc", video_desc);
 	window.location.replace("edit_video.php");
 }
+function RedirectEditAudio(audio_id, audio_title, audio, audio_desc) {
+	sessionStorage.setItem("audio_title", audio_title);
+	sessionStorage.setItem("audio", audio);
+	sessionStorage.setItem("audio_id", audio_id);
+	sessionStorage.setItem("audio_desc", audio_desc);
+	window.location.replace("edit_audio.php");
+}
 function RedirectEditResource($resource_name, resource_id) {
 	sessionStorage.setItem("resource_id", resource_id);
 	sessionStorage.setItem("resource_name", $resource_name);
@@ -104,6 +111,19 @@ window.onload = function () {
 		$("#video-description").val(desc);
 		$("#videoTitle").val(title);
 		document.getElementById("video_name").textContent = video;
+	} else if (
+		window.location.href ===
+		"http://localhost/nbcc_staffwellness/edit_audio.php"
+	) {
+		id = sessionStorage.getItem("audio_id");
+		title = sessionStorage.getItem("audio_title");
+		audio = sessionStorage.getItem("audio");
+		desc = sessionStorage.getItem("audio_desc");
+
+		$("#id").val(id);
+		$("#audio-description").val(desc);
+		$("#soundTitle").val(title);
+		document.getElementById("audio_name").textContent = audio;
 	} else {
 		sessionStorage.removeItem("resource_id");
 		sessionStorage.removeItem("resource_name");
@@ -123,6 +143,11 @@ window.onload = function () {
 		sessionStorage.removeItem("video_title");
 		sessionStorage.removeItem("video");
 		sessionStorage.removeItem("video_desc");
+
+		sessionStorage.removeItem("audio_title");
+		sessionStorage.removeItem("audio");
+		sessionStorage.removeItem("audio_id");
+		sessionStorage.removeItem("audio_desc");
 	}
 };
 function TrimCategoryTitle(resource) {
@@ -215,7 +240,41 @@ function EditVideoCheck() {
 		return true;
 	}
 }
-
+function EditAudioCheck() {
+	for (var i = 0; i < 3; i++) {
+		switch (i) {
+			case 0:
+				trimFun("soundTitle", "Audio Title");
+				break;
+			case 1:
+				trimFun("audio-description", "Audio Description");
+				break;
+		}
+	}
+	if (count > 0) {
+		$("#myModal").modal();
+		document.getElementById("alert_message").textContent = msg;
+		count = 0;
+		msg = "";
+		return false;
+	} else {
+		return true;
+	}
+}
+function editAudioChange() {
+	var fullPath = document.getElementById("sound_file").value;
+	if (fullPath) {
+		var startIndex =
+			fullPath.indexOf("\\") >= 0
+				? fullPath.lastIndexOf("\\")
+				: fullPath.lastIndexOf("/");
+		var filename = fullPath.substring(startIndex);
+		if (filename.indexOf("\\") === 0 || filename.indexOf("/") === 0) {
+			filename = filename.substring(1);
+		}
+		document.getElementById("audio_name").textContent = filename;
+	}
+}
 function editVideoChange() {
 	var fullPath = document.getElementById("video_file").value;
 	if (fullPath) {

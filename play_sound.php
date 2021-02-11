@@ -1,33 +1,35 @@
 <?php
-	session_start();
-	if($_SESSION["active"] == 0)
-	{
+session_start();
+if($_SESSION["active"] == 0)
+{
 		$msg = "Not an Active User" ;
 		header("location:login.php?loginError=$msg");
-	}
-	if(!isset($_SESSION["staff_id"]))
-	{
-			header("location:Login.php");
-	}
-	
-	include('functions/connect.php');
-	include('functions/staff.php');
-	include('functions/Content.php');
-	include('functions/Media.php');
+}
+include_once('functions/connect.php');
+include_once('functions/staff.php');
+include_once('functions/Content.php');
+include_once("functions/Media.php");
 
+if(isset($_GET["soundId"]))
+{
+  $video_id = $_GET["soundId"];
+  
+}
+else
+{
+  header("location:index.php");
+}
 ?>
-
-
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 	<meta name="description" content="">
 	<meta name="author" content="">
 
-	<title>Sound Exercises</title>
-	
+	<title>Sound</title>
+
 	<!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script> -->
 	<script src="includes/bootstrap-4.5.3-dist/jquery/jquery-3.5.1.slim.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
@@ -46,30 +48,21 @@
 	<!-- Navigation -->
 	<?php include('functions/header.php'); ?>
 
-	<!-- Masterhead -->
-		<!-- Article Masterhead -->
+	<!-- Article Masterhead -->
 	<div class="jumbotron jumbotron-fluid">
 	  <div class="container">
-	    <h1 class="display-4">Sound Exercises</h1>
+	    <h1 class="display-4">Playing Sound...</h1>
+		<!--<p class="lead">{Description of this category: e.g. Events}.</p> -->
 	  </div>
 	</div>
-	
-	<!-- Categories Grid (4 columns) -->
-	<section class="features-categories text-center">
-	  <div class="container">
-	    <div class="row">
-			<?php Media::DisplaySoundCards()?>
-	    </div>
-	  </div>
-	</section>
 
-	<!--Main Content Sector (2 columns) -->
+	<!--Main Content Sector -->
 	<section class="main-content">
 		<div class="container">
-		  <div class="row">
-
-		  </div>
-		</div>
+		  <div class="row">              
+         <?php Media::PlayAudio($video_id)?>        
+		  </div> <!-- End of row -->
+		</div> <!-- End of container-->
 	</section>
 
 	<!--Secondary Content Sector -->
