@@ -280,7 +280,7 @@ class Media {
                             <div class=\"card-video\">
                                 <h3>$title</h3>                         
                                 <p>$description</p>                         
-                                <a href=\"play_sound.php?soundId=$media_id\" class=\"btn btn-outline-info btn-block\"><span>Play Now </span><i class=\"bi bi-play-circle-fill\"></i></a>
+                                <a href=\"#\" class=\"btn btn-outline-info btn-block\" onclick=\"WatchedAudio($media_id)\"><span>Play Now </span><i class=\"bi bi-play-circle-fill\"></i></a>
                             </div>
                         </div>
                         </div>

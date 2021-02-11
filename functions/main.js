@@ -10,6 +10,9 @@ function ReadEvents(event_id) {
 function WatchedVideos(media_id) {
 	window.location.replace("proc_insert_prog_media.php?mediaId=" + media_id);
 }
+function WatchedAudio(media_id) {
+	window.location.replace("proc_insert_prog_audio.php?mediaId=" + media_id);
+}
 function HomeContentClicked(content_id) {
 	console.log(content_id);
 	var xmlhttp = new XMLHttpRequest();
