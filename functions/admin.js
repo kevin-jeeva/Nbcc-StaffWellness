@@ -54,7 +54,7 @@ function RedirectEditWelcome(id, title, text, image) {
 window.onload = function () {
 	if (
 		window.location.href ===
-		"edit_resource.php"
+		"http://localhost/nbcc_staffwellness/edit_resource.php"
 	) {
 		resource_name = sessionStorage.getItem("resource_name");
 		resource_id = sessionStorage.getItem("resource_id");
@@ -62,7 +62,7 @@ window.onload = function () {
 		document.getElementById("resource_id").value = resource_id;
 	} else if (
 		window.location.href ===
-		"edit_content.php"
+		"http://localhost/nbcc_staffwellness/edit_content.php"
 	) {
 		resource_name = sessionStorage.getItem("resource_name");
 		content_title = sessionStorage.getItem("content_title");
@@ -79,7 +79,7 @@ window.onload = function () {
 		document.getElementById("content_id").value = content_id;
 	} else if (
 		window.location.href ===
-		"edit_welcome.php"
+		"http://localhost/nbcc_staffwellness/edit_welcome.php"
 	) {
 		title = sessionStorage.getItem("welcome_title");
 		text = sessionStorage.getItem("welcome_text");
@@ -94,7 +94,7 @@ window.onload = function () {
 		console.log(document.getElementById("image_name").value);
 	} else if (
 		window.location.href ===
-		"edit_video.php"
+		"http://localhost/nbcc_staffwellness/edit_video.php"
 	) {
 		id = sessionStorage.getItem("video_id");
 		title = sessionStorage.getItem("video_title");

@@ -201,7 +201,7 @@ class Content {
           <span class=\"badge badge-pill badge-info\">$resource_name</span>
           <span class=\"badge badge-pill badge-light\">Created on: $date_created</span>
           <p class=\"content_text\">" .$row['content_description']."</p>
-          <a class=\"btn btn-outline-info\" href=\"view.php?page=".$row['content_id']."\">Read More</a>
+          <a class=\"btn btn-outline-info\" href=\"#\" onclick=\"ReadArticle(".$row['content_id'].")\">Read More</a>
           </div>";
         }
     }
@@ -220,7 +220,7 @@ class Content {
 
     $con = $GLOBALS['con'];
     $resource_id = self::getResourceIdByResourceName($resourceName);
-    $sql = "SELECT content_id, content_title, content_text, content_description, date_format(date_created, '%m/%d/%y') as date_created FROM content WHERE resource_id = $resource_id ORDER BY date_created LIMIT $offset, $no_of_records_per_page";
+    $sql = "SELECT content_id, content_title, content_text, content_description, date_format(date_created, '%m/%d/%y') as date_created FROM content WHERE resource_id = $resource_id ORDER BY date_created DESC LIMIT $offset, $no_of_records_per_page";
 
     $total_pages_sql = "SELECT COUNT(*) FROM content WHERE resource_id = $resource_id";
     $result = mysqli_query($con,$total_pages_sql);
@@ -235,7 +235,7 @@ class Content {
           <p class=\"h1 text-dark\">" . $row['content_title'] . "</p></a>
           <hr><span class=\"badge badge-pill badge-light\">Created on: $date_created</span>
           <p class=\"content_text\">" .$row['content_description']."</p>
-          <a class=\"btn btn-outline-info\" href=\"view.php?page=".$row['content_id']."\">Read More</a>
+          <a class=\"btn btn-outline-info\" href=\"#\" onclick=\"ReadArticle(".$row['content_id'].")\">Read More</a>
           </div>";
         }
 
@@ -534,7 +534,7 @@ class Content {
                 $content_id = $val["content_id"];
                 $resource_name = self::GetResourceNameByResourceId($val["resource_id"]);
                 $title = $val["content_title"];
-                $content_text = ($val["content_text"]);
+                $content_text = htmlentities($val["content_text"]);
                 $content_description = $val["content_description"];
                 $date_created = $val["date_created"];
                 $count +=1;
