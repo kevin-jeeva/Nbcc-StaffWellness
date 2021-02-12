@@ -399,18 +399,29 @@ class Content {
       $con = $GLOBALS["con"];
       $sql ="INSERT into notification (content_id, notification_repeat) values  ($contentId, 1)";
       mysqli_query($con,$sql);
-      if(!mysqli_affected_rows($con) == 1)
-      {
-        //header("location:content.php");        
-      }
+      self::sendUserNotification();           
+  }
+  public static function sendUserNotification(){
+    $con = $GLOBALS["con"]; 
+    $sqlGetCount = "SELECT staff_id, notification_counter from user";
+    $result = mysqli_query ($con, $sqlGetCount);
+    while ($row = mysqli_fetch_assoc($result)){
+      $count = 1;
+      $count += (int)$row['notification_counter'];
+      $user = $row['staff_id'];
+      $sqlAddCount = "update user set notification_counter = $count where staff_id = $user";
+      mysqli_query($con, $sqlAddCount);
+    }  
+    
   }
   //send number of unread notifications to notification bubble
   public static function setNotificationBubble(){
     $con = $GLOBALS["con"];
-    $sql = "SELECT COUNT(notification_repeat) from notification where notification_repeat ='1'";
+    $user = $_SESSION["staff_id"];
+    $sql = "SELECT notification_counter from user where staff_id = '$user'";
     $result = mysqli_query($con, $sql);
     while ($row = mysqli_fetch_assoc($result)){
-       return $row['COUNT(notification_repeat)'];
+       return $row['notification_counter'];
     }
   }
   public static function getContentNotifications(){
