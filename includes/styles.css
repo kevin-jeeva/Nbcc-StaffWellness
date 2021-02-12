@@ -291,7 +291,6 @@ a.new-btn.btn-sm.btn-primary {
 	padding-right: 10px;
 	background-color: white;
 }
-<<<<<<< HEAD
   
 .notify-container {
 position: relative;
@@ -310,9 +309,7 @@ margin-top: 10px;
 	box-shadow: 1px 1px 1px gray;
 	/*display: none;*/
 }
-=======
 
->>>>>>> b8806b7cf3651a454969537ec1a0f81ccc438582
 /* Responsive styles */
 @media (min-width: 768px) {
 	header.masthead {

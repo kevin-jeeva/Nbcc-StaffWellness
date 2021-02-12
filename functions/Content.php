@@ -164,26 +164,7 @@ class Content {
                 <p class=\"card-text\">". $row['content_description'] ."</p>
                 <a href=\"#\" class=\"btn btn-outline-info btn-block\" onclick=\"ReadEvents($content_id)\">See Details</a>";
         }
-    } 
-
-   //get two newest articles to display on index
-   /*static function getTopArticles(){
-    $con = $GLOBALS['con'];
-    $resource_id = self::getResourceIdByResourceName('articles');
-    $sql = "SELECT content_id,content_title, content_text, date_format(date_created, '%m/%d/%y') as date_created FROM content WHERE resource_id = $resource_id ORDER BY date_created desc LIMIT 2";
-    $result = mysqli_query($con, $sql);
-    $i ='one';
-        while ($row = mysqli_fetch_assoc($result)) {
-            $content_id = $row["content_id"];
-            $date_created = $row["date_created"];
-            echo "<h3>" . $row['content_title'] ."<span style=\"font-size:1rem; float:right\">$date_created</span></h3>
-            <div id =\"readMore\">
-                <div class=\"collapse\" id=\"$i\" id=\"collapseSummary\">". $row['content_text'] . "</div>
-                <a class=\"collapsed\" data-toggle=\"collapse\"  data-target=\"#$i\" href=\"#collapseSummary\" aria-expanded=\"false\" aria-controls=\"collapseSummary\" onclick=\"HomeContentClicked($content_id)\"></a>
-            </div><hr>";
-            $i = 'two';
-        }    
-    }*/
+    }
 
     //get two newest articles to display on index
    static function getTopArticles($limit){
