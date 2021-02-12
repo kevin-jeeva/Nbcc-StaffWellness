@@ -90,6 +90,7 @@ echo "<!-- Navigation -->
 					$(function() {
 						$('.notifications').click(function() {
 							$('.notify-bubble').hide();
+							return " . Content::resetBubble() . ";
 						  });
 					  });
 					</script>
