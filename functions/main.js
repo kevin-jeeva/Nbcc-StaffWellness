@@ -10,6 +10,9 @@ function ReadEvents(event_id) {
 function WatchedVideos(media_id) {
 	window.location.replace("proc_insert_prog_media.php?mediaId=" + media_id);
 }
+function WatchedAudio(media_id) {
+	window.location.replace("proc_insert_prog_audio.php?mediaId=" + media_id);
+}
 function HomeContentClicked(content_id) {
 	console.log(content_id);
 	var xmlhttp = new XMLHttpRequest();
@@ -39,6 +42,33 @@ function VideoCheck() {
 				if (document.getElementById("video_file").files.length == 0) {
 					count += 1;
 					msg += "Video" + " required " + "\n";
+				}
+				break;
+		}
+	}
+	if (count > 0) {
+		$("#myModal").modal();
+		document.getElementById("alert_message").textContent = msg;
+		count = 0;
+		msg = "";
+		return false;
+	} else {
+		return true;
+	}
+}
+function AudioCheck() {
+	for (var i = 0; i < 3; i++) {
+		switch (i) {
+			case 0:
+				trimFun("soundTitle", "Audio Title");
+				break;
+			case 1:
+				trimFun("audio-description", "Audio Description");
+				break;
+			case 2:
+				if (document.getElementById("sound_file").files.length == 0) {
+					count += 1;
+					msg += "Audio File" + " required " + "\n";
 				}
 				break;
 		}

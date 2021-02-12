@@ -241,12 +241,22 @@ class Welcome{
        $total = 0;
        $count_divide = 0;
        $progress_value = 0;
-
+       $rand_color = array_rand($colors,1);
        $resource_name = $resource_id["resource_name"];
        if($resource_name === "Exercise Video")
        {
+         $color =  $colors[$rand_color];
+         unset($colors[$rand_color]); 
          //get the exercise video
-         self::GetProgresMedia("Exercise Video",$staff_id,$row_count += 1);
+         self::GetProgresMedia("Exercise Video",$staff_id,$row_count += 1,$color);
+         continue;
+       }
+       if($resource_name === "Exercise Sound")
+       {
+         $color =  $colors[$rand_color];
+         unset($colors[$rand_color]); 
+         //get the exercise video
+         self::GetProgressAudio("Exercise Sound",$staff_id,$row_count += 1,$color);
          continue;
        }
        $content_ids = Content::GetContentByResourceId($resource_id["resource_id"]);
@@ -261,7 +271,7 @@ class Welcome{
             while($progress_val = mysqli_fetch_array($progress))
             {
               $progress_value += $progress_val["progress_value"];
-              $rand_color = array_rand($colors,1);              
+                           
             }
           }          
           $count_divide += 1; //divide by total
@@ -291,7 +301,7 @@ class Welcome{
    	
  }
 
- public static function GetProgresMedia($resource_name,$staff_id,$row_count)
+ public static function GetProgresMedia($resource_name,$staff_id,$row_count,$color)
  {
   
   $media = Media::GetMedia();
@@ -320,12 +330,45 @@ class Welcome{
       echo "<tr><th scope=\"row\"> $row_count</th>
             <td>$resource_name</td>
             <td><div class=\"progress\">
-						<div class=\"progress-bar progress-bar-striped progress-bar-animated\" role=\"progressbar\" aria-valuenow=\"75\" aria-valuemin=\"0\" aria-valuemax=\"100\" style=\"width: $total%\">$total%</div>
+						<div class=\"progress-bar progress-bar-striped progress-bar-animated $color\" role=\"progressbar\" aria-valuenow=\"75\" aria-valuemin=\"0\" aria-valuemax=\"100\" style=\"width: $total%\">$total%</div>
 					</div></td></tr>";  
   }
 
  }
+ public static function GetProgressAudio($resource_name,$staff_id,$row_count,$color)
+ {
+  
+  $media = Media::GetSound();
+  $progress_value = 0;
+  $count = 0;
+  $total = 0;
 
+  if(mysqli_num_rows($media) > 0)
+  {
+    while($val = mysqli_fetch_array($media))
+    {
+      $media_id = $val["media_id"];
+      $result = Progress::GetProgressMedia($staff_id,$media_id);
+      if(mysqli_num_rows($result) > 0)
+      {
+        if($pg_val = mysqli_fetch_array($result))
+        { 
+          $progress_value += $pg_val["progress_value"];
+        }
+        
+      }
+      $count +=1;
+    }
+     //display the progres value     
+      $total = round($progress_value / $count);     
+      echo "<tr><th scope=\"row\"> $row_count</th>
+            <td>$resource_name</td>
+            <td><div class=\"progress\">
+						<div class=\"progress-bar progress-bar-striped progress-bar-animated $color\" role=\"progressbar\" aria-valuenow=\"75\" aria-valuemin=\"0\" aria-valuemax=\"100\" style=\"width: $total%\">$total%</div>
+					</div></td></tr>";  
+  }
+
+ }
  public static function SuggestedContent($staff_id)
  {
    $con = $GLOBALS["con"];

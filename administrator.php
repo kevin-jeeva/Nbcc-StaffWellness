@@ -229,6 +229,36 @@
 			    	    </table>
 			    	</div> <!-- End of table-responsive -->
 		    	</div> <!-- list-sector -->
+
+					 	<!-- List Model for created welcome messages -->
+				<div class="list-sector">
+			    	<div class="list-header row">
+		    	  		<h2>Created Sound Exercises</h2>
+		    	  		<a href="new_sound.php" type="button" class="new-btn btn-sm btn-primary" value="id">Create new</a>
+			    	</div>
+
+			    	<div class="table-responsive">
+			    	  	<table id="admTable4" class="table sortable table-hover">
+				    	      <!-- Table's Header -->
+				    	      <thead>
+				    	        <tr>
+				    	          <th data-defaultsign="_19">#</th>
+				    	          <th data-defaultsign="AZ">Sound Title</th>	
+												 <th data-defaultsign="AZ">Sound Name</th>				    	          
+				    	          <th data-defaultsign="month">Created On</th>
+				    	          <th data-defaultsign="disabled" class="action-header-cell">Actions</th>
+				    	        </tr>
+				    	      </thead>
+
+				    	      <!-- Important SECTION: display all content's categories from database -->
+				    	      <tbody>
+								<?php Media::GetListOfCreatedSounds()?>
+				    	      </tbody>
+			    	    </table>
+			    	</div> <!-- End of table-responsive -->
+		    	</div> <!-- list-sector -->
+
+
 		    </div> <!-- End of the-content col-md-12 -->
 
 		  </div> <!-- End of row -->
