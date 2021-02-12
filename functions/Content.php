@@ -401,6 +401,7 @@ class Content {
       mysqli_query($con,$sql);
       self::sendUserNotification();           
   }
+  //send notification to user table 
   public static function sendUserNotification(){
     $con = $GLOBALS["con"]; 
     $sqlGetCount = "SELECT staff_id, notification_counter from user";
@@ -413,6 +414,12 @@ class Content {
       mysqli_query($con, $sqlAddCount);
     }  
     
+  }
+  public static function resetBubble(){
+    $con = $GLOBALS["con"]; 
+    $user = $_SESSION["staff_id"];
+    $sql = "update user set notification_counter = 0 where staff_id = $user";
+    mysqli_query($con, $sql);
   }
   //send number of unread notifications to notification bubble
   public static function setNotificationBubble(){

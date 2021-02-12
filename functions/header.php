@@ -85,6 +85,12 @@ echo "<!-- Navigation -->
 					$('.li').popover(po_options);
 
 					});
+					$(function() {
+						$('.notifications').click(function() {
+							$('.notify-bubble').hide();
+							return " . Content::resetBubble() . ";
+						  });
+					  });
 					</script>
 
 					</div>
