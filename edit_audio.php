@@ -101,7 +101,7 @@ include_once("functions/Content.php");
 							<div class="form-group col-lg-12">
 								<label for="content-description">Select a Audio</label>
                 <div></div>
-							  <input id="sound_file" name="audio" class="audio_button" type="file" accept="audio/*"  onchange="editAudioChange()" ><br>
+							  <input id="sound_file" name="audio" type="file" accept="audio/*"  onchange="editAudioChange()" ><br>
 							</div>	
               <div class="form-group col-lg-12">
                 <label for="content-description">Uploaded Audio Name: </label>
