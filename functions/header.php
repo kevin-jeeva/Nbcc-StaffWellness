@@ -18,7 +18,7 @@ if(staff::GetStaffAdminNumber($_SESSION["staff_id"]) == 1)
 		<a class=\"dropdown-item\" href=\"new_welcome.php\">Create Welcome Content</a>
 		<a class=\"dropdown-item\" href=\"new_video.php\">Create New Video</a>
 		<a class=\"dropdown-item\" href=\"new_sound.php\">Create New Audio</a>
-		<a class=\"dropdown-item\" href=\"active_users.php\">Active/Deactive User</a>
+		<a class=\"dropdown-item\" href=\"active_users.php\">User Permissions</a>
 		<div class=\"dropdown-divider\"></div>
 		<a class=\"dropdown-item text-danger\" href=\"functions/logout.php\">Log out</a>
 		</li>";
