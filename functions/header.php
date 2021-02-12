@@ -63,12 +63,17 @@ echo "<!-- Navigation -->
 			  		</li>
 					
 					$adminDropdown
-					<div class=\"notifications\">
+					<div class=\"notifications\">							
 						<li class=\"nav-item\">
+									
 						<button type=\"button\" class=\"btn btn-primary li\"  data-toggle=\"popover\" data-placement=\"bottom\" title=\"New contents\" data-trigger=\"focus\" data-param1=\"Parameter1\">
-						<i class=\"bi bi-bell-fill\"></i></button>
-						</li>
-					</div>					
+						
+						<i class=\"bi bi-bell-fill\"></i></button>	
+						<div class=\"notify-container\">
+							<span class=\"notify-bubble\">" . Content::setNotificationBubble() . "</span>
+						</div>
+						</li>					
+					</div>
 					<script>
 					$(document).ready(function(){
 					var po_options = {
@@ -82,6 +87,11 @@ echo "<!-- Navigation -->
 					$('.li').popover(po_options);
 
 					});
+					$(function() {
+						$('.notifications').click(function() {
+							$('.notify-bubble').hide();
+						  });
+					  });
 					</script>
 
 					</div>

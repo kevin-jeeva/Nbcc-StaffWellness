@@ -291,7 +291,28 @@ a.new-btn.btn-sm.btn-primary {
 	padding-right: 10px;
 	background-color: white;
 }
+<<<<<<< HEAD
+  
+.notify-container {
+position: relative;
+	display: inline-block;
+margin-top: 10px;
+}  
+.notify-bubble {
+	position: absolute;
+	top: -8px;
+	right: -7px;
+	padding: 2px 5px 2px 6px;
+	background-color: red;
+	color: white;
+	font-size: 0.65em;
+	border-radius: 50%;
+	box-shadow: 1px 1px 1px gray;
+	/*display: none;*/
+}
+=======
 
+>>>>>>> b8806b7cf3651a454969537ec1a0f81ccc438582
 /* Responsive styles */
 @media (min-width: 768px) {
 	header.masthead {
