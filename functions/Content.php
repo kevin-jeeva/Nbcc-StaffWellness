@@ -428,9 +428,12 @@ class Content {
     $sql = "SELECT notification_counter from user where staff_id = '$user'";
     $result = mysqli_query($con, $sql);
     while ($row = mysqli_fetch_assoc($result)){
-       return $row['notification_counter'];
+      $count = $row['notification_counter'];
+      if($count == 0){ return "<script> $('.notify-bubble').hide(); </script>";}
+      else { return $row['notification_counter'];}
+      }
+       
     }
-  }
   public static function getContentNotifications(){
     if (isset($_GET['pageno'])) {
       $pageno = $_GET['pageno'];
