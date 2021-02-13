@@ -291,23 +291,49 @@ a.new-btn.btn-sm.btn-primary {
 	padding-right: 10px;
 	background-color: white;
 }
-  
+
 .notify-container {
-position: relative;
+	position: relative;
 	display: inline-block;
-margin-top: 10px;
-}  
+	margin-top: 10px;
+}
 .notify-bubble {
-    position: absolute;
-    top: -1.3rem;
-    right: -0.4rem;
-    padding: 0rem .3rem;
-    background-color: red;
-    color: white;
-    font-size: 0.65em;
-    border-radius: 50%;
-    box-shadow: 1px 1px 1px grey;
-    /* display: none; */
+	position: absolute;
+	top: -1.3em;
+	right: -0.4em;
+	padding: 0em 0.3em;
+	background-color: red;
+	color: white;
+	font-size: 0.65em;
+	border-radius: 50%;
+	box-shadow: 1px 1px 1px grey;
+	/* display: none; */
+}
+.notify-bubble {
+	position: absolute;
+	top: -1.3em;
+	right: -0.4em;
+	padding: 0em 0.3em;
+	background-color: red;
+	color: white;
+	font-size: 0.65em;
+	border-radius: 50%;
+	box-shadow: 1px 1px 1px grey;
+	/* display: none; */
+}
+.notify-bubble {
+	position: absolute;
+	top: -3.2rem;
+	width: auto;
+	height: auto;
+	right: -0.4rem;
+	padding: 0em 0.3rem;
+	background-color: red;
+	color: white;
+	font-size: 0.65em;
+	border-radius: 50%;
+	box-shadow: 1px 1px 1px grey;
+	/* display: none; */
 }
 
 /* Responsive styles */
