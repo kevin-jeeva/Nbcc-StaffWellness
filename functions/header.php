@@ -65,7 +65,7 @@ echo "<!-- Navigation -->
 					
 					$adminDropdown
 					<div class=\"notifications-place row\">
-					<div class=\"notifications\" >							
+					<div class=\"notifications row\" >							
 						<li class=\"nav-item\">									
 						<button type=\"button\" class=\"btn btn-primary li\" id=\"notifs\" data-toggle=\"popover\" data-placement=\"bottom\" title=\"New contents\" data-trigger=\"focus\" data-param1=\"Parameter1\" onclick=\"resetNotification()\">						
 						<i class=\"bi bi-bell-fill\"></i></button>	

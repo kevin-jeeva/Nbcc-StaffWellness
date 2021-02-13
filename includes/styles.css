@@ -292,7 +292,7 @@ a.new-btn.btn-sm.btn-primary {
 	background-color: white;
 }
 
-.notifications-place {
+.notifications, .notifications-place {
 	display: contents;
 }
 
@@ -303,18 +303,18 @@ a.new-btn.btn-sm.btn-primary {
 }
 
 .notify-bubble {
-	position: absolute;
-	top: -3.2rem;
-	width: auto;
-	height: auto;
-	right: -0.4rem;
-	padding: 0em 0.3rem;
-	background-color: red;
-	color: white;
-	font-size: 0.65em;
-	border-radius: 50%;
-	box-shadow: 1px 1px 1px grey;
-	/* display: none; */
+    position: absolute;
+    top: -1rem;
+    width: auto;
+    height: auto;
+    left: -0.6rem;
+    padding: 0em 0.3rem;
+    background-color: red;
+    color: white;
+    font-size: 0.65em;
+    border-radius: 50%;
+    box-shadow: 1px 1px 1px grey;
+    /* display: none; */
 }
 /* Responsive styles */
 @media (min-width: 768px) {
@@ -342,6 +342,9 @@ a.new-btn.btn-sm.btn-primary {
 	.events-tile,
 	.notifications-tile {
 		width: 100% !important;
+	}
+	.notify-bubble {
+		left: 2.4rem;
 	}
 }
 

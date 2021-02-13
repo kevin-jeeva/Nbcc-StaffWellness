@@ -411,7 +411,7 @@ class Content {
     $result = mysqli_query($con, $sql);
     while ($row = mysqli_fetch_assoc($result)){
       $count = $row['notification_counter'];
-      if($count != 0){return "<script>document.getElementById(\"notify-container\").style.display = \"block\";</script>".$count;}   
+      if($count != 0){return "<script>document.getElementById(\"notify-container\");</script>".$count;}   
       else{
         return "<script>document.getElementById(\"notify-container\").style.display = \"none\";</script>";
       }
