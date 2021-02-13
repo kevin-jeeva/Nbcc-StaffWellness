@@ -41,7 +41,6 @@
 	<!-- <script src="functions/notifications.js"></script> -->
 
 </head>
-
 <body>
 
 	<!--successfull modal-->

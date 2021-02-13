@@ -292,7 +292,8 @@ a.new-btn.btn-sm.btn-primary {
 	background-color: white;
 }
 
-.notifications, .notifications-place {
+.notifications,
+.notifications-place {
 	display: contents;
 }
 
@@ -303,18 +304,18 @@ a.new-btn.btn-sm.btn-primary {
 }
 
 .notify-bubble {
-    position: absolute;
-    top: -16px;
-    width: auto;
-    height: auto;
-    left: -10px;
-    padding: 0em 0.3rem;
-    background-color: red;
-    color: white;
-    font-size: 0.65em;
-    border-radius: 50%;
-    box-shadow: 1px 1px 1px grey;
-    /* display: none; */
+	position: absolute;
+	top: -16px;
+	width: auto;
+	height: auto;
+	left: -10px;
+	padding: 0em 0.3rem;
+	background-color: red;
+	color: white;
+	font-size: 0.65em;
+	border-radius: 50%;
+	box-shadow: 1px 1px 1px grey;
+	/* display: none; */
 }
 /* Responsive styles */
 @media (min-width: 768px) {
@@ -345,6 +346,7 @@ a.new-btn.btn-sm.btn-primary {
 	}
 	.notify-bubble {
 		left: 38px;
+		top: -52px;
 	}
 }
 
