@@ -332,10 +332,14 @@ a.new-btn.btn-sm.btn-primary {
 	}
 }
 
-@media (max-width: 768px) {
+@media (max-width: 990px) {
 	.events-tile,
 	.notifications-tile {
 		width: 48% !important;
+	}
+	.notify-bubble {
+		left: 38px;
+		top: -52px;
 	}
 }
 
