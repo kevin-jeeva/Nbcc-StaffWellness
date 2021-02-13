@@ -56,7 +56,7 @@ echo "<!-- Navigation -->
 			  				<a class=\"dropdown-item\" href=\"dashboard.php\">Dashboard</a>
 			  				<div class=\"dropdown-divider\"></div>
 			  				<a class=\"dropdown-item\" href=\"notifications.php\">Notifications</a>
-			  				<a class=\"dropdown-item\" href=\"#\">Profile Settings</a>
+			  				<a class=\"dropdown-item\" href=\"user_profile.php\">Profile Settings</a>
 			  				<a class=\"dropdown-item\" href=\"password_edit.php\">Change Your Password</a>
 			  				<div class=\"dropdown-divider\"></div>
 							<a class=\"dropdown-item text-danger\" href=\"functions/logout.php\">Log out</a>
