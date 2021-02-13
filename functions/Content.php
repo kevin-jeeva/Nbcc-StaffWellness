@@ -396,6 +396,7 @@ class Content {
     }  
     
   }
+  //reset notification bubble to 0
   public static function resetBubble(){
     $con = $GLOBALS["con"]; 
     $user = $_SESSION["staff_id"];
