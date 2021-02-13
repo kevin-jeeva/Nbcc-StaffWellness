@@ -63,11 +63,9 @@ echo "<!-- Navigation -->
 			  		</li>
 					
 					$adminDropdown
-					<div class=\"notifications\">							
-						<li class=\"nav-item\">
-									
-						<button type=\"button\" class=\"btn btn-primary li\"  data-toggle=\"popover\" data-placement=\"bottom\" title=\"New contents\" data-trigger=\"focus\" data-param1=\"Parameter1\">
-						
+					<div class=\"notifications\" >							
+						<li class=\"nav-item\">									
+						<button type=\"button\" class=\"btn btn-primary li\" id=\"notifs\" data-toggle=\"popover\" data-placement=\"bottom\" title=\"New contents\" data-trigger=\"focus\" data-param1=\"Parameter1\" onclick=\"bubbleFunction()\";>						
 						<i class=\"bi bi-bell-fill\"></i></button>	
 						<div class=\"notify-container\">
 							<span class=\"notify-bubble\">" . Content::setNotificationBubble() . "</span>
@@ -87,13 +85,16 @@ echo "<!-- Navigation -->
 					$('.li').popover(po_options);
 
 					});
-					$(function() {
+					</script>
+					<script>
+					$(function bubbleFunction() {
 						$('.notifications').click(function() {
 							$('.notify-bubble').hide();
-							return " . Content::resetBubble() . ";
+							document.getElementById(\"notifs\").addEventListener(\"click\"," . Content::resetBubble() . ");	
 						  });
 					  });
 					</script>
+
 
 					</div>
 				</ul>
