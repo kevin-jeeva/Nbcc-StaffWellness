@@ -292,22 +292,14 @@ a.new-btn.btn-sm.btn-primary {
 	background-color: white;
 }
 
+.notifications-place {
+	display: contents;
+}
+
 .notify-container {
 	position: relative;
 	display: inline-block;
 	margin-top: 10px;
-}
-.notify-bubble {
-	position: absolute;
-	top: -1.3em;
-	right: -0.4em;
-	padding: 0em 0.3em;
-	background-color: red;
-	color: white;
-	font-size: 0.65em;
-	border-radius: 50%;
-	box-shadow: 1px 1px 1px grey;
-	/* display: none; */
 }
 
 .notify-bubble {
