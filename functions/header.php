@@ -25,6 +25,7 @@ if(staff::GetStaffAdminNumber($_SESSION["staff_id"]) == 1)
 }
 
 echo "<!-- Navigation -->
+  <script src=\"functions/notifications.js\"></script>
 	<nav class=\"navbar navbar-expand-lg navbar-light bg-light sticky-top\">
 	<div class=\"container\">
 
@@ -65,10 +66,10 @@ echo "<!-- Navigation -->
 					$adminDropdown
 					<div class=\"notifications\" >							
 						<li class=\"nav-item\">									
-						<button type=\"button\" class=\"btn btn-primary li\" id=\"notifs\" data-toggle=\"popover\" data-placement=\"bottom\" title=\"New contents\" data-trigger=\"focus\" data-param1=\"Parameter1\" onclick=\"bubbleFunction()\";>						
+						<button type=\"button\" class=\"btn btn-primary li\" id=\"notifs\" data-toggle=\"popover\" data-placement=\"bottom\" title=\"New contents\" data-trigger=\"focus\" data-param1=\"Parameter1\" onclick=\"resetNotification()\">						
 						<i class=\"bi bi-bell-fill\"></i></button>	
-						<div class=\"notify-container\">
-							<span class=\"notify-bubble\">" . Content::setNotificationBubble() . "</span>
+						<div class=\"notify-container\" id =\"notify-container\">
+							<span class=\"notify-bubble\" id =\"bubble-noti\">" . Content::setNotificationBubble() . "</span>
 						</div>
 						</li>					
 					</div>
@@ -86,13 +87,7 @@ echo "<!-- Navigation -->
 
 					});
 					</script>
-					<script>
-					$(function bubbleFunction() {
-						$('.notifications').click(function() {
-							$('.notify-bubble').hide();
-							document.getElementById(\"notifs\").addEventListener(\"click\"," . Content::resetBubble() . ");	
-						  });
-					  });
+					<script>					
 					</script>
 
 

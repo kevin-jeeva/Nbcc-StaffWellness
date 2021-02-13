@@ -407,15 +407,17 @@ class Content {
   public static function setNotificationBubble(){
     $con = $GLOBALS["con"];
     $user = $_SESSION["staff_id"];
-    $sql = "SELECT notification_counter from user where staff_id = '$user'";
+    $sql = "SELECT notification_counter from user where staff_id = $user";
     $result = mysqli_query($con, $sql);
     while ($row = mysqli_fetch_assoc($result)){
       $count = $row['notification_counter'];
-      if($count == 0){ return "<script> $('.notify-bubble').hide(); </script>";}
-      else { return $row['notification_counter'];}
+      if($count != 0){return "<script>document.getElementById(\"notify-container\").style.display = \"block\";</script>".$count;}   
+      else{
+        return "<script>document.getElementById(\"notify-container\").style.display = \"none\";</script>";
       }
        
     }
+  }
   public static function getContentNotifications(){
     if (isset($_GET['pageno'])) {
       $pageno = $_GET['pageno'];

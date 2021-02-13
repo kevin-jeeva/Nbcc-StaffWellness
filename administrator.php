@@ -40,6 +40,7 @@
 	<!-- Custom CSS and JS -->
 	<link rel="stylesheet" type="text/css" href="includes/styles.css">
 	<script src="functions/admin.js"></script>
+	<!-- <script src="functions/notifications.js"></script> -->
 
 	<!-- Pagination and Sort tables plugin. Source: https://datatables.net/examples/styling/bootstrap4 -->
 	<script src="includes/js/jquery.dataTables.min.js"></script>
