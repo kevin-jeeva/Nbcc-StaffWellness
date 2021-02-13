@@ -299,9 +299,9 @@ margin-top: 10px;
 }  
 .notify-bubble {
     position: absolute;
-    top: -1.3rem;
-    right: -0.4rem;
-    padding: 0rem .3rem;
+    top: -1.3em;
+    right: -0.4em;
+    padding: 0em .3em;
     background-color: red;
     color: white;
     font-size: 0.65em;
