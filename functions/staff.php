@@ -207,11 +207,11 @@ class staff {
                 $active = $val["active"];
                 if($active == 0)
                 {
-                    $color = "<a href= \"#\" onclick=\"ActDeactivate_user($staff_id,1)\"class= \"btn btn-danger btn-md\">Deactive</a>";
+                    $color = "<a href= \"#\" onclick=\"ActDeactivate_user(event,$staff_id,1)\"class= \"btn btn-danger btn-md\">Deactive</a>";
                 }
                 else
                 {
-                    $color = "<a href= \"#\" onclick=\"ActDeactivate_user($staff_id,0)\" class= \"btn btn-success btn-md\">Active</a>";
+                    $color = "<a href= \"#\" onclick=\"ActDeactivate_user(event,$staff_id,0)\" class= \"btn btn-success btn-md\">Active</a>";
                 }
                 $count +=1;
                 echo "<tr>

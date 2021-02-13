@@ -18,13 +18,15 @@ if(isset($_GET["staff_id"]))
  }
   if(staff::SetActiveAndDeactive($staff_id,$active))
   {
-    $_SESSION["message"] = $message;
-    header("location:active_users.php");
+    echo "Success";
+    // $_SESSION["message"] = $message;
+    // header("location:active_users.php");
   }
   else
   {
-    $_SESSION["message"] = "Error occured Contact administrator";
-    header("location:active_users.php");
+     echo "Fail";
+    // $_SESSION["message"] = "Error occured Contact administrator";
+    // header("location:active_users.php");
   }
 
 }

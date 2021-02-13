@@ -283,8 +283,28 @@ function editVideoChange() {
 		document.getElementById("video_name").textContent = filename;
 	}
 }
-function ActDeactivate_user(staff_id, active) {
-	window.location.replace(
-		"proc_act_dact.php?staff_id=" + staff_id + "&active=" + active
+function ActDeactivate_user(event, staff_id, active) {
+	var status = event.target.parentNode.childNodes[0].innerHTML;
+	var btn = event.target.parentNode.childNodes[0].className;
+	if (status === "Deactive") {
+		status = "Active";
+		btn = "btn btn-success btn-md";
+	} else {
+		status = "Deactive";
+		btn = "btn btn-danger btn-md";
+	}
+	event.target.parentNode.childNodes[0].innerHTML = status;
+	event.target.parentNode.childNodes[0].className = btn;
+	let xhttp = new XMLHttpRequest();
+	xhttp.onreadystatechange = function () {
+		if (this.readyState == 4 && this.status == 200) {
+			// console.log(this.responseText);
+		}
+	};
+	xhttp.open(
+		"GET",
+		"proc_act_dact.php?staff_id=" + staff_id + "&active=" + active,
+		true
 	);
+	xhttp.send();
 }
