@@ -33,7 +33,7 @@ class Resource {
            while($val = mysqli_fetch_array($result))
            {
                 $resource_id = $val["resource_id"];
-                $title = $val["resource_name"];
+                $title = htmlentities($val["resource_name"]);
                 $date_created = $val["date_created"];
                 $count += 1;
                 echo"
