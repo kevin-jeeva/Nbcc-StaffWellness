@@ -7,9 +7,8 @@ before_script:
   - apt-get update -qy
   - apt-get install -y lftp
 
-build:
+deploy:
   script:
     - lftp -c "set ftp:ssl-allow no; open -u epiz_27915542E,6imxAt2FdAx4j5 ftpupload.net; mirror -Rnev ./ ./public_html --ignore-time --parallel=10 --exclude-glob .git* --exclude .git/"
-
-only:
-  - master
+  only:
+    - master
