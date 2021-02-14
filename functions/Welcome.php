@@ -70,7 +70,7 @@ class Welcome{
             <td>$title</td>           
             <td>$date_created</td>          
             <td align=\"right\">                
-                <a href=\"#\" type=\"button\" class=\"btn btn-sm btn-info\" onclick=\"RedirectEditWelcome($id,'$title','$text','$image')\">Edit Content</a>
+                <a href=\"#\" type=\"button\" class=\"btn btn-sm btn-info\" onclick=\"RedirectEditWelcome($id,\"$title\",\"$text\",\"$image\")\">Edit Content</a>
                <a href=\"functions/proc_deleteWelcome.php?welcomeId=$id\" onclick = \"return CheckDelete(event)\"type=\"button\" class=\"btn btn-sm btn-danger\">Delete</a>
             </td>            
             </tr>";
