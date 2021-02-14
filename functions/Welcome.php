@@ -60,17 +60,17 @@ class Welcome{
       while($val = mysqli_fetch_array($result))
       {
         $id = $val["welcome_id"];
-        $title = htmlentities($val["welcome_title"]);
-        $text = htmlentities($val["welcome_text"]);
+        $title = addslashes($val["welcome_title"]);
+        $text = addslashes($val["welcome_text"]);
         $image = $val["welcome_image"];
         $date_created = $val["date_created"];
-        $count +=1;
+        $count +=1;       
          echo "<tr>
        <td>$count</td>
             <td>$title</td>           
             <td>$date_created</td>          
             <td align=\"right\">                
-                <a href=\"#\" type=\"button\" class=\"btn btn-sm btn-info\" onclick=\"RedirectEditWelcome($id,\"$title\",\"$text\",\"$image\")\">Edit Content</a>
+                <a href=\"#\" type=\"button\" class=\"btn btn-sm btn-info\" onclick=\"RedirectEditWelcome($id,'$title','$text','$image')\">Edit Content</a>
                <a href=\"functions/proc_deleteWelcome.php?welcomeId=$id\" onclick = \"return CheckDelete(event)\"type=\"button\" class=\"btn btn-sm btn-danger\">Delete</a>
             </td>            
             </tr>";
