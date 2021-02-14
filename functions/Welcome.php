@@ -60,7 +60,7 @@ class Welcome{
       while($val = mysqli_fetch_array($result))
       {
         $id = $val["welcome_id"];
-        $title = htmlentities(addslashes ($val["welcome_title"]));
+        $title = htmlentities($val["welcome_title"]);
         $text = htmlentities($val["welcome_text"]);
         $image = $val["welcome_image"];
         $date_created = $val["date_created"];
