@@ -1,6 +1,7 @@
 deploy_all:
   stage: deploy
   script:
+    - apt-get update -qq && apt-get install -y -qq lftp
     - git config git-ftp.url "ftpupload.net"
     - git config git-ftp.password "6imxAt2FdAx4j5"
     - git config git-ftp.user "epiz_27915542"
