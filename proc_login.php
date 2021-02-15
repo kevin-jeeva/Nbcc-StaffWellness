@@ -13,12 +13,11 @@ $_SESSION["staff_id"] = "";
 $_SESSION["message"] = "";
 $_SESSION["alert_message"] = "";
 $_SESSIOs["active"] = 0;
-include("functions/staff.php");
-include("functions/connect.php");
-
+require_once("functions/staff.php");
+require_once("functions/connect.php");
 // Check that the login form was submitted
-if (isset($_POST["email"])) {
-
+if(isset($_POST["email"])) {
+	echo "here";
 	$input_email = trim($_POST["email"]);
 	$input_password = trim($_POST['password']);
     
@@ -29,6 +28,6 @@ if (isset($_POST["email"])) {
 }
 else
 {
-	header("location:login.php");
+	header("location:/login.php");
 }
 ?>

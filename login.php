@@ -60,7 +60,7 @@ if (isset($_SESSION["staff_id"]) && $_SESSION["staff_id"] != "") {
 				    <div class="row">
 				        <div class="col-lg-12 login-form-1">
 				            <h3>Login for Staff</h3>
-				            <form method="post" id="login_staff" action="proc_login.php">
+				            <form method="POST" id="login_staff" action="proc_login.php">
 				                <div class="form-group">
 				                    <input type="text" class="form-control" name="email" id="email" placeholder="Your Email *" value="" pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[A-Za-z]{2,}$" required />
 				                </div>
@@ -76,27 +76,7 @@ if (isset($_SESSION["staff_id"]) && $_SESSION["staff_id"] != "") {
 				                </div>
 				            </form>
 				        </div>
-                                        
-					<!-- I have commented it so it will be only staff login" 
-				       <!-- <div class="col-md-6 login-form-2">
-				            <h3>Administration</h3>
-				            <form method="post" id="login_staff" action="proc_login.php">
-				                <div class="form-group">
-				                    <input type="text" class="form-control" name="email" id="email" placeholder="Your Email *" value="" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" required />
-				                </div>
-				                <div class="form-group">
-				                    <input type="password" class="form-control" name="password" id="password" placeholder="Your Password *" value="" required= />
-				                </div>
-				                <div class="form-group">
-				                    <input type="submit" class="btnSubmit" value="Login" />
-				                </div>
-				                <div class="form-group">
-
-				                    <a href="#" class="ForgetPwd" value="Login">Forget Password?</a>
-				                </div>
-				            </form>
-				        </div>
-				    </div> <!-- End of row-->
+                                      
 				    
 				    <div class="container solo-text text-center">
 				    	<p class="text-white">Are you a student? Please <a class="badge badge-light" href="#">Click here</a></p>
