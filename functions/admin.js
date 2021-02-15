@@ -53,16 +53,14 @@ function RedirectEditWelcome(id, title, text, image) {
 }
 window.onload = function () {
 	if (
-		window.location.href ===
-		"http://nbccstaffwellness.epizy.com/edit_resource.php"
+		window.location.href === "http://nbccstaffwellness.epizy.com/edit_resource"
 	) {
 		resource_name = sessionStorage.getItem("resource_name");
 		resource_id = sessionStorage.getItem("resource_id");
 		document.getElementById("resource_edit").value = resource_name;
 		document.getElementById("resource_id").value = resource_id;
 	} else if (
-		window.location.href ===
-		"http://nbccstaffwellness.epizy.com/edit_content.php"
+		window.location.href === "http://nbccstaffwellness.epizy.com/edit_content"
 	) {
 		resource_name = sessionStorage.getItem("resource_name");
 		content_title = sessionStorage.getItem("content_title");
@@ -78,8 +76,7 @@ window.onload = function () {
 		document.getElementById("editContent-area").value = content_text;
 		document.getElementById("content_id").value = content_id;
 	} else if (
-		window.location.href ===
-		"http://nbccstaffwellness.epizy.com/edit_welcome.php"
+		window.location.href === "http://nbccstaffwellness.epizy.com/edit_welcome"
 	) {
 		title = sessionStorage.getItem("welcome_title");
 		text = sessionStorage.getItem("welcome_text");
@@ -93,7 +90,7 @@ window.onload = function () {
 
 		console.log(document.getElementById("image_name").value);
 	} else if (
-		window.location.href === "http://nbccstaffwellness.epizy.com/edit_video.php"
+		window.location.href === "http://nbccstaffwellness.epizy.com/edit_video"
 	) {
 		id = sessionStorage.getItem("video_id");
 		title = sessionStorage.getItem("video_title");
@@ -105,7 +102,7 @@ window.onload = function () {
 		$("#videoTitle").val(title);
 		document.getElementById("video_name").textContent = video;
 	} else if (
-		window.location.href === "http://nbccstaffwellness.epizy.com/edit_audio.php"
+		window.location.href === "http://nbccstaffwellness.epizy.com/edit_audio"
 	) {
 		id = sessionStorage.getItem("audio_id");
 		title = sessionStorage.getItem("audio_title");
