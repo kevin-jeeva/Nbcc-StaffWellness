@@ -73,7 +73,7 @@ if (isset($_SESSION["staff_id"]) && $_SESSION["staff_id"] != "") {
 				                </div>
 				                <div class="form-group">
 
-				                    <a href="#" class="ForgetPwd" value="Login">Forget Password?</a>
+				                    <a href="forgot_password.php" class="ForgetPwd" value="Login">Forget Password?</a>
 				                </div>
 				            </form>
 				        </div>
