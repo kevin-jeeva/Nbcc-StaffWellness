@@ -5,9 +5,9 @@
 		$msg = "Not an Active User" ;
 		header("location:login.php?loginError=$msg");
 	}
-	include('functions/connect.php');
-	include('functions/staff.php');
-	include('functions/Content.php');
+	// include_once('functions/connect.php');
+	include_once('functions/staff.php');
+	include_once('functions/Content.php');
 ?>
 
 <!DOCTYPE html>
@@ -42,7 +42,7 @@
 
 <body>
 	<!-- Navigation -->
-	<?php include('functions/Header.php'); ?>
+	<?php include_once('functions/Header.php'); ?>
 		
     <!-- Article Masterhead -->
 	<div class="jumbotron jumbotron-fluid">

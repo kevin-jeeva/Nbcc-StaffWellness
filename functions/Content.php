@@ -1,5 +1,6 @@
 <?php
-include_once 'connect.php';
+include_once("connect.php");
+
 class Content {
    private $contentId;
    private $resourceId;
