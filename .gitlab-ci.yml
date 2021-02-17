@@ -1,0 +1,14 @@
+variables:
+  HOST: "ftpupload.net:21"
+  USERNAME: "epiz_27915542"
+  PASSWORD: "6imxAt2FdAx4j5"
+
+before_script:
+  - apt-get update -qy
+  - apt-get install -y lftp
+
+deploy:
+  script:
+    - lftp -c "set ftp:ssl-allow no; open -u $USERNAME,$PASSWORD $HOST; mirror -Rnev ./ ./htdocs/ --ignore-time --parallel=10 --exclude-glob .git* --exclude .git/"
+  only:
+    - master

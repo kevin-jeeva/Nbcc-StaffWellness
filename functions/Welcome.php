@@ -60,11 +60,11 @@ class Welcome{
       while($val = mysqli_fetch_array($result))
       {
         $id = $val["welcome_id"];
-        $title = $val["welcome_title"];
-        $text = $val["welcome_text"];
+        $title = addslashes($val["welcome_title"]);
+        $text = addslashes($val["welcome_text"]);
         $image = $val["welcome_image"];
         $date_created = $val["date_created"];
-        $count +=1;
+        $count +=1;       
          echo "<tr>
        <td>$count</td>
             <td>$title</td>           

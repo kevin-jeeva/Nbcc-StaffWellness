@@ -249,37 +249,6 @@ th.action-header-cell {
 a.new-btn.btn-sm.btn-primary {
 	margin-left: 1rem;
 }
-/*video Upload button*/
-.video_button {
-	display: block;
-	outline: 0;
-	cursor: pointer;
-	width: 230px;
-	height: 60px;
-	position: relative;
-	border-radius: 5px;
-}
-.video_button:hover:after {
-	background: #000000;
-}
-.video_button:after {
-	transition: 200ms all ease;
-	border-bottom: 3px solid rgba(0, 0, 0, 0.2);
-	background: #3c5ff4;
-	text-shadow: 0 2px 0 rgba(0, 0, 0, 0.2);
-	color: #fff;
-	font-size: 20px;
-	text-align: center;
-	position: absolute;
-	top: 0;
-	left: 0;
-	width: 100%;
-	height: 100%;
-	display: block;
-	content: "Upload Video";
-	line-height: 60px;
-	border-radius: 5px;
-}
 
 .main-card.card {
 	border-radius: 0px;
@@ -296,99 +265,7 @@ a.new-btn.btn-sm.btn-primary {
 .card-video p {
 	flex-grow: 1;
 }
-/*Audio button*/
-.audio_button {
-	display: block;
-	outline: 0;
-	cursor: pointer;
-	width: 230px;
-	height: 60px;
-	position: relative;
-	border-radius: 5px;
-}
-.audio_button:hover:after {
-	background: #000000;
-}
-.audio_button:after {
-	transition: 200ms all ease;
-	border-bottom: 3px solid rgba(0, 0, 0, 0.2);
-	background: #3c5ff4;
-	text-shadow: 0 2px 0 rgba(0, 0, 0, 0.2);
-	color: #fff;
-	font-size: 20px;
-	text-align: center;
-	position: absolute;
-	top: 0;
-	left: 0;
-	width: 100%;
-	height: 100%;
-	display: block;
-	content: "Upload Audio";
-	line-height: 60px;
-	border-radius: 5px;
-}
-/*Welcom image button*/
-.welcome_image_button {
-	display: block;
-	outline: 0;
-	cursor: pointer;
-	width: 230px;
-	height: 60px;
-	position: relative;
-	border-radius: 5px;
-}
-.welcome_image_button:hover:after {
-	background: #000000;
-}
-.welcome_image_button:after {
-	transition: 200ms all ease;
-	border-bottom: 3px solid rgba(0, 0, 0, 0.2);
-	background: #3c5ff4;
-	text-shadow: 0 2px 0 rgba(0, 0, 0, 0.2);
-	color: #fff;
-	font-size: 20px;
-	text-align: center;
-	position: absolute;
-	top: 0;
-	left: 0;
-	width: 100%;
-	height: 100%;
-	display: block;
-	content: "Upload Welcome Image";
-	line-height: 60px;
-	border-radius: 5px;
-}
-/*Welcom image button*/
-.welcome_image_button {
-	display: block;
-	outline: 0;
-	cursor: pointer;
-	width: 230px;
-	height: 60px;
-	position: relative;
-	border-radius: 5px;
-}
-.welcome_image_button:hover:after {
-	background: #000000;
-}
-.welcome_image_button:after {
-	transition: 200ms all ease;
-	border-bottom: 3px solid rgba(0, 0, 0, 0.2);
-	background: #3c5ff4;
-	text-shadow: 0 2px 0 rgba(0, 0, 0, 0.2);
-	color: #fff;
-	font-size: 20px;
-	text-align: center;
-	position: absolute;
-	top: 0;
-	left: 0;
-	width: 100%;
-	height: 100%;
-	display: block;
-	content: "Upload Welcome Image";
-	line-height: 60px;
-	border-radius: 5px;
-}
+
 .welcome_title {
 	font-size: 20px;
 	font-weight: bold;
@@ -415,6 +292,31 @@ a.new-btn.btn-sm.btn-primary {
 	background-color: white;
 }
 
+.notifications,
+.notifications-place {
+	display: contents;
+}
+
+.notify-container {
+	position: relative;
+	display: inline-block;
+	margin-top: 10px;
+}
+
+.notify-bubble {
+	position: absolute;
+	top: -16px;
+	width: auto;
+	height: auto;
+	left: -10px;
+	padding: 0em 0.3rem;
+	background-color: red;
+	color: white;
+	font-size: 0.65em;
+	border-radius: 50%;
+	box-shadow: 1px 1px 1px grey;
+	/* display: none; */
+}
 /* Responsive styles */
 @media (min-width: 768px) {
 	header.masthead {
@@ -430,10 +332,14 @@ a.new-btn.btn-sm.btn-primary {
 	}
 }
 
-@media (max-width: 768px) {
+@media (max-width: 990px) {
 	.events-tile,
 	.notifications-tile {
 		width: 48% !important;
+	}
+	.notify-bubble {
+		left: 38px;
+		top: -52px;
 	}
 }
 
@@ -441,6 +347,10 @@ a.new-btn.btn-sm.btn-primary {
 	.events-tile,
 	.notifications-tile {
 		width: 100% !important;
+	}
+	.notify-bubble {
+		left: 38px;
+		top: -52px;
 	}
 }
 

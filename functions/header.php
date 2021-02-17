@@ -18,13 +18,14 @@ if(staff::GetStaffAdminNumber($_SESSION["staff_id"]) == 1)
 		<a class=\"dropdown-item\" href=\"new_welcome.php\">Create Welcome Content</a>
 		<a class=\"dropdown-item\" href=\"new_video.php\">Create New Video</a>
 		<a class=\"dropdown-item\" href=\"new_sound.php\">Create New Audio</a>
-		<a class=\"dropdown-item\" href=\"active_users.php\">Active/Deactive User</a>
+		<a class=\"dropdown-item\" href=\"active_users.php\">User Permissions</a>
 		<div class=\"dropdown-divider\"></div>
 		<a class=\"dropdown-item text-danger\" href=\"functions/logout.php\">Log out</a>
 		</li>";
 }
 
 echo "<!-- Navigation -->
+  <script src=\"functions/notifications.js\"></script>
 	<nav class=\"navbar navbar-expand-lg navbar-light bg-light sticky-top\">
 	<div class=\"container\">
 
@@ -56,19 +57,24 @@ echo "<!-- Navigation -->
 			  				<a class=\"dropdown-item\" href=\"dashboard.php\">Dashboard</a>
 			  				<div class=\"dropdown-divider\"></div>
 			  				<a class=\"dropdown-item\" href=\"notifications.php\">Notifications</a>
-			  				<a class=\"dropdown-item\" href=\"#\">Profile Settings</a>
+			  				<a class=\"dropdown-item\" href=\"user_profile.php\">Profile Settings</a>
 			  				<a class=\"dropdown-item\" href=\"password_edit.php\">Change Your Password</a>
 			  				<div class=\"dropdown-divider\"></div>
 							<a class=\"dropdown-item text-danger\" href=\"functions/logout.php\">Log out</a>
 			  		</li>
 					
 					$adminDropdown
-					<div class=\"notifications\">
-						<li class=\"nav-item\">
-						<button type=\"button\" class=\"btn btn-primary li\"  data-toggle=\"popover\" data-placement=\"bottom\" title=\"New contents\" data-trigger=\"focus\" data-param1=\"Parameter1\">
-						<i class=\"bi bi-bell-fill\"></i></button>
+					<div class=\"notifications-place row\">
+					<div class=\"notifications row\" >							
+						<li class=\"nav-item\">									
+						<button type=\"button\" class=\"btn btn-primary li\" id=\"notifs\" data-toggle=\"popover\" data-placement=\"bottom\" title=\"New contents\" data-trigger=\"focus\" data-param1=\"Parameter1\" onclick=\"resetNotification()\">						
+						<i class=\"bi bi-bell-fill\"></i></button>	
+						<li class=\"notify-container\" id =\"notify-container\">
+							<span class=\"notify-bubble\" id =\"bubble-noti\">" . Content::setNotificationBubble() . "</span>
 						</li>
-					</div>					
+						</li>					
+					</div>
+					</div>
 					<script>
 					$(document).ready(function(){
 					var po_options = {
@@ -83,6 +89,9 @@ echo "<!-- Navigation -->
 
 					});
 					</script>
+					<script>					
+					</script>
+
 
 					</div>
 				</ul>

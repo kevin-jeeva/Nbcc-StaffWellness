@@ -118,7 +118,7 @@ include_once("functions/Content.php");
 							</div>							
 							<br>
 							<div class="form-group col-lg-12">
-								<input type="submit" class="btn btn-success" value="Save Changes"/>
+								<input type="submit" class="btn btn-warning" value="Save Changes"/>
 								<a href="administrator.php" type="button" class="btn btn-danger">Cancel</a>
               </div>
               <input type="hidden" id="edit_welcome_id" name="edit_welcome_id">

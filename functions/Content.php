@@ -164,26 +164,7 @@ class Content {
                 <p class=\"card-text\">". $row['content_description'] ."</p>
                 <a href=\"#\" class=\"btn btn-outline-info btn-block\" onclick=\"ReadEvents($content_id)\">See Details</a>";
         }
-    } 
-
-   //get two newest articles to display on index
-   /*static function getTopArticles(){
-    $con = $GLOBALS['con'];
-    $resource_id = self::getResourceIdByResourceName('articles');
-    $sql = "SELECT content_id,content_title, content_text, date_format(date_created, '%m/%d/%y') as date_created FROM content WHERE resource_id = $resource_id ORDER BY date_created desc LIMIT 2";
-    $result = mysqli_query($con, $sql);
-    $i ='one';
-        while ($row = mysqli_fetch_assoc($result)) {
-            $content_id = $row["content_id"];
-            $date_created = $row["date_created"];
-            echo "<h3>" . $row['content_title'] ."<span style=\"font-size:1rem; float:right\">$date_created</span></h3>
-            <div id =\"readMore\">
-                <div class=\"collapse\" id=\"$i\" id=\"collapseSummary\">". $row['content_text'] . "</div>
-                <a class=\"collapsed\" data-toggle=\"collapse\"  data-target=\"#$i\" href=\"#collapseSummary\" aria-expanded=\"false\" aria-controls=\"collapseSummary\" onclick=\"HomeContentClicked($content_id)\"></a>
-            </div><hr>";
-            $i = 'two';
-        }    
-    }*/
+    }
 
     //get two newest articles to display on index
    static function getTopArticles($limit){
@@ -399,10 +380,43 @@ class Content {
       $con = $GLOBALS["con"];
       $sql ="INSERT into notification (content_id, notification_repeat) values  ($contentId, 1)";
       mysqli_query($con,$sql);
-      if(!mysqli_affected_rows($con) == 1)
-      {
-        //header("location:content.php");        
+      self::sendUserNotification();           
+  }
+  //send notification to user table 
+  public static function sendUserNotification(){
+    $con = $GLOBALS["con"]; 
+    $sqlGetCount = "SELECT staff_id, notification_counter from user";
+    $result = mysqli_query ($con, $sqlGetCount);
+    while ($row = mysqli_fetch_assoc($result)){
+      $count = 1;
+      $count += (int)$row['notification_counter'];
+      $user = $row['staff_id'];
+      $sqlAddCount = "update user set notification_counter = $count where staff_id = $user";
+      mysqli_query($con, $sqlAddCount);
+    }  
+    
+  }
+  //reset notification bubble to 0
+  public static function resetBubble(){
+    $con = $GLOBALS["con"]; 
+    $user = $_SESSION["staff_id"];
+    $sql = "update user set notification_counter = 0 where staff_id = $user";
+    mysqli_query($con, $sql);
+  }
+  //send number of unread notifications to notification bubble
+  public static function setNotificationBubble(){
+    $con = $GLOBALS["con"];
+    $user = $_SESSION["staff_id"];
+    $sql = "SELECT notification_counter from user where staff_id = $user";
+    $result = mysqli_query($con, $sql);
+    while ($row = mysqli_fetch_assoc($result)){
+      $count = $row['notification_counter'];
+      if($count != 0){return "<script>document.getElementById(\"notify-container\");</script>".$count;}   
+      else{
+        return "<script>document.getElementById(\"notify-container\").style.display = \"none\";</script>";
       }
+       
+    }
   }
   public static function getContentNotifications(){
     if (isset($_GET['pageno'])) {

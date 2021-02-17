@@ -53,16 +53,14 @@ function RedirectEditWelcome(id, title, text, image) {
 }
 window.onload = function () {
 	if (
-		window.location.href ===
-		"http://localhost/nbcc_staffwellness/edit_resource.php"
+		window.location.href === "http://nbccstaffwellness.epizy.com/edit_resource"
 	) {
 		resource_name = sessionStorage.getItem("resource_name");
 		resource_id = sessionStorage.getItem("resource_id");
 		document.getElementById("resource_edit").value = resource_name;
 		document.getElementById("resource_id").value = resource_id;
 	} else if (
-		window.location.href ===
-		"http://localhost/nbcc_staffwellness/edit_content.php"
+		window.location.href === "http://nbccstaffwellness.epizy.com/edit_content"
 	) {
 		resource_name = sessionStorage.getItem("resource_name");
 		content_title = sessionStorage.getItem("content_title");
@@ -78,8 +76,7 @@ window.onload = function () {
 		document.getElementById("editContent-area").value = content_text;
 		document.getElementById("content_id").value = content_id;
 	} else if (
-		window.location.href ===
-		"http://localhost/nbcc_staffwellness/edit_welcome.php"
+		window.location.href === "http://nbccstaffwellness.epizy.com/edit_welcome"
 	) {
 		title = sessionStorage.getItem("welcome_title");
 		text = sessionStorage.getItem("welcome_text");
@@ -93,8 +90,7 @@ window.onload = function () {
 
 		console.log(document.getElementById("image_name").value);
 	} else if (
-		window.location.href ===
-		"http://localhost/nbcc_staffwellness/edit_video.php"
+		window.location.href === "http://nbccstaffwellness.epizy.com/edit_video"
 	) {
 		id = sessionStorage.getItem("video_id");
 		title = sessionStorage.getItem("video_title");
@@ -106,8 +102,7 @@ window.onload = function () {
 		$("#videoTitle").val(title);
 		document.getElementById("video_name").textContent = video;
 	} else if (
-		window.location.href ===
-		"http://localhost/nbcc_staffwellness/edit_audio.php"
+		window.location.href === "http://nbccstaffwellness.epizy.com/edit_audio"
 	) {
 		id = sessionStorage.getItem("audio_id");
 		title = sessionStorage.getItem("audio_title");
@@ -283,8 +278,28 @@ function editVideoChange() {
 		document.getElementById("video_name").textContent = filename;
 	}
 }
-function ActDeactivate_user(staff_id, active) {
-	window.location.replace(
-		"proc_act_dact.php?staff_id=" + staff_id + "&active=" + active
+function ActDeactivate_user(event, staff_id, active) {
+	var status = event.target.parentNode.childNodes[0].innerHTML;
+	var btn = event.target.parentNode.childNodes[0].className;
+	if (status === "Deactive") {
+		status = "Active";
+		btn = "btn btn-success btn-md";
+	} else {
+		status = "Deactive";
+		btn = "btn btn-danger btn-md";
+	}
+	event.target.parentNode.childNodes[0].innerHTML = status;
+	event.target.parentNode.childNodes[0].className = btn;
+	let xhttp = new XMLHttpRequest();
+	xhttp.onreadystatechange = function () {
+		if (this.readyState == 4 && this.status == 200) {
+			// console.log(this.responseText);
+		}
+	};
+	xhttp.open(
+		"GET",
+		"proc_act_dact.php?staff_id=" + staff_id + "&active=" + active,
+		true
 	);
+	xhttp.send();
 }

@@ -13,22 +13,21 @@ $_SESSION["staff_id"] = "";
 $_SESSION["message"] = "";
 $_SESSION["alert_message"] = "";
 $_SESSIOs["active"] = 0;
-include("functions/staff.php");
-include("functions/connect.php");
-
+require_once("functions/staff.php");
+require_once("functions/connect.php");
 // Check that the login form was submitted
-if (isset($_POST["email"])) {
-
+if(isset($_POST["email"])) {
+	echo "here";
 	$input_email = trim($_POST["email"]);
 	$input_password = trim($_POST['password']);
     
     //constructor: $staffId, $email, $password, $username, $admin, $dateCreated
-    $staff = new staff(0, $input_email, $input_password, 0, 0, 0, 0, 0, 0, 0);    
+    $staff = new staff(0, $input_email, $input_password, 0, 0, 0,0,0,0,0);    
     staff::staffLogin($staff);//check the staff credentials and take neccessary action
     
 }
 else
 {
-	header("location:login.php");
+	header("location:/login.php");
 }
 ?>

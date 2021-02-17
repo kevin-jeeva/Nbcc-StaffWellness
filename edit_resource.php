@@ -1,5 +1,7 @@
 
-<?php include_once("functions/Content.php");
+<?php 
+include_once("functions/Resource.php");
+include_once("functions/Content.php");
 session_start();
 include_once("functions/staff.php");
 	if($_SESSION["active"] == 0)
@@ -79,11 +81,11 @@ else if(staff::GetStaffAdminNumber($_SESSION["staff_id"]) != 1) //checks if user
 		    	  <div class="form-group col-xs-6 col-md-4">
 		    	    <label for="question">Category Title</label>
 		    	    <input type="text" class="form-control" id="resource_edit" name="resource_edit"  size="45" maxlength="45" required>
-              <input type = "hidden" id ="resource_id" name="resource_id">
+              		<input type = "hidden" id ="resource_id" name="resource_id">
 		    	  </div>
 		    	  <br>
 		    	  <div class="form-group col-lg-12">
-		    	    <input type="submit" class="btn btn-success" value="Save Changes"/>
+		    	    <input type="submit" class="btn btn-warning" value="Save Changes"/>
 		    	    <a href="administrator.php" type="button" class="btn btn-danger">Cancel</a>
 		    	  </div>
 		    	</form> 	
