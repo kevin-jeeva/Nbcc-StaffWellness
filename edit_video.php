@@ -160,3 +160,9 @@ if($_SESSION["alert_message"] != "")
 	$_SESSION["alert_message"] = "";
 }
 ?>
+<script>
+window.onload = function() 
+{
+PopulateEditVideo();
+}
+</script>

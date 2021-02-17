@@ -51,94 +51,86 @@ function RedirectEditWelcome(id, title, text, image) {
 
 	window.location.replace("edit_welcome.php");
 }
-window.onload = function () {
-	if (
-		window.location.href === "http://nbccstaffwellness.epizy.com/edit_resource"
-	) {
-		resource_name = sessionStorage.getItem("resource_name");
-		resource_id = sessionStorage.getItem("resource_id");
-		document.getElementById("resource_edit").value = resource_name;
-		document.getElementById("resource_id").value = resource_id;
-	} else if (
-		window.location.href === "http://nbccstaffwellness.epizy.com/edit_content"
-	) {
-		resource_name = sessionStorage.getItem("resource_name");
-		content_title = sessionStorage.getItem("content_title");
-		content_description = sessionStorage.getItem("description");
-		content_text = sessionStorage.getItem("content_text");
-		content_id = sessionStorage.getItem("content_id");
+function PopulateEditResources() {
+	resource_name = sessionStorage.getItem("resource_name");
+	resource_id = sessionStorage.getItem("resource_id");
+	document.getElementById("resource_edit").value = resource_name;
+	document.getElementById("resource_id").value = resource_id;
+}
+function PopulateEditContent() {
+	resource_name = sessionStorage.getItem("resource_name");
+	content_title = sessionStorage.getItem("content_title");
+	content_description = sessionStorage.getItem("description");
+	content_text = sessionStorage.getItem("content_text");
+	content_id = sessionStorage.getItem("content_id");
 
-		setTheEditContentDropDown(resource_name);
-		document.getElementById("editContentTitle").value = content_title;
-		document.getElementById(
-			"editContent-description"
-		).value = content_description;
-		document.getElementById("editContent-area").value = content_text;
-		document.getElementById("content_id").value = content_id;
-	} else if (
-		window.location.href === "http://nbccstaffwellness.epizy.com/edit_welcome"
-	) {
-		title = sessionStorage.getItem("welcome_title");
-		text = sessionStorage.getItem("welcome_text");
-		image = sessionStorage.getItem("welcome_image");
-		id = parseInt(sessionStorage.getItem("welcome_id"));
+	setTheEditContentDropDown(resource_name);
+	document.getElementById("editContentTitle").value = content_title;
+	document.getElementById(
+		"editContent-description"
+	).value = content_description;
+	document.getElementById("editContent-area").value = content_text;
+	document.getElementById("content_id").value = content_id;
+}
+function PopulateEditWelcome() {
+	title = sessionStorage.getItem("welcome_title");
+	text = sessionStorage.getItem("welcome_text");
+	image = sessionStorage.getItem("welcome_image");
+	id = parseInt(sessionStorage.getItem("welcome_id"));
 
-		document.getElementById("edit_welcomeTitle").value = title;
-		document.getElementById("edit_welcome-description").value = text;
-		document.getElementById("edit_welcome_id").value = id;
-		document.getElementById("image_name").textContent = image;
+	document.getElementById("edit_welcomeTitle").value = title;
+	document.getElementById("edit_welcome-description").value = text;
+	document.getElementById("edit_welcome_id").value = id;
+	document.getElementById("image_name").textContent = image;
+}
+function PopulateEditVideo() {
+	id = sessionStorage.getItem("video_id");
+	title = sessionStorage.getItem("video_title");
+	video = sessionStorage.getItem("video");
+	desc = sessionStorage.getItem("video_desc");
 
-		console.log(document.getElementById("image_name").value);
-	} else if (
-		window.location.href === "http://nbccstaffwellness.epizy.com/edit_video"
-	) {
-		id = sessionStorage.getItem("video_id");
-		title = sessionStorage.getItem("video_title");
-		video = sessionStorage.getItem("video");
-		desc = sessionStorage.getItem("video_desc");
+	$("#id").val(id);
+	$("#video-description").val(desc);
+	$("#videoTitle").val(title);
+	document.getElementById("video_name").textContent = video;
+}
+function PopulateEditAudio() {
+	id = sessionStorage.getItem("audio_id");
+	title = sessionStorage.getItem("audio_title");
+	audio = sessionStorage.getItem("audio");
+	desc = sessionStorage.getItem("audio_desc");
 
-		$("#id").val(id);
-		$("#video-description").val(desc);
-		$("#videoTitle").val(title);
-		document.getElementById("video_name").textContent = video;
-	} else if (
-		window.location.href === "http://nbccstaffwellness.epizy.com/edit_audio"
-	) {
-		id = sessionStorage.getItem("audio_id");
-		title = sessionStorage.getItem("audio_title");
-		audio = sessionStorage.getItem("audio");
-		desc = sessionStorage.getItem("audio_desc");
+	$("#id").val(id);
+	$("#audio-description").val(desc);
+	$("#soundTitle").val(title);
+	document.getElementById("audio_name").textContent = audio;
+}
 
-		$("#id").val(id);
-		$("#audio-description").val(desc);
-		$("#soundTitle").val(title);
-		document.getElementById("audio_name").textContent = audio;
-	} else {
-		sessionStorage.removeItem("resource_id");
-		sessionStorage.removeItem("resource_name");
+function ClearSessions() {
+	sessionStorage.removeItem("resource_id");
+	sessionStorage.removeItem("resource_name");
 
-		sessionStorage.removeItem("content_id");
-		sessionStorage.removeItem("resource_name");
-		sessionStorage.removeItem("content_title");
-		sessionStorage.removeItem("description");
-		sessionStorage.removeItem("content_text");
+	sessionStorage.removeItem("content_id");
+	sessionStorage.removeItem("resource_name");
+	sessionStorage.removeItem("content_title");
+	sessionStorage.removeItem("description");
+	sessionStorage.removeItem("content_text");
 
-		sessionStorage.removeItem("welcome_id");
-		sessionStorage.removeItem("welcome_title");
-		sessionStorage.removeItem("welcome_text");
-		sessionStorage.removeItem("welcome_image");
+	sessionStorage.removeItem("welcome_id");
+	sessionStorage.removeItem("welcome_title");
+	sessionStorage.removeItem("welcome_text");
+	sessionStorage.removeItem("welcome_image");
 
-		sessionStorage.removeItem("video_id");
-		sessionStorage.removeItem("video_title");
-		sessionStorage.removeItem("video");
-		sessionStorage.removeItem("video_desc");
+	sessionStorage.removeItem("video_id");
+	sessionStorage.removeItem("video_title");
+	sessionStorage.removeItem("video");
+	sessionStorage.removeItem("video_desc");
 
-		sessionStorage.removeItem("audio_title");
-		sessionStorage.removeItem("audio");
-		sessionStorage.removeItem("audio_id");
-		sessionStorage.removeItem("audio_desc");
-	}
-};
+	sessionStorage.removeItem("audio_title");
+	sessionStorage.removeItem("audio");
+	sessionStorage.removeItem("audio_id");
+	sessionStorage.removeItem("audio_desc");
+}
 function TrimCategoryTitle(resource) {
 	var Value = document.getElementById("resource_edit").value;
 	Value = Value.trim();

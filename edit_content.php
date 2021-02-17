@@ -193,3 +193,8 @@ if($_SESSION["message"] != "")
 	$_SESSION["message"] = "";
 }
 ?>
+<script>
+window.onload = function(){
+	PopulateEditContent();
+}
+</script>

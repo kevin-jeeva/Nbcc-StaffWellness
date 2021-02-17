@@ -105,3 +105,9 @@ else if(staff::GetStaffAdminNumber($_SESSION["staff_id"]) != 1) //checks if user
 
 </body>
 </html>
+<script>
+window.onload = function() 
+{
+PopulateEditResources();
+}
+</script>
