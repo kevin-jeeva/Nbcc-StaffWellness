@@ -1,5 +1,6 @@
 <?php
 include_once("connect.php");
+include_once("Phone.php");
 
 class Content {
    private $contentId;
@@ -312,12 +313,14 @@ class Content {
             if ($content->eventDate == null){
               self::InsertContent($resource_id,$content->title,$content->contentText,$content->contentDescription);
               $content_id = self::getContentID($resource_id,$content->title,$content->contentDescription);              
-              self::insertContentNotification($content_id);  
+              self::insertContentNotification($content_id); 
+              Phone::SendMessage($resource_name,$content->contentDescription,$content->title); 
             }
             else{
               self::InsertContentforEvents($resource_id,$content->title,$content->contentText,$content->contentDescription, $content->eventDate);
               $content_id = self::getContentID($resource_id,$content->title,$content->contentDescription); 
               self::insertContentNotification($content_id); 
+              Phone::SendMessage($resource_name,$content->contentDescription,$content->title); 
             }
         }
         else{               
@@ -328,11 +331,13 @@ class Content {
                       self::InsertContent($resource_id,$content->title,$content->contentText,$content->contentDescription);
                       $content_id = self::getContentID($resource_id,$content->title,$content->contentDescription); 
                       self::insertContentNotification($content_id); 
+                      Phone::SendMessage($resource_name,$content->contentDescription,$content->title); 
                     }
                     else{
                       self::InsertContentforEvents($resource_id,$content->title,$content->contentText,$content->contentDescription, $content->eventDate);
                       $content_id = self::getContentID($resource_id,$content->title,$content->contentDescription); 
                       self::insertContentNotification($content_id); 
+                      Phone::SendMessage($resource_name,$content->contentDescription,$content->title); 
                     }
                 }
                 else{

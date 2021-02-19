@@ -193,7 +193,7 @@ class staff {
     public static function DisplayAllUsers()
     {
         $con = $GLOBALS["con"];
-        $sql = "Select staff_id, user_name, active, date_format(date_created, '%m/%d/%y') as date_created from user";       
+        $sql = "Select staff_id, user_name, active, admin, date_format(date_created, '%m/%d/%y') as date_created from user";       
         $count = 0;
         $color = "";
         $result = mysqli_query($con, $sql);
@@ -204,7 +204,7 @@ class staff {
                 $staff_id = $val["staff_id"];
                 $name = strtoupper($val ["user_name"]);
                 $date_created = $val["date_created"];
-                $active = $val["active"];
+                $active = $val["active"];                
                 if($active == 0)
                 {
                     $color = "<a href= \"#\" onclick=\"ActDeactivate_user(event,$staff_id,1)\"class= \"btn btn-danger btn-md\">Deactive</a>";
