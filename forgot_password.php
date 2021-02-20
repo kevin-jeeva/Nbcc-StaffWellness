@@ -1,5 +1,4 @@
 <?php
-opcache_reset();
 session_start();
 
 if (isset($_SESSION["staff_id"]) && $_SESSION["staff_id"] != "") {
@@ -55,23 +54,12 @@ if (isset($_SESSION["staff_id"]) && $_SESSION["staff_id"] != "") {
 				                    <input type="text" class="form-control" name="email" id="email" placeholder="Your Email *" value="" pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[A-Za-z]{2,}$" required />
 				                </div>
 				                <div class="form-group">
-				                    <input type="submit" class="btnSubmit" value="Email password reset" />
+				                    <input type="submit" class="btnSubmit" id="submit" name="submit" value="Email password reset" />
 				                </div>
 				                
 				            </form>
 						
-				        </div>
-					<!-- if reset of password completed: -->	
-                    <?php
-						if (isset($_GET["reset"])){
-							if ($_GET["reset"]=="success"){
-								echo '<p> An email has been set to you with instructions on how to reset your password. </p>';
-							}
-							else{
-								echo'<p> An error has occured while trying to reset your password. Please try again </p>';
-							}
-						}
-					?>            
+				        </div>           
 
 				</div> <!-- End of login-container-->  
 			</div> <!-- End of col-xl-9 mx-auto-->
