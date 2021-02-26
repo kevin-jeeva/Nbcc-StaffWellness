@@ -232,7 +232,7 @@ class Welcome{
    $count_divide = 0;
    $progress_value = 0;
    $row_count = 0;
-   $colors = array("bg-success","bg-info","bg-dark","bg-danger","bg-warning");
+   $colors = array("bg-success","bg-info","bg-dark","bg-danger","bg-warning","bg-primary");
   
    if(mysqli_num_rows($resource_ids) > 0)
    {
@@ -241,7 +241,7 @@ class Welcome{
        $total = 0;
        $count_divide = 0;
        $progress_value = 0;
-       $rand_color = array_rand($colors,1);
+       $rand_color = array_rand($colors,1);      
        $resource_name = $resource_id["resource_name"];
        if($resource_name === "Exercise Video")
        {
