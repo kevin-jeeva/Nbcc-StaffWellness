@@ -1,13 +1,16 @@
 <?php
 	session_start();
+
         if(!isset($_SESSION["staff_id"]))
         {
+			 
             header("location:Login.php");
         }
-        
+	
 	include('functions/connect.php');
 	include('functions/staff.php');
-	include('functions/Content.php');
+	include('functions/Content.php');  
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -52,8 +55,8 @@
 		  	<!--Contact Sector (Main) -->
 		    <div class="the-content col-md-8">
 		    	<!-- Form that holds all input fields for the user -->
-			    <form method="post" id="editUserForm" name="editUserForm" onsubmit="return ContentCheck()" action="proc_user_profile.php">
-			    	
+			    
+			    	<!--
 			    	<div class="form-row"> 
 						<div class="form-group col-xs-6 col-md-4">
 							<label for="fname" id="fname-title">First Name *</label>
@@ -65,42 +68,56 @@
 							<input type="text" class="form-control" placeholder="Enter your last name" name ="lname" id="lname" required>
 						</div>
 					</div>
-
+					-->
+					
 					<!-- <div class="form-row">
 						<div class="form-group col-xs-6 col-md-4">
 							<label for="email" id="email-title">Email *</label>
 							<input type="text" class="form-control" name="email" id="email" placeholder="Enter your email" value="" required />
 						</div>
 					</div> -->
-
+			
+				<!-- CHANGE YOUR PASSWORD -->
+				<form method="post" id="password_change" action="password_edit_proc.php">
+					<h3>Change your password:</h3>
 					<div class="form-row">
 						<div class="form-group col-xs-6 col-md-4">
-							<label for="password" id="password-title">Password *</label>
-					        <input type="password" class="form-control" name="password" id="vpassword" placeholder="Enter your new Password" value="" required />
+					        <input type="password" class="form-control" name="currentPassword" id="currentPassword" placeholder="Your current password *" value="" required />
+					    </div>
+					
+					    <div class="form-group col-xs-6 col-md-4">
+					        <input type="password" class="form-control" name="newPassword" id="newPassword" placeholder="Your new password *" value="" required />
 					    </div>
 
 					    <div class="form-group col-xs-6 col-md-4">
-							<label for="verifyPassword" id="verifyPassword-title">Confirm New Password *</label>
-					        <input type="password" class="form-control" name="verifyPassword" id="verifyPassword" placeholder="Re-enter your new Password" value="" required />
+					        <input type="password" class="form-control" name="verifyPassword" id="verifyPassword" placeholder="Re-enter your new Password *" value="" required />
 					    </div>
 					</div>
+					<div class="form-row">
+						<div class="form-group col-lg-12">
+							<input type="submit" class="btn btn-warning" value="Update Password" name="submit" />
+							<a href="index.php" type="button" class="btn btn-danger">Cancel</a>
+						</div>
+					</div> <br><br>
+				</form> <!-- END CHANGE PASSWORD Form-->
 
+				<!-- Profile Picture-->
+				<form> 		
+					<h3>Update your Profle Picture:</h3>	
 					<div class="form-row">
 						<div class="form-group col-xs-6 col-md-4">
-							<label for="profile_image">Select a Profile image *</label>
 							<input id="profile_image" name="profile_image" type="file" accept="image/*" required />
 						</div>
 					</div>
 
-					<br>				
-						
 					<div class="form-row">
 						<div class="form-group col-lg-12">
-							<input type="submit" class="btn btn-warning" value="Save Changes"/>
+							<input type="submit" class="btn btn-warning" value="Save Profile Picture"/>
 							<a href="index.php" type="button" class="btn btn-danger">Cancel</a>
 						</div>
 					</div>
-		    	</form>
+		    	</form> <!--end profile picture-->
+
 		    </div><!-- End of the-content col-md-8 -->
 
 		    <!--Sidebar (Links, Menus and other info) -->

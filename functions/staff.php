@@ -260,20 +260,21 @@ class staff {
                     //update
                 $sql2 = "UPDATE user set password = '$newPass' WHERE staff_id = '$sessId' "; 
                 $result2= mysqli_query($con, $sql2);
-                echo "password updated";
-                $_SESSION["message"] = "Password Updated!";    
-              header("location:dashboard.php");
+                //echo "password updated";
+               $_SESSION["message"] = "Password Updated!!!!";  
+                header("location:dashboard.php");
             } else{
-                echo "passwords do not match";
-                $_SESSION["message"] = "Passwords do not match!";       
-             header("location:password_edit.php");
+               // echo "passwords do not match";
+                $_SESSION["message"] = "Passwords do not match!!!!";
+               // $message = "Passwords do not match!";       
+             header("location:user_profile.php");
             }
         }else{
-            echo "you are not entering the correct password";
-            $_SESSION["message"] = "Password is not correct";    
-            header("location:password_edit.php");
-           // echo "<BR>". $PASS;
-            //echo "<BR>". $curPass;
+           // echo "you are not entering the correct password";
+           // $message = "Password is not correct";
+            $_SESSION["message"] = "Password is not correct!!!!";    
+            header("location:user_profile.php");
+         
         }    
     
     } //end changePassword
