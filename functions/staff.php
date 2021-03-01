@@ -246,6 +246,22 @@ class staff {
         return false;
     }
 
+    public static function getUserInfo(){
+        $con = $GLOBALS["con"];
+        $user = $_SESSION["staff_id"];
+        $sql = "SELECT first_name, last_name, email, staff_id from user where staff_id = $user";
+        $result = mysqli_query($con,$sql); 
+        $row = mysqli_fetch_assoc($result);
+
+        $sql2 = "SELECT user_phone_no from user_phone where user_id = $user";
+        $result2 = mysqli_query($con,$sql2); 
+        $row2 = mysqli_fetch_assoc($result2);
+
+        echo "<strong>Name: </strong>" . $row['first_name'] . " " . $row['last_name'] . "<br>"
+        .  "<strong>Email: </strong>" . $row['email'] . "<br><strong> Phone Number</strong>: " 
+        . $row2['user_phone_no'] . "<br><strong> User ID: </strong>" . $row['staff_id'];
+    }
+
     public static function changePassword($sessId, $curPass, $newPass, $verifyNewPass){
         $con = $GLOBALS["con"];
        

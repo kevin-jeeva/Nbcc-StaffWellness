@@ -369,3 +369,6 @@ a.new-btn.btn-sm.btn-primary {
 	list-style-type: none;
 	padding-left: 4px;
 }
+#userBtn{
+	border: 5em;
+}
