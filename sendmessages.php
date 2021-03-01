@@ -20,7 +20,7 @@ if(isset($_GET["email"]))
     for($x = 0; $x < $count ; $x++)
     {
         // echo $phones[$x]->email;
-        $mail->addAddress(''.$phones[$x]->email.'');
+        $mail->addAddress(''.$phones[$x]->email.''); 
     }
                             
     $mail->Subject = $resource."\t".'update staffwellness';

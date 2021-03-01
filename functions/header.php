@@ -5,7 +5,7 @@ include_once('functions/Content.php');
 $adminDropdown = "";
 
 //shows admin dropdown if admin
-if(staff::GetStaffAdminNumber($_SESSION["staff_id"]) == 1)
+if(staff::GetStaffAdminNumber($_SESSION["staff_id"]) == 1 || staff::GetStaffAdminNumber($_SESSION["staff_id"]) == 2 )
 {
 	$adminDropdown = "
 	<li class=\"nav-item dropdown\">
