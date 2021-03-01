@@ -234,7 +234,7 @@ class staff {
                 $count +=1;
                 echo "<tr>
                 <td>$count</td>
-                <td>$name</td>
+                <td>$name</td>                
                 <td>$date_created</td>
                 <td>$adminColor</td>
                 <td align = \"right\">$color</td>

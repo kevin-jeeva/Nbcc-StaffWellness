@@ -138,7 +138,7 @@
 				    	          <th>#</th>
 				    	          <th>User Name</th>
 				    	          <th>Date Created</th>
-								  <th class="action-header-cell">Admin</th>
+								  <th>Admin</th>
 				    	          <th class="action-header-cell">Status</th>
 				    	        </tr>
 				    	      </thead>
