@@ -2,12 +2,12 @@
 	session_start();
 	if($_SESSION["active"] == 0)
 	{
-		 $msg = "Not an Active User" ;
-     header("location:login.php?loginError=$msg");
+		$msg = "Not an Active User" ;
+     	header("location:login.php?loginError=$msg");
 	}
 	if(!isset($_SESSION["staff_id"]))
 	{
-			header("location:Login.php");
+		header("location:Login.php");
 	}
         
 	require_once('functions/connect.php');

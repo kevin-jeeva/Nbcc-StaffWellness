@@ -10,6 +10,8 @@
 	include('functions/connect.php');
 	include('functions/staff.php');
 	include('functions/Content.php');  
+	require_once("functions/Welcome.php");
+
 
 ?>
 <!DOCTYPE html>

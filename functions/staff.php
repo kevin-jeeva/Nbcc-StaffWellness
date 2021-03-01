@@ -278,7 +278,7 @@ class staff {
 
         echo "<strong>Name: </strong>" . $row['first_name'] . " " . $row['last_name'] . "<br>"
         .  "<strong>Email: </strong>" . $row['email'] . "<br><strong> Phone Number</strong>: " 
-        . $row2['user_phone_no'] . "<br><strong> User ID: </strong>" . $row['staff_id'];
+        . $row2['user_phone_no'];
     }
 
     public static function SetActiveAndDeactiveAdmin($staff_id, $admin)
@@ -308,19 +308,20 @@ class staff {
                 $sql2 = "UPDATE user set password = '$newPass' WHERE staff_id = '$sessId' "; 
                 $result2= mysqli_query($con, $sql2);
                 //echo "password updated";
-               $_SESSION["message"] = "Password Updated!!!!";  
-                header("location:dashboard.php");
-            } else{
+                session_destroy();
+                $msg = "Password Updated! Please log in. ";  
+                header("location:login.php?loginError=$msg");
+            } 
+            else{
                // echo "passwords do not match";
-                $_SESSION["message"] = "Passwords do not match!!!!";
-               // $message = "Passwords do not match!";       
-             header("location:user_profile.php");
+               $msg = "Passwords do not match. Please try again." ;
+               header("location:user_profile.php?Error=$msg");
             }
-        }else{
+        }
+        else{
            // echo "you are not entering the correct password";
-           // $message = "Password is not correct";
-            $_SESSION["message"] = "Password is not correct!!!!";    
-            header("location:user_profile.php");
+           $msg = "Incorrect Password. Please Try again!" ;
+           header("location:user_profile.php?Error=$msg");
          
         }    
     
