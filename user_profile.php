@@ -79,44 +79,76 @@
 			
 				<!-- CHANGE YOUR PASSWORD -->
 				<form method="post" id="password_change" action="password_edit_proc.php">
-					<h3>Change your password:</h3>
+					<h3>Change your password</h3><hr>
 					<div class="form-row">
 						<div class="form-group col-xs-6 col-md-4">
-					        <input type="password" class="form-control" name="currentPassword" id="currentPassword" placeholder="Your current password *" value="" required />
+						<label>Your current password *</label>
+					        <input type="password" class="form-control" name="currentPassword" id="currentPassword" value="" required />
 					    </div>
 					
 					    <div class="form-group col-xs-6 col-md-4">
-					        <input type="password" class="form-control" name="newPassword" id="newPassword" placeholder="Your new password *" value="" required />
+						<label>Your new password *</label>
+					        <input type="password" class="form-control" name="newPassword" id="newPassword" value="" required />
 					    </div>
 
 					    <div class="form-group col-xs-6 col-md-4">
-					        <input type="password" class="form-control" name="verifyPassword" id="verifyPassword" placeholder="Re-enter your new Password *" value="" required />
+						<label>Re-enter password *</label>
+					        <input type="password" class="form-control" name="verifyPassword" id="verifyPassword" value="" required />
 					    </div>
 					</div>
 					<div class="form-row">
 						<div class="form-group col-lg-12">
-							<input type="submit" class="btn btn-warning" value="Update Password" name="submit" />
+							<input type="submit" class="btn btn-warning" value="Update" name="submit" />
 							<a href="index.php" type="button" class="btn btn-danger">Cancel</a>
 						</div>
 					</div> <br><br>
 				</form> <!-- END CHANGE PASSWORD Form-->
 
-				<!-- Profile Picture-->
-				<form> 		
-					<h3>Update your Profle Picture:</h3>	
+				<!-- Change you email-->
+				<form method="post" id="email_change" action="email_edit_proc.php"  autocomplete="off">
+					<h3>Change your Email</h3><hr>
 					<div class="form-row">
 						<div class="form-group col-xs-6 col-md-4">
-							<input id="profile_image" name="profile_image" type="file" accept="image/*" required />
-						</div>
+							<label>Password *</label>
+					        <input type="password" class="form-control" name="password" id="password"  value="" required />
+					    </div> 
+					
+					    <div class="form-group col-xs-6 col-md-4">
+						<label>New Email * </label>
+					        <input type="text"  class="form-control" name="newEmail" id="newEmail" value="" required />
+					    </div>
+					
 					</div>
-
 					<div class="form-row">
 						<div class="form-group col-lg-12">
-							<input type="submit" class="btn btn-warning" value="Save Profile Picture"/>
+							<input type="submit" class="btn btn-warning" value="Update" name="submit" />
 							<a href="index.php" type="button" class="btn btn-danger">Cancel</a>
 						</div>
+					</div> <br><br>
+				</form> <!-- END CHANGE EMAIL Form-->
+
+					<!-- Change you phone-->
+								<form method="post" id="phone_change" action="phone_edit_proc.php"  autocomplete="off">
+					<h3>Change your Phone Number</h3><hr>
+					<div class="form-row">
+						<div class="form-group col-xs-6 col-md-4">
+							<label>Password *</label>
+					        <input type="password" class="form-control" name="password" id="password"  value="" required />
+					    </div> 
+					
+					    <div class="form-group col-xs-6 col-md-4">
+						<label>New Phone Number * </label>
+					        <input type="text"  class="form-control" name="newPhone" id="newPhone" value="" required />
+					    </div>
+					
 					</div>
-		    	</form> <!--end profile picture-->
+					<div class="form-row">
+						<div class="form-group col-lg-12">
+							<input type="submit" class="btn btn-warning" value="Update" name="submit" />
+							<a href="index.php" type="button" class="btn btn-danger">Cancel</a>
+						</div>
+					</div> <br><br>
+				</form> <!-- END CHANGE PHONE Form-->
 
 		    </div><!-- End of the-content col-md-8 -->
 

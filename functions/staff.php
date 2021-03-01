@@ -257,7 +257,7 @@ class staff {
         if(password_verify($curPass,$PASS)){    
                 //if user wrote new pass correct both times
             if($newPass == $verifyNewPass){
-                    //update
+                //update
                 $sql2 = "UPDATE user set password = '$newPass' WHERE staff_id = '$sessId' "; 
                 $result2= mysqli_query($con, $sql2);
                 //echo "password updated";
@@ -278,5 +278,41 @@ class staff {
         }    
     
     } //end changePassword
-    
+
+    public static function changeEmail ($sessId,$password, $newEmail){
+        $con = $GLOBALS["con"];
+        $sql ="SELECT password from user WHERE staff_id = '$sessId'";
+        $result = mysqli_query($con,$sql); 
+        $row = mysqli_fetch_assoc($result);    
+        $PASS = $row["password"];
+            //if DB pass is equal to curr pass entered 
+        if(password_verify($password,$PASS)){    
+            $sqlEmail = "UPDATE user set email = '$newEmail' where staff_id = '$sessId'";
+            mysqli_query($con, $sqlEmail);
+            $_SESSION["message"] = "Email Updated!";  
+            header("location:dashboard.php");
+        }
+        else{
+            $_SESSION["message"] = "Incorrect password";
+            header("location:user_profile.php");
+        }
+    }
+    public static function changePhone ($sessId,$password, $newPhone){
+        $con = $GLOBALS["con"];
+        $sql ="SELECT password from user WHERE staff_id = '$sessId'";
+        $result = mysqli_query($con,$sql); 
+        $row = mysqli_fetch_assoc($result);    
+        $PASS = $row["password"];
+            //if DB pass is equal to curr pass entered 
+        if(password_verify($password,$PASS)){    
+            $sqlPhone = "UPDATE user_phone set user_phone_no = $newPhone where user_id = '$sessId'";
+            mysqli_query($con, $sqlPhone);
+            $_SESSION["message"] = "Phone Updated!";  
+            header("location:dashboard.php");
+        }
+        else{
+            $_SESSION["message"] = "Incorrect password";
+            header("location:user_profile.php");
+        }
+    }
 }
