@@ -1,13 +1,16 @@
 <?php
 	session_start();
+
         if(!isset($_SESSION["staff_id"]))
         {
+			 
             header("location:Login.php");
         }
-        
+	
 	include('functions/connect.php');
 	include('functions/staff.php');
-	include('functions/Content.php');
+	include('functions/Content.php');  
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -52,8 +55,8 @@
 		  	<!--Contact Sector (Main) -->
 		    <div class="the-content col-md-8">
 		    	<!-- Form that holds all input fields for the user -->
-			    <form method="post" id="editUserForm" name="editUserForm" onsubmit="return ContentCheck()" action="proc_user_profile.php">
-			    	
+			    
+			    	<!--
 			    	<div class="form-row"> 
 						<div class="form-group col-xs-6 col-md-4">
 							<label for="fname" id="fname-title">First Name *</label>
@@ -65,42 +68,97 @@
 							<input type="text" class="form-control" placeholder="Enter your last name" name ="lname" id="lname" required>
 						</div>
 					</div>
-
+					-->
+					
 					<!-- <div class="form-row">
 						<div class="form-group col-xs-6 col-md-4">
 							<label for="email" id="email-title">Email *</label>
 							<input type="text" class="form-control" name="email" id="email" placeholder="Enter your email" value="" required />
 						</div>
 					</div> -->
-
+			
+				<!-- CHANGE YOUR PASSWORD -->
+				<?php
+					sendMessage("Error");
+					function sendMessage($message){
+						if (isset($_GET["$message"])){
+							$msg = $_GET["$message"];
+							echo "<p class=\"alert alert-light text-danger\">$msg</p><br>";
+						}
+					}
+				?>
+				<form method="post" id="password_change" action="password_edit_proc.php">
+					<h3>Change your password</h3><hr>
 					<div class="form-row">
 						<div class="form-group col-xs-6 col-md-4">
-							<label for="password" id="password-title">Password *</label>
-					        <input type="password" class="form-control" name="password" id="vpassword" placeholder="Enter your new Password" value="" required />
+						<label>Your current password *</label>
+					        <input type="password" class="form-control" name="currentPassword" id="currentPassword" value="" required />
+					    </div>
+					
+					    <div class="form-group col-xs-6 col-md-4">
+						<label>Your new password *</label>
+					        <input type="password" class="form-control" name="newPassword" id="newPassword" value="" required />
 					    </div>
 
 					    <div class="form-group col-xs-6 col-md-4">
-							<label for="verifyPassword" id="verifyPassword-title">Confirm New Password *</label>
-					        <input type="password" class="form-control" name="verifyPassword" id="verifyPassword" placeholder="Re-enter your new Password" value="" required />
+						<label>Re-enter password *</label>
+					        <input type="password" class="form-control" name="verifyPassword" id="verifyPassword" value="" required />
 					    </div>
 					</div>
-
-					<div class="form-row">
-						<div class="form-group col-xs-6 col-md-4">
-							<label for="profile_image">Select a Profile image *</label>
-							<input id="profile_image" name="profile_image" type="file" accept="image/*" required />
-						</div>
-					</div>
-
-					<br>				
-						
 					<div class="form-row">
 						<div class="form-group col-lg-12">
-							<input type="submit" class="btn btn-warning" value="Save Changes"/>
+							<input type="submit" class="btn btn-warning" value="Update" name="submit" />
 							<a href="index.php" type="button" class="btn btn-danger">Cancel</a>
 						</div>
+					</div> <br><br>
+				</form> <!-- END CHANGE PASSWORD Form-->
+
+				<!-- Change you email-->
+				<form method="post" id="email_change" action="email_edit_proc.php"  autocomplete="off">
+					<h3>Change your Email</h3><hr>
+					<div class="form-row">
+						<div class="form-group col-xs-6 col-md-4">
+							<label>Password *</label>
+					        <input type="password" class="form-control" name="password" id="password"  value="" required />
+					    </div> 
+					
+					    <div class="form-group col-xs-6 col-md-4">
+						<label>New Email * </label>
+					        <input type="text"  class="form-control" name="newEmail" id="newEmail" value="" required />
+					    </div>
+					
 					</div>
-		    	</form>
+					<div class="form-row">
+						<div class="form-group col-lg-12">
+							<input type="submit" class="btn btn-warning" value="Update" name="submit" />
+							<a href="index.php" type="button" class="btn btn-danger">Cancel</a>
+						</div>
+					</div> <br><br>
+				</form> <!-- END CHANGE EMAIL Form-->
+
+					<!-- Change you phone-->
+								<form method="post" id="phone_change" action="phone_edit_proc.php"  autocomplete="off">
+					<h3>Change your Phone Number</h3><hr>
+					<div class="form-row">
+						<div class="form-group col-xs-6 col-md-4">
+							<label>Password *</label>
+					        <input type="password" class="form-control" name="password" id="password"  value="" required />
+					    </div> 
+					
+					    <div class="form-group col-xs-6 col-md-4">
+						<label>New Phone Number * </label>
+					        <input type="text"  class="form-control" name="newPhone" id="newPhone" value="" required />
+					    </div>
+					
+					</div>
+					<div class="form-row">
+						<div class="form-group col-lg-12">
+							<input type="submit" class="btn btn-warning" value="Update" name="submit" />
+							<a href="index.php" type="button" class="btn btn-danger">Cancel</a>
+						</div>
+					</div> <br><br>
+				</form> <!-- END CHANGE PHONE Form-->
+
 		    </div><!-- End of the-content col-md-8 -->
 
 		    <!--Sidebar (Links, Menus and other info) -->

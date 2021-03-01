@@ -288,25 +288,62 @@ class staff {
         if(password_verify($curPass,$PASS)){    
                 //if user wrote new pass correct both times
             if($newPass == $verifyNewPass){
-                    //update
+                //update
                 $sql2 = "UPDATE user set password = '$newPass' WHERE staff_id = '$sessId' "; 
                 $result2= mysqli_query($con, $sql2);
-                echo "password updated";
-                $_SESSION["message"] = "Password Updated!";    
-              header("location:dashboard.php");
+                //echo "password updated";
+               $_SESSION["message"] = "Password Updated!!!!";  
+                header("location:dashboard.php");
             } else{
-                echo "passwords do not match";
-                $_SESSION["message"] = "Passwords do not match!";       
-             header("location:password_edit.php");
+               // echo "passwords do not match";
+                $_SESSION["message"] = "Passwords do not match!!!!";
+               // $message = "Passwords do not match!";       
+             header("location:user_profile.php");
             }
         }else{
-            echo "you are not entering the correct password";
-            $_SESSION["message"] = "Password is not correct";    
-            header("location:password_edit.php");
-           // echo "<BR>". $PASS;
-            //echo "<BR>". $curPass;
+           // echo "you are not entering the correct password";
+           // $message = "Password is not correct";
+            $_SESSION["message"] = "Password is not correct!!!!";    
+            header("location:user_profile.php");
+         
         }    
     
     } //end changePassword
-    
+
+    public static function changeEmail ($sessId,$password, $newEmail){
+        $con = $GLOBALS["con"];
+        $sql ="SELECT password from user WHERE staff_id = '$sessId'";
+        $result = mysqli_query($con,$sql); 
+        $row = mysqli_fetch_assoc($result);    
+        $PASS = $row["password"];
+            //if DB pass is equal to curr pass entered 
+        if(password_verify($password,$PASS)){    
+            $sqlEmail = "UPDATE user set email = '$newEmail' where staff_id = '$sessId'";
+            mysqli_query($con, $sqlEmail);
+            $_SESSION["message"] = "Email Updated!";  
+            header("location:dashboard.php");
+        }
+        else{
+            $msg = "Incorrect Password. Please Try again!" ;
+            header("location:user_profile.php?Error=$msg");
+        }
+    }
+    public static function changePhone ($sessId,$password, $newPhone){
+        $con = $GLOBALS["con"];
+        $sql ="SELECT password from user WHERE staff_id = '$sessId'";
+        $result = mysqli_query($con,$sql); 
+        $row = mysqli_fetch_assoc($result);    
+        $PASS = $row["password"];
+            //if DB pass is equal to curr pass entered 
+        if(password_verify($password,$PASS)){    
+            $sqlPhone = "UPDATE user_phone set user_phone_no = $newPhone where user_id = '$sessId'";
+            mysqli_query($con, $sqlPhone);
+            $_SESSION["message"] = "Phone Updated!";  
+            header("location:dashboard.php");
+        }
+        else{
+            $msg = "Incorrect Password. Please Try again!" ;
+            header("location:user_profile.php?Error=$msg");
+        }
+    }
 }
