@@ -293,8 +293,8 @@ class staff {
             header("location:dashboard.php");
         }
         else{
-            $_SESSION["message"] = "Incorrect password";
-            header("location:user_profile.php");
+            $msg = "Incorrect Password. Please Try again!" ;
+            header("location:user_profile.php?Error=$msg");
         }
     }
     public static function changePhone ($sessId,$password, $newPhone){
@@ -311,8 +311,8 @@ class staff {
             header("location:dashboard.php");
         }
         else{
-            $_SESSION["message"] = "Incorrect password";
-            header("location:user_profile.php");
+            $msg = "Incorrect Password. Please Try again!" ;
+            header("location:user_profile.php?Error=$msg");
         }
     }
 }

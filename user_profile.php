@@ -78,6 +78,15 @@
 					</div> -->
 			
 				<!-- CHANGE YOUR PASSWORD -->
+				<?php
+					sendMessage("Error");
+					function sendMessage($message){
+						if (isset($_GET["$message"])){
+							$msg = $_GET["$message"];
+							echo "<p class=\"alert alert-light text-danger\">$msg</p><br>";
+						}
+					}
+				?>
 				<form method="post" id="password_change" action="password_edit_proc.php">
 					<h3>Change your password</h3><hr>
 					<div class="form-row">
