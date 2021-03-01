@@ -46,7 +46,7 @@ class Phone{
       }
     }
   }
-  public static function SendMessage($resource,$text,$title)
+  public static function SendMessage($resource ,$text,$title)
   {
     $phones = array();
     $phone_num_set = self::GetUsersPhoneDetails();

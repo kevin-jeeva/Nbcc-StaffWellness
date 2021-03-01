@@ -17,7 +17,7 @@
 	{
 		header("Location:login.php");
 	}
-	else if(staff::GetStaffAdminNumber($_SESSION["staff_id"]) != 1) //checks if user is admin
+	else if(staff::GetStaffAdminNumber($_SESSION["staff_id"]) != 1 && staff::GetStaffAdminNumber($_SESSION["staff_id"]) != 2) //checks if user is admin
 	{
 		header("Location:index.php");
 	}
@@ -138,7 +138,7 @@
 				    	          <th>#</th>
 				    	          <th>User Name</th>
 				    	          <th>Date Created</th>
-												<th class="action-header-cell">Admin</th>
+								  <th class="action-header-cell">Admin</th>
 				    	          <th class="action-header-cell">Status</th>
 				    	        </tr>
 				    	      </thead>

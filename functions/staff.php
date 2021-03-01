@@ -204,7 +204,10 @@ class staff {
                 $staff_id = $val["staff_id"];
                 $name = strtoupper($val ["user_name"]);
                 $date_created = $val["date_created"];
-                $active = $val["active"];                
+                $active = $val["active"];      
+                $admin = $val["admin"];
+                $adminColor = "";
+
                 if($active == 0)
                 {
                     $color = "<a href= \"#\" onclick=\"ActDeactivate_user(event,$staff_id,1)\"class= \"btn btn-danger btn-md\">Deactive</a>";
@@ -213,11 +216,27 @@ class staff {
                 {
                     $color = "<a href= \"#\" onclick=\"ActDeactivate_user(event,$staff_id,0)\" class= \"btn btn-success btn-md\">Active</a>";
                 }
+
+                //display admin status
+                if($admin == 1)
+                {
+                   $adminColor="<button class=\"btn btn-md btn-success\" onclick=\"ActDeactiveAdmin(event,$staff_id,0 )\">Active Admin</button>";
+                }
+                else if($admin == 2)
+                {
+                    $adminColor="<button class=\"btn btn-md btn-dark\">Super Admin</button>";
+                }
+                else 
+                {
+                    $adminColor="<button class=\"btn btn-md btn-warning\" onclick=\"ActDeactiveAdmin(event,$staff_id,1 )\">Make Admin</button>";
+                }
+
                 $count +=1;
                 echo "<tr>
                 <td>$count</td>
                 <td>$name</td>
                 <td>$date_created</td>
+                <td>$adminColor</td>
                 <td align = \"right\">$color</td>
                 </tr>";
             }           
@@ -246,6 +265,18 @@ class staff {
         return false;
     }
 
+    public static function SetActiveAndDeactiveAdmin($staff_id, $admin)
+    {
+        $con = $GLOBALS["con"];
+        $sql = "update user set admin = $admin where staff_id =$staff_id  ";
+        echo $sql;
+        mysqli_query($con,$sql);
+        if(mysqli_affected_rows($con) > 0)
+        {
+            return true;
+        }
+        return false;
+    }
     public static function changePassword($sessId, $curPass, $newPass, $verifyNewPass){
         $con = $GLOBALS["con"];
        

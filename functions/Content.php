@@ -314,7 +314,9 @@ class Content {
               self::InsertContent($resource_id,$content->title,$content->contentText,$content->contentDescription);
               $content_id = self::getContentID($resource_id,$content->title,$content->contentDescription);              
               self::insertContentNotification($content_id); 
-              Phone::SendMessage($resource_name,$content->contentDescription,$content->title); 
+              Phone::SendMessage($resource_name,$content->contentDescription,$content->title);
+              // Send Email (resource_name, description, title);
+               
             }
             else{
               self::InsertContentforEvents($resource_id,$content->title,$content->contentText,$content->contentDescription, $content->eventDate);
