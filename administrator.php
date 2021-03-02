@@ -12,7 +12,7 @@
 	{
 		header("Location:login.php");
 	}
-	else if(staff::GetStaffAdminNumber($_SESSION["staff_id"]) != 1 || staff::GetStaffAdminNumber($_SESSION["staff_id"]) != 2) //checks if user is admin
+	else if(staff::GetStaffAdminNumber($_SESSION["staff_id"]) != 1 && staff::GetStaffAdminNumber($_SESSION["staff_id"]) != 2) //checks if user is admin
 	{
 		header("Location:index.php");
 	}
