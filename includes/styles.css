@@ -46,13 +46,14 @@ header.masthead h1 {
 }
 
 .features-categories
-	.features-categories-item:hover
-	.features-categories-icon
-	i {
+.features-categories-item:hover
+.features-categories-icon
+i {
 	font-size: 5rem;
 }
 
 .main-content {
+	padding-top: 2.5rem;
 	padding-bottom: 0.5rem;
 }
 
