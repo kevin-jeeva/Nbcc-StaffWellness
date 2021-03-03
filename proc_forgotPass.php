@@ -22,7 +22,7 @@ if(isset($_POST["email"]))
         $mail->SMTPSecure = 'ssl';                           
         $mail->Port = 465;                                  // TCP port to connect to
 
-        $mail->setFrom('nbccstaffwellness@gmail.com');
+        $mail->setFrom('nbccstaffwellness@gmail.com', "NBCC STAFF WELLNESS");
         $mail->addAddress(''.$email.'');    
         // $mail->isHTML(true);                            
         $mail->Subject = 'Password Reset';
