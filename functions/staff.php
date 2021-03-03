@@ -369,4 +369,21 @@ class staff {
             header("location:user_profile.php?Error=$msg");
         }
     }
+   // public static function changeNotifications($sessId, $on, $sms, $email){
+       
+        
+    //}
+
+    public static function notifsOn($on){  
+        if($on == "on"){
+            $_SESSION["notifications"] = "on";
+        }
+        else{
+            $_SESSION["notifications"] = "off";
+            
+        }
+        $_SESSION["message"] = "Notification are " .  $_SESSION["notifications"];  
+        header("location:dashboard.php");
+        
+    }
 }

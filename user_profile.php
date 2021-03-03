@@ -207,24 +207,22 @@
 					<div class="card card-body">
 						<form method="post" id="notifications_change" action="notifications_edit_proc.php"  autocomplete="off">
 							<h3>Notification Settings</h3><hr>
-							<div class="form-row">
+							<div class="form-row">							
 								<div class="form-group col-xs-6 col-md-4">
-									<label><strong>Recieve notifications for</strong></label><br>
-									<input type="checkbox" id="events" name="events" value="events">
-									<label for="events">Events</label><br>
-									<input type="checkbox" id="articles" name="articles" value="articles">
-									<label for="vehicle2"> Articles</label><br>
-									<input type="checkbox" id="support" name="support" value="support">
-									<label for="vehicle3"> Support </label><br>
-								</div> 
-							
+								<label><strong>Notifications</strong></label><br>							
+									<input type="radio" checked id="onoff" name="onoff" value="on">
+									<label for="on">on</label><br>
+									<input type="radio" id="onoff" name="onoff" value="off">
+									<label for="off"> off</label><br>
+								</div>
 								<div class="form-group col-xs-6 col-md-4">
-								<label><strong>Receieve notifications by</strong></label><br>
-									<input type="checkbox" id="sms" name="sms" value="sms">
+								<label><strong>Receieve notifications by</strong></label><br>							
+									<input type="checkbox" checked id="sms" name="sms" value="sms">
 									<label for="sms">Text Message</label><br>
-									<input type="checkbox" id="email" name="email" value="email">
+									<input type="checkbox"  id="email" name="email" value="email">
 									<label for="email"> Email</label><br>
 								</div>
+								
 							
 							</div>
 							<div class="form-row">
