@@ -172,6 +172,7 @@ class staff {
                 $_SESSION["staff_id"] = $val["staff_id"];
                 $_SESSION["message"] = "Welcome, ".$val["user_name"];
                 $_SESSION["active"] = $val["active"];
+                $_SESSION["notifications"] = "on";
                 return $val["staff_id"];
             }
         }
