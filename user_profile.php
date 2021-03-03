@@ -106,17 +106,17 @@
 							<h3>Change your password</h3><hr>
 							<div class="form-row">
 								<div class="form-group col-xs-6 col-md-4">
-								<label>Your current password *</label>
+								<label>Current password *</label>
 									<input type="password" class="form-control" name="currentPassword" id="currentPassword" value="" required />
 								</div>
 							
 								<div class="form-group col-xs-6 col-md-4">
-								<label>Your new password *</label>
+								<label>New password *</label>
 									<input type="password" class="form-control" name="newPassword" id="newPassword" value="" required />
 								</div>
 
 								<div class="form-group col-xs-6 col-md-4">
-								<label>Re-enter password *</label>
+								<label>Re-enter new password *</label>
 									<input type="password" class="form-control" name="verifyPassword" id="verifyPassword" value="" required />
 								</div>
 							</div>
@@ -181,6 +181,46 @@
 								<div class="form-group col-xs-6 col-md-4">
 								<label>New Phone Number * </label>
 									<input type="text"  class="form-control" name="newPhone" id="newPhone" value="" required />
+								</div>
+							
+							</div>
+							<div class="form-row">
+								<div class="form-group col-lg-12">
+									<input type="submit" class="btn btn-warning" value="Update" name="submit" />
+									<a href="index.php" type="button" class="btn btn-danger">Cancel</a>
+								</div>
+							</div> 
+						</form> <!-- END CHANGE PHONE Form-->
+					</div><br>
+				</div>
+
+				<p>
+					<a id="userBtn" class="btn btn-primary" data-toggle="collapse" href="#collapseNotifications" role="button" aria-expanded="false" aria-controls="collapseExample">
+						Change Notification Settings
+					</a>
+				</p>
+
+				<div class="collapse" id="collapseNotifications">
+					<div class="card card-body">
+						<form method="post" id="notifications_change" action="notifications_edit_proc.php"  autocomplete="off">
+							<h3>Notification Settings</h3><hr>
+							<div class="form-row">
+								<div class="form-group col-xs-6 col-md-4">
+									<label><strong>Recieve notifications for</strong></label><br>
+									<input type="checkbox" id="events" name="events" value="events">
+									<label for="events">Events</label><br>
+									<input type="checkbox" id="articles" name="articles" value="articles">
+									<label for="vehicle2"> Articles</label><br>
+									<input type="checkbox" id="support" name="support" value="support">
+									<label for="vehicle3"> Support </label><br>
+								</div> 
+							
+								<div class="form-group col-xs-6 col-md-4">
+								<label><strong>Receieve notifications by</strong></label><br>
+									<input type="checkbox" id="sms" name="sms" value="sms">
+									<label for="sms">Text Message</label><br>
+									<input type="checkbox" id="email" name="email" value="email">
+									<label for="email"> Email</label><br>
 								</div>
 							
 							</div>
