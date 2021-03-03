@@ -504,27 +504,27 @@ class Content {
   }
 }
   public static function bellNotifications($on){
-    if($on == "on"){
-        $con = $GLOBALS["con"];
-        $sql = "select date_created, resource_id, content_id, content_title, content_description from content order by date_created desc limit 3";
-        $string = "";
+   
+      $con = $GLOBALS["con"];
+      $sql = "select date_created, resource_id, content_id, content_title, content_description from content order by date_created desc limit 3";
+      $string = "";
 
-        $result = mysqli_query($con, $sql);
-        while ($row = mysqli_fetch_assoc($result)){
-          $contentName = self::GetResourceNameByResourceId($row["resource_id"]);
-          $contentName = rtrim($contentName, "s");
-          $content_id =$row["content_id"];
-          if($content_id === null){
-            $content_id = 0;
-          }
-        $date = strtotime($row["date_created"]);
-          $content_title = $row["content_title"]; 
-          $set_date = date("F d, Y | g:ia", $date);      
-          $string .=
-          "<a href=\"#\" id=\"hi\" onclick=\"ReadArticle($content_id)\"><div id=\"$content_id\"><h5>$contentName</h5><p>$content_title</p><p class=\"badge badge-pill badge-secondary\"> $set_date</p></div></a><hr>";
-        }    
-        return $string;
-      }
+      $result = mysqli_query($con, $sql);
+      while ($row = mysqli_fetch_assoc($result)){
+        $contentName = self::GetResourceNameByResourceId($row["resource_id"]);
+        $contentName = rtrim($contentName, "s");
+        $content_id =$row["content_id"];
+        if($content_id === null){
+          $content_id = 0;
+        }
+      $date = strtotime($row["date_created"]);
+        $content_title = $row["content_title"]; 
+        $set_date = date("F d, Y | g:ia", $date);      
+        $string .=
+        "<a href=\"#\" id=\"hi\" onclick=\"ReadArticle($content_id)\"><div id=\"$content_id\"><h5>$contentName</h5><p>$content_title</p><p class=\"badge badge-pill badge-secondary\"> $set_date</p></div></a><hr>";
+      }    
+      return $string;
+      
   }
     
     public static function CheckResourceID($resource_name)
