@@ -79,13 +79,13 @@
 						</div>
 					</div> -->
 			
-				<!-- CHANGE YOUR PASSWORD -->
-	
-		    	    <h3>User Information</h3><hr>
-		    	    <?php
-				   staff::getUserInfo();
-				   ?>
-		    	<br><br>
+				
+			
+				<h3>User Information</h3><hr>
+				<?php
+				staff::getUserInfo();
+				?>
+				<br><br>
 				<?php
 					sendMessage("Error");
 					function sendMessage($message){
@@ -95,8 +95,10 @@
 						}
 					}
 				?>
+				
+				<!-- CHANGE YOUR PASSWORD -->
 				<p>
-					<a id="userBtn" class="btn btn-primary" data-toggle="collapse" href="#collapsePassword" role="button" aria-expanded="false" aria-controls="collapseExample">
+					<a class="btn btn-primary" data-toggle="collapse" href="#collapsePassword" role="button" aria-expanded="false" aria-controls="collapseExample">
 						Change password
 					</a>
 				</p>
@@ -129,6 +131,7 @@
 						</form> <!-- END CHANGE PASSWORD Form-->
 					</div><br>
 				</div>
+				
 				<!-- Change you email-->
 				<p>
 					<a id="userBtn" class="btn btn-primary" data-toggle="collapse" href="#collapseEmail" role="button" aria-expanded="false" aria-controls="collapseExample">
@@ -232,6 +235,7 @@
 							</div> 
 						</form> <!-- END CHANGE PHONE Form-->
 					</div><br>
+				</div>
 				</div>
 
 		    </div><!-- End of the-content col-md-8 -->

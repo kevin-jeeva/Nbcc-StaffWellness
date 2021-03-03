@@ -36,7 +36,11 @@ header.masthead h1 {
 .most-viewed {
 	padding-bottom: 1.5rem;
 }
-
+.user-info {
+  position: absolute;
+  right: 0px;
+  width: 300px;
+}
 .most-viewed-cards {
 	margin: 0.5rem 0;
 }

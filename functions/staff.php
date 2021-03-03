@@ -351,15 +351,21 @@ class staff {
         $result = mysqli_query($con,$sql); 
         $row = mysqli_fetch_assoc($result);    
         $PASS = $row["password"];
+        if(is_numeric($newPhone)){
             //if DB pass is equal to curr pass entered 
-        if(password_verify($password,$PASS)){    
-            $sqlPhone = "UPDATE user_phone set user_phone_no = $newPhone where user_id = '$sessId'";
-            mysqli_query($con, $sqlPhone);
-            $_SESSION["message"] = "Phone Updated!";  
-            header("location:dashboard.php");
+            if(password_verify($password,$PASS)){    
+                $sqlPhone = "UPDATE user_phone set user_phone_no = $newPhone where user_id = '$sessId'";
+                mysqli_query($con, $sqlPhone);
+                $_SESSION["message"] = "Phone Updated!";  
+                header("location:dashboard.php");
+            }
+            else{
+                $msg = "Incorrect Password. Please Try again!" ;
+                header("location:user_profile.php?Error=$msg");
+            }
         }
         else{
-            $msg = "Incorrect Password. Please Try again!" ;
+            $msg = "please enter a real phone number" ;
             header("location:user_profile.php?Error=$msg");
         }
     }
