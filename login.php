@@ -1,6 +1,5 @@
 <?php
 session_start();
-
 if (isset($_SESSION["staff_id"]) && $_SESSION["staff_id"] != "") {
     $msg = "Already logged in!";
     header("Location:index.php?msg=$msg");
@@ -27,6 +26,18 @@ if (isset($_SESSION["staff_id"]) && $_SESSION["staff_id"] != "") {
 </head>
 
 <body>
+
+	<!--Successfull modal-->
+	<div class="modal fade" id="mySucessModal">
+	<div class="modal-dialog  modal-lg">
+	  <div class="modal-content">    
+	    <div class="modal-body success">					
+			<img class="modal-body-img" src="includes/imgs/tick.gif" ><span id="success_message"></span>
+			<button type="button" class="close" data-dismiss="modal">&times;</button>						
+	    </div>
+	  </div>
+	</div>
+	</div>
 	<!-- Navigation -->
 	<nav class="navbar navbar-expand-lg navbar-light bg-light sticky-top">
 	<div class="container justify-content-center">
@@ -54,7 +65,12 @@ if (isset($_SESSION["staff_id"]) && $_SESSION["staff_id"] != "") {
 					    }
 					}
 				?>
-
+				<?php 
+				 if (isset($_GET["message"])){
+					        $msg = $_GET["message"];
+					        echo "<p class=\"alert alert-light text-success\">$msg</p>";
+					    }
+						?>
 				<!-- Staff Login Form -->
 				<div class="container login-container">
 				    <div class="row">
@@ -135,3 +151,17 @@ if (isset($_SESSION["staff_id"]) && $_SESSION["staff_id"] != "") {
 
 </body>
 </html>
+
+<?php
+if(isset($_SESSION["resetMessage"]) && $_SESSION["resetMessage"] != "")
+{
+	$alert_message = $_SESSION["resetMessage"];
+	echo "<script>
+	$(\"#mySucessModal\").modal();
+	document.getElementById(\"success_message\").textContent = '$alert_message';
+	</script>";
+	$_SESSION["resetMessage"] = "";
+}
+$_SESSION["resetMessage"]="";
+?>
+?>

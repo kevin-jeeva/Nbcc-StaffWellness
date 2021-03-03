@@ -387,4 +387,74 @@ class staff {
         header("location:dashboard.php");
         
     }
+
+    //Check Email
+    public static function CheckEmailPassword($email)
+    {
+        $result = self::CheckStaffEmail($email);
+        if(mysqli_num_rows($result) > 0)
+        {
+            return true;
+        }
+        else{
+            return false;
+        }
+    
+    }
+
+    //Check and insert code
+    public static function CheckAndInsertCode($email, $code)
+    {
+        $con = $GLOBALS["con"];
+        $sql ="Select code_id from password_reset where email = LOWER('$email')";
+        // echo $sql;
+        $result = mysqli_query($con, $sql);
+        if(mysqli_num_rows($result) > 0)
+        {
+            $update_code = "update password_reset set code = $code where email = LOWER('$email')";
+            if(mysqli_query($con, $update_code))
+            {
+                return true;
+            }
+        }
+        else{
+           echo $email.$code;
+            $insert_code ="Insert into password_reset (email,code) values ('$email', $code)";
+            mysqli_query($con,$insert_code);
+            if(mysqli_affected_rows($con) > 0)
+            {
+                return true;
+            }
+        }
+        
+    }
+
+    public static function CheckCode($mail, $code)
+    {
+        $con = $GLOBALS["con"];
+        $sql = "Select code_id from password_reset where code = $code and email = LOWER('$mail')";
+        $result = mysqli_query($con,$sql);
+        if(mysqli_num_rows($result) > 0)
+        {
+            return true;
+        }
+        return false;
+    }
+
+    public static function UpdatePassword($email, $password)
+    {
+        $con = $GLOBALS["con"];
+        $hash_password = password_hash($password, PASSWORD_DEFAULT);
+        $sql = "update user set password = '$password' where email = LOWER('$email')";
+        $pwdSql = "update password_reset set code = 0 where email = LOWER('$email')";
+        if(mysqli_query($con, $sql))
+        {
+            if(mysqli_query($con, $pwdSql))
+            {
+                 return true;
+            }
+            return false;           
+        }
+        return false;
+    }
 }

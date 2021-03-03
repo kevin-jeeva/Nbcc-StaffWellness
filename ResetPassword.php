@@ -15,7 +15,7 @@ if (isset($_SESSION["staff_id"]) && $_SESSION["staff_id"] != "") {
 	<meta name="description" content="">
 	<meta name="author" content="">
 
-	<title>Forgot Password</title>
+	<title>Reset Password</title>
 
 	<!-- Bootstrap core CSS -->
 	<link rel="stylesheet" href="includes/bootstrap-4.5.3-dist/css/bootstrap.min.css">
@@ -24,6 +24,7 @@ if (isset($_SESSION["staff_id"]) && $_SESSION["staff_id"] != "") {
 
 	<!-- Custom CSS and JS -->
 	<link rel="stylesheet" type="text/css" href="includes/styles.css">
+    <script src="functions/main.js"></script>
 </head>
 
 <body>
@@ -57,23 +58,40 @@ if (isset($_SESSION["staff_id"]) && $_SESSION["staff_id"] != "") {
 		<div class="container">
 
 		  	<div class="col-xl-5 mx-auto">
-				<h1 class="mb-5">Forgot Password</h1>
+				<h1 class="mb-5">Reset Password</h1>
 
 				<!-- Staff Login Form -->
 				<div class="container login-container">
 				    <div class="row">
 				        <div class="col-lg-12 login-form-1">
-				            <h3>Password Reset</h3>
-				            <form method="post" id="ForgetPwd" action="proc_forgotPass.php">
-				                <div class="form-group">
-				                    <input type="text" class="form-control" name="email" id="email" placeholder="Your Email *" value="" pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[A-Za-z]{2,}$" required />
+                        
+                        <div id = "checkCodeForm">
+                          <div class="form-group">
+                                    <p class="text-left text-success">Enter Email</p>
+				                    <input type="text" class="form-control" name="email" id="email" placeholder="Enter Email" required />
+				            </div>
+                            <div class="form-group">
+                                <p class="text-left text-success">Enter Code</p>
+                                <input type="text" class="form-control" name="code" id="code" placeholder="Enter your Code" required />
+                           </div>
+                            <div class="form-group">
+                                <button onclick= "checkCode()" class="btn btn-md btn-primary">Check Code</button>
+				            </div>
+                        </div>
+                        <form  method="post" style="display:none" id="ForgetPwd" onsubmit="return CheckResetPassword()" action="proc_update_pwd.php">
+                                <div class="form-group">
+                                    <p class="text-left text-success">New Password</p>
+				                    <input  type="password" class="form-control" name="newpwd" id="newpwd" placeholder="New Password" required />
+				                </div>
+                                <input type="hidden" id="mail" name="mail"/>
+                                <div class="form-group">
+                                    <p class="text-left text-success">Confirm Password</p>
+				                    <input  type="password" class="form-control" name="cnfpwd" id="cnfpwd" placeholder="Confirm Password" value="" required />
 				                </div>
 				                <div class="form-group">
-				                    <input type="submit" class="btnSubmit" id="submit" name="submit" value="Email password reset" />
+				                    <input type="submit" class="btnSubmit" id="submit" name="submit" value="Reset Password" />
 				                </div>
-				                
-				            </form>
-						
+                        </form>		
 				        </div>           
 
 				</div> <!-- End of login-container-->  
@@ -129,14 +147,3 @@ if (isset($_SESSION["staff_id"]) && $_SESSION["staff_id"] != "") {
 
 </body>
 </html>
-<?php
-if($_SESSION["alert_message"] != "")
-{
-  $alert_message = $_SESSION["alert_message"];
-	echo "<script>
-	$(\"#ErrormyModal\").modal();
-	document.getElementById(\"alert_message\").textContent = '$alert_message';
-	</script>";
-	$_SESSION["alert_message"] = "";
-}
-?>
