@@ -48,20 +48,22 @@ class Phone{
   }
   public static function SendMessage($resource ,$text,$title)
   {
-    $phones = array();
-    $phone_num_set = self::GetUsersPhoneDetails();
-    if(mysqli_num_rows($phone_num_set) > 0)
-    {
-      while($phone_val = mysqli_fetch_array($phone_num_set))
+    if($_SESSION["notifications"] = "on"){
+      $phones = array();
+      $phone_num_set = self::GetUsersPhoneDetails();
+      if(mysqli_num_rows($phone_num_set) > 0)
       {
-        $phone_num = $phone_val["user_phone_no"];
-        $carrier = $phone_val["user_carrier"];
-        $domain = self::GetDomain($carrier);
-        $address = $phone_num.$domain;
-        array_push($phones,array("email" => $address));
+        while($phone_val = mysqli_fetch_array($phone_num_set))
+        {
+          $phone_num = $phone_val["user_phone_no"];
+          $carrier = $phone_val["user_carrier"];
+          $domain = self::GetDomain($carrier);
+          $address = $phone_num.$domain;
+          array_push($phones,array("email" => $address));
+        }
+        $values = json_encode($phones);  
+        header("location:sendmessages.php?email=$values&resource=$resource&text=$text&title=$title");
       }
-      $values = json_encode($phones);  
-      header("location:sendmessages.php?email=$values&resource=$resource&text=$text&title=$title");
     }
   }
 }

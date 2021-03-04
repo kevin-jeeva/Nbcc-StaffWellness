@@ -1,37 +1,53 @@
 <?php
 session_start();
-include_once("functions/connect.php");
-include_once("functions/PasswordReset.php");
+require_once 'includes/Mailer/PHPMailer/PHPMailerAutoload.php';
+require_once 'functions/staff.php';
+require_once 'functions/connect.php';
 
-
-if(isset($_POST['submit'])){
+if(isset($_POST["email"]))
+{
+    $code =  rand(10000,20000);
+    //get the email
     $email = $_POST["email"];
-    $token = md5(random_bytes(32)); 
-    $selector =bin2hex(random_bytes(8));
-    $expiry = PasswordReset::setExp();
-    $url = PasswordReset::UrlLink($selector,$token);
+    // echo $email;
+    if(staff::CheckEmailPassword($email))
+    {
+        $mail = new PHPMailer();
+        $mail->isSMTP();  
+        // $mail->SMTPDebug = 4;  
+        $mail->Host = 'smtp.gmail.com';                     
+        $mail->SMTPAuth = true;                              
+        $mail->Username = 'nbccstaffwellness@gmail.com';              
+        $mail->Password = 'StaffNbcc001';                          
+        $mail->SMTPSecure = 'ssl';                           
+        $mail->Port = 465;                                  // TCP port to connect to
 
-    $ps = new PasswordReset($email,$token,$selector,$expiry); //new object
-
-        //Call method to insert reset details into DB; if this email was prev used to do a password reset then old data will be eraced and new data entered:
-    PasswordReset::GrabResetDetails($email); 
+        $mail->setFrom('nbccstaffwellness@gmail.com', "NBCC STAFF WELLNESS");
+        $mail->addAddress(''.$email.'');    
+        // $mail->isHTML(true);                            
+        $mail->Subject = 'Password Reset';
+        $mail->Body    = 'This email is intend to reset the password for the NBCC StaffWellness application Please find the code and <a href="http://nbccstaffwellness.epizy.com/ResetPassword">Reset Password</a><BR> <h3>'.$code.'</h3>';
+        $mail->AltBody = 'This email is intend to reset the password for the NBCC StaffWellness application Please find the code 50321';
     
-    //USE MAIL function to send email to user to reset password:
-        //Email contents:
-        $to = $email; //email user entered on form
-        $subject = "Reset your password";
-        $message = "Please use the link below to reset your password for NBCC Wellness</BR>".'<a href="'.$url.'">'.$url.'</a>'; 
-        $headers = "FROM: NBCCWellnessStaff <email.com>\r\n";
-        //send email:
-        echo "<BR><BR>".$to."<BR>".$subject."<BR>".$message."<BR>".$headers;
-
-        mail($to, $subject, $message, $headers);
-        
- 
-       
-}//end ISSET
-
-
-
-
+        if(!$mail->send()) {
+            // echo 'Message could not be sent.';
+            // echo 'Mailer Error: ' . $mail->ErrorInfo;
+           header("location:login.php");
+        } else {
+            $_SESSION["resetMessage"] = "Reset Email Sent";
+            // echo 'Message has been sent';
+            $result = staff::CheckAndInsertCode($email, $code);
+             header("location:login.php");
+            // echo $result;
+        }
+    }
+    else{
+        $_SESSION["alert_message"] = "Not a valid email";
+        header("location:forgot_password.php");
+    }
+   
+}
+else{
+    header("location:login.php");
+}
 ?>

@@ -172,6 +172,7 @@ class staff {
                 $_SESSION["staff_id"] = $val["staff_id"];
                 $_SESSION["message"] = "Welcome, ".$val["user_name"];
                 $_SESSION["active"] = $val["active"];
+                $_SESSION["notifications"] = "on";
                 return $val["staff_id"];
             }
         }
@@ -351,16 +352,116 @@ class staff {
         $result = mysqli_query($con,$sql); 
         $row = mysqli_fetch_assoc($result);    
         $PASS = $row["password"];
+        if(is_numeric($newPhone)){
             //if DB pass is equal to curr pass entered 
-        if(password_verify($password,$PASS)){    
-            $sqlPhone = "UPDATE user_phone set user_phone_no = $newPhone where user_id = '$sessId'";
-            mysqli_query($con, $sqlPhone);
-            $_SESSION["message"] = "Phone Updated!";  
-            header("location:dashboard.php");
+            if(password_verify($password,$PASS)){    
+                $sqlPhone = "UPDATE user_phone set user_phone_no = $newPhone where user_id = '$sessId'";
+                mysqli_query($con, $sqlPhone);
+                $_SESSION["message"] = "Phone Updated!";  
+                header("location:dashboard.php");
+            }
+            else{
+                $msg = "Incorrect Password. Please Try again!" ;
+                header("location:user_profile.php?Error=$msg");
+            }
         }
         else{
-            $msg = "Incorrect Password. Please Try again!" ;
+            $msg = "please enter a real phone number" ;
             header("location:user_profile.php?Error=$msg");
         }
+    }
+   // public static function changeNotifications($sessId, $on, $sms, $email){
+       
+        
+    //}
+
+    public static function notifsOn($on){  
+        if($on == "on"){
+            $_SESSION["notifications"] = "on";
+        }
+        else{
+            $_SESSION["notifications"] = "off";
+            
+        }
+        $_SESSION["message"] = "Notification are " .  $_SESSION["notifications"];  
+        header("location:dashboard.php");
+        
+    }
+
+    //Check Email
+    public static function CheckEmailPassword($email)
+    {
+        $result = self::CheckStaffEmail($email);
+        if(mysqli_num_rows($result) > 0)
+        {
+            return true;
+        }
+        else{
+            return false;
+        }
+    
+    }
+
+    //Check and insert code
+    public static function CheckAndInsertCode($email, $code)
+    {
+        $con = $GLOBALS["con"];
+        $sql ="Select code_id from password_reset where email = LOWER('$email')";
+        // echo $sql;
+        $result = mysqli_query($con, $sql);
+        if(mysqli_num_rows($result) > 0)
+        {
+            // $code = password_hash($code, PASSWORD_DEFAULT);
+            $update_code = "update password_reset set code = $code where email = LOWER('$email')";
+            if(mysqli_query($con, $update_code))
+            {
+                return true;
+            }
+        }
+        else{
+        //    echo $email.$code;
+            // $code = password_hash($code, PASSWORD_DEFAULT);
+            $insert_code ="Insert into password_reset (email,code) values ('$email', $code)";
+            mysqli_query($con,$insert_code);
+            if(mysqli_affected_rows($con) > 0)
+            {
+                return true;
+            }
+        }
+        
+    }
+
+    public static function CheckCode($mail, $code)
+    {
+        $con = $GLOBALS["con"];
+        $sql = "Select code_id from password_reset where code = $code and email = LOWER('$mail')";
+        $result = mysqli_query($con,$sql);
+        if(mysqli_num_rows($result) > 0)
+        {
+            return true;
+        }
+        return false;
+    }
+
+    public static function UpdatePassword($email, $password)
+    {
+        $con = $GLOBALS["con"];
+        $code_id = 0;
+        $sql = "select code_id from password_reset where email = LOWER('$email')";
+        $result = mysqli_query($con,$sql);
+        if(mysqli_num_rows($result) > 0)
+        {
+            if($val = mysqli_fetch_array($result))
+            {
+                $code_id = $val["code_id"];
+            }
+        }
+        $pwdSql = "delete from password_reset where code_id = $code_id";
+        if(mysqli_query($con, $pwdSql))
+        {
+                return true;
+        }
+        return false;           
+       
     }
 }
