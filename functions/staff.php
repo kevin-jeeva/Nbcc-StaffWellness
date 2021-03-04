@@ -411,6 +411,7 @@ class staff {
         $result = mysqli_query($con, $sql);
         if(mysqli_num_rows($result) > 0)
         {
+            // $code = password_hash($code, PASSWORD_DEFAULT);
             $update_code = "update password_reset set code = $code where email = LOWER('$email')";
             if(mysqli_query($con, $update_code))
             {
@@ -418,7 +419,8 @@ class staff {
             }
         }
         else{
-           echo $email.$code;
+        //    echo $email.$code;
+            // $code = password_hash($code, PASSWORD_DEFAULT);
             $insert_code ="Insert into password_reset (email,code) values ('$email', $code)";
             mysqli_query($con,$insert_code);
             if(mysqli_affected_rows($con) > 0)
@@ -444,17 +446,22 @@ class staff {
     public static function UpdatePassword($email, $password)
     {
         $con = $GLOBALS["con"];
-        $hash_password = password_hash($password, PASSWORD_DEFAULT);
-        $sql = "update user set password = '$password' where email = LOWER('$email')";
-        $pwdSql = "update password_reset set code = 0 where email = LOWER('$email')";
-        if(mysqli_query($con, $sql))
+        $code_id = 0;
+        $sql = "select code_id from password_reset where email = LOWER('$email')";
+        $result = mysqli_query($con,$sql);
+        if(mysqli_num_rows($result) > 0)
         {
-            if(mysqli_query($con, $pwdSql))
+            if($val = mysqli_fetch_array($result))
             {
-                 return true;
+                $code_id = $val["code_id"];
             }
-            return false;           
         }
-        return false;
+        $pwdSql = "delete from password_reset where code_id = $code_id";
+        if(mysqli_query($con, $pwdSql))
+        {
+                return true;
+        }
+        return false;           
+       
     }
 }

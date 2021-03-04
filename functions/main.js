@@ -112,7 +112,7 @@ function checkCode() {
       //   console.log(this.responseText); //success message :)
       let result = this.responseText;
       if (result === "1") {
-        console.log("here");
+        // console.log("here");
         document.getElementById("mail").value = email;
         document.getElementById("ForgetPwd").style.display = "block";
         document.getElementById("checkCodeForm").style.display = "none";
