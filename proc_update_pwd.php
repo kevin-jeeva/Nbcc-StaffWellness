@@ -9,6 +9,7 @@ if(isset($_POST["mail"]))
     $pwd = $_POST["cnfpwd"];
 
     $result = staff::UpdatePassword($mail, $pwd);
+    echo $result;
     if($result)
     {
         header("location:login.php?message=Reset Successfull");
