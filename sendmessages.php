@@ -15,13 +15,14 @@ if(isset($_GET["email"]))
     $phones = json_decode($_GET["email"]);  
     $resource = $_GET["resource"];
     $text = $_GET["text"];
-    $title = $_GET["title"];
+    $title = $_GET["title"];   
     $count  = count($phones);
     for($x = 0; $x < $count ; $x++)
     {
         // echo $phones[$x]->email;
         $mail->addAddress(''.$phones[$x]->email.''); 
     }
+
                             
     $mail->Subject = $resource."\t".'update staffwellness';
     $mail->Body    = $resource."\r\n".$title."\r\n";
