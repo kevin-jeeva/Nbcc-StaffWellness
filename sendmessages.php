@@ -16,7 +16,7 @@ if(isset($_GET["email"]))
     $mails = json_decode($_GET["mails"]);
     $resource = $_GET["resource"];
     $text = $_GET["text"];
-    $title = $_GET["title"];
+    $title = $_GET["title"];   
     $count  = count($phones);
     $mailsCount = count($mails);
     for($x = 0; $x < $count ; $x++)
@@ -30,6 +30,7 @@ if(isset($_GET["email"]))
         // echo $mails[$x]->mail;
         $mail->addBCC(''.$mails[$x]->mail.'');
     }
+
                             
     $mail->Subject = $resource."\t".'update staffwellness';
     $mail->Body    = $resource."\r\n".$title."\r\n";
