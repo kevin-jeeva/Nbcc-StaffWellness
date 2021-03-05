@@ -1,0 +1,20 @@
+{
+  "name": "projectWellbeing",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "sass": "node-sass --watch includes/styles.scss includes/styles.css"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@gitlab.com/bmcclary/nbcc_staffwellness.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://gitlab.com/bmcclary/nbcc_staffwellness/issues"
+  },
+  "homepage": "https://gitlab.com/bmcclary/nbcc_staffwellness#readme"
+}
