@@ -380,12 +380,46 @@ class staff {
         $con = $GLOBALS["con"];
         $sql ="update user SET notificationsON = '$on' where staff_id = $user";
         $result = mysqli_query($con,$sql); 
-        $row = mysqli_fetch_assoc($result); 
+        //$sql2 ="update user SET sms_Notifications = '$on' where staff_id = $user";
+        //$result2 = mysqli_query($con,$sql2); 
+        //$sql3 ="update user SET email_Notifications = '$on' where staff_id = $user";
+        //$result3 = mysqli_query($con,$sql3); 
+       
+        
         $_SESSION["message"] = "Notification are " .  $on;  
         header("location:dashboard.php");
         
     }
-
+    public static function smsNotifications($smsOn){
+        if($smsOn == "on"){
+            $sql ="update user SET sms_Notifications = '$smsOn' where staff_id = $user";
+            $result = mysqli_query($con,$sql); 
+        }
+        else{ 
+            $sql ="update user SET sms_Notifications = 'off' where staff_id = $user";
+            $result = mysqli_query($con,$sql); 
+        }
+    }
+    public static function checkNotificationsOn(){
+        $user = $_SESSION["staff_id"];
+        $con = $GLOBALS["con"];
+        $sql = "select notificationsON from user where staff_id = $user";
+        $result = mysqli_query($con,$sql);
+        $row = mysqli_fetch_assoc($result); 
+        if($row["notificationsON"]=="on"){
+            echo "checked";  
+        }
+    }
+    public static function checkNotificationsOff(){
+        $user = $_SESSION["staff_id"];
+        $con = $GLOBALS["con"];
+        $sql = "select notificationsON from user where staff_id = $user";
+        $result = mysqli_query($con,$sql);
+        $row = mysqli_fetch_assoc($result); 
+        if($row["notificationsON"]=="off"){
+            echo "checked";      
+        }
+    }
     //Check Email
     public static function CheckEmailPassword($email)
     {

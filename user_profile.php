@@ -210,16 +210,16 @@
 							<div class="form-row">							
 								<div class="form-group col-xs-6 col-md-4">
 								<label><strong>Notifications</strong></label><br>							
-									<input type="radio" checked id="onoff" name="onoff" value="on">
+									<input type="radio" <?php staff::checkNotificationsOn();?> id="onoff" name="onoff" value="on">
 									<label for="on">on</label><br>
-									<input type="radio" id="onoff" name="onoff" value="off">
+									<input type="radio" <?php staff::checkNotificationsOff();?> id="onoff" name="onoff" value="off">
 									<label for="off"> off</label><br>
 								</div>
 								<div class="form-group col-xs-6 col-md-4">
 								<label><strong>Receieve notifications by</strong></label><br>							
-									<input type="checkbox" checked id="sms" name="sms" value="sms">
+									<input type="checkbox" checked id="sms" name="sms" value="on">
 									<label for="sms">Text Message</label><br>
-									<input type="checkbox"  id="email" name="email" value="email">
+									<input type="checkbox"  id="email" name="email" value="on">
 									<label for="email"> Email</label><br>
 								</div>
 								
