@@ -12,16 +12,25 @@ if(isset($_GET["email"]))
     $mail->Port = 465;                                   
 
     $mail->setFrom('nbccstaffwellness@gmail.com');
-    $phones = json_decode($_GET["email"]);  
+    $phones = json_decode($_GET["email"]);
+    $mails = json_decode($_GET["mails"]);
     $resource = $_GET["resource"];
     $text = $_GET["text"];
-    $title = $_GET["title"];
+    $title = $_GET["title"];   
     $count  = count($phones);
+    $mailsCount = count($mails);
     for($x = 0; $x < $count ; $x++)
     {
         // echo $phones[$x]->email;
-        $mail->addAddress(''.$phones[$x]->email.''); 
+        $mail->addBCC(''.$phones[$x]->email.'');
     }
+
+    for($x = 0; $x < $mailsCount ; $x++)
+    {
+        // echo $mails[$x]->mail;
+        $mail->addBCC(''.$mails[$x]->mail.'');
+    }
+
                             
     $mail->Subject = $resource."\t".'update staffwellness';
     $mail->Body    = $resource."\r\n".$title."\r\n";

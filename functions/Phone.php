@@ -34,6 +34,15 @@ class Phone{
     $result = mysqli_query($con, $sql);
     return $result;
   }
+
+  public static function GetUsersEmailDetails()
+  {
+    $con = $GLOBALS["con"];
+    $sql = "select email from user";
+    $result = mysqli_query($con, $sql);
+    return $result;
+  }
+
   public static function GetDomain($carrier)
   {
     $con = $GLOBALS["con"];
@@ -61,10 +70,25 @@ class Phone{
           $address = $phone_num.$domain;
           array_push($phones,array("email" => $address));
         }
-        $values = json_encode($phones);  
-        header("location:sendmessages.php?email=$values&resource=$resource&text=$text&title=$title");
+        $values = json_encode($phones);
+      
+        //email code
+        if($_SESSION["notifications"] = "on"){
+          $mails = array();
+          $email_set = self::GetUsersEmailDetails();
+    
+          while($email_val = mysqli_fetch_array($email_set))
+          {
+              $email = $email_val["email"];
+              array_push($mails,array("mail" => $email));
+          }
+          $mailsjson = json_encode($mails);
+        }
+
+        header("location:sendmessages.php?email=$values&resource=$resource&text=$text&title=$title&mails=$mailsjson");
       }
     }
   }
+
 }
 ?>

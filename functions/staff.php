@@ -479,21 +479,16 @@ class staff {
     {
         $con = $GLOBALS["con"];
         $code_id = 0;
-        $sql = "select code_id from password_reset where email = LOWER('$email')";
-        $result = mysqli_query($con,$sql);
-        if(mysqli_num_rows($result) > 0)
-        {
-            if($val = mysqli_fetch_array($result))
+        $hash_password = password_hash($password, PASSWORD_DEFAULT);
+        $update_password = "update user set password = '$hash_password' where email = LOWER('$email')";              
+        if(mysqli_query($con,$update_password))
+        {            
+            $pwdSql = "delete from password_reset where email = LOWER('$email')";
+            if(mysqli_query($con, $pwdSql))
             {
-                $code_id = $val["code_id"];
+                    return true;
             }
-        }
-        $pwdSql = "delete from password_reset where code_id = $code_id";
-        if(mysqli_query($con, $pwdSql))
-        {
-                return true;
-        }
-        return false;           
-       
+        }      
+        return false;       
     }
 }
