@@ -110,6 +110,11 @@ i {
 .notifications-tile {
   width: 100%;
 }
+
+.card-no-events {
+  padding: 8rem 0rem;
+}
+
 .pagination-row.row,
 ul.pagination {
   margin-top: 2rem;
@@ -275,7 +280,7 @@ footer.footer {
 }
 
 .footer-logo img {
-  width: 20%;
+  width: 10%;
 }
 
 /* For Administration panel lists */
@@ -292,7 +297,7 @@ th.action-header-cell {
   text-align: right;
 }
 
-a.new-btn.btn-sm.btn-primary {
+a.new-btn.btn-sm.btn-nblue {
   margin-left: 1rem;
 }
 
@@ -302,13 +307,23 @@ a.new-btn.btn-sm.btn-primary {
   box-shadow: 0px 0px 11px 1px #ccc;
 }
 
-.card-video {
+.card-media {
   padding: 1rem;
   min-height: 13rem;
   display: flex;
   flex-direction: column;
 }
-.card-video p {
+.card-media p {
+  flex-grow: 1;
+}
+
+.card-notifications {
+  padding: 1rem;
+  min-height: 13rem;
+  display: flex;
+  flex-direction: column;
+}
+.card-notifications p {
   flex-grow: 1;
 }
 
@@ -394,9 +409,15 @@ a.new-btn.btn-sm.btn-primary {
   .notifications-tile {
     width: 100% !important;
   }
+  .card-no-events {
+    padding: 4rem 0rem;
+  }
   .notify-bubble {
     left: 38px;
     top: -52px;
+  }
+  .footer-logo img {
+    width: 20%;
   }
 }
 
@@ -409,6 +430,11 @@ a.new-btn.btn-sm.btn-primary {
   list-style-type: none;
   padding-left: 4px;
 }
+
+.dropdown-item.active, .dropdown-item:active{
+  background: #829600 !important;
+}
+
 #userBtn {
   border: 5em;
 }

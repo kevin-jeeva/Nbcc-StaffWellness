@@ -85,7 +85,7 @@ else if(staff::GetStaffAdminNumber($_SESSION["staff_id"]) != 1 && staff::GetStaf
 		    	  </div>
 		    	  <br>
 		    	  <div class="form-group col-lg-12">
-		    	    <input type="submit" class="btn btn-warning" value="Save Changes"/>
+		    	    <input type="submit" class="btn btn-ngreen" value="Save Changes"/>
 		    	    <a href="administrator.php" type="button" class="btn btn-danger">Cancel</a>
 		    	  </div>
 		    	</form> 	

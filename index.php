@@ -58,7 +58,8 @@ include_once("functions/Welcome.php");
 	<!-- Masterhead -->
 	<?php Welcome::DisplayWelcomeContent() ?>
 
-	<!-- <header class="masthead text-white text-center" style="background: url('includes/imgs/0-wellbeing-main.jpg') no-repeat center center; background-size: cover;">
+	<!-- Welcome's Intro Image Structure. It's here just to explain how its works. Delet if necessary. -->
+	<!--<header class="masthead text-white text-center" style="background: url('includes/imgs/0-wellbeing-main.jpg') no-repeat center center; background-size: cover;">
 	  <div class="overlay"></div>
 	  <div class="container">
 	    <div class="row">
@@ -74,8 +75,8 @@ include_once("functions/Welcome.php");
 	</header> -->
 
 	<!-- Categories Grid (4 columns) -->
-	<!--
-	<section class="features-categories text-center">
+	<!-- Took out grid of 4 categories, I dont think this is really needed (odessa) -->
+	<!--<section class="features-categories text-center">
 	  <div class="container">
 	    <div class="row">
 
@@ -133,8 +134,7 @@ include_once("functions/Welcome.php");
 
 	    </div>
 	  </div>
-	</section>
-  Took out grid of 4 categories, I dont think this is really needed (odessa) -->
+	</section>-->
 
 	<!--Main Content Sector (2 columns) -->
 	<section class="main-content">
@@ -155,7 +155,7 @@ include_once("functions/Welcome.php");
 						<div class="card-body">
 
 							<h3>Next Events</h3>
-							<?php Content::getNextEvents(); ?>
+							<?php Content::getNextEvents(2); ?>
 
 						</div>
 					</div>

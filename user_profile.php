@@ -98,7 +98,7 @@
 				
 				<!-- CHANGE YOUR PASSWORD -->
 				<p>
-					<a class="btn btn-primary" data-toggle="collapse" href="#collapsePassword" role="button" aria-expanded="false" aria-controls="collapseExample">
+					<a class="btn btn-nblue" data-toggle="collapse" href="#collapsePassword" role="button" aria-expanded="false" aria-controls="collapseExample">
 						Change password
 					</a>
 				</p>
@@ -124,7 +124,7 @@
 							</div>
 							<div class="form-row">
 								<div class="form-group col-lg-12">
-									<input type="submit" class="btn btn-warning" value="Update" name="submit" />
+									<input type="submit" class="btn btn-ngreen" value="Update" name="submit" />
 									<a href="index.php" type="button" class="btn btn-danger">Cancel</a>
 								</div>
 							</div>
@@ -134,7 +134,7 @@
 				
 				<!-- Change you email-->
 				<p>
-					<a id="userBtn" class="btn btn-primary" data-toggle="collapse" href="#collapseEmail" role="button" aria-expanded="false" aria-controls="collapseExample">
+					<a id="userBtn" class="btn btn-nblue" data-toggle="collapse" href="#collapseEmail" role="button" aria-expanded="false" aria-controls="collapseExample">
 						Change Email
 					</a>
 				</p>
@@ -157,7 +157,7 @@
 							</div>
 							<div class="form-row">
 								<div class="form-group col-lg-12">
-									<input type="submit" class="btn btn-warning" value="Update" name="submit" />
+									<input type="submit" class="btn btn-ngreen" value="Update" name="submit" />
 									<a href="index.php" type="button" class="btn btn-danger">Cancel</a>
 								</div>
 							</div> 
@@ -166,7 +166,7 @@
 				</div>	
 					<!-- Change you phone-->
 				<p>
-					<a id="userBtn" class="btn btn-primary" data-toggle="collapse" href="#collapsePhone" role="button" aria-expanded="false" aria-controls="collapseExample">
+					<a id="userBtn" class="btn btn-nblue" data-toggle="collapse" href="#collapsePhone" role="button" aria-expanded="false" aria-controls="collapseExample">
 						Change Phone Number
 					</a>
 				</p>
@@ -189,7 +189,7 @@
 							</div>
 							<div class="form-row">
 								<div class="form-group col-lg-12">
-									<input type="submit" class="btn btn-warning" value="Update" name="submit" />
+									<input type="submit" class="btn btn-ngreen" value="Update" name="submit" />
 									<a href="index.php" type="button" class="btn btn-danger">Cancel</a>
 								</div>
 							</div> 
@@ -198,7 +198,7 @@
 				</div>
 
 				<p>
-					<a id="userBtn" class="btn btn-primary" data-toggle="collapse" href="#collapseNotifications" role="button" aria-expanded="false" aria-controls="collapseExample">
+					<a id="userBtn" class="btn btn-nblue" data-toggle="collapse" href="#collapseNotifications" role="button" aria-expanded="false" aria-controls="collapseExample">
 						Change Notification Settings
 					</a>
 				</p>
@@ -227,7 +227,7 @@
 							</div>
 							<div class="form-row">
 								<div class="form-group col-lg-12">
-									<input type="submit" class="btn btn-warning" value="Update" name="submit" />
+									<input type="submit" class="btn btn-ngreen" value="Update" name="submit" />
 									<a href="index.php" type="button" class="btn btn-danger">Cancel</a>
 								</div>
 							</div> 

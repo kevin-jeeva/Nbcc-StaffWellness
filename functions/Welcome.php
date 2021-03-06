@@ -51,7 +51,7 @@ class Welcome{
    return $result;
  }
 
- public static function GetListofCreatedWelcoms()
+ public static function GetListofCreatedWelcome()
  {
    $result = self::getAllDataFromWelcome();
    $count = 0;
@@ -70,7 +70,7 @@ class Welcome{
             <td>$title</td>           
             <td>$date_created</td>          
             <td align=\"right\">                
-                <a href=\"#\" type=\"button\" class=\"btn btn-sm btn-info\" onclick=\"RedirectEditWelcome($id,'$title','$text','$image')\">Edit Content</a>
+                <a href=\"#\" type=\"button\" class=\"btn btn-sm btn-nblue\" onclick=\"RedirectEditWelcome($id,'$title','$text','$image')\">Edit Message</a>
                <a href=\"functions/proc_deleteWelcome.php?welcomeId=$id\" onclick = \"return CheckDelete(event)\"type=\"button\" class=\"btn btn-sm btn-danger\">Delete</a>
             </td>            
             </tr>";
@@ -175,7 +175,9 @@ class Welcome{
             <div class=\"row\">
               <div class=\"col-xl-9 mx-auto\">
                 <h1 class=\"mb-5\">$welcome_title</h1>
-                <p>$welcome_text</p>
+                <blockquote class=\"blockquote\">
+                  <p>$welcome_text</p>
+                </blockquote>
               </div>
             </div>
           </div>
@@ -214,9 +216,9 @@ class Welcome{
          $content_title = $content_val["content_title"];
          $date = $val["date_created"];
          echo "<div class=\"block-last-viewed\"><h3>$content_title</h3>
-         <span class=\"badge badge-pill badge-info\">Viewed on: $date</span>
+         <span class=\"badge badge-pill badge-ngreen\">Viewed on: $date</span>
           <p class=\"pt-2\">$content_desc</p>
-          <a href=\"#\" class=\"btn btn-outline-info\" onclick=\"ReadArticle($content_id)\">Read More</a></div>";
+          <a href=\"#\" class=\"btn btn-outline-ngreen\" onclick=\"ReadArticle($content_id)\">Read More</a></div>";
        }
      }
    }
@@ -232,7 +234,7 @@ class Welcome{
    $count_divide = 0;
    $progress_value = 0;
    $row_count = 0;
-   $colors = array("bg-success","bg-info","bg-dark","bg-danger","bg-warning","bg-primary");
+   $colors = array("bg-nblue","bg-ngreen","bg-ncyan","bg-nyellow","bg-nblue","bg-ncyan");
   
    if(mysqli_num_rows($resource_ids) > 0)
    {
@@ -382,9 +384,9 @@ class Welcome{
       $content_id = $val["content_id"];
        echo "<hr> 
         <h5 class=\"card-title\">". $val['content_title']."</h5>
-        <span class=\"badge badge-info\">".$val['date_created']."</span>
+        <span class=\"badge badge-ngreen\">".$val['date_created']."</span>
         <p class=\"card-text\">". $val['content_description'] ."</p>
-        <a href=\"#\" class=\"btn btn-outline-info btn-block\" onclick=\"ReadEvents($content_id)\">See Details</a>";
+        <a href=\"#\" class=\"btn btn-outline-ngreen btn-block\" onclick=\"ReadEvents($content_id)\">See Details</a>";
     }
    }
    else
@@ -420,7 +422,7 @@ class Welcome{
                         <h4 class=\"card-title\">$content_title</h4>
                         <span class=\"badge badge-pill badge-secondary\">$resource_name</span><hr>
                         <p class=\"card-text\">$content_description</p>
-                        <a href=\"#\" class=\"btn btn-info\" onclick=\"ReadArticle($content_id)\">Read more</a>
+                        <a href=\"#\" class=\"btn btn-ngreen\" onclick=\"ReadArticle($content_id)\">Read more</a>
                       </div>
                     </div>
                   </div>";

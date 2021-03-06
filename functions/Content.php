@@ -90,6 +90,7 @@ class Content
     $no_of_records_per_page = 12;
     $offset = ($pageno - 1) * $no_of_records_per_page;
 
+    $IsThereEvents = true;
     $con = $GLOBALS['con'];
     $resource_id = self::getResourceIdByResourceName('events');
     $sql = "SELECT content_id, content_title, content_text, content_description, date_format(event_date, '%m/%d/%y') as event_date FROM content WHERE resource_id = $resource_id ORDER BY event_date LIMIT $offset, $no_of_records_per_page";
@@ -109,11 +110,21 @@ class Content
            <div class=\"events-tile card shadow-sm p-2 m-1\">
            <div class=\"card-body\">
            <h3 class=\"card-title\">" . $row['content_title'] . "</h3>
-           <span class=\"badge badge-info\">Date: $eventDate</span>
+           <span class=\"badge badge-ngreen\">Date: $eventDate</span>
            <p class=\"content_text\">" . $row['content_description'] . "</p>
-           <a href=\"#\" class=\"btn btn-outline-info btn-block\" onclick=\"ReadArticle($content_id)\">Read More</a>
+           <a href=\"#\" class=\"btn btn-outline-ngreen btn-block\" onclick=\"ReadArticle($content_id)\">Read More</a>
            </div></div>";
       }
+      else{
+        $IsThereEvents = false;
+      }
+    }
+    if (!$IsThereEvents){
+      echo "<div class=\"events-tile card shadow-sm p-2 m-1\">
+      <div class=\"card-body text-secondary\">
+      <h1><i class=\"bi bi-calendar-x-fill\"></i></h1>
+      <h3 class=\"card-title\">No events scheduled for now</h3>
+      </div></div>";
     }
 
     //Print the first page link
@@ -156,21 +167,36 @@ class Content
     }
   }
 
-  //get next 2 events
-  static function getNextEvents()
+
+  //get next events with limit number
+  static function getNextEvents($limit)
   {
+    $IsThereEvents = true;
     $con = $GLOBALS['con'];
     $resource_id = self::getResourceIdByResourceName('events');
-    $sql = "SELECT content_id,content_title, content_description, date_format(event_date, '%m/%d/%y') as event_date FROM content WHERE resource_id = $resource_id ORDER BY event_date LIMIT 2";
+    $sql = "SELECT content_id, content_title, content_text, content_description, date_format(event_date, '%m/%d/%y') as event_date FROM content WHERE resource_id = $resource_id ORDER BY event_date LIMIT $limit";
     $result = mysqli_query($con, $sql);
     while ($row = mysqli_fetch_assoc($result)) {
       $content_id = $row["content_id"];
       $eventDate = $row["event_date"];
-      echo "<hr>
-                <h5 class=\"card-title\">" . $row['content_title'] . "</h5>
-                <span class=\"badge badge-info\">$eventDate</span>
-                <p class=\"card-text\">" . $row['content_description'] . "</p>
-                <a href=\"#\" class=\"btn btn-outline-info btn-block\" onclick=\"ReadEvents($content_id)\">See Details</a>";
+      $today = date("d-m-Y"); //todays date Year-mth-day
+      //only show events that are not expired
+      if ($eventDate >= $today) {
+        echo "<hr>
+        <h5 class=\"card-title\">" . $row['content_title'] . "</h5>
+        <span class=\"badge badge-ngreen\">$eventDate</span>
+        <p class=\"card-text\">" . $row['content_description'] . "</p>
+        <a href=\"#\" class=\"btn btn-outline-ngreen btn-block\" onclick=\"ReadEvents($content_id)\">See Details</a>";
+      }
+      else{
+        $IsThereEvents = false;
+      }
+    }
+    if (!$IsThereEvents){
+      echo "<div class=\"card-no-events\" ><div class=\"container text-secondary text-center\">
+      <h1><i class=\"bi bi-calendar-x-fill\"></i></h1>
+      <h5>No events scheduled for now</h5>
+      </div></div>";
     }
   }
 
@@ -188,10 +214,10 @@ class Content
       echo "<div class=\"block-last-viewed\">
           <a class=\"text-dark\" href=\"#\"  onclick=\"ReadArticle(" . $row['content_id'] . ")\">
           <p class=\"h3 text-dark\">" . $row['content_title'] . "</p></a>
-          <span class=\"badge badge-pill badge-info\">$resource_name</span>
+          <span class=\"badge badge-pill badge-ngreen\">$resource_name</span>
           <span class=\"badge badge-pill badge-light\">Created on: $date_created</span>
           <p class=\"content_text\">" . $row['content_description'] . "</p>
-          <a class=\"btn btn-outline-info\" href=\"#\" onclick=\"ReadArticle(" . $row['content_id'] . ")\">Read More</a>
+          <a class=\"btn btn-outline-ngreen\" href=\"#\" onclick=\"ReadArticle(" . $row['content_id'] . ")\">Read More</a>
           </div>";
     }
   }
@@ -226,12 +252,12 @@ class Content
           <p class=\"h1 text-dark\">" . $row['content_title'] . "</p></a>
           <hr><span class=\"badge badge-pill badge-light\">Created on: $date_created</span>
           <p class=\"content_text\">" . $row['content_description'] . "</p>
-          <a class=\"btn btn-outline-info\" href=\"#\" onclick=\"ReadArticle(" . $row['content_id'] . ")\">Read More</a>
+          <a class=\"btn btn-outline-ngreen\" href=\"#\" onclick=\"ReadArticle(" . $row['content_id'] . ")\">Read More</a>
           </div>";
     }
 
     //Print the first page link
-    echo "<ul class=\"pagination\"><li class=\"page-item\"><a class=\"page-link\" href=\"?pageno=1\">First Page</a></li>";
+    echo "<ul class=\"pagination\"><li class=\"page-item\"><a class=\"page-link bg-ngreen text-white\" href=\"?pageno=1\">First Page</a></li>";
 
     // These actions will happen if the user access the previous page
     if ($pageno <= 1) {
@@ -453,14 +479,18 @@ class Content
       $content_id = $row["content_id"];
       $date = strtotime($row["date_created"]);
       $set_date = date("F d, Y | g:ia", $date);
-      echo "
-          <div class=\"notifications-tile card shadow-sm p-2 m-1\">
-          <div class=\"card-body\">
-          <h3 class=\"card-title\">" . $row['content_title'] . "</h3>
-          <span class=\"badge badge-info\">Date Added: $set_date</span>
-          <p class=\"content_text\">" . $row['content_description'] . "</p>
-          <a href=\"#\" class=\"btn btn-outline-info btn-block\" onclick=\"ReadArticle($content_id)\">View $contentName</a>
-          </div></div><br>";
+      echo "<div class=\"col-lg-4 col-md-6 col-sm-12\">
+            <div class=\"features-categories-item mx-auto mb-5 mb-lg-0 mb-lg-3\">
+            <div class=\"main-card card\">
+                <span class=\"not-time-frame bg-ngreen text-center text-white\">$set_date</span>
+                <div class=\"card-notifications\">
+                    <h3>" . $row['content_title'] . "</h3>                     
+                    <p>" . $row['content_description'] . "</p>                        
+                    <a href=\"#\" class=\"btn btn-outline-ngreen btn-block\" onclick=\"ReadArticle($content_id)\">View Content</a>
+                </div>
+            </div>
+            </div>
+          </div>";
     }
 
     //Print the first page link
@@ -521,7 +551,7 @@ class Content
         $content_title = $row["content_title"];
         $set_date = date("F d, Y | g:ia", $date);
         $string .=
-          "<a href=\"#\" id=\"hi\" onclick=\"ReadArticle($content_id)\"><div id=\"$content_id\"><h5>$contentName</h5><p>$content_title</p><p class=\"badge badge-pill badge-secondary\"> $set_date</p></div></a><hr>";
+          "<a href=\"#\" id=\"hi\" onclick=\"ReadArticle($content_id)\"><div id=\"$content_id\"><h5>$contentName</h5><p>$content_title</p><p class=\"badge badge-pill badge-ngreen\"> $set_date</p></div></a><hr>";
       }
       return $string;
     }
@@ -568,8 +598,8 @@ class Content
                 <td>$resource_name</td>
                 <td>$date_created</td>
                 <td align=\"right\">
-                    <a href=\"view.php?page=" . $content_id . "\" type=\"button\" class=\"btn btn-sm btn-secondary\">Preview</a>
-                    <a href=\"#\" type=\"button\" onclick=\"RedirectEditContent('$resource_name','$title', '$content_description' ,`$content_text`,$content_id);\" class=\"btn btn-sm btn-info\">Edit</a>
+                    <a href=\"view.php?page=" . $content_id . "\" type=\"button\" class=\"btn btn-sm btn-nblue\">Preview</a>
+                    <a href=\"#\" type=\"button\" onclick=\"RedirectEditContent('$resource_name','$title', '$content_description' ,`$content_text`,$content_id);\" class=\"btn btn-sm btn-nblue\">Edit</a>
                     <a href=\"functions/proc_deleteContent.php?contentId=$content_id\" onclick = \"return CheckDelete(event)\"type=\"button\" class=\"btn btn-sm btn-danger\">Delete</a>
                 </td>            
                 </tr>";

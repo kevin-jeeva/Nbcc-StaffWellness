@@ -64,7 +64,7 @@
 		    	  <div class="card-body">
 		    	    <h3>Next Events</h3>
 		    	    <?php
-				   Content::getNextEvents();
+				   Content::getNextEvents(2);
 				   ?>
 
 		    	  </div>

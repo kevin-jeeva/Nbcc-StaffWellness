@@ -215,13 +215,13 @@ class staff {
                 }
                 else
                 {
-                    $color = "<a href= \"#\" onclick=\"ActDeactivate_user(event,$staff_id,0)\" class= \"btn btn-success btn-md\">Active</a>";
+                    $color = "<a href= \"#\" onclick=\"ActDeactivate_user(event,$staff_id,0)\" class= \"btn btn-nblue btn-md\">Active</a>";
                 }
 
                 //display admin status
                 if($admin == 1)
                 {
-                   $adminColor="<button class=\"btn btn-md btn-success\" onclick=\"ActDeactiveAdmin(event,$staff_id,0 )\">Active Admin</button>";
+                   $adminColor="<button class=\"btn btn-md btn-nblue\" onclick=\"ActDeactiveAdmin(event,$staff_id,0 )\">Active Admin</button>";
                 }
                 else if($admin == 2)
                 {
@@ -229,7 +229,7 @@ class staff {
                 }
                 else 
                 {
-                    $adminColor="<button class=\"btn btn-md btn-warning\" onclick=\"ActDeactiveAdmin(event,$staff_id,1 )\">Make Admin</button>";
+                    $adminColor="<button class=\"btn btn-md btn-nyellow\" onclick=\"ActDeactiveAdmin(event,$staff_id,1 )\">Make Admin</button>";
                 }
 
                 $count +=1;
