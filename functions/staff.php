@@ -375,15 +375,13 @@ class staff {
         
     //}
 
-    public static function notifsOn($on){  
-        if($on == "on"){
-            $_SESSION["notifications"] = "on";
-        }
-        else{
-            $_SESSION["notifications"] = "off";
-            
-        }
-        $_SESSION["message"] = "Notification are " .  $_SESSION["notifications"];  
+    public static function notifsOnOff($on){  
+        $user = $_SESSION["staff_id"];
+        $con = $GLOBALS["con"];
+        $sql ="update user SET notificationsON = '$on' where staff_id = $user";
+        $result = mysqli_query($con,$sql); 
+        $row = mysqli_fetch_assoc($result); 
+        $_SESSION["message"] = "Notification are " .  $on;  
         header("location:dashboard.php");
         
     }

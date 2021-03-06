@@ -10,7 +10,7 @@ include_once("functions/staff.php");
 
 if(isset($_POST["submit"])){
    // staff::changeNotifications($sessId, $sms, $email);
-	staff::notifsOn($on);
+	staff::notifsOnOff($on);
 }
 
 ?>
