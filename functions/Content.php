@@ -357,9 +357,20 @@ class Content
     $sql = "update user set notification_counter = 0 where staff_id = $user";
     mysqli_query($con, $sql);
   }
+  //check if notifications are on or not
+  public static function checkNotificationsOn(){
+    $user = $_SESSION["staff_id"];
+    $con = $GLOBALS["con"];
+    $sql = "select notificationsOn from user where staff_id = $user";
+    $result = mysqli_query($con,$sql); 
+    $row = mysqli_fetch_assoc($result); 
+    return $row["notificationsOn"];
+  }
   //send number of unread notifications to notification bubble
-  public static function setNotificationBubble($on)
+  public static function setNotificationBubble()
   {
+    $on = self::checkNotificationsOn();
+
     if ($on == "on") {
       $con = $GLOBALS["con"];
       $user = $_SESSION["staff_id"];
@@ -416,14 +427,14 @@ class Content
     $result = self::pagePagination("content", $limit, "notifications");
     echo $result;
   }
+  public static function bellNotifications()
+  { 
+    $on = self::checkNotificationsOn();
 
-  public static function bellNotifications($on)
-  {
     if ($on == "on") {
-      $con = $GLOBALS["con"];
+      $con = $GLOBALS["con"];   
       $sql = "select date_created, resource_id, content_id, content_title, content_description from content order by date_created desc limit 3";
       $string = "";
-
       $result = mysqli_query($con, $sql);
       while ($row = mysqli_fetch_assoc($result)) {
         $contentName = self::GetResourceNameByResourceId($row["resource_id"]);

@@ -12,3 +12,4 @@ function resetNotification() {
 	//document.getElementById("bubble-noti").style.display = "none";
 	console.log("here");
 }
+

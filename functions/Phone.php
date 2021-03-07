@@ -55,25 +55,47 @@ class Phone{
       }
     }
   }
+  public static function checkSMSNotificationsOn(){
+    $user = $_SESSION["staff_id"];
+    $con = $GLOBALS["con"];
+    $sql = "select sms_Notifications from user where staff_id = $user";
+    $result = mysqli_query($con,$sql); 
+    $row = mysqli_fetch_assoc($result); 
+    return $row["sms_Notifications"];
+  }
+  public static function checkEmailNotificationsOn(){
+    $user = $_SESSION["staff_id"];
+    $con = $GLOBALS["con"];
+    $sql = "select email_Notifications from user where staff_id = $user";
+    $result = mysqli_query($con,$sql); 
+    $row = mysqli_fetch_assoc($result); 
+    return $row["email_Notifications"];
+  }
   public static function SendMessage($resource ,$text,$title)
   {
-    if($_SESSION["notifications"] = "on"){
-      $phones = array();
-      $phone_num_set = self::GetUsersPhoneDetails();
-      if(mysqli_num_rows($phone_num_set) > 0)
-      {
-        while($phone_val = mysqli_fetch_array($phone_num_set))
+    $on = Content::checkNotificationsOn();
+    $smsOn = self::checkSMSNotificationsOn();
+    $emailOn = self::checkEmailNotificationsOn();
+    if($on == "on"){
+      if($smsOn == "on"){
+        $phones = array();
+        $phone_num_set = self::GetUsersPhoneDetails();
+        if(mysqli_num_rows($phone_num_set) > 0)
         {
-          $phone_num = $phone_val["user_phone_no"];
-          $carrier = $phone_val["user_carrier"];
-          $domain = self::GetDomain($carrier);
-          $address = $phone_num.$domain;
-          array_push($phones,array("email" => $address));
+          while($phone_val = mysqli_fetch_array($phone_num_set))
+          {
+            $phone_num = $phone_val["user_phone_no"];
+            $carrier = $phone_val["user_carrier"];
+            $domain = self::GetDomain($carrier);
+            $address = $phone_num.$domain;
+            array_push($phones,array("email" => $address));
+          }
+          $values = json_encode($phones);
         }
-        $values = json_encode($phones);
+      }
       
         //email code
-        if($_SESSION["notifications"] = "on"){
+        if($emailOn == "on"){
           $mails = array();
           $email_set = self::GetUsersEmailDetails();
     
@@ -88,7 +110,5 @@ class Phone{
         header("location:sendmessages.php?email=$values&resource=$resource&text=$text&title=$title&mails=$mailsjson");
       }
     }
-  }
-
 }
 ?>
