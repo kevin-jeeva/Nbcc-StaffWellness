@@ -38,7 +38,7 @@ function ContentCheck() {
 		}
 	}
 
-	if (count > 0) {
+if (count > 0) {
 		console.log(count);
 		$("#myModal").modal();
 		document.getElementById("alert_message").textContent = msg;

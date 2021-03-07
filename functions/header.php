@@ -69,7 +69,7 @@ echo "<!-- Navigation -->
 						<button type=\"button\" class=\"btn btn-primary li\" id=\"notifs\" data-toggle=\"popover\" data-placement=\"bottom\" title=\"New contents\" data-trigger=\"focus\" data-param1=\"Parameter1\" onclick=\"resetNotification()\">						
 						<i class=\"bi bi-bell-fill\"></i></button>	
 						<li class=\"notify-container\" id =\"notify-container\">
-							<span class=\"notify-bubble\" id =\"bubble-noti\">" . Content::setNotificationBubble($_SESSION["notifications"]) . "</span>
+							<span class=\"notify-bubble\" id =\"bubble-noti\">" . Content::setNotificationBubble() . "</span>
 						</li>
 						</li>					
 					</div>
@@ -80,7 +80,7 @@ echo "<!-- Navigation -->
 					html: true,
 					content: function() {
 						var p1 = $(this).data(\"param1\");
-						return `".Content::bellNotifications($_SESSION["notifications"])." <a href=\"notifications.php\" class=\"btn btn-block btn-outline-dark\")\">View More</a>`;
+						return `".Content::bellNotifications()." <a href=\"notifications.php\" class=\"btn btn-block btn-outline-dark\")\">View More</a>`;
 					}
 					};
 
