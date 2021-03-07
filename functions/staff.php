@@ -379,7 +379,7 @@ class staff {
         $user = $_SESSION["staff_id"];
         $con = $GLOBALS["con"];
         $sql ="update user SET notificationsON = '$on' where staff_id = $user";
-        $result = mysqli_query($con,$sql); 
+        mysqli_query($con,$sql); 
         //$sql2 ="update user SET sms_Notifications = '$on' where staff_id = $user";
         //$result2 = mysqli_query($con,$sql2); 
         //$sql3 ="update user SET email_Notifications = '$on' where staff_id = $user";
@@ -391,13 +391,28 @@ class staff {
         
     }
     public static function smsNotifications($smsOn){
+        $user = $_SESSION["staff_id"];
+        $con = $GLOBALS["con"];
         if($smsOn == "on"){
-            $sql ="update user SET sms_Notifications = '$smsOn' where staff_id = $user";
-            $result = mysqli_query($con,$sql); 
+            $sql ="update user SET sms_Notifications = 'on' where staff_id = $user";
+            mysqli_query($con,$sql); 
         }
         else{ 
             $sql ="update user SET sms_Notifications = 'off' where staff_id = $user";
-            $result = mysqli_query($con,$sql); 
+            mysqli_query($con,$sql); 
+        }
+    }
+
+    public static function emailNotifications($emailOn){
+        $user = $_SESSION["staff_id"];
+        $con = $GLOBALS["con"];
+        if($emailOn == "on"){
+            $sql ="update user SET email_Notifications = 'on' where staff_id = $user";
+            mysqli_query($con,$sql); 
+        }
+        else{ 
+            $sql ="update user SET email_Notifications = 'off' where staff_id = $user";
+            mysqli_query($con,$sql); 
         }
     }
     public static function checkNotificationsOn(){
