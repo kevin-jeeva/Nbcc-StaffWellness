@@ -73,22 +73,6 @@
 		</div>
 	</section>
 
-	<!--Secondary Content Sector -->
-	<section class="secondary-content text-center">
-	  	<div class="overlay"></div>
-	  	<div class="container">
-	  	  <div class="row">
-	  	    <div class="col-xl-9 mx-auto text-white">
-	  	      <h3 class="mb-4">Phrase of the day</h3>
-	  	      <blockquote class="blockquote">
-	  	        <p class="mb-0">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
-	  	        <footer class="blockquote-footer text-white">Someone famous in <cite title="Source Title">Source Title</cite></footer>
-	  	      </blockquote>
-	  	    </div>
-	  	  </div>
-	  	</div>
-	</section>
-
 	<!-- Footer -->
 	<?php include('functions/footer.php'); ?>
 
