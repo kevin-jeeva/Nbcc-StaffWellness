@@ -52,7 +52,7 @@ if ($_SESSION["active"] == 0) {
 
 				<!--Calling Content class to retrieve all articles -->
 				<?php
-				Content::getAllEvents();
+				Content::getAllEvents(12);
 				?>
 
 			</div> <!-- End of row -->

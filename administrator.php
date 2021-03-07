@@ -72,7 +72,7 @@
 				</div>
 				<div class="modal-footer">
 				<a href="#" type="button" class="btn btn-danger" id="DeleteContent">Delete</a>
-        <button type="button" class="btn btn-primary" data-dismiss="modal" onclick="ResetLink()">Cancel</button>
+        <button type="button" class="btn btn-light" data-dismiss="modal" onclick="ResetLink()">Cancel</button>
       </div>
       </div>
     </div>
@@ -127,7 +127,7 @@
 		    	<div class="list-sector">
 			    	<div class="list-header row">
 		    	  		<h2>Created Resources</h2>
-		    	  		<a href="new_category.php" type="button" class="new-btn btn-sm btn-primary" value="id">Create new</a>
+		    	  		<a href="new_category.php" type="button" class="new-btn btn-sm btn-nblue" value="id">Create new</a>
 			    	</div><hr>
 
 			    	<div class="table-responsive">
@@ -154,7 +154,7 @@
 		    	<div class="list-sector">
 			    	<div class="list-header row">
 		    	  		<h2>Created Contents</h2>
-		    	  		<a href="new_content.php" type="button" class="new-btn btn-sm btn-primary" value="id">Create new</a>
+		    	  		<a href="new_content.php" type="button" class="new-btn btn-sm btn-nblue" value="id">Create new</a>
 			    	</div><hr>
 
 			    	<div class="table-responsive">
@@ -182,7 +182,7 @@
 				<div class="list-sector">
 			    	<div class="list-header row">
 		    	  		<h2>Created Welcome Messages</h2>
-		    	  		<a href="new_welcome.php" type="button" class="new-btn btn-sm btn-primary" value="id">Create new</a>
+		    	  		<a href="new_welcome.php" type="button" class="new-btn btn-sm btn-nblue" value="id">Create new</a>
 			    	</div><hr>
 
 			    	<div class="table-responsive">
@@ -199,7 +199,7 @@
 
 				    	      <!-- Important SECTION: display all content's categories from database -->
 				    	      <tbody>
-								<?php Welcome::GetListofCreatedWelcoms()?>
+								<?php Welcome::GetListofCreatedWelcome()?>
 				    	      </tbody>
 			    	    </table>
 			    	</div> <!-- End of table-responsive -->
@@ -209,7 +209,7 @@
 				<div class="list-sector">
 			    	<div class="list-header row">
 		    	  		<h2>Created Videos Exercises</h2>
-		    	  		<a href="new_video.php" type="button" class="new-btn btn-sm btn-primary" value="id">Create new</a>
+		    	  		<a href="new_video.php" type="button" class="new-btn btn-sm btn-nblue" value="id">Create new</a>
 			    	</div><hr>
 
 			    	<div class="table-responsive">
@@ -237,7 +237,7 @@
 				<div class="list-sector">
 			    	<div class="list-header row">
 		    	  		<h2>Created Sound Exercises</h2>
-		    	  		<a href="new_sound.php" type="button" class="new-btn btn-sm btn-primary" value="id">Create new</a>
+		    	  		<a href="new_sound.php" type="button" class="new-btn btn-sm btn-nblue" value="id">Create new</a>
 			    	</div>
 
 			    	<div class="table-responsive">

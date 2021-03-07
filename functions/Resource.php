@@ -42,7 +42,7 @@ class Resource {
                <td>$title</td>
                <td>$date_created</td>
                <td align=\"right\">
-                   <a href=\"#\" type=\"button\" onclick =\"RedirectEditResource('$title',$resource_id)\"class=\"btn btn-sm btn-info\">Edit</a>
+                   <a href=\"#\" type=\"button\" onclick =\"RedirectEditResource('$title',$resource_id)\"class=\"btn btn-sm btn-nblue\">Edit</a>
                    <a href=\"functions/proc_deleteResource.php?resourceId=$resource_id\" onclick = \"return CheckDelete(event)\"type=\"button\" class=\"btn btn-sm btn-danger\">Delete</a>
                </td>        
                </tr>

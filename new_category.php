@@ -75,7 +75,7 @@ include_once("functions/Content.php");
 		    	  
 		    	  <br>
 		    	  <div class="form-group col-lg-12">
-		    	    <input type="submit" class="btn btn-warning" value="Submit"/>
+		    	    <input type="submit" class="btn btn-ngreen" value="Submit"/>
 		    	    <a href="administrator.php" type="button" class="btn btn-danger">Cancel</a>
 		    	  </div>
 		    	</form> 	

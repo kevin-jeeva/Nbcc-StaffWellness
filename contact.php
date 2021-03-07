@@ -52,9 +52,6 @@
 
 		  	<!--Contact Sector (Main) -->
 		    <div class="the-content col-md-8">
-            	<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2773.490223654188!2d-66.65555798377757!3d45.96146740814412!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4ca4189dc87c1293%3A0x443567a4443e547!2s284%20Smythe%20St%2C%20Fredericton%2C%20NB%20E3B%203C9!5e0!3m2!1sen!2sca!4v1610654138129!5m2!1sen!2sca" width="600" height="450" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
-                <br>
-                <hr>
 		    	<p>Email:<a href="mailto:nbcc@nbcc.ca"> nbcc@nbcc.ca</a></p>
                 <p>Call Campuses: (506) 460-6222</p>
                 <p> 284 Smythe Street Fredericton, NB</p>
@@ -66,7 +63,7 @@
 		    	  <div class="card-body">
 		    	    
 		    	    <h3>Next Events</h3>
-					<?php Content::getNextEvents();?>
+					<?php Content::getNextEvents(2);?>
 
 		    	  </div>
 		    	</div>

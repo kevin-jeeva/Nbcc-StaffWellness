@@ -70,7 +70,7 @@
 			</div>
 	      <div class="col-lg-12">	
 				<table class="table table-striped ">
-						<thead class="table-dark text-white">
+						<thead class="table-dark">
 							<tr>
 							  <th scope="col">#</th>
 								<th scope="col">Content</th>

@@ -7,34 +7,31 @@ echo "<!-- Footer -->
 	      <div class=\"col-lg-6 h-100 text-center text-lg-left my-auto\">
 		  <ul class=\"list-inline mb-2\">
 	          <li class=\"list-inline-item\">
-	            <a href=\"about.php\">About Us</a>
+	            <a class=\"text-nblue\" href=\"about.php\">About Us</a>
 	          </li>
 	          <li class=\"list-inline-item\">&sdot;</li>
 	          <li class=\"list-inline-item\">
-	            <a href=\"articles.php\">Articles</a>
+	            <a class=\"text-nblue\" href=\"articles.php\">Articles</a>
 	          </li>
 	          <li class=\"list-inline-item\">&sdot;</li>
 	          <li class=\"list-inline-item\">
-	            <a href=\"events.php\">Events</a>
+	            <a class=\"text-nblue\" href=\"events.php\">Events</a>
 	          </li>
 	          <li class=\"list-inline-item\">&sdot;</li>
 	          <li class=\"list-inline-item\">
-	            <a href=\"\">Exercises</a>
+	            <a class=\"text-nblue\" href=\"support.php\">Support</a>
 	          </li>
 	          <li class=\"list-inline-item\">&sdot;</li>
 	          <li class=\"list-inline-item\">
-	            <a href=\"support.php\">Support</a>
-	          </li>
-	          <li class=\"list-inline-item\">&sdot;</li>
-	          <li class=\"list-inline-item\">
-	            <a href=\"contact.php\">Contact Us</a>
+	            <a class=\"text-nblue\" href=\"contact.php\">Contact Us</a>
 	          </li>
 	          <li></li>
 	        </ul>
-	        <p class=\"text-muted small mb-4 mb-lg-0\">&copy; NBCC Welbeing App 2020. All Rights Reserved.</p>
+	        <p class=\"text-muted small mb-4 mb-lg-0\">&copy; NBCC Welbeing App 2021. All Rights Reserved.</p>
 	      </div>
 	      <div class=\"footer-logo col-lg-6 h-100 text-center text-lg-right my-auto\">
-	      	<img src=\"includes/imgs/nbcc-logo.png\" alt=\"NBCC Logo\">
+		  	<div class=\"img-footer\">
+	      	<a href=\"https://nbcc.ca\" target=\"_blank\"><img src=\"includes/imgs/nbcc-logo.png\" alt=\"NBCC Logo\"></a>
 	      </div>
 	    </div>
 	  

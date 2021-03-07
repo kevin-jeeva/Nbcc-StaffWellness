@@ -55,7 +55,7 @@
               <!--Calling Content class to retrieve all articles -->
 		     
 		    <div class="the-content col-md-8">
-		    	<?php Content::getAllArticles('articles') ?>
+		    	<?php Content::getAllArticles('articles', 10) ?>
 		    </div>
 
 		    <!--Sidebar (Links, Menus and other info) -->
@@ -64,7 +64,7 @@
 		    	  <div class="card-body">
 		    	    <h3>Next Events</h3>
 		    	    <?php
-				   Content::getNextEvents();
+				   Content::getNextEvents(2);
 				   ?>
 
 		    	  </div>

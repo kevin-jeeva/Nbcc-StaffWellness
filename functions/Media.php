@@ -58,13 +58,13 @@ class Media {
                 $media_desc = $val["media_desc"];
                 $count +=1;
 
-                echo"  <div class=\"col-lg-3 col-md-6 col-sm-12\">
+                echo "<div class=\"col-lg-3 col-md-6 col-sm-12\">
                         <div class=\"features-categories-item mx-auto mb-5 mb-lg-0 mb-lg-3\">
                         <div class=\"main-card card\">
-                            <div class=\"card-video\">
+                            <div class=\"card-media\">
                                 <h3>$title</h3>                         
                                 <p>$description</p>                         
-                                <a href=\"#\" class=\"btn btn-outline-info btn-block\" onclick=\"WatchedVideos($media_id)\"><span>Watch Now </span><i class=\"bi bi-play-circle-fill\"></i></a>
+                                <a href=\"#\" class=\"btn btn-outline-ngreen btn-block\" onclick=\"WatchedVideos($media_id)\"><span>Watch Now </span><i class=\"bi bi-play-circle-fill\"></i></a>
                             </div>
                         </div>
                         </div>
@@ -136,7 +136,7 @@ class Media {
                         <td>$video_name</td>       
                         <td>$date</td>          
                         <td align=\"right\">                
-                            <a href=\"#\" type=\"button\" class=\"btn btn-sm btn-info\" onclick=\"RedirectEditVideo($id,'$video_title','$video_name','$desc')\">Edit Content</a>
+                            <a href=\"#\" type=\"button\" class=\"btn btn-sm btn-nblue\" onclick=\"RedirectEditVideo($id,'$video_title','$video_name','$desc')\">Edit Video</a>
                             <a href=\"functions/proc_delete_video.php?videoId=$id\" type=\"button\" class=\"btn btn-sm btn-danger\" onclick = \"return CheckDelete(event)\">Delete</a>
                         </td>            
                      </tr>";
@@ -179,7 +179,7 @@ class Media {
                         <td>$sound_name</td>       
                         <td>$date</td>          
                         <td align=\"right\">                
-                            <a href=\"#\" type=\"button\" class=\"btn btn-sm btn-info\" onclick=\"RedirectEditAudio($id,'$sound_title','$sound_name','$desc')\">Edit Content</a>
+                            <a href=\"#\" type=\"button\" class=\"btn btn-sm btn-nblue\" onclick=\"RedirectEditAudio($id,'$sound_title','$sound_name','$desc')\">Edit Sound</a>
                             <a href=\"functions/proc_delete_audio.php?audioId=$id\" type=\"button\" class=\"btn btn-sm btn-danger\" onclick = \"return CheckDelete(event)\">Delete</a>
                         </td>            
                      </tr>";
@@ -277,10 +277,10 @@ class Media {
                 echo"  <div class=\"col-lg-3 col-md-6 col-sm-12\">
                         <div class=\"features-categories-item mx-auto mb-5 mb-lg-0 mb-lg-3\">
                         <div class=\"main-card card\">
-                            <div class=\"card-video\">
+                            <div class=\"card-media\">
                                 <h3>$title</h3>                         
                                 <p>$description</p>                         
-                                <a href=\"#\" class=\"btn btn-outline-info btn-block\" onclick=\"WatchedAudio($media_id)\"><span>Play Now </span><i class=\"bi bi-play-circle-fill\"></i></a>
+                                <a href=\"#\" class=\"btn btn-outline-ngreen btn-block\" onclick=\"WatchedAudio($media_id)\"><span>Play Now </span><i class=\"bi bi-play-circle-fill\"></i></a>
                             </div>
                         </div>
                         </div>

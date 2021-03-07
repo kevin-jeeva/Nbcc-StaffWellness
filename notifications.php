@@ -52,7 +52,7 @@
 
               <!--Calling Content class to retrieve all articles -->
 					<?php
-					Content::getContentNotifications();
+					Content::getContentNotifications(10);
 					?>
 			
 		  </div> <!-- End of row -->
