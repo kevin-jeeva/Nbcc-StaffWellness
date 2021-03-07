@@ -58,7 +58,7 @@ include_once("functions/Welcome.php");
 	<!-- Masterhead -->
 	<?php Welcome::DisplayWelcomeContent() ?>
 
-	<!-- Welcome's Intro Image Structure. It's here just to explain how its works. Delet if necessary. -->
+	<!-- Welcome's Intro Image Structure. It's here just to explain how its works. Delete if necessary. -->
 	<!--<header class="masthead text-white text-center" style="background: url('includes/imgs/0-wellbeing-main.jpg') no-repeat center center; background-size: cover;">
 	  <div class="overlay"></div>
 	  <div class="container">
@@ -73,68 +73,6 @@ include_once("functions/Welcome.php");
 	    </div>
 	  </div>
 	</header> -->
-
-	<!-- Categories Grid (4 columns) -->
-	<!-- Took out grid of 4 categories, I dont think this is really needed (odessa) -->
-	<!--<section class="features-categories text-center">
-	  <div class="container">
-	    <div class="row">
-
-	      <div class="col-lg-3 col-md-6 col-sm-12">
-	        <div class="features-categories-item mx-auto mb-5 mb-lg-0 mb-3">
-	          <div class="card">
-	            <img src="includes/imgs/1-wellbeing-articles.jpg" class="card-img-top" alt="...">
-	            <div class="card-body">
-	            	<h3>Articles</h3>
-	              	<p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-	              	<a href="#" class="btn btn-outline-primary btn-block">Access Articles</a>
-	            </div>
-	          </div>
-	        </div>
-	      </div>
-
-	      <div class="col-lg-3 col-md-6 col-sm-12">
-	        <div class="features-categories-item mx-auto mb-5 mb-lg-0 mb-lg-3">
-	          <div class="card">
-	            <img src="includes/imgs/2-wellbeing-events.jpg" class="card-img-top" alt="...">
-	            <div class="card-body">
-	            	<h3>Events</h3>
-	              	<p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-	              <a href="#" class="btn btn-outline-primary btn-block">Access Events</a>
-	            </div>
-	          </div>
-	        </div>
-	      </div>
-
-	      <div class="col-lg-3 col-md-6 col-sm-12">
-	        <div class="features-categories-item mx-auto mb-5 mb-lg-0 mb-lg-3">
-	          <div class="card">
-	            <img src="includes/imgs/3-wellbeing-exercises.jpg" class="card-img-top" alt="...">
-	            <div class="card-body">
-	            	<h3>Exercises</h3>
-	              	<p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-	              	<a href="#" class="btn btn-outline-primary btn-block">Access Exercises</a>
-	            </div>
-	          </div>
-	        </div>
-	      </div>
-
-	      <div class="col-lg-3 col-md-6 col-sm-12">
-	        <div class="features-categories-item mx-auto mb-5 mb-lg-0 mb-lg-3">
-	          <div class="card">
-	            <img src="includes/imgs/4-wellbeing-support.jpg" class="card-img-top" alt="...">
-	            <div class="card-body">
-	            	<h3>Support</h3>
-	              	<p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-	              	<a href="#" class="btn btn-outline-primary btn-block">Get Support</a>
-	            </div>
-	          </div>
-	        </div>
-	      </div>
-
-	    </div>
-	  </div>
-	</section>-->
 
 	<!--Main Content Sector (2 columns) -->
 	<section class="main-content">
@@ -165,21 +103,8 @@ include_once("functions/Welcome.php");
 		</div>
 	</section>
 
-	<!--Secondary Content Sector -->
-	<section class="secondary-content text-center">
-		<div class="overlay"></div>
-		<div class="container">
-			<div class="row">
-				<div class="col-xl-9 mx-auto text-white">
-					<h3 class="mb-4">Phrase of the day</h3>
-					<blockquote class="blockquote">
-						<p class="mb-0">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
-						<footer class="blockquote-footer text-white">Someone famous in <cite title="Source Title">Source Title</cite></footer>
-					</blockquote>
-				</div>
-			</div>
-		</div>
-	</section>
+	<!-- Quick Links -->
+	<?php include('functions/quick-links.php'); ?>
 
 	<!-- Footer -->
 	<?php include('functions/footer.php'); ?>
