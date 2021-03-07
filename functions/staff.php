@@ -435,6 +435,26 @@ class staff {
             echo "checked";      
         }
     }
+    public static function checkSMSNotificationsOnOff(){
+        $user = $_SESSION["staff_id"];
+        $con = $GLOBALS["con"];
+        $sql = "select sms_Notifications from user where staff_id = $user";
+        $result = mysqli_query($con,$sql);
+        $row = mysqli_fetch_assoc($result); 
+        if($row["sms_Notifications"]=="on"){
+            echo "checked";      
+        }
+    }
+    public static function checkEmailNotificationsOnOff(){
+        $user = $_SESSION["staff_id"];
+        $con = $GLOBALS["con"];
+        $sql = "select email_Notifications from user where staff_id = $user";
+        $result = mysqli_query($con,$sql);
+        $row = mysqli_fetch_assoc($result); 
+        if($row["email_Notifications"]=="on"){
+            echo "checked";      
+        }
+    }
     //Check Email
     public static function CheckEmailPassword($email)
     {

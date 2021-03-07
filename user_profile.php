@@ -217,9 +217,9 @@
 								</div>
 								<div class="form-group col-xs-6 col-md-4">
 								<label><strong>Receieve notifications by</strong></label><br>							
-									<input type="checkbox" id="sms" name="sms" value="on">
+									<input type="checkbox" <?php staff::checkSMSNotificationsOnOff();?> id="sms" name="sms" value="on">
 									<label for="sms">Text Message</label><br>
-									<input type="checkbox"  id="email" name="email" value="on">
+									<input type="checkbox" <?php staff::checkEmailNotificationsOnOff();?> id="email" name="email" value="on">
 									<label for="email"> Email</label><br>
 								</div>
 								
