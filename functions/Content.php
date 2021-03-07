@@ -83,18 +83,18 @@ class Content
     //important for pagination. DON'T DELETE!
     if (isset($_GET["page"])) {
       $page = $_GET["page"];
-    }
-    else{ 
-      $page=1;
+    } else {
+      $page = 1;
     }
     //important for pagination. DON'T DELETE!
-    $start_from = ($page-1) * $limit;
+    $start_from = ($page - 1) * $limit;
 
     $IsThereEvents = true;
     $con = $GLOBALS['con'];
     $resource_id = self::getResourceIdByResourceName('events');
     $sql = "SELECT content_id, content_title, content_text, content_description, date_format(event_date, '%m/%d/%y') as event_date FROM content WHERE resource_id = $resource_id ORDER BY event_date DESC LIMIT $start_from, $limit";
 
+    echo $sql;
     $result = mysqli_query($con, $sql);
     while ($row = mysqli_fetch_assoc($result)) {
       $content_id = $row["content_id"];
@@ -110,12 +110,11 @@ class Content
            <p class=\"content_text\">" . $row['content_description'] . "</p>
            <a href=\"#\" class=\"btn btn-outline-ngreen btn-block\" onclick=\"ReadArticle($content_id)\">Read More</a>
            </div></div>";
-      }
-      else{
-        $IsThereEvents = false;
+      } else {
+        // $IsThereEvents = false;
       }
     }
-    if (!$IsThereEvents){
+    if (!$IsThereEvents) {
       echo "<div class=\"events-tile card shadow-sm p-2 m-1\">
       <div class=\"card-body text-secondary\">
       <h1><i class=\"bi bi-calendar-x-fill\"></i></h1>
@@ -138,33 +137,17 @@ class Content
 
     $resource_id = self::getResourceIdByResourceName('events');
     $sql = "SELECT content_id,content_title, content_description, date_format(event_date, '%m/%d/%y') as event_date FROM content WHERE resource_id = $resource_id ORDER BY event_date DESC LIMIT 2";
-    $sql = "SELECT content_id, content_title, content_text, content_description, date_format(event_date, '%m/%d/%y') as event_date FROM content WHERE resource_id = $resource_id ORDER BY event_date LIMIT $limit";
+    // $sql = "SELECT content_id, content_title, content_text, content_description, date_format(event_date, '%m/%d/%y') as event_date FROM content WHERE resource_id = $resource_id ORDER BY event_date LIMIT $limit";
     $result = mysqli_query($con, $sql);
     while ($row = mysqli_fetch_assoc($result)) {
       $content_id = $row["content_id"];
       $eventDate = $row["event_date"];
-
-      //only show events that are not expired
-      /* if ($row["event_date"] >= $today) {
-        $daystillevent = $today - $row["event_date"];
-        echo $daystillevent;
-        $sql2 = "SELECT content_id,content_title, content_description, date_format(event_date, '%m/%d/%y') as event_date FROM content WHERE resource_id = $resource_id ORDER BY $daystillevent DESC LIMIT 2";
-        $result = mysqli_query($con, $sql2);
-        while ($row = mysqli_fetch_assoc($result)) {
-          $content_id = $row["content_id"];
-          $eventDate = $row["event_date"];
-          echo "<hr>
-          <h5 class=\"card-title\">" . $row['content_title'] . "</h5>
-          <span class=\"badge badge-info\">$eventDate</span>
-          <p class=\"card-text\">" . $row['content_description'] . "</p>
-          <a href=\"#\" class=\"btn btn-outline-info btn-block\" onclick=\"ReadEvents($content_id)\">See Details</a>";
-        }*/
-      echo "<hr>
+      /* echo "<hr>
                 <h5 class=\"card-title\">" . $row['content_title'] . "</h5>
                 <span class=\"badge badge-info\">$eventDate</span>
                 <p class=\"card-text\">" . $row['content_description'] . "</p>
                 <a href=\"#\" class=\"btn btn-outline-info btn-block\" onclick=\"ReadEvents($content_id)\">See Details</a>";
-      $today = date("d-m-Y"); //todays date Year-mth-day
+      $today = date("d-m-Y"); //todays date Year-mth-day*/
       //only show events that are not expired
       if ($eventDate >= $today) {
         echo "<hr>
@@ -172,12 +155,11 @@ class Content
         <span class=\"badge badge-ngreen\">$eventDate</span>
         <p class=\"card-text\">" . $row['content_description'] . "</p>
         <a href=\"#\" class=\"btn btn-outline-ngreen btn-block\" onclick=\"ReadEvents($content_id)\">See Details</a>";
-      }
-      else{
+      } else {
         $IsThereEvents = false;
       }
     }
-    if (!$IsThereEvents){
+    if (!$IsThereEvents) {
       echo "<div class=\"card-no-events\" ><div class=\"container text-secondary text-center\">
       <h1><i class=\"bi bi-calendar-x-fill\"></i></h1>
       <h5>No events scheduled for now</h5>
@@ -213,12 +195,11 @@ class Content
     //important for pagination. DON'T DELETE!
     if (isset($_GET["page"])) {
       $page = $_GET["page"];
-    }
-    else{ 
-        $page=1;
+    } else {
+      $page = 1;
     }
     //important for pagination. DON'T DELETE!
-    $start_from = ($page-1) * $limit;
+    $start_from = ($page - 1) * $limit;
 
     $con = $GLOBALS['con'];
     $resource_id = self::getResourceIdByResourceName($resourceName);
@@ -382,12 +363,13 @@ class Content
     mysqli_query($con, $sql);
   }
   //check if notifications are on or not
-  public static function checkNotificationsOn(){
+  public static function checkNotificationsOn()
+  {
     $user = $_SESSION["staff_id"];
     $con = $GLOBALS["con"];
     $sql = "select notificationsOn from user where staff_id = $user";
-    $result = mysqli_query($con,$sql); 
-    $row = mysqli_fetch_assoc($result); 
+    $result = mysqli_query($con, $sql);
+    $row = mysqli_fetch_assoc($result);
     return $row["notificationsOn"];
   }
   //send number of unread notifications to notification bubble
@@ -416,12 +398,11 @@ class Content
     //important for pagination. DON'T DELETE!
     if (isset($_GET["page"])) {
       $page = $_GET["page"];
-    }
-    else{ 
-      $page=1;
+    } else {
+      $page = 1;
     }
     //important for pagination. DON'T DELETE!
-    $start_from = ($page-1) * $limit;
+    $start_from = ($page - 1) * $limit;
 
     $con = $GLOBALS["con"];
     $sql = "select date_created, resource_id, content_id, content_title, content_description from content order by date_created DESC LIMIT $start_from, $limit";
@@ -452,11 +433,11 @@ class Content
     echo $result;
   }
   public static function bellNotifications()
-  { 
+  {
     $on = self::checkNotificationsOn();
 
     if ($on == "on") {
-      $con = $GLOBALS["con"];   
+      $con = $GLOBALS["con"];
       $sql = "select date_created, resource_id, content_id, content_title, content_description from content order by date_created desc limit 3";
       $string = "";
       $result = mysqli_query($con, $sql);
@@ -589,16 +570,17 @@ class Content
     }
   }
 
-  public static function pagePagination($table, $limit, $linkname){
+  public static function pagePagination($table, $limit, $linkname)
+  {
     $con = $GLOBALS["con"];
-    $result_db = mysqli_query($con,"SELECT COUNT($table"."_id) FROM $table"); 
-    $row_db = mysqli_fetch_row($result_db);  
-    $total_records = $row_db[0];  
+    $result_db = mysqli_query($con, "SELECT COUNT($table" . "_id) FROM $table");
+    $row_db = mysqli_fetch_row($result_db);
+    $total_records = $row_db[0];
     $total_pages = ceil($total_records / $limit);
 
-    $pagLink = "<div class=\"container d-flex justify-content-center\"><div class=\"row text-center\"><ul class=\"pagination\">";  
-    for ($i=1; $i<=$total_pages; $i++) {
-      $pagLink .= "<li class=\"page-item\"><a class=\"page-link bg-white text-ngreen\" href=\"".$linkname.".php?page=".$i."\">".$i."</a></li>";
+    $pagLink = "<div class=\"container d-flex justify-content-center\"><div class=\"row text-center\"><ul class=\"pagination\">";
+    for ($i = 1; $i <= $total_pages; $i++) {
+      $pagLink .= "<li class=\"page-item\"><a class=\"page-link bg-white text-ngreen\" href=\"" . $linkname . ".php?page=" . $i . "\">" . $i . "</a></li>";
     }
     $pagLink .= "</ul></div></div>";
     return $pagLink;
