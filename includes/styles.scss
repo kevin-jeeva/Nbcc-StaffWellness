@@ -253,6 +253,16 @@ footer.footer {
   padding-bottom: 4rem;
 }
 
+.img-login-footer img {
+  width: 7%;
+  padding-bottom: 1rem;
+}
+
+.img-footer img {
+  width: 10%;
+  padding-bottom: 1rem;
+}
+
 .error {
   white-space: pre-line;
   text-shadow: 1px 1px 2px red;
@@ -277,10 +287,6 @@ footer.footer {
 .modal-body-img {
   width: 10%;
   height: 10%;
-}
-
-.footer-logo img {
-  width: 10%;
 }
 
 /* For Administration panel lists */
@@ -416,8 +422,11 @@ a.new-btn.btn-sm.btn-nblue {
     left: 38px;
     top: -52px;
   }
-  .footer-logo img {
-    width: 20%;
+  .img-login-footer img {
+    width: 14%;
+  }
+  .img-footer img {
+    width: 14%;
   }
 }
 

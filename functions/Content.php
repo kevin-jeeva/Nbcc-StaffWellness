@@ -78,26 +78,22 @@ class Content
   }
 
   //get all events
-  static function getAllEvents()
+  static function getAllEvents($limit)
   {
-    if (isset($_GET['pageno'])) {
-      $pageno = $_GET['pageno'];
-    } else {
-      $pageno = 1;
+    //important for pagination. DON'T DELETE!
+    if (isset($_GET["page"])) {
+      $page = $_GET["page"];
     }
-
-    //important variables for pagination
-    $no_of_records_per_page = 12;
-    $offset = ($pageno - 1) * $no_of_records_per_page;
+    else{ 
+      $page=1;
+    }
+    //important for pagination. DON'T DELETE!
+    $start_from = ($page-1) * $limit;
 
     $IsThereEvents = true;
     $con = $GLOBALS['con'];
     $resource_id = self::getResourceIdByResourceName('events');
-    $sql = "SELECT content_id, content_title, content_text, content_description, date_format(event_date, '%m/%d/%y') as event_date FROM content WHERE resource_id = $resource_id ORDER BY event_date LIMIT $offset, $no_of_records_per_page";
-    $total_pages_sql = "SELECT COUNT(*) FROM content WHERE resource_id = $resource_id";
-    $result = mysqli_query($con, $total_pages_sql);
-    $total_rows = mysqli_fetch_array($result)[0];
-    $total_pages = ceil($total_rows / $no_of_records_per_page);
+    $sql = "SELECT content_id, content_title, content_text, content_description, date_format(event_date, '%m/%d/%y') as event_date FROM content WHERE resource_id = $resource_id ORDER BY event_date DESC LIMIT $start_from, $limit";
 
     $result = mysqli_query($con, $sql);
     while ($row = mysqli_fetch_assoc($result)) {
@@ -127,44 +123,9 @@ class Content
       </div></div>";
     }
 
-    //Print the first page link
-    echo "<div class=\"container\"><div class=\"pagination-row row\"><ul class=\"pagination mx-auto\"><li class=\"page-item\"><a class=\"page-link\" href=\"?pageno=1\">First Page</a></li>";
-
-    // These actions will happen if the user access the previous page
-    if ($pageno <= 1) {
-      echo "<li class=\"page-item disabled\"><a class=\"page-link\" href=\"";
-    } else {
-      echo "<li class=\"page-item\">'";
-    }
-    if ($pageno <= 1) {
-      echo "#\">Prev</a></li>";
-    } else {
-      echo "?pageno=" . ($pageno - 1) . "\">Prev</a></li>";
-    }
-
-    // These actions will happen if the user access the next page
-    if ($pageno >= $total_pages) {
-      echo "<li class=\"page-item disabled\"><a class=\"page-link\" href=\"";
-    } else {
-      echo "<li class=\"page-item\">'";
-    }
-    if ($pageno >= $total_pages) {
-      echo "#\">Next</a></li>";
-    } else {
-      echo "?pageno=" . ($pageno + 1) . "\">Next</a></li>";
-    }
-
-    // These actions will happen if the user access the last page
-    if ($total_pages <= 1) {
-      echo "<li class=\"page-item disabled\"><a class=\"page-link\" href=\"";
-    } else {
-      echo "<li class=\"page-item\">'";
-    }
-    if ($pageno >= $total_pages) {
-      echo "#\">Last Page</a></li>";
-    } else {
-      echo "?pageno=" . $total_pages . "\">Last Page</a></li></ul></div></div>";
-    }
+    //pagination function: Parameters (table's name, articles number limit, link path (without '.php'))
+    $result = self::pagePagination("content", $limit, "events");
+    echo $result;
   }
 
 
@@ -223,26 +184,21 @@ class Content
   }
 
   //get all articles to display on each resource page (e.g. articles.php)
-  static function getAllArticles($resourceName)
+  static function getAllArticles($resourceName, $limit)
   {
-    if (isset($_GET['pageno'])) {
-      $pageno = $_GET['pageno'];
-    } else {
-      $pageno = 1;
+    //important for pagination. DON'T DELETE!
+    if (isset($_GET["page"])) {
+      $page = $_GET["page"];
     }
-
-    //important variables for pagination
-    $no_of_records_per_page = 10;
-    $offset = ($pageno - 1) * $no_of_records_per_page;
+    else{ 
+        $page=1;
+    }
+    //important for pagination. DON'T DELETE!
+    $start_from = ($page-1) * $limit;
 
     $con = $GLOBALS['con'];
     $resource_id = self::getResourceIdByResourceName($resourceName);
-    $sql = "SELECT content_id, content_title, content_text, content_description, date_format(date_created, '%m/%d/%y') as date_created FROM content WHERE resource_id = $resource_id ORDER BY date_created DESC LIMIT $offset, $no_of_records_per_page";
-
-    $total_pages_sql = "SELECT COUNT(*) FROM content WHERE resource_id = $resource_id";
-    $result = mysqli_query($con, $total_pages_sql);
-    $total_rows = mysqli_fetch_array($result)[0];
-    $total_pages = ceil($total_rows / $no_of_records_per_page);
+    $sql = "SELECT content_id, content_title, content_text, content_description, date_format(date_created, '%m/%d/%y') as date_created FROM content WHERE resource_id = $resource_id ORDER BY date_created DESC LIMIT $start_from, $limit";
 
     $result = mysqli_query($con, $sql);
     while ($row = mysqli_fetch_assoc($result)) {
@@ -256,44 +212,9 @@ class Content
           </div>";
     }
 
-    //Print the first page link
-    echo "<ul class=\"pagination\"><li class=\"page-item\"><a class=\"page-link bg-ngreen text-white\" href=\"?pageno=1\">First Page</a></li>";
-
-    // These actions will happen if the user access the previous page
-    if ($pageno <= 1) {
-      echo "<li class=\"page-item disabled\"><a class=\"page-link\" href=\"";
-    } else {
-      echo "<li class=\"page-item\">'";
-    }
-    if ($pageno <= 1) {
-      echo "#\">Prev</a></li>";
-    } else {
-      echo "?pageno=" . ($pageno - 1) . "\">Prev</a></li>";
-    }
-
-    // These actions will happen if the user access the next page
-    if ($pageno >= $total_pages) {
-      echo "<li class=\"page-item disabled\"><a class=\"page-link\" href=\"";
-    } else {
-      echo "<li class=\"page-item\">'";
-    }
-    if ($pageno >= $total_pages) {
-      echo "#\">Next</a></li>";
-    } else {
-      echo "?pageno=" . ($pageno + 1) . "\">Next</a></li>";
-    }
-
-    // These actions will happen if the user access the last page
-    if ($total_pages <= 1) {
-      echo "<li class=\"page-item disabled\"><a class=\"page-link\" href=\"";
-    } else {
-      echo "<li class=\"page-item\">'";
-    }
-    if ($pageno >= $total_pages) {
-      echo "#\">Last Page</a></li>";
-    } else {
-      echo "?pageno=" . $total_pages . "\">Last Page</a></li></ul>";
-    }
+    //pagination function: Parameters (table's name, articles number limit, link path (without '.php'))
+    $result = self::pagePagination("content", $limit, "articles");
+    echo $result;
   }
 
   static function getContentById($content_id)
@@ -454,23 +375,21 @@ class Content
       }
     }
   }
-  public static function getContentNotifications()
+
+  public static function getContentNotifications($limit)
   {
-    if (isset($_GET['pageno'])) {
-      $pageno = $_GET['pageno'];
-    } else {
-      $pageno = 1;
+    //important for pagination. DON'T DELETE!
+    if (isset($_GET["page"])) {
+      $page = $_GET["page"];
     }
-    $no_of_records_per_page = 12;
-    $offset = ($pageno - 1) * $no_of_records_per_page;
+    else{ 
+      $page=1;
+    }
+    //important for pagination. DON'T DELETE!
+    $start_from = ($page-1) * $limit;
 
     $con = $GLOBALS["con"];
-    $sql = "select date_created, resource_id, content_id, content_title, content_description from content order by date_created desc";
-
-    $total_pages_sql = "SELECT COUNT(*) FROM content";
-    $result = mysqli_query($con, $total_pages_sql);
-    $total_rows = mysqli_fetch_array($result)[0];
-    $total_pages = ceil($total_rows / $no_of_records_per_page);
+    $sql = "select date_created, resource_id, content_id, content_title, content_description from content order by date_created DESC LIMIT $start_from, $limit";
 
     $result = mysqli_query($con, $sql);
     while ($row = mysqli_fetch_assoc($result)) {
@@ -493,45 +412,11 @@ class Content
           </div>";
     }
 
-    //Print the first page link
-    echo "<div class=\"container\"><div class=\"pagination-row row\"><ul class=\"pagination mx-auto\"><li class=\"page-item\"><a class=\"page-link\" href=\"?pageno=1\">First Page</a></li>";
-
-    // These actions will happen if the user access the previous page
-    if ($pageno <= 1) {
-      echo "<li class=\"page-item disabled\"><a class=\"page-link\" href=\"";
-    } else {
-      echo "<li class=\"page-item\">'";
-    }
-    if ($pageno <= 1) {
-      echo "#\">Prev</a></li>";
-    } else {
-      echo "?pageno=" . ($pageno - 1) . "\">Prev</a></li>";
-    }
-
-    // These actions will happen if the user access the next page
-    if ($pageno >= $total_pages) {
-      echo "<li class=\"page-item disabled\"><a class=\"page-link\" href=\"";
-    } else {
-      echo "<li class=\"page-item\">'";
-    }
-    if ($pageno >= $total_pages) {
-      echo "#\">Next</a></li>";
-    } else {
-      echo "?pageno=" . ($pageno + 1) . "\">Next</a></li>";
-    }
-
-    // These actions will happen if the user access the last page
-    if ($total_pages <= 1) {
-      echo "<li class=\"page-item disabled\"><a class=\"page-link\" href=\"";
-    } else {
-      echo "<li class=\"page-item\">'";
-    }
-    if ($pageno >= $total_pages) {
-      echo "#\">Last Page</a></li>";
-    } else {
-      echo "?pageno=" . $total_pages . "\">Last Page</a></li></ul></div></div>";
-    }
+    //pagination function: Parameters (table's name, articles number limit, link path (without '.php'))
+    $result = self::pagePagination("content", $limit, "notifications");
+    echo $result;
   }
+
   public static function bellNotifications($on)
   {
     if ($on == "on") {
@@ -667,5 +552,20 @@ class Content
     } else {
       return false;
     }
+  }
+
+  public static function pagePagination($table, $limit, $linkname){
+    $con = $GLOBALS["con"];
+    $result_db = mysqli_query($con,"SELECT COUNT($table"."_id) FROM $table"); 
+    $row_db = mysqli_fetch_row($result_db);  
+    $total_records = $row_db[0];  
+    $total_pages = ceil($total_records / $limit);
+
+    $pagLink = "<div class=\"container d-flex justify-content-center\"><div class=\"row text-center\"><ul class=\"pagination\">";  
+    for ($i=1; $i<=$total_pages; $i++) {
+      $pagLink .= "<li class=\"page-item\"><a class=\"page-link bg-white text-ngreen\" href=\"".$linkname.".php?page=".$i."\">".$i."</a></li>";
+    }
+    $pagLink .= "</ul></div></div>";
+    return $pagLink;
   }
 }

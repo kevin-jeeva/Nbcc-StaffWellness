@@ -30,6 +30,7 @@ echo "<!-- Footer -->
 	        <p class=\"text-muted small mb-4 mb-lg-0\">&copy; NBCC Welbeing App 2021. All Rights Reserved.</p>
 	      </div>
 	      <div class=\"footer-logo col-lg-6 h-100 text-center text-lg-right my-auto\">
+		  	<div class=\"img-footer\">
 	      	<a href=\"https://nbcc.ca\" target=\"_blank\"><img src=\"includes/imgs/nbcc-logo.png\" alt=\"NBCC Logo\"></a>
 	      </div>
 	    </div>

@@ -109,11 +109,11 @@ if (isset($_SESSION["staff_id"]) && $_SESSION["staff_id"] != "") {
 	<!-- Footer -->
 	<footer class="footer bg-light">
 	  <div class="container">
-	    <div class="row justify-content-center">
-	      <div class="text-center">
-	      	<img src="includes/imgs/nbcc-logo.png" width="40%">
+	    <div class="img-login-footer text-center">
+			<a href="https://nbcc.ca" target="_blank"><img src="includes/imgs/nbcc-logo.png"></a>
+		</div>
+		<div class="row justify-content-center">
 			<p class="text-muted small">&copy; NBCC Welbeing App 2020. All Rights Reserved.</p>
-	      </div>
 	    </div> <!-- End of row-->
 	  
 	  </div> <!-- End of container-->
