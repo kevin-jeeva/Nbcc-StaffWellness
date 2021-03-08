@@ -19,6 +19,7 @@ if(staff::GetStaffAdminNumber($_SESSION["staff_id"]) == 1 || staff::GetStaffAdmi
 		<a class=\"dropdown-item\" href=\"new_video.php\">Create New Video</a>
 		<a class=\"dropdown-item\" href=\"new_sound.php\">Create New Audio</a>
 		<a class=\"dropdown-item\" href=\"active_users.php\">User Permissions</a>
+		<a class=\"dropdown-item\" href=\"user_progress.php\">User Progress</a>
 		<div class=\"dropdown-divider\"></div>
 		<a class=\"dropdown-item text-danger\" href=\"functions/logout.php\">Log out</a>
 		</li>";
@@ -26,7 +27,7 @@ if(staff::GetStaffAdminNumber($_SESSION["staff_id"]) == 1 || staff::GetStaffAdmi
 
 echo "<!-- Navigation -->
   <script src=\"functions/notifications.js\"></script>
-	<nav class=\"navbar navbar-expand-lg navbar-light bg-light sticky-top\">
+	<nav class=\"navbar navbar-expand-lg navbar-dark bg-nblue sticky-top\">
 	<div class=\"container\">
 
 		<a class=\"navbar-brand\" href=\"index.php\">APP Logo</a>

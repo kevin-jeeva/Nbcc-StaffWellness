@@ -16,5 +16,8 @@
   "bugs": {
     "url": "https://gitlab.com/bmcclary/nbcc_staffwellness/issues"
   },
-  "homepage": "https://gitlab.com/bmcclary/nbcc_staffwellness#readme"
+  "homepage": "https://gitlab.com/bmcclary/nbcc_staffwellness#readme",
+  "devDependencies": {
+    "prettier": "2.2.1"
+  }
 }

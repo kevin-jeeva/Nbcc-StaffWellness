@@ -178,8 +178,12 @@ class staff {
         }
     }
     
-    static function getStaffByUserID($userEmail) {
-        
+    public static function GetStaff() 
+    {
+        $con = $GLOBALS["con"];
+        $sql = "Select * from user";
+        $result = mysqli_query($con,$sql);
+        return $result;
     }
 
     public static function GetStaffAdminNumber($staffId)
@@ -526,4 +530,6 @@ class staff {
         }      
         return false;       
     }
+
+
 }
