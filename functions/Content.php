@@ -92,7 +92,7 @@ class Content
     $IsThereEvents = true;
     $con = $GLOBALS['con'];
     $resource_id = self::getResourceIdByResourceName('events');
-    $sql = "SELECT content_id, content_title, content_text, content_description, date_format(event_date, '%m/%d/%y') as event_date FROM content WHERE resource_id = $resource_id ORDER BY event_date LIMIT $start_from, $limit";
+    $sql = "SELECT content_id, content_title, content_text, content_description, date_format(event_date, '%m/%d/%Y') as event_date FROM content WHERE resource_id = $resource_id ORDER BY event_date LIMIT $start_from, $limit";
     $result = mysqli_query($con, $sql);
 
     //if the SQL query returns any rows...
