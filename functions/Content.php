@@ -94,12 +94,11 @@ class Content
     $resource_id = self::getResourceIdByResourceName('events');
     $sql = "SELECT content_id, content_title, content_text, content_description, date_format(event_date, '%m/%d/%y') as event_date FROM content WHERE resource_id = $resource_id ORDER BY event_date DESC LIMIT $start_from, $limit";
 
-    echo $sql;
     $result = mysqli_query($con, $sql);
     while ($row = mysqli_fetch_assoc($result)) {
       $content_id = $row["content_id"];
       $eventDate = $row["event_date"];
-      $today = date("d-m-Y"); //todays date Year-mth-day
+      $today = date("m/d/Y"); //date format: month/day/year (Same format as DB eventDate)
       //only show events that are not expired
       if ($eventDate >= $today) {
         echo "
@@ -111,7 +110,7 @@ class Content
            <a href=\"#\" class=\"btn btn-outline-ngreen btn-block\" onclick=\"ReadArticle($content_id)\">Read More</a>
            </div></div>";
       } else {
-        // $IsThereEvents = false;
+         $IsThereEvents = false;
       }
     }
     if (!$IsThereEvents) {
