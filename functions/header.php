@@ -54,10 +54,12 @@ echo "<!-- Navigation -->
 	<div class=\"container\">
 
 		<a class=\"navbar-brand\" href=\"index.php\">APP Logo</a>
-		<div class=\"d-block d-sm-none\" id=\"notifDiv\">
+		<div class=\"d-block d-sm-none ml-auto\" id=\"notifDiv\">
+			<div>
 			$notifications
+			</div>
 		</div>
-	
+		&nbsp &nbsp
 		<button class=\"navbar-toggler\" type=\"button\" data-toggle=\"collapse\" data-target=\"#navbarSupportedContent\" aria-controls=\"navbarSupportedContent\" aria-expanded=\"false\" aria-label=\"Toggle navigation\">
 		<span class=\"navbar-toggler-icon\"></span>
 		</button>
@@ -92,7 +94,7 @@ echo "<!-- Navigation -->
 					
 					$adminDropdown
 					
-					<div class=\".d-none .d-sm-block\" id=\"notifDiv\">
+					<div class=\"d-none d-sm-block\" id=\"notifDiv\">
 						$notifications
 					</div>
 
