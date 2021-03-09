@@ -24,6 +24,29 @@ if(staff::GetStaffAdminNumber($_SESSION["staff_id"]) == 1 || staff::GetStaffAdmi
 		<a class=\"dropdown-item text-danger\" href=\"functions/logout.php\">Log out</a>
 		</li>";
 }
+$notifications = "<div class=\"notifications-place row\">
+<div class=\"notifications row\" >							
+	<div class=\"nav-item\">									
+	<button type=\"button\" class=\"btn btn-ngreen li\" id=\"notifs\" data-toggle=\"popover\" data-placement=\"bottom\" title=\"New contents\" data-trigger=\"focus\" data-param1=\"Parameter1\" onclick=\"resetNotification()\">						
+	<li class=\"bi bi-bell-fill\"></li></button>	
+	<div class=\"notify-container\" id =\"notify-container\">
+		<span class=\"notify-bubble\" id =\"bubble-noti\">" . Content::setNotificationBubble() . "</span>
+	</div>
+	</div>					
+</div>
+</div>
+<script>
+	$(document).ready(function(){
+		var po_options = {
+			html: true,
+			content: function() {
+				var p1 = $(this).data(\"param1\");
+				return `".Content::bellNotifications()." <a href=\"notifications.php\" class=\"btn btn-block btn-outline-ngreen\")\">View More</a>`;
+			}
+		};
+	$('.li').popover(po_options);
+	});
+</script>";
 
 echo "<!-- Navigation -->
   <script src=\"functions/notifications.js\"></script>
@@ -31,6 +54,12 @@ echo "<!-- Navigation -->
 	<div class=\"container\">
 
 		<a class=\"navbar-brand\" href=\"index.php\">APP Logo</a>
+		<div class=\"d-block d-sm-none ml-auto\" id=\"notifDiv\">
+			<div>
+			$notifications
+			</div>
+		</div>
+		&nbsp &nbsp
 		<button class=\"navbar-toggler\" type=\"button\" data-toggle=\"collapse\" data-target=\"#navbarSupportedContent\" aria-controls=\"navbarSupportedContent\" aria-expanded=\"false\" aria-label=\"Toggle navigation\">
 		<span class=\"navbar-toggler-icon\"></span>
 		</button>
@@ -64,34 +93,10 @@ echo "<!-- Navigation -->
 			  		</li>
 					
 					$adminDropdown
-					<div class=\"notifications-place row\">
-					<div class=\"notifications row\" >							
-						<li class=\"nav-item\">									
-						<button type=\"button\" class=\"btn btn-ngreen li\" id=\"notifs\" data-toggle=\"popover\" data-placement=\"bottom\" title=\"New contents\" data-trigger=\"focus\" data-param1=\"Parameter1\" onclick=\"resetNotification()\">						
-						<i class=\"bi bi-bell-fill\"></i></button>	
-						<li class=\"notify-container\" id =\"notify-container\">
-							<span class=\"notify-bubble\" id =\"bubble-noti\">" . Content::setNotificationBubble() . "</span>
-						</li>
-						</li>					
+					
+					<div class=\"d-none d-sm-block\" id=\"notifDiv\">
+						$notifications
 					</div>
-					</div>
-					<script>
-					$(document).ready(function(){
-					var po_options = {
-					html: true,
-					content: function() {
-						var p1 = $(this).data(\"param1\");
-						return `".Content::bellNotifications()." <a href=\"notifications.php\" class=\"btn btn-block btn-outline-ngreen\")\">View More</a>`;
-					}
-					};
-
-					$('.li').popover(po_options);
-
-					});
-					</script>
-					<script>					
-					</script>
-
 
 					</div>
 				</ul>
