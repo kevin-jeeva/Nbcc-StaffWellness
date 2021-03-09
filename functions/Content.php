@@ -132,7 +132,7 @@ class Content
   {
     $IsThereEvents = true;
     $con = $GLOBALS['con'];
-    $today = date("d-m-Y"); //todays date Year-mth-day
+    $today = date("m/d/Y"); //date format: month/day/year (Same format as DB eventDate)
 
     $resource_id = self::getResourceIdByResourceName('events');
     $sql = "SELECT content_id,content_title, content_description, date_format(event_date, '%m/%d/%y') as event_date FROM content WHERE resource_id = $resource_id ORDER BY event_date DESC LIMIT 2";
@@ -141,13 +141,6 @@ class Content
     while ($row = mysqli_fetch_assoc($result)) {
       $content_id = $row["content_id"];
       $eventDate = $row["event_date"];
-      /* echo "<hr>
-                <h5 class=\"card-title\">" . $row['content_title'] . "</h5>
-                <span class=\"badge badge-info\">$eventDate</span>
-                <p class=\"card-text\">" . $row['content_description'] . "</p>
-                <a href=\"#\" class=\"btn btn-outline-info btn-block\" onclick=\"ReadEvents($content_id)\">See Details</a>";
-      $today = date("d-m-Y"); //todays date Year-mth-day*/
-      //only show events that are not expired
       if ($eventDate >= $today) {
         echo "<hr>
         <h5 class=\"card-title\">" . $row['content_title'] . "</h5>
