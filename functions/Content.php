@@ -96,12 +96,12 @@ class Content
     $result = mysqli_query($con, $sql);
 
     //if the SQL query returns any rows...
-    if ($result){
+    if ($result) {
       while ($row = mysqli_fetch_assoc($result)) {
         $content_id = $row["content_id"];
         $eventDate = $row["event_date"];
         $today = date("m/d/Y"); //date format: month/day/year (Same format as DB eventDate)
-        
+
         //only show events that are not expired
         if ($eventDate >= $today) {
           echo "
@@ -117,14 +117,14 @@ class Content
     } else {
       $IsThereEvents = false;
     }
-    
+
     if (!$IsThereEvents) {
       echo "<div class=\"events-tile card shadow-sm p-2 m-1\">
       <div class=\"card-body text-secondary\">
       <h1><i class=\"bi bi-calendar-x-fill\"></i></h1>
       <h3 class=\"card-title\">No events scheduled for now</h3>
       </div></div>";
-    } 
+    }
 
     //pagination function: Parameters (table's name, articles number limit, link path (without '.php'))
     $result = self::pagePagination("content", $limit, "events");
@@ -135,24 +135,30 @@ class Content
   //get next events limited by the user
   static function getNextEvents($limit)
   {
+    $today = date("m/d/Y"); //date format: month/day/year (Same format as DB eventDate)
     $IsThereEvents = true;
     $con = $GLOBALS['con'];
     $resource_id = self::getResourceIdByResourceName('events');
     $sql = "SELECT content_id, content_title, content_text, content_description, event_date FROM content WHERE resource_id = $resource_id AND event_date >= curdate() order by event_date asc LIMIT $limit";
     $result = mysqli_query($con, $sql);
-
-    if ($result){
-      while ($row = mysqli_fetch_assoc($result)) {
-        $content_id = $row["content_id"];
-        $eventDate = new DateTime($row["event_date"]);
-        $eventDate = date_format($eventDate, "m/d/Y");
+    if ($result) {
+      $row = mysqli_fetch_assoc($result);
+      $datediff = strtotime($row["event_date"]) - strtotime($today); //event - currentDate
+      $sqlNextTwo = "SELECT content_id, content_title, content_text, content_description, event_date FROM content WHERE resource_id = $resource_id AND event_date >= curdate() order by $datediff asc LIMIT $limit";
+      $resultNextTwo = mysqli_query($con, $sql);
+      if ($resultNextTwo) {
+        while ($row = mysqli_fetch_assoc($resultNextTwo)) {
+          $content_id = $row["content_id"];
+          $eventDate = new DateTime($row["event_date"]);
+          $eventDate = date_format($eventDate, "m/d/Y");
           echo "
           <hr>
           <h5 class=\"card-title\">" . $row['content_title'] . "</h5>
           <span class=\"badge badge-ngreen\">$eventDate</span>
           <p class=\"card-text\">" . $row['content_description'] . "</p>
           <a href=\"#\" class=\"btn btn-outline-ngreen btn-block\" onclick=\"ReadEvents($content_id)\">See Details</a>";
-      }      
+        }
+      }
     } else {
       $IsThereEvents = false;
     }
@@ -164,6 +170,7 @@ class Content
       </div></div>";
     }
   }
+
 
   //get two newest articles to display on index
   static function getTopArticles($limit)
