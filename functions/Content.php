@@ -598,14 +598,19 @@ class Content
   public static function pagePagination($table, $limit, $linkname)
   {
     $con = $GLOBALS["con"];
-    $result_db = mysqli_query($con, "SELECT COUNT($table" . "_id) FROM $table");
+    $sql = "SELECT COUNT(" . $table ."_id) FROM " . $table;
+    $result_db = mysqli_query($con, $sql);
     $row_db = mysqli_fetch_row($result_db);
     $total_records = $row_db[0];
     $total_pages = ceil($total_records / $limit);
 
     $pagLink = "<div class=\"container d-flex justify-content-center\"><div class=\"row text-center\"><ul class=\"pagination\">";
-    for ($i = 1; $i <= $total_pages; $i++) {
-      $pagLink .= "<li class=\"page-item\"><a class=\"page-link bg-white text-ngreen\" href=\"" . $linkname . ".php?page=" . $i . "\">" . $i . "</a></li>";
+    if ($total_pages = 1){
+      $pagLink .= "<li class=\"page-item\"><a class=\"page-link bg-white text-ngreen\" href=\"" . $linkname . ".php?page=" . 1 . "\">" . 1 . "</a></li>";
+    } else {
+      for ($i = 1; $i <= $total_pages; $i++) {
+        $pagLink .= "<li class=\"page-item\"><a class=\"page-link bg-white text-ngreen\" href=\"" . $linkname . ".php?page=" . $i . "\">" . $i . "</a></li>";
+      }
     }
     $pagLink .= "</ul></div></div>";
     return $pagLink;
