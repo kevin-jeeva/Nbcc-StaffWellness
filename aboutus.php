@@ -52,9 +52,7 @@
 
 		  	<!--Contact Sector (Main) -->
 		    <div class="the-content col-md-8">
-		    	<p>Email:<a href="mailto:nbcc@nbcc.ca"> nbcc@nbcc.ca</a></p>
-                <p>Call Campuses: (506) 460-6222</p>
-                <p> 284 Smythe Street Fredericton, NB</p>
+				<?php Content::getAboutUsArticle('articles', 'About Us') ?>
 		    </div>
 
 		    <!--Sidebar (Links, Menus and other info) -->
