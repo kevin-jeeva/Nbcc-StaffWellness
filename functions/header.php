@@ -27,8 +27,8 @@ if(staff::GetStaffAdminNumber($_SESSION["staff_id"]) == 1 || staff::GetStaffAdmi
 $notifications = "<div class=\"notifications-place row\">
 <div class=\"notifications row\" >							
 	<div class=\"nav-item\">									
-	<button tabindex=\"-1\" type=\"button\" class=\"btn btn-light li\" id=\"notifs\" data-toggle=\"popover\" data-placement=\"bottom\" data-trigger=\"focus\" title=\"New contents\" data-trigger=\"focus\" data-param1=\"Parameter1\" onclick=\"resetNotification()\">						
-	<li class=\"bi bi-bell-fill text-nblue\"></li></button>	
+	<a tabindex=\"-1\" type=\"button\" class=\"btn btn-light li\" id=\"notifs\" data-toggle=\"popover\" data-placement=\"bottom\" data-trigger=\"focus\" title=\"New contents\" data-trigger=\"focus\" data-param1=\"Parameter1\" onclick=\"resetNotification()\">						
+	<li class=\"bi bi-bell-fill text-nblue\"></li></a>	
 	<div class=\"notify-container\" id =\"notify-container\">
 		<span class=\"notify-bubble\" id =\"bubble-noti\">" . Content::setNotificationBubble() . "</span>
 	</div>
