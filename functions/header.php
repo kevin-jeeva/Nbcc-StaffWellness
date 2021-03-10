@@ -27,8 +27,8 @@ if(staff::GetStaffAdminNumber($_SESSION["staff_id"]) == 1 || staff::GetStaffAdmi
 $notifications = "<div class=\"notifications-place row\">
 <div class=\"notifications row\" >							
 	<div class=\"nav-item\">									
-	<button type=\"button\" class=\"btn btn-ngreen li\" id=\"notifs\" data-toggle=\"popover\" data-placement=\"bottom\" title=\"New contents\" data-trigger=\"focus\" data-param1=\"Parameter1\" onclick=\"resetNotification()\">						
-	<li class=\"bi bi-bell-fill\"></li></button>	
+	<button type=\"button\" class=\"btn btn-light li\" id=\"notifs\" data-toggle=\"popover\" data-placement=\"bottom\" title=\"New contents\" data-trigger=\"focus\" data-param1=\"Parameter1\" onclick=\"resetNotification()\">						
+	<li class=\"bi bi-bell-fill text-nblue\"></li></button>	
 	<div class=\"notify-container\" id =\"notify-container\">
 		<span class=\"notify-bubble\" id =\"bubble-noti\">" . Content::setNotificationBubble() . "</span>
 	</div>
@@ -41,7 +41,7 @@ $notifications = "<div class=\"notifications-place row\">
 			html: true,
 			content: function() {
 				var p1 = $(this).data(\"param1\");
-				return `".Content::bellNotifications()." <a href=\"notifications.php\" class=\"btn btn-block btn-outline-ngreen\")\">View More</a>`;
+				return `".Content::bellNotifications()." <a href=\"notifications.php\" class=\"btn btn-block btn-outline-nblue\")\">View More</a>`;
 			}
 		};
 	$('.li').popover(po_options);

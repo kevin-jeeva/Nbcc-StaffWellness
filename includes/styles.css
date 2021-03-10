@@ -7949,8 +7949,14 @@ a.new-btn.btn-sm.btn-nblue, .btn-group-sm > a.new-btn.btn-nblue.btn {
   list-style-type: none;
   padding-left: 4px; }
 
+a.nav-link {
+  color: rgba(255, 255, 255, 0.8) !important; }
+
+a.nav-link:hover {
+  color: white !important; }
+
 .dropdown-item.active, .dropdown-item:active {
-  background: #829600 !important; }
+  background: #007599 !important; }
 
 #userBtn {
   border: 5em; }

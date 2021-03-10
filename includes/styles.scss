@@ -439,8 +439,16 @@ a.new-btn.btn-sm.btn-nblue {
   padding-left: 4px;
 }
 
+a.nav-link{
+  color:rgba(255, 255, 255, 0.8) !important;
+}
+
+a.nav-link:hover{
+  color:rgba(255, 255, 255, 1) !important;
+}
+
 .dropdown-item.active, .dropdown-item:active{
-  background: #829600 !important;
+  background: #007599 !important;
 }
 
 #userBtn {
