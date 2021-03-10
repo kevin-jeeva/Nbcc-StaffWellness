@@ -73,14 +73,15 @@ echo "<!-- Navigation -->
 				    <a class=\"nav-link dropdown-toggle\" href=\"#\" id=\"navbarDropdown\" role=\"button\" data-toggle=\"dropdown\" aria-haspopup=\"true\" aria-expanded=\"false\">Exercises</a>
 				    <div class=\"dropdown-menu\" aria-labelledby=\"navbarDropdown\">
 					<a class=\"dropdown-item\" href=\"exercises_video.php\">Video Exercises</a>
-						<a class=\"dropdown-item\" href=\"sound_exercise.php\">Sound Exercises</a>
+					<a class=\"dropdown-item\" href=\"sound_exercise.php\">Sound Exercises</a>
+					<a class=\"dropdown-item\" href=\"https://choosebright.com/nbcc/\" target=\"_blank\">Bright <i class=\"bi bi-box-arrow-in-up-right\"></i></a>
 				    </div>
 			  	</li> 		
 			  	<li class=\"nav-item\"><a class=\"nav-link\" href=\"support.php\">Support</a></li>
 			</ul>
 		  	<div class=\"navbar-right\">
 		  		<ul class=\"navbar-nav mr-auto markings\">
-			  		<li class=\"nav-item\"><a class=\"nav-link\" href=\"contact.php\">Contact Us</a></li>
+			  		<li class=\"nav-item\"><a class=\"nav-link\" href=\"aboutus.php\">About Us</a></li>
 			  		<li class=\"nav-item dropdown\">
 			  				<a class=\"nav-link dropdown-toggle\" href=\"#\" id=\"navbarDropdown\" role=\"button\" data-toggle=\"dropdown\" aria-haspopup=\"true\" aria-expanded=\"false\">Your Profile</a>
 			  				<div class=\"dropdown-menu\" aria-labelledby=\"navbarDropdown\">

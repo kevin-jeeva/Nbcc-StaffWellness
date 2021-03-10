@@ -25,7 +25,7 @@ echo "
 	            <div class=\"card-body\">
 	            	<h3>Events</h3>
 	              	<p class=\"card-text\">Workshops, activities, lectures... Check out all the events related to wellbeing.</p>
-	              <a href=\"#\" class=\"btn btn-outline-ngreen btn-block\">Access Events</a>
+	              <a href=\"events.php\" class=\"btn btn-outline-ngreen btn-block\">Access Events</a>
 	            </div>
 	          </div>
 	        </div>
@@ -36,9 +36,9 @@ echo "
 			  <div class=\"card\">
 				<img src=\"includes/imgs/4-wellbeing-support.jpg\" class=\"card-img-top\" alt=\"...\">
 				<div class=\"card-body\">
-					<h3>Support</h3>
-					  <p class=\"card-text\">Check out the Occupational Health programs that the NBCC can offer.</p>
-					  <a href=\"events.php\" class=\"btn btn-outline-ngreen btn-block\">Get Support</a>
+					<h3>Crisis Support</h3>
+					  <p class=\"card-text\">Check out the occupational health programs that the NBCC can offer.</p>
+					  <a href=\"support.php\" class=\"btn btn-outline-ngreen btn-block\">Get Support</a>
 				</div>
 			  </div>
 			</div>
@@ -51,7 +51,7 @@ echo "
 	            <div class=\"card-body\">
 	            	<h3>About Us</h3>
 	              	<p class=\"card-text\">Interested about this website? Learn more about the NBCC Wellbeing project.</p>
-	              	<a href=\"contact.php\" class=\"btn btn-outline-ngreen btn-block\">More info</a>
+	              	<a href=\"aboutus.php\" class=\"btn btn-outline-ngreen btn-block\">More info</a>
 	            </div>
 	          </div>
 	        </div>

@@ -18,7 +18,7 @@
 	<meta name="description" content="">
 	<meta name="author" content="">
 
-	<title>Contact</title>
+	<title>About Us</title>
 
 	<!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script> -->
 	<script src="includes/bootstrap-4.5.3-dist/jquery/jquery-3.5.1.slim.min.js"></script>
@@ -41,7 +41,7 @@
     <!-- Article Masterhead -->
 	<div class="jumbotron jumbotron-fluid">
         <div class="container">
-          <h1 class="display-4">Contact Us</h1> 
+          <h1 class="display-4">About Us</h1> 
         </div>
       </div>
   

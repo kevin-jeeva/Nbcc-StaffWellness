@@ -23,7 +23,7 @@ echo "<!-- Footer -->
 	          </li>
 	          <li class=\"list-inline-item\">&sdot;</li>
 	          <li class=\"list-inline-item\">
-	            <a class=\"text-nblue\" href=\"contact.php\">Contact Us</a>
+	            <a class=\"text-nblue\" href=\"aboutus.php\">About Us</a>
 	          </li>
 	          <li></li>
 	        </ul>

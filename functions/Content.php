@@ -227,6 +227,26 @@ class Content
     echo $result;
   }
 
+
+  //get all articles to display on each resource page (e.g. articles.php)
+  static function getSupportArticles($resourceName, $limit)
+  {
+    $con = $GLOBALS['con'];
+    $resource_id = self::getResourceIdByResourceName($resourceName);
+    $sql = "SELECT content_id, content_title, content_text, content_description, date_format(date_created, '%m/%d/%y') as date_created FROM content WHERE resource_id = $resource_id ORDER BY date_created DESC";
+
+    $result = mysqli_query($con, $sql);
+    while ($row = mysqli_fetch_assoc($result)) {
+      $date_created = $row["date_created"];
+      echo "<div class=\"the-content\">
+          <a class=\"text-dark\" href=\"#\"  onclick=\"ReadArticle(" . $row['content_id'] . ")\">
+          <p class=\"h1 text-dark\">" . $row['content_title'] . "</p></a>
+          <hr>
+          <p class=\"content_text\">" . $row['content_text'] . "</p>
+          </div>";
+    }
+  }
+
   static function getContentById($content_id)
   {
     $con = $GLOBALS['con'];
