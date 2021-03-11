@@ -38,26 +38,33 @@ $notifications = "<div class=\"notifications-place row\">
 <script>
 	$(document).ready(function(){
 		var po_options = {
-			html: true,
-			content: function() {
-				var p1 = $(this).data(\"param1\");
-				return `".Content::bellNotifications()." <a href=\"notifications.php\" class=\"btn btn-block btn-outline-nblue\")\">View More</a>`;
-			}
-		};
+		html: true,
+		content: function() {
+			var p1 = $(this).data(\"param1\");
+			return `".Content::bellNotifications()." <a href=\"notifications.php\" class=\"btn btn-block btn-outline-dark\")\">View More</a>`;
+		}
+	};
+
 	$('.li').popover(po_options);
+
 	});
-</script>";
+	$(function() {
+		$('.notifications').click(function() {
+			$('.notify-bubble').hide();
+			return " . Content::resetBubble() . ";
+		});
+	});
+</script>
+";
+
 
 echo "<!-- Navigation -->
   <script src=\"functions/notifications.js\"></script>
 	<nav class=\"navbar navbar-expand-lg navbar-dark bg-nblue sticky-top\">
 	<div class=\"container\">
-
 		<a class=\"navbar-brand\" href=\"index.php\">APP Logo</a>
-		<div class=\"d-block d-sm-none ml-auto\" id=\"notifDiv\">
-			<div>
-			$notifications
-			</div>
+		<div class=\"d-block d-sm-none ml-auto\">
+			$notifications		
 		</div>
 		&nbsp &nbsp
 		<button class=\"navbar-toggler\" type=\"button\" data-toggle=\"collapse\" data-target=\"#navbarSupportedContent\" aria-controls=\"navbarSupportedContent\" aria-expanded=\"false\" aria-label=\"Toggle navigation\">
@@ -98,7 +105,6 @@ echo "<!-- Navigation -->
 					<div class=\"d-none d-sm-block\" id=\"notifDiv\">
 						$notifications
 					</div>
-
 					</div>
 				</ul>
 			</div>

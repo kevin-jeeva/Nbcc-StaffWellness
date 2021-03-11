@@ -7909,6 +7909,7 @@ a.new-btn.btn-sm.btn-nblue, .btn-group-sm > a.new-btn.btn-nblue.btn {
   box-shadow: 1px 1px 1px grey;
   /* display: none; */ }
 
+
 /* Responsive styles */
 @media (min-width: 768px) {
   header.masthead {
