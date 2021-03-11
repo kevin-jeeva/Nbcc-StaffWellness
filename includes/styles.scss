@@ -245,6 +245,7 @@ p.content_text {
 
 .solo-text {
   margin-top: 4rem;
+  font-size: 1.2rem;
 }
 
 footer.footer {
@@ -371,10 +372,10 @@ a.new-btn.btn-sm.btn-nblue {
 
 .notify-bubble {
   position: absolute;
-  top: -16px;
+  top: -30px;
   width: auto;
   height: auto;
-  left: -10px;
+  left: -8px;
   padding: 0em 0.3rem;
   background-color: red;
   color: white;
@@ -446,8 +447,16 @@ a.new-btn.btn-sm.btn-nblue {
   padding-left: 4px;
 }
 
+a.nav-link{
+  color:rgba(255, 255, 255, 0.8) !important;
+}
+
+a.nav-link:hover{
+  color:rgba(255, 255, 255, 1) !important;
+}
+
 .dropdown-item.active, .dropdown-item:active{
-  background: #829600 !important;
+  background: #007599 !important;
 }
 
 #userBtn {

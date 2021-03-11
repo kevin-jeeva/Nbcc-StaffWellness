@@ -27,8 +27,8 @@ if(staff::GetStaffAdminNumber($_SESSION["staff_id"]) == 1 || staff::GetStaffAdmi
 $notifications = "<div class=\"notifications-place row\">
 <div class=\"notifications row\" >							
 	<div class=\"nav-item\">									
-	<button type=\"button\" class=\"btn btn-ngreen li\" id=\"notifs\" data-toggle=\"popover\" data-placement=\"bottom\" title=\"New contents\" data-trigger=\"focus\" data-param1=\"Parameter1\" onclick=\"resetNotification()\">						
-	<li class=\"bi bi-bell-fill\"></li></button>	
+	<a tabindex=\"-1\" type=\"button\" class=\"btn btn-light li\" id=\"notifs\" data-toggle=\"popover\" data-placement=\"bottom\" data-trigger=\"focus\" title=\"New contents\" data-trigger=\"focus\" data-param1=\"Parameter1\" onclick=\"resetNotification()\">						
+	<li class=\"bi bi-bell-fill text-nblue\"></li></a>	
 	<div class=\"notify-container\" id =\"notify-container\">
 		<span class=\"notify-bubble\" id =\"bubble-noti\">" . Content::setNotificationBubble() . "</span>
 	</div>
@@ -80,14 +80,15 @@ echo "<!-- Navigation -->
 				    <a class=\"nav-link dropdown-toggle\" href=\"#\" id=\"navbarDropdown\" role=\"button\" data-toggle=\"dropdown\" aria-haspopup=\"true\" aria-expanded=\"false\">Exercises</a>
 				    <div class=\"dropdown-menu\" aria-labelledby=\"navbarDropdown\">
 					<a class=\"dropdown-item\" href=\"exercises_video.php\">Video Exercises</a>
-						<a class=\"dropdown-item\" href=\"sound_exercise.php\">Sound Exercises</a>
+					<a class=\"dropdown-item\" href=\"sound_exercise.php\">Sound Exercises</a>
+					<a class=\"dropdown-item\" href=\"https://choosebright.com/nbcc/\" target=\"_blank\">Bright <i class=\"bi bi-box-arrow-in-up-right\"></i></a>
 				    </div>
 			  	</li> 		
 			  	<li class=\"nav-item\"><a class=\"nav-link\" href=\"support.php\">Support</a></li>
 			</ul>
 		  	<div class=\"navbar-right\">
 		  		<ul class=\"navbar-nav mr-auto markings\">
-			  		<li class=\"nav-item\"><a class=\"nav-link\" href=\"contact.php\">Contact Us</a></li>
+			  		<li class=\"nav-item\"><a class=\"nav-link\" href=\"aboutus.php\">About Us</a></li>
 			  		<li class=\"nav-item dropdown\">
 			  				<a class=\"nav-link dropdown-toggle\" href=\"#\" id=\"navbarDropdown\" role=\"button\" data-toggle=\"dropdown\" aria-haspopup=\"true\" aria-expanded=\"false\">Your Profile</a>
 			  				<div class=\"dropdown-menu\" aria-labelledby=\"navbarDropdown\">

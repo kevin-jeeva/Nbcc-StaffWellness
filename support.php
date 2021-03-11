@@ -55,7 +55,7 @@
               <!--Calling Content class to retrieve all articles -->
 		     
 		    <div class="the-content col-md-8">
-		    	<?php Content::getAllArticles('support',10) ?>
+		    	<?php Content::getSupportArticles('support', 10) ?>
 		    </div>
 
 		    <!--Sidebar (Links, Menus and other info) -->

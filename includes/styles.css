@@ -7786,7 +7786,8 @@ p.content_text {
   text-decoration: none; }
 
 .solo-text {
-  margin-top: 4rem; }
+  margin-top: 4rem;
+  font-size: 1.2rem; }
 
 footer.footer {
   padding-top: 4rem;
@@ -7896,10 +7897,10 @@ a.new-btn.btn-sm.btn-nblue, .btn-group-sm > a.new-btn.btn-nblue.btn {
 
 .notify-bubble {
   position: absolute;
-  top: -16px;
+  top: -30px;
   width: auto;
   height: auto;
-  left: -10px;
+  left: -8px;
   padding: 0em 0.3rem;
   background-color: red;
   color: white;
@@ -7950,8 +7951,14 @@ a.new-btn.btn-sm.btn-nblue, .btn-group-sm > a.new-btn.btn-nblue.btn {
   list-style-type: none;
   padding-left: 4px; }
 
+a.nav-link {
+  color: rgba(255, 255, 255, 0.8) !important; }
+
+a.nav-link:hover {
+  color: white !important; }
+
 .dropdown-item.active, .dropdown-item:active {
-  background: #829600 !important; }
+  background: #007599 !important; }
 
 #userBtn {
   border: 5em; }
