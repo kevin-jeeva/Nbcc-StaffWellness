@@ -7909,8 +7909,11 @@ a.new-btn.btn-sm.btn-nblue, .btn-group-sm > a.new-btn.btn-nblue.btn {
   box-shadow: 1px 1px 1px grey;
   /* display: none; */ }
 
-
 /* Responsive styles */
+@media (max-width: 767px) {
+  .notifications-place {
+    width: 100% !important; } }
+
 @media (min-width: 768px) {
   header.masthead {
     padding-top: 8rem;
@@ -8068,6 +8071,3 @@ a.nav-link:hover {
 
 .calendar_clear {
   clear: both; }
-
-h2 {
-  text-align: center; }

@@ -63,7 +63,7 @@ if ($_SESSION["active"] == 0) {
 				<!-- Calendar -->
 				<div class="calendar col-md-12">
 				<br><br><br>
-				<h2>Find an event in our calendar</h2>
+				<h2 class="text-center">Find an event in our calendar</h2>
 					<?php
 					//Calendar::show();
 					include('functions/Calendar.php');
