@@ -383,7 +383,14 @@ a.new-btn.btn-sm.btn-nblue {
   box-shadow: 1px 1px 1px grey;
   /* display: none; */
 }
+
+
 /* Responsive styles */
+@media (max-width: 767px){
+  .notifications-place {
+    width: 100% !important;
+  }
+}
 @media (min-width: 768px) {
   header.masthead {
     padding-top: 8rem;

@@ -462,7 +462,6 @@ class Content
       return $string;
     }
   }
-
   public static function CheckResourceID($resource_name)
   {
     $con = $GLOBALS["con"];
