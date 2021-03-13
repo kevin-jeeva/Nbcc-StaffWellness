@@ -54,24 +54,22 @@ if ($_SESSION["active"] == 0) {
 	<section class="main-content">
 		<div class="container">
 			<div class="row">
-				
-				<!--Calling Content class to retrieve all articles -->
-				<?php
-				Content::getAllEvents(12);
-				?>
-
 				<!-- Calendar -->
 				<div class="calendar col-md-12">
-				<br><br><br>
-				<h2 class="text-center">Find an event in our calendar</h2>
 					<?php
-					//Calendar::show();
-					include('functions/Calendar.php');
-					$calendar = new Calendar;
-					$calendar->show();
+						//Calendar::show();
+						include('functions/Calendar.php');
+						$calendar = new Calendar;
+						$calendar->show();
 					?>
 				</div>
+			</div>
 
+			<div class="row">
+				<!--Calling Content class to retrieve all articles -->
+				<?php
+					Content::getAllEvents(12);
+				?>
 			</div> <!-- End of row -->
 		</div> <!-- End of container-->
 		
