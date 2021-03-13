@@ -21,10 +21,6 @@ echo "<!-- Footer -->
 	          <li class=\"list-inline-item\">
 	            <a class=\"text-nblue\" href=\"support.php\">Support</a>
 	          </li>
-	          <li class=\"list-inline-item\">&sdot;</li>
-	          <li class=\"list-inline-item\">
-	            <a class=\"text-nblue\" href=\"aboutus.php\">About Us</a>
-	          </li>
 	          <li></li>
 	        </ul>
 	        <p class=\"text-muted small mb-4 mb-lg-0\">&copy; NBCC Welbeing App 2021. All Rights Reserved.</p>

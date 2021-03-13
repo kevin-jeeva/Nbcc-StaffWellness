@@ -7963,7 +7963,8 @@ a.nav-link:hover {
   color: white !important; }
 
 .dropdown-item.active, .dropdown-item:active {
-  background: #007599 !important; }
+  background: #007599 !important;
+  color: #fff !important; }
 
 #userBtn {
   border: 5em; }
