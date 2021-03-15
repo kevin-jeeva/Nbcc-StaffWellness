@@ -24,13 +24,49 @@ if(staff::GetStaffAdminNumber($_SESSION["staff_id"]) == 1 || staff::GetStaffAdmi
 		<a class=\"dropdown-item text-danger\" href=\"functions/logout.php\">Log out</a>
 		</li>";
 }
+$notifications = "<div class=\"notifications-place row\">
+<div class=\"notifications row\" >							
+	<div class=\"nav-item\">									
+	<a tabindex=\"-1\" type=\"button\" class=\"btn btn-light li\" id=\"notifs\" data-toggle=\"popover\" data-placement=\"bottom\" data-trigger=\"focus\" title=\"New contents\" data-trigger=\"focus\" data-param1=\"Parameter1\" onclick=\"resetNotification()\">						
+	<li class=\"bi bi-bell-fill text-nblue\"></li></a>	
+	<div class=\"notify-container\" id =\"notify-container\">
+		<span class=\"notify-bubble\" id =\"bubble-noti\">" . Content::setNotificationBubble() . "</span>
+	</div>
+	</div>					
+</div>
+</div>
+<script>
+	$(document).ready(function(){
+		var po_options = {
+		html: true,
+		content: function() {
+			var p1 = $(this).data(\"param1\");
+			return `".Content::bellNotifications()." <a href=\"notifications.php\" class=\"btn btn-block btn-outline-dark\")\">View More</a>`;
+		}
+	};
+
+	$('.li').popover(po_options);
+
+	});
+	$(function() {
+		$('.notifications').click(function() {
+			$('.notify-bubble').hide();
+			return " . Content::resetBubble() . ";
+		});
+	});
+</script>
+";
+
 
 echo "<!-- Navigation -->
   <script src=\"functions/notifications.js\"></script>
 	<nav class=\"navbar navbar-expand-lg navbar-dark bg-nblue sticky-top\">
 	<div class=\"container\">
-
 		<a class=\"navbar-brand\" href=\"index.php\">APP Logo</a>
+		<div class=\"d-block d-sm-none ml-auto\">
+			$notifications		
+		</div>
+		&nbsp &nbsp
 		<button class=\"navbar-toggler\" type=\"button\" data-toggle=\"collapse\" data-target=\"#navbarSupportedContent\" aria-controls=\"navbarSupportedContent\" aria-expanded=\"false\" aria-label=\"Toggle navigation\">
 		<span class=\"navbar-toggler-icon\"></span>
 		</button>
@@ -44,14 +80,15 @@ echo "<!-- Navigation -->
 				    <a class=\"nav-link dropdown-toggle\" href=\"#\" id=\"navbarDropdown\" role=\"button\" data-toggle=\"dropdown\" aria-haspopup=\"true\" aria-expanded=\"false\">Exercises</a>
 				    <div class=\"dropdown-menu\" aria-labelledby=\"navbarDropdown\">
 					<a class=\"dropdown-item\" href=\"exercises_video.php\">Video Exercises</a>
-						<a class=\"dropdown-item\" href=\"sound_exercise.php\">Sound Exercises</a>
+					<a class=\"dropdown-item\" href=\"sound_exercise.php\">Sound Exercises</a>
+					<a class=\"dropdown-item\" href=\"https://choosebright.com/nbcc/\" target=\"_blank\">Bright <i class=\"bi bi-box-arrow-in-up-right\"></i></a>
 				    </div>
 			  	</li> 		
 			  	<li class=\"nav-item\"><a class=\"nav-link\" href=\"support.php\">Support</a></li>
 			</ul>
 		  	<div class=\"navbar-right\">
 		  		<ul class=\"navbar-nav mr-auto markings\">
-			  		<li class=\"nav-item\"><a class=\"nav-link\" href=\"contact.php\">Contact Us</a></li>
+			  		<li class=\"nav-item\"><a class=\"nav-link\" href=\"aboutus.php\">About Us</a></li>
 			  		<li class=\"nav-item dropdown\">
 			  				<a class=\"nav-link dropdown-toggle\" href=\"#\" id=\"navbarDropdown\" role=\"button\" data-toggle=\"dropdown\" aria-haspopup=\"true\" aria-expanded=\"false\">Your Profile</a>
 			  				<div class=\"dropdown-menu\" aria-labelledby=\"navbarDropdown\">
@@ -64,35 +101,10 @@ echo "<!-- Navigation -->
 			  		</li>
 					
 					$adminDropdown
-					<div class=\"notifications-place row\">
-					<div class=\"notifications row\" >							
-						<li class=\"nav-item\">									
-						<button type=\"button\" class=\"btn btn-ngreen li\" id=\"notifs\" data-toggle=\"popover\" data-placement=\"bottom\" title=\"New contents\" data-trigger=\"focus\" data-param1=\"Parameter1\" onclick=\"resetNotification()\">						
-						<i class=\"bi bi-bell-fill\"></i></button>	
-						<li class=\"notify-container\" id =\"notify-container\">
-							<span class=\"notify-bubble\" id =\"bubble-noti\">" . Content::setNotificationBubble() . "</span>
-						</li>
-						</li>					
+					
+					<div class=\"d-none d-sm-block\" id=\"notifDiv\">
+						$notifications
 					</div>
-					</div>
-					<script>
-					$(document).ready(function(){
-					var po_options = {
-					html: true,
-					content: function() {
-						var p1 = $(this).data(\"param1\");
-						return `".Content::bellNotifications()." <a href=\"notifications.php\" class=\"btn btn-block btn-outline-ngreen\")\">View More</a>`;
-					}
-					};
-
-					$('.li').popover(po_options);
-
-					});
-					</script>
-					<script>					
-					</script>
-
-
 					</div>
 				</ul>
 			</div>

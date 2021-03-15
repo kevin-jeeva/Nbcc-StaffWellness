@@ -3,6 +3,7 @@ session_start();
 include('functions/connect.php');
 include('functions/staff.php');
 include('functions/Content.php');
+//include('functions/Calendar.php'); put in main content->calendar
 if ($_SESSION["active"] == 0) {
 	$msg = "Not an Active User";
 	header("location:login.php?loginError=$msg");
@@ -31,6 +32,10 @@ if ($_SESSION["active"] == 0) {
 	<!-- Custom CSS and JS -->
 	<link rel="stylesheet" type="text/css" href="includes/styles.css">
 	<script src="functions/main.js"></script>
+
+	<!-- Calendar CSS -->
+	<link rel="stylesheet" type="text/css" href="includes/Calendar.css">
+
 </head>
 
 <body>
@@ -49,15 +54,28 @@ if ($_SESSION["active"] == 0) {
 	<section class="main-content">
 		<div class="container">
 			<div class="row">
+				<!-- Calendar -->
+				<div class="calendar col-md-12">
+					<?php
+						//Calendar::show();
+						include('functions/Calendar.php');
+						$calendar = new Calendar;
+						$calendar->show();
+					?>
+				</div>
+			</div>
 
+			<div class="row">
 				<!--Calling Content class to retrieve all articles -->
 				<?php
-				Content::getAllEvents(12);
+					Content::getAllEvents(12);
 				?>
-
 			</div> <!-- End of row -->
 		</div> <!-- End of container-->
+		
 	</section>
+
+	
 
 	<!-- Footer -->
 	<?php include('functions/footer.php'); ?>

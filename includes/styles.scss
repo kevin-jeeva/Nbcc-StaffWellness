@@ -180,7 +180,6 @@ p.content_text {
     background-position: 0% 50%;
   }
 }
-
 .secondary-content .overlay {
   position: absolute;
   /*background-color: #212529;*/
@@ -246,6 +245,7 @@ p.content_text {
 
 .solo-text {
   margin-top: 4rem;
+  font-size: 1.2rem;
 }
 
 footer.footer {
@@ -372,10 +372,10 @@ a.new-btn.btn-sm.btn-nblue {
 
 .notify-bubble {
   position: absolute;
-  top: -16px;
+  top: -30px;
   width: auto;
   height: auto;
-  left: -10px;
+  left: -8px;
   padding: 0em 0.3rem;
   background-color: red;
   color: white;
@@ -384,7 +384,19 @@ a.new-btn.btn-sm.btn-nblue {
   box-shadow: 1px 1px 1px grey;
   /* display: none; */
 }
+
+
 /* Responsive styles */
+@media (max-width: 767px){
+  .calendar{
+    display: none;
+  }
+  
+  .notifications-place {
+    width: 100% !important;
+  }
+}
+
 @media (min-width: 768px) {
   header.masthead {
     padding-top: 8rem;
@@ -440,8 +452,17 @@ a.new-btn.btn-sm.btn-nblue {
   padding-left: 4px;
 }
 
+a.nav-link{
+  color:rgba(255, 255, 255, 0.8) !important;
+}
+
+a.nav-link:hover{
+  color:rgba(255, 255, 255, 1) !important;
+}
+
 .dropdown-item.active, .dropdown-item:active{
-  background: #829600 !important;
+  background: #007599 !important;
+  color: #fff !important;
 }
 
 #userBtn {
@@ -451,3 +472,113 @@ a.new-btn.btn-sm.btn-nblue {
 #checkCodeForm {
   padding: 10px;
 }
+
+//Calendar css
+#calendar {
+  position: relative;
+  margin: 0px auto;
+  padding: 0px;
+  width: 602px;
+  font-family: Helvetica, "Times New Roman", Times, serif;
+  background-color: white;
+}
+#calendar .calendar_box {
+  position: relative;
+  top: 0px;
+  left: 0px;
+  width: 100%;
+  height: 40px;
+  background-color: #007599;
+}
+#calendar .calendar_header {
+  line-height: 40px;  
+  vertical-align: middle;
+  position: absolute;
+  left: 11px;
+  top: 0px;
+  width: 582px;
+  height: 40px;
+  text-align: center;
+}
+#calendar .calendar_header .calendar_prev, #calendar .calendar_header .calendar_next {
+  position: absolute;
+  top: 0px;
+  height: 17px;
+  display: block;
+  cursor: pointer;
+  text-decoration: none;
+  color: #FFF;
+}
+#calendar .calendar_header .calendar_title {
+  color: #FFF;
+  font-size: 18px;
+}
+#calendar .calendar_header .calendar_prev {
+  left: 0px;
+}
+#calendar .calendar_header .calendar_next {
+  right: 0px;
+}
+/*************************** Calendar Content Cells ***************************/
+.calendar{
+  padding-bottom: 2rem;
+}
+
+#calendar .calendar_content {
+  border: 1px solid rgba(0, 0, 0, 0.125);
+  border-top: none;
+}
+#calendar .calendar_label {
+  float: left;
+  margin: 0px;
+  padding: 0px;
+  margin-top: 5px;
+  margin-left: 5px;
+}
+#calendar .calendar_label .calendar_names {
+  margin: 0px;
+  padding: 0px;
+  margin-right: 5px;
+  float: left;
+  width: 80px;
+  height: 40px;
+  line-height: 40px;
+  vertical-align: middle;
+  text-align: center;
+  color: #FFF;
+  font-size: 15px;
+  background-color: rgba(0, 117, 153, 0.6);
+}
+#calendar .calendar_dates {
+  float: left;
+  margin: 0px;
+  padding: 0px;
+  margin-left: 5px;
+  margin-bottom: 5px;
+}
+/** overall width = width+padding-right **/
+#calendar .calendar_dates .calendar_names, #calendar .calendar_dates .calendar_days, #calendar .calendar_dates .calendar_today {
+  margin: 0px;
+  padding: 0px;
+  margin-right: 5px;
+  margin-top: 5px;
+  line-height: 80px;
+  vertical-align: middle;
+  float: left;
+  width: 80px;
+  height: 80px;
+  font-size: 25px;
+  background-color: #DDD;
+  color: #000;
+  text-align: center;
+}
+#calendar .calendar_dates .calendar_today {
+  background-color: rgba(130, 150, 0, 0.6);
+}
+:focus {
+  outline: none;
+}
+.calendar_clear {
+  clear: both;
+}
+//end of Calendar css

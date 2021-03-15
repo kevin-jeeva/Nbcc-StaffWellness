@@ -92,7 +92,7 @@ class Content
     $IsThereEvents = true;
     $con = $GLOBALS['con'];
     $resource_id = self::getResourceIdByResourceName('events');
-    $sql = "SELECT content_id, content_title, content_text, content_description, date_format(event_date, '%m/%d/%y') as event_date FROM content WHERE resource_id = $resource_id ORDER BY event_date LIMIT $start_from, $limit";
+    $sql = "SELECT content_id, content_title, content_text, content_description, date_format(event_date, '%m/%d/%Y') as event_date FROM content WHERE resource_id = $resource_id ORDER BY event_date LIMIT $start_from, $limit";
     $result = mysqli_query($con, $sql);
 
     //if the SQL query returns any rows...
@@ -225,6 +225,41 @@ class Content
     //pagination function: Parameters (table's name, articles number limit, link path (without '.php'))
     $result = self::pagePagination("content", $limit, "articles");
     echo $result;
+  }
+
+
+  //get all articles to display on each resource page (e.g. articles.php)
+  static function getSupportArticles($resourceName, $limit)
+  {
+    $con = $GLOBALS['con'];
+    $resource_id = self::getResourceIdByResourceName($resourceName);
+    $sql = "SELECT content_id, content_title, content_text, content_description, date_format(date_created, '%m/%d/%y') as date_created FROM content WHERE resource_id = $resource_id ORDER BY date_created DESC";
+
+    $result = mysqli_query($con, $sql);
+    while ($row = mysqli_fetch_assoc($result)) {
+      $date_created = $row["date_created"];
+      echo "<div class=\"the-content\">
+          <a class=\"text-dark\" href=\"#\"  onclick=\"ReadArticle(" . $row['content_id'] . ")\">
+          <p class=\"h1 text-dark\">" . $row['content_title'] . "</p></a>
+          <hr>
+          <p class=\"content_text\">" . $row['content_text'] . "</p>
+          </div>";
+    }
+  }
+
+  static function getAboutUsArticle($resourceName, $articleTitle)
+  {
+    $con = $GLOBALS['con'];
+    $resource_id = self::getResourceIdByResourceName($resourceName);
+    $sql = "SELECT content_id, content_title, content_text, content_description, date_format(date_created, '%m/%d/%y') as date_created FROM content WHERE content_title LIKE '%$articleTitle%'";
+
+    $result = mysqli_query($con, $sql);
+    while ($row = mysqli_fetch_assoc($result)) {
+      $date_created = $row["date_created"];
+      echo "<div class=\"the-content\">
+          <p class=\"content_text\">" . $row['content_text'] . "</p>
+          </div>";
+    }
   }
 
   static function getContentById($content_id)
@@ -457,12 +492,11 @@ class Content
         $content_title = $row["content_title"];
         $set_date = date("F d, Y | g:ia", $date);
         $string .=
-          "<a href=\"#\" id=\"hi\" onclick=\"ReadArticle($content_id)\"><div id=\"$content_id\"><h5>$contentName</h5><p>$content_title</p><p class=\"badge badge-pill badge-ngreen\"> $set_date</p></div></a><hr>";
+          "<a href=\"#\" id=\"hi\" onclick=\"ReadArticle($content_id)\"><div id=\"$content_id\"><h5>$contentName</h5><p>$content_title</p><p class=\"badge badge-pill badge-nblue\"> $set_date</p></div></a><hr>";
       }
       return $string;
     }
   }
-
   public static function CheckResourceID($resource_name)
   {
     $con = $GLOBALS["con"];
@@ -578,14 +612,19 @@ class Content
   public static function pagePagination($table, $limit, $linkname)
   {
     $con = $GLOBALS["con"];
-    $result_db = mysqli_query($con, "SELECT COUNT($table" . "_id) FROM $table");
+    $sql = "SELECT COUNT(" . $table ."_id) FROM " . $table;
+    $result_db = mysqli_query($con, $sql);
     $row_db = mysqli_fetch_row($result_db);
     $total_records = $row_db[0];
     $total_pages = ceil($total_records / $limit);
 
     $pagLink = "<div class=\"container d-flex justify-content-center\"><div class=\"row text-center\"><ul class=\"pagination\">";
-    for ($i = 1; $i <= $total_pages; $i++) {
-      $pagLink .= "<li class=\"page-item\"><a class=\"page-link bg-white text-ngreen\" href=\"" . $linkname . ".php?page=" . $i . "\">" . $i . "</a></li>";
+    if ($total_pages = 1){
+      $pagLink .= "<li class=\"page-item\"><a class=\"page-link bg-white text-ngreen\" href=\"" . $linkname . ".php?page=" . 1 . "\">" . 1 . "</a></li>";
+    } else {
+      for ($i = 1; $i <= $total_pages; $i++) {
+        $pagLink .= "<li class=\"page-item\"><a class=\"page-link bg-white text-ngreen\" href=\"" . $linkname . ".php?page=" . $i . "\">" . $i . "</a></li>";
+      }
     }
     $pagLink .= "</ul></div></div>";
     return $pagLink;
