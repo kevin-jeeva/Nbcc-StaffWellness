@@ -374,7 +374,7 @@ class Welcome{
  public static function SuggestedContent($staff_id)
  {
    $con = $GLOBALS["con"];
-   $sql = "select content.content_title,content.content_id,content.content_description,date_format(content.date_created, '%m/%d/%y') as date_created from content inner join resources on content.resource_id = resources.resource_id where resources.resource_name NOT IN ('Video Exercises', 'Sound Exercises') and content.content_id  NOT in (select pg.content_id from progress pg where user_id = $staff_id) order by rand() limit 2;";
+   $sql = "select content.content_title,content.content_id,content.content_description,date_format(content.date_created, '%m/%d/%y') as date_created from content inner join resources on content.resource_id = resources.resource_id where resources.resource_name NOT IN ('Exercise Video', 'Exercise Sound') and content.content_id  NOT in (select pg.content_id from progress pg where user_id = $staff_id) order by rand() limit 2;";
    
    $result = mysqli_query($con,$sql);
    if(mysqli_num_rows($result) > 0)
