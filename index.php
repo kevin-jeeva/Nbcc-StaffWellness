@@ -81,7 +81,7 @@ include_once("functions/Welcome.php");
 
 				<!--Content Sector (Main) -->
 				<div class="the-content col-md-8">
-					<h2>Recent Contents</h2>
+					<h2>Recent Content</h2>
 					<hr>
 					<!--Calling the Content class to retrieve two newest articles -->
 					<?php Content::getTopArticles(3) ?>
