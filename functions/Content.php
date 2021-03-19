@@ -176,7 +176,7 @@ class Content
   static function getTopArticles($limit)
   {
     $con = $GLOBALS['con'];
-    $sql = "SELECT content_id, resource_id, content_title, content_text, content_description, date_format(date_created, '%m/%d/%y') as date_created FROM content ORDER BY date_created DESC LIMIT $limit";
+    $sql = "SELECT content_id, resource_id, content_title, content_text, content_description, date_format(date_created, '%m/%d/%y') as date_created FROM content where resource_id = 1 ORDER BY date_created DESC LIMIT $limit";
 
 
     $result = mysqli_query($con, $sql);
