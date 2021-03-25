@@ -7,7 +7,7 @@ echo "<!-- Footer -->
 	      <div class=\"col-lg-6 h-100 text-center text-lg-left my-auto\">
 		  <ul class=\"list-inline mb-2\">
 	          <li class=\"list-inline-item\">
-	            <a class=\"text-nblue\" href=\"about.php\">About Us</a>
+	            <a class=\"text-nblue\" href=\"aboutus.php\">About Us</a>
 	          </li>
 	          <li class=\"list-inline-item\">&sdot;</li>
 	          <li class=\"list-inline-item\">
@@ -32,5 +32,4 @@ echo "<!-- Footer -->
 	    </div>
 	  
 	  </div>
-	</footer>"
-?>
+	</footer>";
