@@ -531,5 +531,20 @@ class staff {
         return false;       
     }
 
+    public static function GetExpoPushToken() {
+        $con = $GLOBALS["con"];
+        $sql = "Select expo_push_token from user";
+        $token = array();
+        $result = mysqli_query($con,$sql);
+        if(mysqli_num_rows($result) > 0){
+            while($val = mysqli_fetch_array($result)){
+                if($val["expo_push_token"] != null){
+                   array_push($token,$val["expo_push_token"]);
+                }
+            }
+            return $token;
+        }
+        return null;
+    }
 
 }

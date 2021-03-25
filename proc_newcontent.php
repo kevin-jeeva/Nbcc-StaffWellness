@@ -18,7 +18,7 @@ session_start();
     print_r( $content);
     $_SESSION["message"] = "content Inserted Successfully";
     Content::CheckAndInsertContent($content,$content_category);   
-    header("location:administrator.php");    
+    //header("location:administrator.php");    
   //echo $content_category."<BR>". $content_Title."<BR>". $content_text."<BR>".$content_description ;
     
    

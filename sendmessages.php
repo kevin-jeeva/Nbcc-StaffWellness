@@ -1,5 +1,9 @@
 <?php
 require 'includes/Mailer/PHPMailer/PHPMailerAutoload.php';
+require_once("functions/connect.php");
+require_once('functions/staff.php');
+session_start();
+
 if(isset($_GET["email"]))
 {
     $mail = new PHPMailer;
@@ -40,12 +44,61 @@ if(isset($_GET["email"]))
         // echo 'Message could not be sent.';
         // echo 'Mailer Error: ' . $mail->ErrorInfo;
     } else {
-        header("location:administrator.php");       
+        //send the push notification here
+        $result = staff::GetExpoPushToken();
+        $push_result = false;
+        if($result != null){
+        $count = count($result);
+        for($i = 0; $i < $count; $i++){
+            $fields = [
+                "to" => $result[$i],
+                "sound" => "default",
+                "title" => "update in ".$resource,
+                "body" => $title,
+                "data" => [
+                    "someData" => "goes here"
+                ]
+                ];        
+           callAPI('https://exp.host/--/api/v2/push/send', json_encode($fields));
+        }
+        }
+        $_SESSION["message"] = "content Inserted Successfully";
+        header("location:administrator.php");
         // echo 'Message has been sent';
     }
 }
 else
 {
     header("location:login.php");
+}
+
+function callApi ($url ,$data){   
+    $curl = curl_init();    
+    //options
+    curl_setopt($curl, CURLOPT_POST ,true);
+    curl_setopt($curl, CURLOPT_POSTFIELDS, $data);
+    curl_setopt($curl, CURLOPT_URL, $url);
+    curl_setopt($curl, CURLOPT_HTTPHEADER, array(
+    "Accept: application/json",
+    "Accept-Encoding: gzip, deflate",
+    "Content-Type: application/json",
+    "cache-control: no-cache",
+    "host: exp.host"
+  ));
+    curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);   
+    curl_setopt($curl, CURLOPT_SSL_VERIFYHOST, 0);
+    curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, 0);
+    // EXECUTE:
+    $result = curl_exec($curl);    
+    $err = curl_error($curl);
+
+curl_close($curl);
+
+if ($err) {
+  echo "cURL Error #:" . $err;
+} else {
+  //echo $result;
+}
+
 }
 ?>
