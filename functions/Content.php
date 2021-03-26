@@ -432,18 +432,7 @@ class Content
       }
     }
   }
-  public static function getResolution(){
-    $con =$GLOBALS["con"];
-    $sql="select res_text from Resolution";
-    $result = mysqli_query($con, $sql);
-    echo  "<ul id=\"myUL\">";
-    while ($row = mysqli_fetch_assoc($result)) {
-        $resolutionText = $row["res_text"];
-        echo "
-        <li class=\"list\">$resolutionText</li>";
-    }
-    echo "</ul>";
-}
+
   public static function getContentNotifications($limit)
   {
     //important for pagination. DON'T DELETE!
@@ -640,4 +629,6 @@ class Content
     $pagLink .= "</ul></div></div>";
     return $pagLink;
   }
+
+  
 }

@@ -3,7 +3,7 @@ session_start();
 include('functions/connect.php');
 include('functions/staff.php');
 include('functions/Content.php');
-include('functions/resolution.php');
+include('functions/Progress.php');
 //include('functions/Calendar.php'); put in main content->calendar
 if ($_SESSION["active"] == 0) {
 	$msg = "Not an Active User";
@@ -163,7 +163,7 @@ input {
   <div id="myDIV" class="header">
     <h2 style="margin:5px">My Resolution List</h2>
   </div>
-  <?php Content::getResolution() ?>
+  <?php progress::getResolution() ?>
 </div>
 <script src="functions/tasks.js"></script>
 </body>

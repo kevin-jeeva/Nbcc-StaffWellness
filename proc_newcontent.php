@@ -1,5 +1,6 @@
 <?php
 include_once("functions/Content.php");
+include_once("functions/Progress.php");
 session_start();
 
  if(isset($_POST["contents"]) && isset($_POST["contentTitle"]) && isset($_POST["content-area"]) && isset($_POST["content-description"]))
@@ -10,18 +11,22 @@ session_start();
     $content_description = $_POST["content-description"];
     $content_date = null;
     
+    
     if (isset($_POST["eventDate"]) && $_POST["eventDate"] != ""){
         $content_date = date("Y-m-d", strtotime($_POST["eventDate"]));
     }
-
-    $content = new Content(0,0, $content_Title,$content_text,$content_description,0,0,$content_date);
-    print_r( $content);
-    $_SESSION["message"] = "content Inserted Successfully";
-    Content::CheckAndInsertContent($content,$content_category);   
-    //header("location:administrator.php");    
-  //echo $content_category."<BR>". $content_Title."<BR>". $content_text."<BR>".$content_description ;
-    
-   
+    if($content_category != "Resolution"){
+      $content = new Content(0,0, $content_Title,$content_text,$content_description,0,0,$content_date);
+      print_r( $content);
+      $_SESSION["message"] = "content Inserted Successfully";
+      Content::CheckAndInsertContent($content,$content_category);   
+      //header("location:administrator.php");    
+      //echo $content_category."<BR>". $content_Title."<BR>". $content_text."<BR>".$content_description ;
+    }
+    else{
+      Progress::addResolution($content_Title, $content_text, $content_description);
+    }
+  
  }
  else{
    header("location:new_content.php");

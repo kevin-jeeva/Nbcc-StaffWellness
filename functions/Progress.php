@@ -358,6 +358,30 @@ class Progress{
   }
 
  }
+
+ public static function getResolution(){
+  $con =$GLOBALS["con"];
+  $sql="select res_text from Resolution";
+  $result = mysqli_query($con, $sql);
+  echo  "<ul id=\"myUL\">";
+  while ($row = mysqli_fetch_assoc($result)) {
+      $resolutionText = $row["res_text"];
+      echo "
+      <li class=\"list\">$resolutionText</li>";
+  }
+  echo "</ul>";
+}
+
+public static function addResolution($title, $text, $description){
+  $con =$GLOBALS["con"];
+  $sql="insert into Resolution (res_title, res_text, res_description) values ('$title', '$text', '$description')";
+  mysqli_query($con, $sql);
+    if (mysqli_affected_rows($con) == 1) {
+      $_SESSION["message"] = "Resolution added!"; 
+      header("location:content.php");
+    }
+
+}
      
 }
 
