@@ -372,9 +372,9 @@ class Progress{
   echo "</ul>";
 }
 
-public static function addResolution($title, $text, $description){
+public static function addResolution($text){
   $con =$GLOBALS["con"];
-  $sql="insert into Resolution (res_title, res_text, res_description) values ('$title', '$text', '$description')";
+  $sql="insert into Resolution (res_text) values ('$text')";
   mysqli_query($con, $sql);
     if (mysqli_affected_rows($con) == 1) {
       $_SESSION["message"] = "Resolution added!"; 

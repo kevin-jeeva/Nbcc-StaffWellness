@@ -24,7 +24,7 @@ session_start();
       //echo $content_category."<BR>". $content_Title."<BR>". $content_text."<BR>".$content_description ;
     }
     else{
-      Progress::addResolution($content_Title, $content_text, $content_description);
+      Progress::addResolution($content_text);
     }
   
  }

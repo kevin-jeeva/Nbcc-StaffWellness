@@ -54,6 +54,11 @@ include_once("functions/Content.php");
 				document.getElementById("eventDate").disabled = false;
 				document.getElementById("eventDate").value = "";
 			}
+			else if (category === "Resolution"){
+				document.getElementById("contentTitle").disabled = true;
+				document.getElementById("eventDate").disabled = true;
+				document.getElementById("content-description").disabled = true;
+			}
 			else{
 				document.getElementById("eventDate").disabled = true;
 				document.getElementById("eventDate").value = "";
@@ -125,7 +130,7 @@ include_once("functions/Content.php");
 						</datalist>-->
 					</div>
 							 
-					<div class="form-group col-xs-6 col-md-4">
+					<div class="form-group col-xs-6 col-md-4" >
 						<label for="content-title" id="content-title">Content Title</label>
 						<input type="text" class="form-control" placeholder="Enter content title" name ="contentTitle" id="contentTitle" required>
 					</div>

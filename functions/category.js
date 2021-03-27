@@ -58,3 +58,4 @@ function trimFun(id, message) {
 		count += 1;
 	}
 }
+

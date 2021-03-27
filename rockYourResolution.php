@@ -50,6 +50,7 @@ if ($_SESSION["active"] == 0) {
 			<h1 class="display-4">Rock Your Resolution</h1>
     </div>
   </div>
+  
 
   <section class="main-content">
 		<div class="container">
@@ -57,10 +58,21 @@ if ($_SESSION["active"] == 0) {
         <h2>My Resolution List</h2>
       </div>
       <?php progress::getResolution() ?>
+
+	
+		<div class="card">
+			<div class="card-body">
+			<h3>Next Events</h3>
+			<?php
+			Content::getNextEvents(3);
+			?>
+
+			</div>
+		</div>	    
     </div>
     <script src="functions/tasks.js"></script>
   </section>
-	
+			  
   <!-- Footer -->
   <?php include('functions/footer.php'); ?>
 </body>
