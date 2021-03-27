@@ -61,7 +61,7 @@ else if(staff::GetStaffAdminNumber($_SESSION["staff_id"]) != 1 && staff::GetStaf
 	</div>
 
 	<!-- Navigation -->
-	<?php include('functions/Header.php'); ?>
+	<?php include('functions/header.php'); ?>
 
 	<!-- Article Masterhead -->
 	<div class="jumbotron jumbotron-fluid">

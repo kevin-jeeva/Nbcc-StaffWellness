@@ -45,7 +45,7 @@ include_once("functions/Content.php");
 
 <body>
 	<!-- Navigation -->
-	<?php include('functions/Header.php'); ?>
+	<?php include('functions/header.php'); ?>
 
 	<!-- Article Masterhead -->
 	<div class="jumbotron jumbotron-fluid">

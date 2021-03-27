@@ -42,7 +42,7 @@
 
 <body>
 	<!-- Navigation -->
-	<?php include_once('functions/Header.php'); ?>
+	<?php include_once('functions/header.php'); ?>
 		
     <!-- Article Masterhead -->
 	<div class="jumbotron jumbotron-fluid">
