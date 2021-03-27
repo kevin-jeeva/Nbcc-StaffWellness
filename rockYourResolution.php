@@ -59,7 +59,7 @@ if ($_SESSION["active"] == 0) {
       <?php progress::getResolution() ?>
     </div>
     <script src="functions/tasks.js"></script>
-</section>
+  </section>
 	
   <!-- Footer -->
   <?php include('functions/footer.php'); ?>
