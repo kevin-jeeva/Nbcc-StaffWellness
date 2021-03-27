@@ -378,7 +378,7 @@ public static function addResolution($text){
   mysqli_query($con, $sql);
     if (mysqli_affected_rows($con) == 1) {
       $_SESSION["message"] = "Resolution added!"; 
-      header("location:content.php");
+      header("location:administrator.php");
     }
 
 }
