@@ -47,7 +47,6 @@ if ($_SESSION["active"] == 0) {
 	<!-- Article Masterhead -->
 	<div class="jumbotron jumbotron-fluid">
 		<div class="container">
-			<!--<p class="lead">{Description of this category: e.g. Events}.</p> -->
 			<h1 class="display-4">Rock Your Resolution</h1>
     </div>
   </div>
@@ -60,7 +59,7 @@ if ($_SESSION["active"] == 0) {
       <?php progress::getResolution() ?>
     </div>
     <script src="functions/tasks.js"></script>
-  </div>
+</section>
 	
   <!-- Footer -->
   <?php include('functions/footer.php'); ?>
