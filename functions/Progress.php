@@ -360,15 +360,23 @@ class Progress{
  }
 
  public static function getResolution(){
-  $con =$GLOBALS["con"];
-  $sql="select res_text from Resolution";
+  $con = $GLOBALS["con"];
+  $user_id = $_SESSION["staff_id"]; 
+  $sql="select read_user, res_id, res_text from Resolution";
   $result = mysqli_query($con, $sql);
+  $read = 0;
   echo  "<ul id=\"myUL\">";
   while ($row = mysqli_fetch_assoc($result)) {
-      $resolutionText = $row["res_text"];
-      echo "
-      <li class=\"list\">$resolutionText</li>";
-  }
+    $read =$row['read_user'];
+    if (strpos($read, $user_id)==false) {
+          $resolutionText = $row["res_text"];
+          $res_id = $row ['res_id'];
+          echo "
+          <li class=\"list\">$resolutionText <a href=\"functions/proc_completeResolution.php?contentId=$res_id\" onclick = \"return CheckDelete(event)\"type=\"button\" class=\"new-btn btn-sm btn-ngreen float-right\">Complete Task</a></li>"; 
+    }
+ 
+ 
+}
   echo "</ul>";
 }
 
@@ -420,7 +428,22 @@ public static function DeleteResolution($res_id){
     header("location:administrator.php");
   }
 }
+public static function getReadUsers($res_id){
+  $con = $GLOBALS["con"];
+  $sql = "select read_user from Resolution where res_id = $res_id";
+  $result = mysqli_query($con, $sql);
+  if ($val = mysqli_fetch_array($result)) {
+    return $val["read_user"];
+  }
+}
 
+public static function completeTask($res_id, $user_id){
+  $con = $GLOBALS["con"];
+  $read_users = self::getReadUsers($res_id);
+  $new_read = $read_users . $user_id . "|";
+  $sql = "update Resolution set read_user = '$new_read' where res_id = $res_id";
+  mysqli_query($con, $sql);
+}
 
 }
 
