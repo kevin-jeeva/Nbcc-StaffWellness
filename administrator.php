@@ -246,7 +246,7 @@
 				    	      <thead>
 				    	        <tr>
 				    	          <th>#</th>
-				    	          <th>ound Title</th>	
+				    	          <th>Sound Title</th>	
 								  <th>Sound Name</th>				    	          
 				    	          <th>Created On</th>
 				    	          <th class="action-header-cell">Actions</th>
@@ -256,6 +256,31 @@
 				    	      <!-- Important SECTION: display all content's categories from database -->
 				    	      <tbody>
 								<?php Media::GetListOfCreatedSounds()?>
+				    	      </tbody>
+			    	    </table>
+			    	</div> <!-- End of table-responsive -->
+		    	</div> <!-- list-sector -->
+
+				<div class="list-sector">
+			    	<div class="list-header row">
+		    	  		<h2>Created Resolutions</h2>
+		    	  		<a href="new_content.php" type="button" class="new-btn btn-sm btn-nblue" value="id">Create new</a>
+			    	</div>
+
+			    	<div class="table-responsive">
+			    	  	<table id="admTable5" class="table sortable table-hover">
+				    	      <!-- Table's Header -->
+				    	      <thead>
+				    	        <tr>
+				    	          <th>#</th>
+				    	          <th>Resolution</th>	
+				    	          <th class="action-header-cell">Actions</th>
+				    	        </tr>
+				    	      </thead>
+
+				    	      <!-- Important SECTION: display all content's categories from database -->
+				    	      <tbody>
+								<?php Progress::getListOfResolutions()?>
 				    	      </tbody>
 			    	    </table>
 			    	</div> <!-- End of table-responsive -->

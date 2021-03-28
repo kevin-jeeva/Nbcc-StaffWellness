@@ -382,8 +382,46 @@ public static function addResolution($text){
     }
 
 }
-     
+public static function getAllResolutions(){
+  $con =$GLOBALS["con"];
+  $sql="select res_id, res_text from Resolution";
+  $result = mysqli_query($con, $sql);
+  return $result;
+
 }
 
+public static function getListOfResolutions(){
+  $con = $GLOBALS["con"];
+  $resolutions = self::getAllResolutions();
+  $count = 0;
+  if (mysqli_num_rows($resolutions) > 0) {
+    while ($val = mysqli_fetch_array($resolutions)) {
+      $res_id = $val["res_id"];
+      $res_text = $val["res_text"];
+      $count += 1;
+      echo
+      "<tr>
+              <td>$count</td>
+              <td>$res_text</td>
+              <td align=\"right\">
+                  <a href=\"functions/proc_deleteResolution.php?contentId=$res_id\" onclick = \"return CheckDelete(event)\"type=\"button\" class=\"btn btn-sm btn-danger\">Delete</a>
+              </td>            
+              </tr>";
+    }
+     
+  }
+}
+
+public static function DeleteResolution($res_id){
+  $con = $GLOBALS["con"];
+  $sql = "Delete from Resolution where res_id = $res_id";
+  mysqli_query($con, $sql);
+  if (!mysqli_affected_rows($con) == 1) {
+    header("location:administrator.php");
+  }
+}
+
+
+}
 
 ?>
