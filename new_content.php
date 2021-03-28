@@ -57,7 +57,14 @@ include_once("functions/Content.php");
 			else if (category === "Resolution"){
 				document.getElementById("contentTitle").disabled = true;
 				document.getElementById("eventDate").disabled = true;
-				document.getElementById("content-description").disabled = true;
+
+				var x = document.getElementById("text");
+
+				if (x.style.display === "none") {
+					x.style.display = "block";
+				} else {
+					x.style.display = "none";
+				}
 			}
 			else{
 				document.getElementById("eventDate").disabled = true;
@@ -145,7 +152,7 @@ include_once("functions/Content.php");
 						<textarea class="form-control" id="content-description" name="content-description" placeholder="Category Description" rows="5" maxlength="255" required></textarea>
 					</div>
 					
-					<div class="form-group col-lg-12">
+					<div class="form-group col-lg-12" id="text">
 						<!-- CKEditor area -->
 						<label for="content-area">Text</label>
 						<textarea cols="80" id="content-area" name="content-area" rows="15" data-sample-short>Insert your text here</textarea>

@@ -14,20 +14,19 @@ session_start();
     
     if (isset($_POST["eventDate"]) && $_POST["eventDate"] != ""){
         $content_date = date("Y-m-d", strtotime($_POST["eventDate"]));
-    }
-    if($content_category != "Resolution"){
+    } 
       $content = new Content(0,0, $content_Title,$content_text,$content_description,0,0,$content_date);
       print_r( $content);
       $_SESSION["message"] = "content Inserted Successfully";
       Content::CheckAndInsertContent($content,$content_category);   
       //header("location:administrator.php");    
       //echo $content_category."<BR>". $content_Title."<BR>". $content_text."<BR>".$content_description ;
-    }
-    else{
-      Progress::addResolution($content_text);
-    }
-  
+
  }
+ else if (isset($_POST["content-description"])) {
+  $content_text = $_POST["content-description"];
+  Progress::addResolution($content_text);
+}
  else{
    header("location:new_content.php");
  }
