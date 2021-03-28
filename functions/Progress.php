@@ -358,6 +358,24 @@ class Progress{
   }
 
  }
+ public static function getCompletedTasks(){
+  $con = $GLOBALS["con"];
+  $user_id = $_SESSION["staff_id"]; 
+  $sql="select read_user, res_id, res_text from Resolution";
+  $result = mysqli_query($con, $sql);
+  $read = 0;
+  echo  "<ul id=\"myUL\">";
+  while ($row = mysqli_fetch_assoc($result)) {
+    $read =$row['read_user'];
+    if (strpos($read, $user_id)!==false) {
+          $resolutionText = $row["res_text"];
+          $res_id = $row ['res_id'];
+          echo "
+          <li class=\"list\">$resolutionText</li>"; 
+    }
+}
+  echo "</ul>";
+ }
 
  public static function getResolution(){
   $con = $GLOBALS["con"];
@@ -368,17 +386,18 @@ class Progress{
   echo  "<ul id=\"myUL\">";
   while ($row = mysqli_fetch_assoc($result)) {
     $read =$row['read_user'];
-    if (strpos($read, $user_id)==false) {
-          $resolutionText = $row["res_text"];
-          $res_id = $row ['res_id'];
-          echo "
+    $resolutionText = $row["res_text"];
+    $res_id = $row ['res_id'];
+    if (strpos($read, $user_id)!==false) {         
+    }
+    else{
+      echo "
           <li class=\"list\">$resolutionText <a href=\"functions/proc_completeResolution.php?contentId=$res_id\" onclick = \"return CheckDelete(event)\"type=\"button\" class=\"new-btn btn-sm btn-ngreen float-right\">Complete Task</a></li>"; 
     }
- 
- 
 }
   echo "</ul>";
 }
+
 
 public static function addResolution($text){
   $con =$GLOBALS["con"];

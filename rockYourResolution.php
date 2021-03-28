@@ -55,10 +55,14 @@ if ($_SESSION["active"] == 0) {
   <section class="main-content">
 		<div class="container">
       <div id="myTodoList" class="header">
-        <h2>My Resolution List</h2>
+        <h2>My Resolutions</h2>
       </div>
       <?php progress::getResolution() ?>
+	  <div id="myTodoList" class="header">
 
+        <h2>My Completed Resolutions</h2>
+      </div>
+		<?php progress::getCompletedTasks()?>
 	
 		<div class="card">
 			<div class="card-body">
