@@ -179,7 +179,7 @@ class Progress{
       $count_divide = 0;
       $progress_value = 0;
       $total = 0;
-      $colors = array("bg-nblue","bg-ngreen","bg-ncyan","bg-nyellow","bg-nblue","bg-green");
+      $colors = array("bg-nblue","bg-ngreen","bg-ncyan","bg-nyellow","bg-nblue","bg-green","bg-nyellow");
       $prog_header = 1;
       $row_count = 0;
       $resource_color = 0;
