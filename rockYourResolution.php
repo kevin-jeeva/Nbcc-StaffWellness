@@ -58,8 +58,6 @@ if ($_SESSION["active"] == 0) {
         <h2>My Resolutions</h2>
       </div>
       <?php
-	  $user_id = $_SESSION["staff_id"]; 
-	  Progress::getProgresMedia('Resolution',$user_id,'blue'); 
 	  progress::getResolution() ?>
 	  <div id="myTodoList" class="header">
 
