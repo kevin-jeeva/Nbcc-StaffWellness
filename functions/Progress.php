@@ -65,6 +65,7 @@ class Progress{
      return true;
    }
  }
+ 
   public static function CheckInsertedMedia($user_id, $media_id)
  {
    
@@ -358,6 +359,8 @@ class Progress{
   }
 
  }
+
+
  public static function getCompletedTasks(){
   $con = $GLOBALS["con"];
   $user_id = $_SESSION["staff_id"]; 
@@ -411,7 +414,7 @@ public static function addResolution($text){
 }
 public static function getAllResolutions(){
   $con =$GLOBALS["con"];
-  $sql="select res_id, res_text from Resolution";
+  $sql="select res_id, res_text, read_user from Resolution";
   $result = mysqli_query($con, $sql);
   return $result;
 

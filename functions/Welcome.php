@@ -234,7 +234,7 @@ class Welcome{
    $count_divide = 0;
    $progress_value = 0;
    $row_count = 0;
-   $colors = array("bg-nblue","bg-ngreen","bg-ncyan","bg-nyellow","bg-nblue","bg-ncyan","bg-nyellow");
+   $colors = array("bg-nblue","bg-ngreen","bg-ncyan","bg-nyellow","bg-nblue","bg-ncyan","bg-nyellow","bg-ngreen");
   
    if(mysqli_num_rows($resource_ids) > 0)
    {
@@ -292,8 +292,12 @@ class Welcome{
             <td>$resource_name</td>
             <td><div class=\"progress\">
 						<div class=\"progress-bar progress-bar-striped progress-bar-animated $color\" role=\"progressbar\" aria-valuenow=\"75\" aria-valuemin=\"0\" aria-valuemax=\"100\" style=\"width: $total%\">$total%</div>
-					</div></td></tr>";      
+					</div></td></tr>";       
      }
+      //Display the progress of resolution
+      $color =  $colors[$rand_color]; 
+      unset($colors[$rand_color]); 
+      self::GetProgressResolution($staff_id,$row_count+=1, $color);
     
    }
    else
@@ -371,6 +375,33 @@ class Welcome{
   }
 
  }
+
+public static function GetProgressResolution($staff_id, $row_count, $color){
+ $result = Progress::getAllResolutions();
+ $count = 0;
+ $total = 0;
+ $progress_value = 0;
+
+ if(mysqli_num_rows($result) > 0){
+   while($val = mysqli_fetch_array($result)){
+     if($val["read_user"] !==  null){
+       $array = explode("|",$val["read_user"]);
+       if(in_array($staff_id,$array)){
+         $progress_value += 100;
+       }
+     }
+     $count += 1;
+   }
+   $total = round($progress_value / $count);
+  echo "<tr><th scope=\"row\"> $row_count</th>
+            <td>Resolution</td>
+            <td><div class=\"progress\">
+						<div class=\"progress-bar progress-bar-striped progress-bar-animated $color\" role=\"progressbar\" aria-valuenow=\"75\" aria-valuemin=\"0\" aria-valuemax=\"100\" style=\"width: $total%\">$total%</div>
+					</div></td></tr>"; 
+ }
+}
+
+
  public static function SuggestedContent($staff_id)
  {
    $con = $GLOBALS["con"];
