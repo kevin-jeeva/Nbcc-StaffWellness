@@ -74,15 +74,8 @@ echo "<!-- Navigation -->
 			  	<li class=\"nav-item\"><a class=\"nav-link\" href=\"index.php\">Home</a></li>
 				
 			  	<li class=\"nav-item\"><a class=\"nav-link\" href=\"articles.php\">Articles</a></li>
-				  <li class=\"nav-item\"><a class=\"nav-link\" href=\"events.php\">Events</a></li>
-			  	<li class=\"nav-item dropdown\">
-				  <a class=\"nav-link dropdown-toggle\" href=\"#\" id=\"navbarDropdown\" role=\"button\" data-toggle=\"dropdown\" aria-haspopup=\"true\" aria-expanded=\"false\">Events</a>
-				  <div class=\"dropdown-menu\" aria-labelledby=\"navbarDropdown\"> 
-				  <a class=\"dropdown-item\" href=\"events.php\">Events</a>
-				  
-				  </div>
-				</li>		
-			  	<li class=\"nav-item\"><a class=\"nav-link\" href=\"support.php\">Support</a></li>
+				<li class=\"nav-item\"><a class=\"nav-link\" href=\"events.php\">Events</a></li>
+				<li class=\"nav-item\"><a class=\"nav-link\" href=\"support.php\">Support</a></li>
 			</ul>
 		  	<div class=\"navbar-right\">
 		  		<ul class=\"navbar-nav mr-auto markings\">
