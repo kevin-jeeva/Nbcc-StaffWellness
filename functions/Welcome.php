@@ -234,7 +234,7 @@ class Welcome{
    $count_divide = 0;
    $progress_value = 0;
    $row_count = 0;
-   $colors = array("bg-nblue","bg-ngreen","bg-ncyan","bg-nyellow","bg-nblue","bg-ncyan");
+   $colors = array("bg-nblue","bg-ngreen","bg-ncyan","bg-nyellow","bg-nblue","bg-ncyan","bg-nyellow");
   
    if(mysqli_num_rows($resource_ids) > 0)
    {
