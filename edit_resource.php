@@ -45,19 +45,19 @@ else if(staff::GetStaffAdminNumber($_SESSION["staff_id"]) != 1 && staff::GetStaf
 </head>
 
 <body>
-  <!--error modal-->
+  <!--Error modal-->
 	<div class="modal fade" id="myModal">
-    <div class="modal-dialog  modal-sm">
-      <div class="modal-content">     
-			<div class="modal-header">
-        <h4 class="modal-title">Error</h4>
-        <button type="button" class="close" data-dismiss="modal">&times;</button>
-      </div>
-        <div class="modal-body error">			
-         <span id = "alert_message"></span>				
-        </div>
-      </div>
-    </div>
+		<div class="modal-dialog  modal-sm">
+			<div class="modal-content">     
+				<div class="modal-header">
+					<h4 class="modal-title">Error</h4>
+					<button type="button" class="close" data-dismiss="modal">&times;</button>
+				</div>
+				<div class="modal-body error">			
+					<span id = "alert_message"></span>				
+				</div>
+			</div>
+		</div>
 	</div>
 
 	<!-- Navigation -->
