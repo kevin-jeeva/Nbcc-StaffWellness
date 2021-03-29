@@ -61,7 +61,7 @@ echo "<!-- Navigation -->
   <script src=\"functions/notifications.js\"></script>
 	<nav class=\"navbar navbar-expand-lg navbar-dark bg-nblue sticky-top\">
 	<div class=\"container\">
-		<a class=\"navbar-brand\" href=\"index.php\">APP Logo</a>
+		<a class=\"navbar-brand\" href=\"index.php\"><img class=\"brand\" src=\"includes/imgs/icon-logo-white.png\" alt=\"Wellbeing App\"></a>
 		<div class=\"d-block d-sm-none ml-auto\">
 			$notifications		
 		</div>

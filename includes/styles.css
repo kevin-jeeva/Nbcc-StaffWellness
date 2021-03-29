@@ -7608,6 +7608,13 @@ a.text-nyellow:hover, a.text-nyellow:focus {
     color: inherit;
     border-color: #dee2e6; } }
 
+/* Logo sizes */
+img.full-brand {
+  width: 10rem; }
+
+img.brand {
+  width: 3rem; }
+
 header.masthead {
   position: relative;
   background-image: linear-gradient(to bottom left, #007599 0%, #a1d8e0 100%);

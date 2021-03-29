@@ -33,6 +33,15 @@ $theme-colors: map-merge(
 
 @import "bootstrap-4.5.3-dist/scss/bootstrap";
 
+/* Logo sizes */
+img.full-brand {
+  width: 10rem;
+}
+
+img.brand {
+  width: 3rem;
+}
+
 header.masthead {
   position: relative;
   background-image: linear-gradient(to bottom left, #007599 0%, #a1d8e0 100%);

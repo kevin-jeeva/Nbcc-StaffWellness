@@ -42,7 +42,7 @@ if (isset($_SESSION["staff_id"]) && $_SESSION["staff_id"] != "") {
 	<nav class="navbar navbar-expand-lg navbar-light bg-light sticky-top">
 	<div class="container justify-content-center">
 		<ul class="navbar-nav">
-			<li class="nav-item"><a class="navbar-brand" href="index.php">APP Logo</a></li>
+			<li class="nav-item"><a class="navbar-brand" href="login.php"><img class="full-brand" src="includes/imgs/logo.png" alt="Wellbeing App"></a></li>
 		</ul>
 	</div>
 	</nav>
