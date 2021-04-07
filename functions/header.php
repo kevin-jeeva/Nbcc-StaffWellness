@@ -27,8 +27,8 @@ if(staff::GetStaffAdminNumber($_SESSION["staff_id"]) == 1 || staff::GetStaffAdmi
 $notifications = "<div class=\"notifications-place row\">
 <div class=\"notifications row\" >							
 	<div class=\"nav-item\">									
-	<button type=\"button\" class=\"btn btn-light li\" id=\"notifs\" data-toggle=\"popover\" data-placement=\"bottom\" title=\"New contents\" data-trigger=\"focus\" data-param1=\"Parameter1\" onclick=\"resetNotification()\">						
-	<li class=\"bi bi-bell-fill text-nblue\"></li></button>	
+	<button type=\"button\" class=\"btn btn-nblue li\" id=\"notifs\" data-toggle=\"popover\" data-placement=\"bottom\" title=\"New contents\" data-trigger=\"focus\" data-param1=\"Parameter1\" onclick=\"resetNotification()\">						
+	<li class=\"bi bi-bell-fill\"></li></button>	
 	<div class=\"notify-container\" id =\"notify-container\">
 		<span class=\"notify-bubble\" id =\"bubble-noti\">" . Content::setNotificationBubble() . "</span>
 	</div>
@@ -59,9 +59,9 @@ $notifications = "<div class=\"notifications-place row\">
 
 echo "<!-- Navigation -->
   <script src=\"functions/notifications.js\"></script>
-	<nav class=\"navbar navbar-expand-lg navbar-dark bg-nblue sticky-top\">
+	<nav class=\"navbar navbar-expand-lg navbar bg-white sticky-top shadow-sm\">
 	<div class=\"container\">
-		<a class=\"navbar-brand\" href=\"index.php\"><img class=\"brand\" src=\"includes/imgs/icon-logo-white.png\" alt=\"Wellbeing App\"></a>
+		<a class=\"navbar-brand\" href=\"index.php\"><img class=\"brand\" src=\"includes/imgs/nbcc-hor.png\" alt=\"Wellbeing App\"></a>
 		<div class=\"d-block d-sm-none ml-auto\">
 			$notifications		
 		</div>
