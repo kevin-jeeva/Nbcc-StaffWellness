@@ -59,7 +59,7 @@ $notifications = "<div class=\"notifications-place row\">
 
 echo "<!-- Navigation -->
   <script src=\"functions/notifications.js\"></script>
-	<nav class=\"navbar navbar-expand-lg navbar bg-white sticky-top shadow-sm\">
+	<nav class=\"navbar navbar-expand-lg navbar-light bg-white sticky-top shadow-sm\">
 	<div class=\"container\">
 		<a class=\"navbar-brand\" href=\"index.php\"><img class=\"brand\" src=\"includes/imgs/nbcc-hor.png\" alt=\"Wellbeing App\"></a>
 		<div class=\"d-block d-sm-none ml-auto\">
