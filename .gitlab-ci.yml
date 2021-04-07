@@ -1,7 +1,7 @@
 variables:
   HOST: "ftpupload.net:21"
-  USERNAME: "epiz_27915542"
-  PASSWORD: "6imxAt2FdAx4j5"
+  USERNAME: "epiz_28327165"
+  PASSWORD: "KaZW07cJCRzy"
 
 before_script:
   - apt-get update -qy
