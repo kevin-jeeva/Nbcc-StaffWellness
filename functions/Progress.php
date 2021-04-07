@@ -374,15 +374,15 @@ class Progress{
           $resolutionText = $row["res_text"];
           $res_id = $row ['res_id'];
           echo "
-          <li class=\"list\">$resolutionText</li>"; 
+          <li class=\"list\">$resolutionText <a href=\"functions/proc_incompleteResolution.php?contentId=$res_id\" onclick = \"return CheckDelete(event)\"type=\"button\" class=\"new-btn btn-sm btn-danger float-right\">Mark as incomplete</a></li>"; 
     }
 }
   echo "</ul>";
  }
 
  public static function getResolution(){
-  $con = $GLOBALS["con"];
   $user_id = $_SESSION["staff_id"]; 
+  $con = $GLOBALS["con"];
   $sql="select read_user, res_id, res_text from Resolution";
   $result = mysqli_query($con, $sql);
   $read = 0;
@@ -463,6 +463,15 @@ public static function completeTask($res_id, $user_id){
   $con = $GLOBALS["con"];
   $read_users = self::getReadUsers($res_id);
   $new_read = $read_users . $user_id . "|";
+  $sql = "update Resolution set read_user = '$new_read' where res_id = $res_id";
+  mysqli_query($con, $sql);
+}
+
+public static function incompleteTask($res_id, $user_id){
+  $con = $GLOBALS["con"];
+  $user_id .= "|";
+  $read_users = self::getReadUsers($res_id);
+  $new_read = str_replace($user_id, '', $read_users);
   $sql = "update Resolution set read_user = '$new_read' where res_id = $res_id";
   mysqli_query($con, $sql);
 }

@@ -57,7 +57,8 @@ if ($_SESSION["active"] == 0) {
       <div id="myTodoList" class="header">
         <h2>My Resolutions</h2>
       </div>
-      <?php progress::getResolution() ?>
+      <?php
+	  progress::getResolution() ?>
 	  <div id="myTodoList" class="header">
 
         <h2>My Completed Resolutions</h2>

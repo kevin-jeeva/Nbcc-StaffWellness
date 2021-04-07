@@ -7608,6 +7608,13 @@ a.text-nyellow:hover, a.text-nyellow:focus {
     color: inherit;
     border-color: #dee2e6; } }
 
+/* Logo sizes */
+img.full-brand {
+  width: 12rem; }
+
+img.brand {
+  width: 10rem; }
+
 header.masthead {
   position: relative;
   background-image: linear-gradient(to bottom left, #007599 0%, #a1d8e0 100%);
@@ -7957,11 +7964,13 @@ a.new-btn.btn-sm.btn-nblue, .btn-group-sm > a.new-btn.btn-nblue.btn {
   padding-left: 4px; }
 
 a.nav-link {
-  color: rgba(255, 255, 255, 0.8) !important; }
+  color: #212529; }
 
-a.nav-link:hover {
-  color: white !important; }
-
+/*
+a.nav-link:hover{
+  color:rgba(255, 255, 255, 1) !important;
+}
+*/
 .dropdown-item.active, .dropdown-item:active {
   background: #007599 !important;
   color: #fff !important; }
