@@ -273,11 +273,11 @@ function editVideoChange() {
 function ActDeactivate_user(event, staff_id, active) {
   var status = event.target.parentNode.childNodes[0].innerHTML;
   var btn = event.target.parentNode.childNodes[0].className;
-  if (status === "Deactive") {
+  if (status === "Inactive") {
     status = "Active";
     btn = "btn btn-success btn-md";
   } else {
-    status = "Deactive";
+    status = "Inactive";
     btn = "btn btn-danger btn-md";
   }
   event.target.parentNode.childNodes[0].innerHTML = status;

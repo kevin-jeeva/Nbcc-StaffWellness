@@ -215,7 +215,7 @@ class staff {
 
                 if($active == 0)
                 {
-                    $color = "<a href= \"#\" onclick=\"ActDeactivate_user(event,$staff_id,1)\"class= \"btn btn-danger btn-md\">Deactive</a>";
+                    $color = "<a href= \"#\" onclick=\"ActDeactivate_user(event,$staff_id,1)\"class= \"btn btn-danger btn-md\">Inactive</a>";
                 }
                 else
                 {
