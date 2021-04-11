@@ -138,14 +138,16 @@
 				    	          <th>#</th>
 				    	          <th>User Name</th>
 				    	          <th>Date Created</th>
-								  <th>Admin</th>
+								  <?php if(staff::GetStaffAdminNumber($_SESSION["staff_id"]) == 2){
+									  echo "<th>Admin</th>";
+								  }?>								  
 				    	          <th class="action-header-cell">Status</th>
 				    	        </tr>
 				    	      </thead>
 
 				    	      <!-- Important SECTION: display all content's categories from database -->
 				    	      <tbody>
-				    	        <?php staff::DisplayAllUsers()?>
+				    	        <?php staff::DisplayAllUsers($_SESSION["staff_id"])?>
 				    	      </tbody>
 			    	    </table>
 			    	</div> <!-- End of table-responsive -->

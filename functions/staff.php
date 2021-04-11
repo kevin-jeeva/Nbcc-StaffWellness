@@ -195,11 +195,12 @@ class staff {
         return $row[0];
     }
     
-    public static function DisplayAllUsers()
+    public static function DisplayAllUsers($staff_id_ind)
     {
         $con = $GLOBALS["con"];
         $sql = "Select staff_id, user_name, active, admin, date_format(date_created, '%m/%d/%y') as date_created from user";       
         $count = 0;
+        $current_staff_status = self::GetStaffAdminNumber($staff_id_ind); 
         $color = "";
         $result = mysqli_query($con, $sql);
         if(mysqli_num_rows($result) > 0)
@@ -223,27 +224,35 @@ class staff {
                 }
 
                 //display admin status
-                if($admin == 1)
+                if($current_staff_status == 2)
                 {
-                   $adminColor="<button class=\"btn btn-md btn-nblue\" onclick=\"ActDeactiveAdmin(event,$staff_id,0 )\">Active Admin</button>";
+                    if($admin == 1)
+                    {
+                    $adminColor="<button class=\"btn btn-md btn-nblue\" onclick=\"ActDeactiveAdmin(event,$staff_id,0 )\">Active Admin</button>";
+                    }
+                    else if($admin == 2)
+                    {
+                        $adminColor="<button class=\"btn btn-md btn-dark\">Super Admin</button>";
+                    }
+                    else 
+                    {
+                        $adminColor="<button class=\"btn btn-md btn-nyellow\" onclick=\"ActDeactiveAdmin(event,$staff_id,1 )\">Make Admin</button>";
+                    }
                 }
-                else if($admin == 2)
-                {
-                    $adminColor="<button class=\"btn btn-md btn-dark\">Super Admin</button>";
-                }
-                else 
-                {
-                    $adminColor="<button class=\"btn btn-md btn-nyellow\" onclick=\"ActDeactiveAdmin(event,$staff_id,1 )\">Make Admin</button>";
-                }
+               
 
                 $count +=1;
                 echo "<tr>
                 <td>$count</td>
                 <td>$name</td>                
-                <td>$date_created</td>
-                <td>$adminColor</td>
-                <td align = \"right\">$color</td>
+                <td>$date_created</td>";
+                if($current_staff_status == 2){
+                    echo "<td>$adminColor</td>";
+                }
+                echo"<td align = \"right\">$color</td>
                 </tr>";
+                
+                
             }           
         }
         else
