@@ -26,7 +26,7 @@ if(isset($_POST["email"]))
         $mail->addAddress(''.$email.'');    
         // $mail->isHTML(true);                            
         $mail->Subject = 'Password Reset';
-        $mail->Body    = 'This email is intend to reset the password for the NBCC StaffWellness application Please find the code and <a href="http://nbccstaffwellness.epizy.com/ResetPassword">Reset Password</a><BR> <h3>'.$code.'</h3>';
+        $mail->Body    = 'This email is intend to reset the password for the NBCC StaffWellness application Please find the code and <a href="http://nbccstaffwellness.42web.io/ResetPassword">Reset Password</a><BR> <h3>'.$code.'</h3>';
         $mail->AltBody = 'This email is intend to reset the password for the NBCC StaffWellness application Please find the code 50321';
     
         if(!$mail->send()) {

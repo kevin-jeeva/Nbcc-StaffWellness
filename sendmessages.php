@@ -36,9 +36,9 @@ if(isset($_GET["email"]))
     }
 
                             
-    $mail->Subject = $resource."\t".'update staffwellness';
+    $mail->Subject = $resource."\t".'update staffwellness ';
     $mail->Body    = $resource."\r\n".$title."\r\n";
-    $mail->AltBody = $title."\r\n".$text.'Please visit nbccstaffwellness.epziy.com';
+    $mail->AltBody = $title."\r\n".$text.' Please visit http://nbccstaffwellness.42web.io/';
 
     if(!$mail->send()) {
         // echo 'Message could not be sent.';
