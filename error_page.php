@@ -21,21 +21,30 @@
 	<!-- Custom CSS and JS -->
 	<link rel="stylesheet" type="text/css" href="includes/styles.css">
 	<script src="functions/main.js"></script>
+
+    <style>
+    center{
+        padding: 10%;
+    }
+    a{
+        margin-top: 20px;
+    }
+    </style>
 </head>
 
 <body>
-
-	<!-- Navigation -->
-	<?php include('functions/header.php'); ?>
-
+<?php echo "<nav class=\"navbar navbar-expand-lg navbar-light bg-white sticky-top shadow-sm\">
+	<div class=\"container\">
+		<a class=\"navbar-brand\" href=\"index.php\"><img class=\"brand\" src=\"includes/imgs/nbcc-hor.png\" alt=\"Wellbeing App\"></a>			
+	</div><!-- end of container -->
+	</nav>" ?><!-- end of Navigation -->
 	
     <center>
-    <h2> This is a Error Page OMG :) </h2>
+    <h2> Page not Found OMG :) </h2>    
+    <a href="login.php" class="btn btn-lg btn-outline-dark">We will drop you</a>
     </center>
-	<!-- Quick Links -->
-	<?php include('functions/quick-links.php'); ?>
-
-	<!-- Footer -->
+    
+		<!-- Footer -->
 	<?php include('functions/footer.php'); ?>
 
 </body>
